@@ -1,0 +1,34 @@
+<app-header></app-header>
+
+
+<!-- listing-area -->
+<section id="kickbg">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="listing_heading">
+					<div class="headtitle">
+						<h2>Kickstarter</h2>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+		<div class="row">
+			<div *ngFor="let kick of data;let i = index" class="col-md-4">
+				<div class="cleintbox4">
+					<!-- <div class="heart-icon"><a (click)="saveLike(i,kick.id)"><i *ngIf="kick.status" class="fa fa-heart fillheart"></i> <i  *ngIf="!kick.status" class="fa fa-heart-o"></i></a></div> -->
+					<div *ngIf="kick.profile_image" class="clientlogo4"><img src="{{kick.profile_image.filename}}"></div>
+					<div *ngIf="!kick.profile_image" class="clientlogo4"><img src="../../../assets/images/profile.png"></div>
+					<h3>{{kick.name}}</h3>
+					<p>{{kick.description}}</p>
+					<a class="btn btn-primary explore" [routerLink]="'/kickstarter/'+kick.user_id">Explore</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<!-- listing-area-end-->
+
+<app-footer></app-footer>

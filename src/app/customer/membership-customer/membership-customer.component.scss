@@ -1,0 +1,112 @@
+.top_selling .inside {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    margin-bottom: 30px;
+}
+.right_area .inside .title, .top_selling .inside .title, .single_box .inside .title {
+    font-size: 20px;
+    color: #6b6b6b;
+    margin-bottom: 13px;
+    text-transform: capitalize;
+}
+.right_area .inside .title, .top_selling .inside .title {
+    font-weight: 600;
+}
+.membership_details {
+    display: flex;
+    display: -webkit-flex;
+    margin-top: 20px;
+    width: 100%;
+}
+.membership_details .image {
+    max-width: 150px;
+    width: 100%;
+}
+.membership_details .membership_data {
+    display: flex;
+    justify-content: space-between;
+    display: -webkit-flex;
+    -webkit-justify-content: space-between;
+    padding-left: 15px;
+    width: 100%;
+}
+.membership_details .membership_data .data_left {
+    width: 100%;
+    padding-right: 50px;
+}
+.membership_details .membership_data .data_left .name {
+    font-size: 25px;
+    font-weight: 600;
+    text-transform: capitalize;
+    margin-bottom: 0px;
+}
+.membership_details .membership_data .data_left label {
+    font-size: 18px;
+    text-transform: capitalize;
+    margin: 0px;
+    font-weight: 500;
+    color: #3d3d3d;
+}
+.membership_details .membership_data .data_left .available_plan {
+    margin-top: 10px;
+    border-top: 1px solid #ccc;
+    padding-top: 8px;
+}
+.membership_details .membership_data .data_left .available_plan span {
+    font-size: 18px;
+    margin-bottom: 10px;
+    display: block;
+    color: red;
+    text-transform: capitalize;
+}
+.membership_details .membership_data .trophy {
+    max-width: 170px;
+    width: 100%;
+}
+.about_membership {
+    display: flex;
+    display: -webkit-flex;
+    flex-wrap: wrap;
+    -webkit-flex-wrap: wrap;
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #ccc;
+}
+.about_membership .list {
+    font-size: 17px;
+    margin: 2px 0;
+    width: 100%;
+} 
+.about_membership .list strong {
+    font-weight: 600;
+    margin-right: 10px;
+}
+.membership_benefits .content p {
+    margin-top: 20px;
+}
+.membership_benefits .content {
+    font-size: 17px;
+    line-height: 26px;
+}
+.membership_benefits .content ul li {
+    list-style-type: disc;
+    list-style-position: inside;
+    padding: 2px;
+}
+.btn-custom{
+    color: #fff;
+    background-color: #999394;
+    border-color: #595959;
+}
+.walletimage{
+    height: 110px;
+}
+.membership_details .image img{
+    max-height: 160px;
+    max-width: 160px;
+    object-fit: cover;
+    border-radius: 100%;
+    width: 100%;
+}

@@ -1,0 +1,786 @@
+<app-header></app-header>
+<!--banner-section-->
+
+<section id="banners">
+ 
+	<div class="container">
+		<div class="banercontent">
+			<h1 [innerHTML]="home_slider_title"></h1>
+			<p [innerHTML]="home_slider_conent"></p>
+			</div>
+		<div class="serh_advance2"><a [routerLink]="'/customer/advance'"><button type="button" class="advancbtn"><i class="fa fa-cog"></i> Advanced Search</button></a></div>
+		<div class="watchbtn">
+			<a href="javascript:void()" (click)="open(videoModal)"><i class="fa fa-youtube-play"></i></a>
+		</div>
+
+	</div>
+</section>
+<!--banner-section-end-->
+<!-- video-modal -->
+<ng-template #videoModal let-modal>
+	<div class="modal-header">
+	  <h4 class="modal-title" [innerHTML]="home_slider_video_title"></h4>
+      <button type="button" class="close" (click)="modal.dismiss('Cross click')">&times;</button>
+	</div>
+	<div class="modal-body">
+		<iframe width="100%" height="500" [src]='home_slider_video' frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+		
+		<!-- <iframe width="100%" height="500" src="https://www.youtube.com/embed/wKYaNEwd34g" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>         -->
+	</div>
+  </ng-template>
+<!-- video-modal-end-->
+
+
+
+<!-- three-column-layout -->
+
+<section id="three_column">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-4">
+				<div class="serv_box">
+					<!-- <img src="assets/images/finder.png"> -->
+					<img src="{{service_title_1_image}}">
+					<h3 [innerHTML]="service_title_1"></h3>
+					<p [innerHTML]="service_title_1_content"></p>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="serv_box">
+					<!-- <img src="assets/images/cog.png"> -->
+					<img src="{{service_title_2_image}}">
+					<h3 [innerHTML]="service_title_2"></h3>
+					<p [innerHTML]="service_title_2_content"></p>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="serv_box">
+					<!-- <img src="assets/images/pros.png"> -->
+					<img src="{{service_title_3_image}}">
+					<h3 [innerHTML]="service_title_3"></h3>
+					<p [innerHTML]="service_title_3_content"></p>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<!-- three-column-layout-end-->
+
+  <!-- The Modal -->
+  <div class="modal fade" id="myModalCount">
+    <div class="modal-dialog">
+      <div class="modal-content">
+      
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Property Count</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        
+        <!-- Modal body -->
+        <div class="modal-body text-center">
+			<br><br>
+		 <h3>You Have <b>20</b> Properties in the field list</h3>
+		 <br><br>
+        </div>
+        
+        <!-- Modal footer -->
+        <!-- <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        </div> -->
+        
+      </div>
+    </div>
+  </div>
+  <!-- kickstart-section -->
+
+<section id="recomend">
+	<div class="container">
+		<div class="row">
+		<div class="col-md-12">
+			<div class="heading">
+				<h2 [innerHTML]="kickstart_section_title"></h2>
+				<p><img src="assets/images/seprator.png"></p>
+				<p [innerHTML]="kickstart_content"></p>
+			</div>
+		</div>
+		</div>
+		<div class="row">
+			<div class="col-md-12">
+				<div class="viewall4">
+					<a [routerLink]="'/kickstarter'">View All <i class="fa fa-angle-right"></i></a>
+				</div>
+			</div>
+		</div>
+
+
+		<div class="row" id="top_space">
+		<div class="col-md-12">
+			<owl-carousel
+			[options]="{items: 3,margin: 20,  navigation: false, responsive: { '0': {  items: 1 },
+				'600': { items: 2 },
+				'1024': { items: 3  },
+				'1200': { items: 3  }
+	   		} }"
+			[items]=images
+			[carouselClasses]="['owl-theme', 'row', 'sliding']">
+				<!-- slides1 -->
+				
+				<div class="item cleintbox4" *ngFor="let image of images;let i = index">
+					<!-- <div class="heart-icon"><a (click)="saveLike(i,image.id)"><i *ngIf="image.status" class="fa fa-heart fillheart"></i> <i  *ngIf="!image.status" class="fa fa-heart-o"></i></a></div> -->
+					<div *ngIf="image.profile_image" class="clientlogo4"><img src="{{image.profile_image.filename}}"></div>
+					<div *ngIf="!image.profile_image" class="clientlogo4"><img src="../../../assets/images/profile.png"></div>
+					<div class="reco_contents">
+					<a [routerLink]="'kickstarter/'+image.user_id"><h3 [innerHTML]="image.name"></h3></a>
+					<p class="img_desc" [innerHTML]="image.description"></p>
+					<!-- <h6>$227,900</h6>
+					<p><i class="fa fa-map-marker"></i> 1335 Madison 8605 Huntsille, AR 72740-7169</p> -->
+						<a class="btn btn-primary explore" [routerLink]="'kickstarter/'+image.user_id">Explore</a>
+
+					</div>
+				</div>
+			</owl-carousel>
+		</div>
+		</div>
+
+	</div>
+</section>
+<!-- kickstart-section -->
+<!-- counter-csss -->
+<div class="counter" id="counter">
+    <div class="container">
+    	<div class="row">
+		<div class="col-md-12">
+			<div class="heading">
+				<h2 [innerHTML]="ca_heading">What's Happening in the CA</h2>
+			</div>
+		</div>
+		</div>
+        <div class="row">
+             <div class="col">
+                <div class="employees">
+					<p class="counter-count counter-value" [attr.data-count]="counter_1">0</p>
+					<!-- <p class="counter-count counter-value" [innerHTML]="counter_1">0</p> -->
+                    <p class="employee-p" [innerHTML]="title_1">Home For Sale</p>
+                </div>
+            </div>
+
+             <div class="col">
+                <div class="customer">
+                    <p class="counter-count counter-value" [attr.data-count]="counter_2">0</p>
+					<!-- <p class="counter-count counter-value" [innerHTML]="counter_2">0</p> -->
+					<p class="customer-p" [innerHTML]="title_2">Open Houses</p>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="design">
+					<p class="counter-count counter-value"  [attr.data-count]="counter_3">0</p>
+					<!-- <p class="counter-count counter-value" [innerHTML]="counter_3">0</p> -->
+                    <p class="design-p" [innerHTML]="title_3">Recently Sold</p>
+                </div>
+            </div>
+
+             <div class="col">
+                <div class="order">
+					<p class="counter-count counter-value"  [attr.data-count]="counter_4">0</p>
+					<!-- <p class="counter-count counter-value" [innerHTML]="counter_4">0</p> -->
+                    <p class="order-p" [innerHTML]="title_4">Forclosure</p>
+                </div>
+            </div>
+              <div class="col">
+                <div class="order">
+					<p class="counter-count counter-value"  [attr.data-count]="counter_5">0</p>
+					<!-- <p class="counter-count counter-value" [innerHTML]="counter_5">0</p> -->
+                    <p class="order-p" [innerHTML]="title_5">Price Reduced</p>
+                </div>
+            </div>
+            
+         </div>
+    </div>
+</div>
+<!-- counter-css-end -->
+<!-- category-section -->
+<section id="browse_catg">
+	<div class="container">
+		<div class="row">
+		<div class="col-md-12">
+			<div class="heading">
+				<h2 [innerHTML]="category_section_title"></h2>
+				<p [innerHTML]="category_content"></p>
+			</div>
+		</div>
+		</div>
+
+		<div class="row" id="top_space">
+			<div class="col-md-6 col-lg-3 m_space">
+				<!-- <a data-toggle="modal" data-target="#myModalCount"> -->
+				<a (click) = onChangeRedirect()>
+					<div class="cat_box">
+					<img src="assets/images/d1.png">
+					<h3>Find > 40% Equity</h3>
+				</div>
+				</a>
+				<select class="cart_city" (change)= onChangeRedirect()>
+					<option>Select City</option>
+					<option>Los Angeles, CA</option>
+					<option>New York, NY</option>
+					<option>Dallas, TX</option>
+					<option>Chicago, IL</option>
+					<option>Seattle, WA</option>
+					<option>South Florida, FL</option>
+				</select>
+			</div>
+			<div class="col-md-6 col-lg-3 m_space">
+				<!-- <a data-toggle="modal"  data-target="#myModalCount"> -->
+				<a (click) = onChangeRedirect()>
+				<div class="cat_box condos">
+					<img src="assets/images/d2.png">
+					<h3>Foreclosure <span>in last 6 months</span></h3>
+				</div>
+				</a>
+				<select class="cart_city" (change)= onChangeRedirect()>
+					<option>Select City</option>
+					<option>Los Angeles, CA</option>
+					<option>New York, NY</option>
+					<option>Dallas, TX</option>
+					<option>Chicago, IL</option>
+					<option>Seattle, WA</option>
+					<option>South Florida, FL</option>
+				</select>
+			</div>
+			<div class="col-md-6 col-lg-3 m_space">
+				<!-- <a data-toggle="modal"  data-target="#myModalCount"> -->
+				<a (click) = onChangeRedirect()>
+				<div class="cat_box resident">
+					<img src="assets/images/d3.png">
+					<h3>Absentee Owners</h3>
+				</div>
+				</a>
+				<select class="cart_city" (change)= onChangeRedirect()>
+					<option>Select City</option>
+					<option>Los Angeles, CA</option>
+					<option>New York, NY</option>
+					<option>Dallas, TX</option>
+					<option>Chicago, IL</option>
+					<option>Seattle, WA</option>
+					<option>South Florida, FL</option>
+				</select>
+			</div>
+			<div class="col-md-6 col-lg-3 m_space">
+				<!-- <a data-toggle="modal"  data-target="#myModalCount"> -->
+				<a (click) = onChangeRedirect()>
+					<div class="cat_box commer">
+					<img src="assets/images/d4.png">
+					<h3>Adjusting Loans</h3>
+				</div>
+				</a>
+				<select class="cart_city" (change)= onChangeRedirect()>
+					<option>Select City</option>
+					<option>Los Angeles, CA</option>
+					<option>New York, NY</option>
+					<option>Dallas, TX</option>
+					<option>Chicago, IL</option>
+					<option>Seattle, WA</option>
+					<option>South Florida, FL</option>
+				</select>
+			</div>
+		</div>
+
+		<div class="row" id="top_space">
+			<div class="col-md-6 col-lg-3 m_space">
+				<!-- <a data-toggle="modal"  data-target="#myModalCount"> -->
+				<a (click) = onChangeRedirect()>
+				<div class="cat_box newcolor">
+					<img src="assets/images/d5.png">
+					<h3>Ethnicity</h3>
+				</div>
+				</a>
+				<select class="cart_city" (change)= onChangeRedirect()>
+					<option>Select City</option>
+					<option>Los Angeles, CA</option>
+					<option>New York, NY</option>
+					<option>Dallas, TX</option>
+					<option>Chicago, IL</option>
+					<option>Seattle, WA</option>
+					<option>South Florida, FL</option>
+				</select>
+			</div>
+			<div class="col-md-6 col-lg-3 m_space">
+				<!-- <a data-toggle="modal"  data-target="#myModalCount"> -->
+				<a (click) = onChangeRedirect()>
+				<div class="cat_box newcolor2">
+					<img src="assets/images/d6.png">
+					<h3>Credit Score</h3>
+				</div>
+				</a>
+				<select class="cart_city" (change)= onChangeRedirect()>
+					<option>Select City</option>
+					<option>Los Angeles, CA</option>
+					<option>New York, NY</option>
+					<option>Dallas, TX</option>
+					<option>Chicago, IL</option>
+					<option>Seattle, WA</option>
+					<option>South Florida, FL</option>
+				</select>
+			</div>
+			<div class="col-md-6 col-lg-3 m_space">
+				<!-- <a data-toggle="modal"  data-target="#myModalCount"> -->
+				<a (click) = onChangeRedirect()>
+				<div class="cat_box newcolor3">
+					<img src="assets/images/d7.png">
+					<h3>Lenders</h3>
+				</div>
+				</a>
+				<select class="cart_city" (change)= onChangeRedirect()>
+					<option>Select City</option>
+					<option>Los Angeles, CA</option>
+					<option>New York, NY</option>
+					<option>Dallas, TX</option>
+					<option>Chicago, IL</option>
+					<option>Seattle, WA</option>
+					<option>South Florida, FL</option>
+				</select>
+			</div>
+			<div class="col-md-6 col-lg-3 m_space">
+				<!-- <a data-toggle="modal"  data-target="#myModalCount"> -->
+				<a (click) = onChangeRedirect()>
+				<div class="cat_box newcolor4">
+					<img src="assets/images/d8.png">
+					<h3>Type Of Loan</h3>
+				</div>
+				</a>
+				<select class="cart_city" (change)= onChangeRedirect()>
+					<option>Select City</option>
+					<option>Los Angeles, CA</option>
+					<option>New York, NY</option>
+					<option>Dallas, TX</option>
+					<option>Chicago, IL</option>
+					<option>Seattle, WA</option>
+					<option>South Florida, FL</option>
+				</select>
+			</div>
+		</div>
+
+		<div class="viewall3">
+			<a (click) = onChangeRedirect()>View All <i class="fa fa-angle-right"></i></a>
+		</div>
+
+	</div>
+</section>
+<!-- category-section-end -->
+
+
+
+
+
+
+<!-- around-to-you  HOT LEADS -->
+<!-- <section id="latest_news1">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<h3>Hot Leads</h3>
+			</div>
+		</div>
+		<div class="row">
+			<div *ngFor="let property of trendingProperties" class="col-md-3">
+				<div class="cardbox">
+					<div class="imgrel">
+						<img src="assets/images/mask1.png">
+					</div>
+					<div class="chat_detail_link2">
+						<div class="links">
+							<ul>
+								<li>
+									<a href="javascript:void()">
+										<img src="assets/images/bulb.png" class="bulb">
+										<img src="assets/images/bulb2.png" class="bulb2">
+									</a>
+								</li>
+								<li>
+									<a href="javascript:void()">
+										<img src="assets/images/fire.png" class="bulb">
+										<img src="assets/images/fire2.png" class="bulb2">
+									</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+					<div class="contant">
+						<ul>
+							<li *ngIf="property.datatree.Bedrooms">{{property.datatree.Bedrooms}} Bed,&nbsp;</li>
+							<li *ngIf="property.datatree.Bathrooms">{{property.datatree.Bathrooms}} Bath,&nbsp;</li>
+							<li *ngIf="property.datatree.SqFoot">{{property.datatree.SqFoot}} Sqft</li>
+						</ul>						
+						<p>{{property.datatree.Address | titlecase}} {{property.datatree.Unit | titlecase}}</p>
+						<p>{{property.datatree.City | titlecase}}, {{property.datatree.State}} {{property.datatree.Zip}}</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-12">
+			<div class="viewall3">
+				<a (click) = viewHotLeads()>View All <i class="fa fa-angle-right"></i></a>
+			</div>
+		</div>
+	</div>
+</section> -->
+<!-- around-to-you-end-->
+
+<!-- newest-start-->
+<!-- <section id="newestlist">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<h3>Latest Listing</h3>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-3">
+				<div class="cardbox">
+					<div class="imgrel">
+						<img src="assets/images/mask5.png">
+					</div>
+					<div class="chat_detail_link2">
+						<div class="links">
+							<ul>
+								<li>
+									<a href="javascript:void()">
+										<img src="assets/images/bulb.png" class="bulb">
+										<img src="assets/images/bulb2.png" class="bulb2">
+									</a>
+								</li>
+								<li>
+									<a href="javascript:void()">
+										<img src="assets/images/fire.png" class="bulb">
+										<img src="assets/images/fire2.png" class="bulb2">
+									</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+					<div class="contant">
+						<ul>
+							<li>2 Bed</li>
+							<li>3 Bath</li>
+							<li>1,599 Sqft</li>
+						</ul>
+						<p>725 Tehama St Unit 4 </p>
+						<p>San Francisco, CA 94103</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-3">
+				<div class="cardbox">
+					<div class="imgrel">
+						<img src="assets/images/mask6.png">
+					</div>
+					<div class="chat_detail_link2">
+						<div class="links">
+							<ul>
+								<li>
+									<a href="javascript:void()">
+										<img src="assets/images/bulb.png" class="bulb">
+										<img src="assets/images/bulb2.png" class="bulb2">
+									</a>
+								</li>
+								<li>
+									<a href="javascript:void()">
+										<img src="assets/images/fire.png" class="bulb">
+										<img src="assets/images/fire2.png" class="bulb2">
+									</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+					<div class="contant">
+						<ul>
+							<li>2 Bed</li>
+							<li>3 Bath</li>
+							<li>1,599 Sqft</li>
+						</ul>
+						<p>725 Tehama St Unit 4 </p>
+						<p>San Francisco, CA 94103</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-3">
+				<div class="cardbox">
+					<div class="imgrel">
+						<img src="assets/images/mask7.png">
+					</div>
+					<div class="chat_detail_link2">
+						<div class="links">
+							<ul>
+								<li>
+									<a href="javascript:void()">
+										<img src="assets/images/bulb.png" class="bulb">
+										<img src="assets/images/bulb2.png" class="bulb2">
+									</a>
+								</li>
+								<li>
+									<a href="javascript:void()">
+										<img src="assets/images/fire.png" class="bulb">
+										<img src="assets/images/fire2.png" class="bulb2">
+									</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+					<div class="contant">
+						<ul>
+							<li>2 Bed</li>
+							<li>3 Bath</li>
+							<li>1,599 Sqft</li>
+						</ul>
+						<p>725 Tehama St Unit 4 </p>
+						<p>San Francisco, CA 94103</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-3">
+				<div class="cardbox">
+					<div class="imgrel">
+						<img src="assets/images/mask8.png">
+					</div>
+					<div class="chat_detail_link2">
+						<div class="links">
+							<ul>
+								<li>
+									<a href="javascript:void()">
+										<img src="assets/images/bulb.png" class="bulb">
+										<img src="assets/images/bulb2.png" class="bulb2">
+									</a>
+								</li>
+								<li>
+									<a href="javascript:void()">
+										<img src="assets/images/fire.png" class="bulb">
+										<img src="assets/images/fire2.png" class="bulb2">
+									</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+					<div class="contant">
+						<ul>
+							<li>2 Bed</li>
+							<li>3 Bath</li>
+							<li>1,599 Sqft</li>
+						</ul>
+						<p>725 Tehama St Unit 4 </p>
+						<p>San Francisco, CA 94103</p>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+		<div class="col-md-12">
+			<div class="viewall3">
+				<a (click) = viewLatestListing()>View All <i class="fa fa-angle-right"></i></a>
+			</div>
+		</div>
+
+	</div>
+</section> -->
+<!-- newest-end-->
+
+
+
+
+
+
+
+
+<!-- screenhot-slider-section -->
+<!-- <section id="screnshotbg">
+	<div class="container">
+		<div class="row">
+		<div class="col-md-12">
+			<div class="heading">
+				<h2 [innerHTML]="playstore_title"></h2>
+				<p [innerHTML]="playstore_content"></p>
+			</div>
+		</div>
+		</div>
+
+		<div class="row">
+		<div class="col-md-12">
+			<div class="store">
+				<a ><img src="assets/images/google.png"></a>
+				<a><img src="assets/images/apple.png"></a>
+			</div>
+		</div>
+		</div>
+
+		<div class="row" id="top_space">
+		<div class="col-md-12">
+			<owl-carousel [options]="{items: 4, dots: true, nav: false}"  [items]="play_store_images" [carouselClasses]="['owl-theme', 'row', 'sliding']" >
+				<div class="screen" *ngFor="let image of play_store_images;let i = index">
+					<img src={{image.image}}/>
+				</div>
+			</owl-carousel>
+				
+		</div>
+	</div>
+</div>
+</section> -->
+<!-- screenhot-slider-end -->
+
+
+
+<!-- latest-news-->
+<section id="latest_news1">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<h3>Latest News</h3>
+			</div>
+		</div>
+		<div class="row">
+			<!-- <div class="row">
+				<div class="col-md-3">
+					<div class="cardbox">
+						<div class="imgrel">
+							<a href="news-detail.html"><img src="assets/images/mask1.png"></a>
+						</div>
+						<div class="chat_detail_link2">
+							<p>Jan 01, 2020</p>
+						</div>
+						<div class="contant">
+							<p><a href="news-detail.html">Retail banks wake up to digital lending this year</a></p>
+							<p>Posted by: <span>Admin</span></p>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-3">
+					<div class="cardbox">
+						<div class="imgrel">
+							<a href="news-detail.html"><img src="assets/images/mask2.png"></a>
+						</div>
+						<div class="chat_detail_link2">
+							<p>Jan 01, 2020</p>
+						</div>
+						<div class="contant">
+							<p><a href="news-detail.html">Retail banks wake up to digital lending this year</a></p>
+							<p>Posted by: <span>Admin</span></p>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-3">
+					<div class="cardbox">
+						<div class="imgrel">
+							<a href="news-detail.html"><img src="assets/images/mask3.png"></a>
+						</div>
+						<div class="chat_detail_link2">
+							<p>Jan 01, 2020</p>
+						</div>
+						<div class="contant">
+							<p><a href="news-detail.html">Retail banks wake up to digital lending this year</a></p>
+							<p>Posted by: <span>Admin</span></p>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-3">
+					<div class="cardbox"> 
+						<div class="imgrel">
+							<a href="news-detail.html"><img src="assets/images/mask4.png"></a>
+						</div>
+						<div class="chat_detail_link2">
+							<p>Jan 01, 2020</p>
+						</div>
+						<div class="contant">
+							<p><a href="news-detail.html">Retail banks wake up to digital lending this year</a></p>
+							<p>Posted by: <span>Admin</span></p>
+						</div>
+					</div>
+				</div>
+			</div>			 -->
+			<div class="row">
+			<div *ngFor="let news of latestNews" class="col-md-3">
+				<div class="cardbox">
+					<div class="imgrel">
+						<a [routerLink]="'/news/'+news.url"><img src="{{news.filename}}"></a>
+					</div>
+					<div *ngIf="news.date" class="chat_detail_link2">
+						<p [innerHTML]="news.date | date:'d-MMM-yyyy'"></p>
+					</div>
+					<div class="contant">
+						<p><a [routerLink]="'/news/'+news.url" [innerHTML]="news.small_description | slice:0:60"></a></p>
+						<p>Posted By: <span *ngIf="news.role_detail" [innerHTML]="news.role_detail.role"></span><span *ngIf="!news.role_detail">Admin</span></p>
+					</div>
+				</div>
+			</div>
+			<!-- <div class="col-md-3">
+				<div class="cardbox">
+					<div class="imgrel">
+						<a href="news-detail.html"><img src="assets/images/mask2.png"></a>
+					</div>
+					<div class="chat_detail_link2">
+						<p>Jan 01, 2020</p>
+					</div>
+					<div class="contant">
+						<p><a href="news-detail.html">Retail banks wake up to digital lending this year</a></p>
+						<p>Posted by: <span>Admin</span></p>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-3">
+				<div class="cardbox">
+					<div class="imgrel">
+						<a href="news-detail.html"><img src="assets/images/mask3.png"></a>
+					</div>
+					<div class="chat_detail_link2">
+						<p>Jan 01, 2020</p>
+					</div>
+					<div class="contant">
+						<p><a href="news-detail.html">Retail banks wake up to digital lending this year</a></p>
+						<p>Posted by: <span>Admin</span></p>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-3">
+				<div class="cardbox">
+					<div class="imgrel">
+						<a href="news-detail.html"><img src="assets/images/mask4.png"></a>
+					</div>
+					<div class="chat_detail_link2">
+						<p>Jan 01, 2020</p>
+					</div>
+					<div class="contant">
+						<p><a href="news-detail.html">Retail banks wake up to digital lending this year</a></p>
+						<p>Posted by: <span>Admin</span></p>
+					</div>
+				</div>
+			</div> -->
+		</div>		
+
+		</div>
+
+
+		<div class="col-md-12">
+			<div class="viewall3">
+				<a [routerLink]="'/news'">View All <i class="fa fa-angle-right"></i></a>
+			</div>
+		</div>
+
+	</div>
+</section>
+<!-- latest-news-end-->
+
+
+<ng-template #confirmModal let-modal>	
+	<div class="modal-body">
+		$50 will be deduct from Wallet.
+	</div>
+	<div class="modal-footer">
+	  <button type="button" class="btn btn-outline-dark" (click)="modal.close('ok')">Ok</button><button type="button" class="btn btn-outline-dark" (click)="modal.close('cancel')">cancel</button>
+	</div>
+  </ng-template>
+
+
+
+
+<app-footer></app-footer>

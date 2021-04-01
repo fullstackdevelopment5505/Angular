@@ -1,0 +1,78 @@
+<!-- footer-start -->
+
+<footer id="footerbg">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-7 col-lg-7">
+				<div class="foots">
+					<img [src]="logo" class="fotlogo">
+					<div><p [innerHTML]="description"></p></div>
+					<div class="social">
+						<ul>
+							<li *ngIf="fbURL"><a href="{{fbURL}}" target="_blank"><i class="fab fa-facebook"></i></a></li>
+							<li *ngIf="twtURL"><a href="{{twtURL}}" target="_blank"><i class="fab fa-twitter"></i></a></li>
+							<!-- <li *ngIf="pinURL"><a href="{{pinURL}}" target="_blank"><i class="fa fa-pinterest"></i></a></li> -->
+							<li *ngIf="instaURL"><a href="{{instaURL}}" target="_blank"><i class="fab fa-instagram"></i></a></li>
+							<li *ngIf="linkedInURL"><a href="{{linkedInURL}}" target="_blank"><i class="fab fa-linkedin"></i></a></li>
+							<li *ngIf="youTubeURL"><a href="{{youTubeURL}}" target="_blank"><i class="fab fa-youtube"></i></a></li>							
+						</ul>
+					</div>
+					<div class="store">
+						<!-- <a href="#"><img src="assets/images/google.png"></a>
+						<a href="#"><img src="assets/images/apple.png"></a> -->
+					</div>
+				</div>
+			</div>
+			<div class="col-md-1 col-lg-1"></div>
+			<div class="col-md-4 col-lg-4">
+				<div class="fotheading">Main Menu</div>
+				<div class="row">
+					<div class="col-md-6">
+						<ul class="footlinks">
+							<li><a  [routerLink]="'/'"><i class="fa fa-angle-right"></i> Home</a></li>
+							<li><a  [routerLink]="'/kickstarter'"><i class="fa fa-angle-right"></i> Kickstarter</a></li>
+							<!-- <li><a  [routerLink]="'/search/explore'"><i class="fa fa-angle-right"></i> Explore</a></li>
+							<li><a  [routerLink]="'/search/hot-leads'"><i class="fa fa-angle-right"></i> Hot Leads</a></li> -->
+							<li><a [routerLink]="'/news'"><i class="fa fa-angle-right"></i> News and Insight</a></li>
+							<li><a [routerLink]="'/aboutus'"><i class="fa fa-angle-right"></i> About Us</a></li>
+						</ul>
+					</div>
+					<div class="col-md-6">
+						<ul class="footlinks">
+							<!-- <li><a [routerLink]="'/about/career'"><i class="fa fa-angle-right"></i> Career</a></li>
+							<li><a [routerLink]="'/affiliate'"><i class="fa fa-angle-right"></i> Affiliate Program</a></li> -->
+							<li><a [routerLink]="'/contact'"><i class="fa fa-angle-right"></i> Contact Us</a></li>
+							<!-- <li><a [routerLink]="'/faq'"><i class="fa fa-angle-right"></i> FAQ</a></li> -->
+							<li><a [routerLink]="'/terms'"><i class="fa fa-angle-right"></i> Terms and Conditions</a></li>
+							<li><a [routerLink]="'/privacy'"><i class="fa fa-angle-right"></i> Privacy Policies</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+
+			<!-- <div class="col-md-4 col-lg-4">
+				<div class="fotheading">Latest Properties</div>
+
+				<div *ngFor="let data of data" class="row" id="top_space">
+					<div class="col-md-6">
+						<div class="latestpic"><a [routerLink]="'news/'+data.url"><img src="{{data.filename}}"></a></div>
+					</div>
+					<div class="col-md-6">
+						<a [routerLink]="'news/'+data.url">
+						<div class="foot_content">
+							<h6>{{data.title}}</h6>
+							<p>{{data.created_at | date:'d-MMM-yyyy'}}</p>
+						</div>
+						</a>
+					</div>
+				</div>
+
+			</div> -->
+		</div>
+	</div>
+</footer>
+
+<div class="endfooter" [innerHTML]="footer_copyright">
+	Copyright &copy; All Right Reserved 2020
+
+</div>

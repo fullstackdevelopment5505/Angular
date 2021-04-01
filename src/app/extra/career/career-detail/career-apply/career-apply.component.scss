@@ -1,0 +1,86 @@
+
+/*suybmit-resume*/
+.applybg {
+    padding: 0px 0px;
+    margin: 0px;
+    background: #fff;
+}
+.career_work_redbox {
+    background-color: #e7f4ff;
+    padding: 0;
+    height: 700px;
+    width: 100%;
+    padding: 50px 40px 50px 18%;
+    position: relative;
+}
+.career_work_redbox h2 {
+    margin: 0;
+    color: #1b86e3;
+    font-size: 70px;
+    line-height: 1;
+    font-weight: 700;
+    width: 100%;
+    max-width: 500px;
+}
+.career_work_redbox p {
+    font-size: 24px;
+    line-height: 1.58;
+    color: #000;
+    font-family: Net-Proxima-Nova-Light;
+    margin: 28px 0 0;
+}
+.career_work_redbox span {
+    display: block;
+    font-size: 20px;
+    line-height: 1.6;
+    color: #000;
+    font-family: Net-Proxima-Nova-Light;
+    position: absolute;
+    bottom: 52px;
+}
+
+.formbg {
+    margin: 0px;
+    padding:40px 40px 0px;
+}
+.formbg .form-group {
+    margin-top: 30px;
+    position: relative;
+    margin-bottom: 0;
+}
+.formbg .md-form label{
+    
+    color: #4a4a4a !important;
+    font-weight: 500;
+    padding-left: 15px;
+    padding-top:8px;
+}
+.formbg .form-control {
+    border: #e2dfdf solid 1px;
+    font-weight: 400;
+    font-size: 16px;
+    background:#f2f2f2;
+    border-radius: 5px;
+    padding-left: 15px;
+    padding-top: 18px;
+    box-sizing: inherit;
+    height: 65px;
+}
+.formbg .form-control2 {
+    font-weight: 500;
+    font-size: 16px;
+    height:65px;
+    width: 100%;
+    border: none;
+    border-radius: 5px;
+    background:#f2f2f2;
+    padding-left: 15px;
+    border: #e2dfdf solid 1px;
+}
+.md-form label.active{
+
+    -webkit-transform: translateY(-50%) !important;
+    -ms-transform: translateY(-50%) !important;
+    transform: translateY(-50%) !important;
+    font-size: 12px !important;
+}

@@ -1,0 +1,16 @@
+.top_selling .inside {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    margin-bottom: 30px;
+}
+.right_area .inside .title, .top_selling .inside .title {
+    font-weight: 600;
+}
+.right_area .inside .title, .top_selling .inside .title, .single_box .inside .title {
+    font-size: 20px;
+    color: #6b6b6b;
+    margin-bottom: 13px;
+    text-transform: capitalize;
+}

@@ -1,0 +1,140 @@
+<app-header></app-header>
+    <div class="container"> 
+        <section id="wallet">
+            <div class="title">
+                <div>
+                    <p>Account Summary</p>
+                </div>
+                <div>
+                    <button class="btn btn-primary"  data-toggle="modal" data-target="#myModal">+ Add new Credit</button>
+                </div>
+            </div>
+            <div class="wallet">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="section sec_1">
+                            <p><span>1</span> Current Points</p>
+                            <div class="points">
+                                <h2>{{currentPoint}}</h2>
+                                <p> Points</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="section sec_2">
+                            <p><span>2</span> Total Deposit </p>
+                            <div class="points">
+                                <h2>{{totalDeposite}}</h2>
+                                <p> $</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="section sec_3">
+                            <p><span>3</span> Points/Dollar</p>
+                            <div class="points">
+                                <h2>{{pointsPerDollar}}</h2>
+                                <p> / dollar</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>                
+            </div>
+
+            <div class="transactions">
+                <div class="row">
+                    <div class="col-md-9">
+                        <div class="headerTitle">All Transaction</div>
+
+                        <div class="mainSec">
+                            <table datatable [dtOptions]="dtOptions" id="crm" class="row-border hover">
+
+                              </table>
+
+                        </div>
+
+                    </div>
+                    <div class="col-md-3">
+                        <div class="headerTitle">Recent Deposite</div>
+                        <div class="mainSec">
+                            <div class="payment" *ngFor="let recent of recentDeposite">
+                                <h5>+ $ {{recent.amount}}</h5>
+                                <p>Deposited amount on {{recent.created_at}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </section>
+
+<!-- The Modal -->
+<div class="modal" id="myModal">
+    <div class="modal-dialog modal-md">
+      <div class="modal-content ">
+  
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Add Credit</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        <form [formGroup]="depositeForm" (ngSubmit)="deposite()">
+        <!-- Modal body -->
+        <div class="modal-body">            
+            <div class="form-group">
+                <label for="card_number">Card Number</label>
+                <input type="text" class="form-control" formControlName="card_no" name="card_number" id="card_number">
+                <ng-container *ngIf="submit && depositeForm.get('card_no').errors">
+                    <small *ngIf="depositeForm.get('card_no').errors.required" class="error-text">Card number is required.</small>
+                    <small *ngIf="depositeForm.get('card_no').errors.minlength || depositeForm.get('card_no').errors.maxlength" class="error-text">Invalid card number format.</small>
+                </ng-container>
+            </div>
+            <div class="form-group">
+                <label for="expiry_month">Expiry Month</label>
+                <select  class="form-control" name="expiry_month" formControlName="ccExpiryMonth"  id="expiry_month">
+                    <option value="" disabled>--Select Expiry Month--</option>
+                    <option *ngFor="let month of months" [value]="month">{{month}}</option>
+                </select>
+                <ng-container *ngIf="submit && depositeForm.get('ccExpiryMonth').errors">
+                    <small *ngIf="depositeForm.get('ccExpiryMonth').errors.required" class="error-text">Expiry month is required.</small>
+                </ng-container>
+            </div>
+            <div class="form-group">
+                <label for="expiry_year">Expiry Year</label>
+                <select  class="form-control" name="expiry_year" formControlName="ccExpiryYear"  id="expiry_year">
+                    <option value="" disabled>--Select Expiry Year--</option>
+                    <option *ngFor="let year of years" [value]="year">{{year}}</option>
+                </select>
+                <ng-container *ngIf="submit && depositeForm.get('ccExpiryYear').errors">
+                    <small *ngIf="depositeForm.get('ccExpiryYear').errors.required" class="error-text">Expiry year is required.</small>
+                </ng-container>
+            </div>
+            <div class="form-group">
+                <label for="cvv">CVV</label>
+                <input type="text" class="form-control"  formControlName="cvvNumber" name="cvv" id="cvv">
+                <ng-container *ngIf="submit && depositeForm.get('cvvNumber').errors">
+                    <small *ngIf="depositeForm.get('cvvNumber').errors.required" class="error-text">Expiry year is required.</small>      
+                    <small *ngIf="depositeForm.get('cvvNumber').errors.minlength || depositeForm.get('cvvNumber').errors.maxlength" class="error-text">Invalid Card Security Number format.</small>
+                </ng-container>
+            </div>
+            <div class="form-group">
+                <label for="amount">Amount</label>
+                <input type="text" class="form-control" formControlName="amount"  name="amount" id="amount">
+                <ng-container *ngIf="submit && depositeForm.get('amount').errors">
+                    <small *ngIf="depositeForm.get('amount').errors.required" class="error-text">Amount is required.</small>      
+                    <small *ngIf="depositeForm.get('amount').errors.min || depositeForm.get('amount').errors.max" class="error-text"> Minimum and maximum amount should be between 10 to 1000.</small>
+                </ng-container>
+            </div>           
+            
+        </div>  
+        <!-- Modal footer -->
+        <div class="modal-footer">
+            <button type="submit" class="btn btn-primary submit-button">Submit</button>
+        </div>
+    </form>
+      </div>
+    </div>
+</div>    
+        
+    </div>
+<app-footer></app-footer>

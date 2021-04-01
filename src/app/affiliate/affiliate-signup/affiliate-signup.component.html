@@ -1,0 +1,141 @@
+<!--start-header-->
+<header class="container-fluid" id="tophead">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-3 logo">
+                <a [routerLink]="'/'">
+                    <img src="assets/images/logo.png">
+                </a>
+            </div>
+			
+			<div class="col-md-6 headnav">
+				<nav  class="navbar navbar-expand-lg navbar-dark ">
+				  <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navb">
+				    <span></span>
+				  </button>
+				  <div class="collapse navbar-collapse" id="navb">
+				    <ul class="navbar-nav mr-auto">				     
+				      <li class="nav-item"><a class="nav-link" [routerLink]="'/aboutus'">About</a></li>
+					  <li class="nav-item"><a class="nav-link" [routerLink]="'/kickstarter'">Kickstarter</a></li>
+					  <li class="nav-item"><a class="nav-link" [routerLink]="'/affiliate'">Affiliate</a></li>				   
+				      <li class="nav-item" *ngIf="!userLoggedIn || !paidMember"><a class="nav-link" [routerLink]="'/membership'">Membership</a></li>
+				      <li class="nav-item"><a class="nav-link" [routerLink]="'/news'">News and Insight</a></li>
+				    </ul>
+				  </div>
+				</nav>
+			</div>
+
+			<div class="col-md-3 signup">
+				<div class="btns">
+					<a href="https://affiliate.equityfinderspro-dev.com" class="login" >Login</a>
+   					<a [routerLink]="'/affiliate/signup'" class="sign">Sign Up</a>
+					<a  class="users"><i class="fa fa-user-circle-o"></i></a>
+				</div>
+			</div>
+		</div>
+	</div>
+</header>
+<!--end-header-->
+<!-- <app-header></app-header> -->
+<!-- login-start -->
+<section class="loginbg">
+	<div class="container">
+		<div class="col-md-12">
+			<div class="loginarea">
+				<div class="login_logo"><img src="../../../assets/images/logo2.png" class="img-reponsive"></div>
+				<form [formGroup]="signupForm" (ngSubmit)="submitForm()">
+					<!-- <div class="form-group">
+					    <label for="affiliateCode">Affiliate Code</label>
+						<input type="text" class="form-control" id="affiliateCode" data-inputmask="'regex': '[a-zA-Z-_]*'" formControlName="affiliateCode" placeholder="Affiliate Code">
+						<ng-container *ngIf="submit && signupForm.get('affiliateCode').errors">
+							<small *ngIf="signupForm.get('affiliateCode').errors.required" class="error-text">Affiliate Code is required.</small>
+						</ng-container>
+					  </div> -->
+					  <div class="form-group">
+					    <label for="f_name">First Name</label>
+						<input type="text" class="form-control" id="f_name" formControlName="f_name" placeholder="First Name">
+						<ng-container *ngIf="submit && signupForm.get('f_name').errors">
+							<small *ngIf="signupForm.get('f_name').errors.required" class="error-text">Name is required.</small>
+							<small *ngIf="signupForm.get('f_name').errors.minlength" class="error-text">Name should be minimum 2 characters.</small>
+							<small *ngIf="signupForm.get('f_name').errors.maxlength" class="error-text">Name should be maximum 40 characters.</small>
+							<small *ngIf="signupForm.get('f_name').errors.pattern" class="error-text">Name is not valid.</small>
+						</ng-container>
+					  </div>
+					  <div class="form-group">
+					    <label for="email">Email Address</label>
+						<input type="email" class="form-control" formControlName="email"  placeholder="Enter Email">
+						<ng-container *ngIf="submit && signupForm.get('email').errors">
+							<small *ngIf="signupForm.get('email').errors.required" class="error-text">Email is required.</small>
+							<small *ngIf="signupForm.get('email').errors.email" class="error-text">Invalid email format.</small>
+						</ng-container>
+					  </div>
+					  <div class="form-group">
+						<label for="state">Select Your State</label> 
+						<select name="state" class="form-control" formControlName="state"  [value]="" (change)="onStateChange($event.target.value)" id="state">
+							<option value="" disabled>--Select State--</option>
+							<option  *ngFor="let state of states" [value]="state.ID">{{state.STATE_NAME}}</option>
+						</select>
+						<ng-container *ngIf="submit && signupForm.get('state').errors">
+							<small *ngIf="signupForm.get('state').errors.required" class="error-text">State is required.</small>
+						</ng-container>
+					</div>
+					<div class="form-group">
+						<label for="state">Select Your City</label>
+						<div class="citySelectDiv">
+						<i *ngIf="cityLoading" class="fa fa-spinner fa-spin"></i>
+						<select name="city" class="form-control"  formControlName="city" [value]="" id="city">
+							<option value="" disabled>--Select City--</option>
+							<option  *ngFor="let city of cities" [value]="city.ID">{{city.CITY}}</option>
+						</select>
+						<div style="clear: both;"></div>
+						</div>
+						<ng-container *ngIf="submit && signupForm.get('city').errors">
+							<small *ngIf="signupForm.get('city').errors.required" class="error-text">City is required.</small>
+						</ng-container>
+					</div>
+					  <div class="form-group">
+					    <label for="postal">Postal Code</label>
+						<input type="text" class="form-control" id="postal" formControlName="postal" (change)="onChangeFormatPostal($event)" data-inputmask="'mask': '99999[-9999]', 'greedy': 'false', 'placeholder': ''" placeholder="Postal Code">
+						<ng-container *ngIf="submit && signupForm.get('postal').errors">
+							<small *ngIf="signupForm.get('postal').errors.required" class="error-text">Postal code is required.</small>
+							<small *ngIf="signupForm.get('postal').errors.pattern" class="error-text">Postal code is not valid.</small>
+						</ng-container>
+					  </div>
+					  <div class="form-group">
+						<label for="phone">Mobile No</label>
+						<input type="text" class="form-control" id="phone" formControlName="phone" data-inputmask="'mask': '+1 (999) 999-9999', 'placeholder': ''" placeholder="Enter phone number">
+						<ng-container *ngIf="submit && signupForm.get('phone').errors">
+							<small *ngIf="signupForm.get('phone').errors.required" class="error-text">Mobile number is required.</small>
+							<small *ngIf="signupForm.get('phone').errors.pattern" class="error-text">Mobile Number is not valid.</small>
+							<small *ngIf="signupForm.get('phone').errors.minlength" class="error-text">Mobile Number should be minimum 10 Numbers.</small>
+							<small *ngIf="signupForm.get('phone').errors.maxlength" class="error-text">Mobile Number should be maximum 11 Numbers.</small>
+					   </ng-container>
+					</div>
+					  <div class="form-group">
+					    <label for="password">Password</label>
+						<input type="password" class="form-control" formControlName="password"  placeholder="Enter Password">
+						<ng-container *ngIf="submit && signupForm.get('password').errors">
+							<small *ngIf="signupForm.get('password').errors.required" class="error-text">Password is required.</small>
+							<small *ngIf="signupForm.get('password').errors.minlength" class="error-text">Password should be minimum 6 characters.</small>
+						</ng-container>
+					  </div>
+					  <div class="form-group">
+					    <label for="address">Address</label>
+						<input type="text" class="form-control" formControlName="address" placeholder="Enter Address">						
+					  </div>	
+					  <div class="custmbtn">
+						 <button type="submit" class="btn btn-success btn-lg w-100">Sign Up</button>
+					  </div>
+
+					  <!-- <div class="text-center mt-4">
+					  	<a [routerLink]="'/affiliate/login'" class="text-primary">Wait, I have an account</a>
+					  </div> -->
+
+				</form>
+			</div>
+		</div>
+
+	</div>
+</section>
+<!-- login-end -->
+<app-footer></app-footer>

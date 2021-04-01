@@ -1,0 +1,94 @@
+<app-header-customer [sideBar]="sideBar"></app-header-customer>
+<app-sidebar-customer #sideBar></app-sidebar-customer>
+
+
+<section class="right_section" [class.load]="load!=1">
+    <!-- inside_content_area start-->
+    <div class="content_area">
+
+        <!-- main row start-->
+        <div class="col-sm-12">
+            <div class="row">
+
+                <div class="col-sm-12 pro_tabs">
+                    <ul class="nav nav-pills">
+                        <li class="nav-item"><a class="nav-link active" data-toggle="pill" href="#sentdesign">Requests Sent</a></li>
+                        <li class="nav-item"><a class="nav-link" data-toggle="pill" href="#prosdesign">In Progress Designs</a></li>
+                        <li class="nav-item"><a class="nav-link" data-toggle="pill" href="#compltedesign">Completed Designs</a></li>
+                    </ul>
+                </div>
+
+                <div class="tab-content">
+                    <!-- sent -->
+                    <div class="col-sm-12 tab-pane active top_selling" id="sentdesign">
+                        <div class="inside hideprint">
+                            <div class="title">Requests Sent</div>
+                            <table *ngIf="load==1" datatable [dtOptions]="dtOptions" id="crm" class="row-border hover">                                    
+                            </table>
+                            <table *ngIf="load!=1" datatable  [dtOptions]="dtOptions"  class="row-border hover blurnew">
+                                <thead>
+                                  <tr>
+                                    <th>Date</th>
+                                    <th>Status</th>
+                                    <th>Action</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr>
+                                    <td>10-Sep-2020</td>
+                                    <td><label class="badge badge-info">Sent</label></td>
+                                    <td><button class="btn btn-primary"><i class="fa fa-eye"></i> View Detail</button></td>
+                                  </tr>
+                                  <tr>
+                                    <td>10-Sep-2020</td>
+                                    <td><label class="badge badge-info">Sent</label></td>
+                                    <td><button class="btn btn-primary"><i class="fa fa-eye"></i> View Detail</button></td>
+                                  </tr>
+                                  <tr>
+                                    <td>10-Sep-2020</td>
+                                    <td><label class="badge badge-info">Sent</label></td>
+                                    <td><button class="btn btn-primary"><i class="fa fa-eye"></i> View Detail</button></td>
+                                  </tr>
+                                  <tr>
+                                    <td>10-Sep-2020</td>
+                                    <td><label class="badge badge-info">Sent</label></td>
+                                    <td><button class="btn btn-primary"><i class="fa fa-eye"></i> View Detail</button></td>
+                                  </tr>
+                                  <tr>
+                                    <td>10-Sep-2020</td>
+                                    <td><label class="badge badge-info">Sent</label></td>
+                                    <td><button class="btn btn-primary"><i class="fa fa-eye"></i> View Detail</button></td>
+                                  </tr>
+                                </tbody>
+                              </table>
+
+                        </div>
+                    </div>
+
+                    <!-- inprogress -->
+                    <div class="col-sm-12  tab-pane top_selling fade" id="prosdesign">
+                        <div class="inside hideprint">
+                            <div class="title">In Progress Designs</div>
+                            <table *ngIf="load==1" datatable [dtOptions]="dtOptions1" id="crm1" class="row-border hover">                                    
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- completed -->
+                    <div class="col-sm-12  tab-pane top_selling fade" id="compltedesign">
+                        <div class="inside hideprint">
+                            <div class="title">Completed Designs</div>
+                            <table *ngIf="load==1" datatable [dtOptions]="dtOptions2" id="crm2" class="row-border hover">                                    
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+               
+
+            </div>
+        </div>
+    </div>
+    
+    <app-common-overlay *ngIf="load!=1"></app-common-overlay>
+</section>

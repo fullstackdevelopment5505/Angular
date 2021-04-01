@@ -1,0 +1,475 @@
+#msform {
+    text-align: center;
+    position: relative;
+    margin-top: 20px
+}
+.dynamic-button{
+    margin-top: 10px;
+    justify-content: center;
+    display: flex;
+    .btn-default{
+        font-size: 12px;
+        padding: 3px 8px;
+        background: transparent;
+        color: #000 !important;
+        border: 1px solid !important;
+        border-radius: 3px
+    }
+}
+.bg-default{
+    background: #fff;
+    margin-top: -40px;
+    padding: 10px;
+}
+
+#msform fieldset {
+    background: white;
+    border: 0 none;
+    border-radius: 0.5rem;
+    box-sizing: border-box;
+    width: 100%;
+    margin: 0;
+    padding-bottom: 20px;
+    position: relative
+}
+
+.form-card {
+    text-align: left
+}
+
+#msform fieldset:not(:first-of-type) {
+    display: none
+}
+
+/*#msform input,
+#msform textarea {
+    padding: 8px 15px 8px 15px;
+    border: 1px solid #ccc;
+    border-radius: 0px;
+    margin-bottom: 25px;
+    margin-top: 2px;
+    width: 100%;
+    box-sizing: border-box;
+    font-family: montserrat;
+    color: #2C3E50;
+    background-color: #ECEFF1;
+    font-size: 16px;
+    letter-spacing: 1px
+}*/
+
+#msform input:focus,
+#msform textarea:focus {
+    -moz-box-shadow: none !important;
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+    border: 1px solid #673AB7;
+    outline-width: 0
+}
+
+#msform .action-button {
+    width: 100px;
+    background: #207bff;
+    font-weight: 600;
+    color: white;
+    border: 0 none;
+    border-radius:5px;
+    cursor: pointer;
+    padding: 10px 5px;
+    margin: 30px 0 0;
+    font-weight: 600;
+}
+
+#msform .action-button:hover,
+#msform .action-button:focus {
+    background-color: #311B92
+}
+
+#msform .action-button-previous {
+    width: 100px;
+    background: #616161;
+    font-weight: 600;
+    color: #fff;
+    border: 0 none;
+    border-radius: 5px;
+    cursor: pointer;
+    padding: 10px 5px;
+    margin: 30px 0 0;
+}
+
+#msform .action-button-previous:hover,
+#msform .action-button-previous:focus {
+    background-color: #000000
+}
+
+.card {
+    z-index: 0;
+    border: none;
+    position: relative
+}
+
+.fs-title {
+    font-size: 25px;
+    color: #673AB7;
+    margin-bottom: 15px;
+    font-weight: normal;
+    text-align: left
+}
+
+.purple-text {
+    color: #673AB7;
+    font-weight: normal
+}
+
+.steps {
+    font-size: 25px;
+    color: gray;
+    margin-bottom: 10px;
+    font-weight: normal;
+    text-align: right
+}
+
+.fieldlabels {
+    color: gray;
+    text-align: left
+}
+
+
+
+
+#probars {
+    margin-bottom: 30px;
+    overflow: hidden;
+    color: lightgrey
+}
+
+#probars .active {
+    color: #673AB7;
+    background: #207bff;
+}
+
+#probars li {
+    list-style-type: none;
+    font-size: 15px;
+    width: 25%;
+    float: left;
+    position: relative;
+    font-weight: 400;
+    margin-right:0;
+    z-index:1;
+    background: #efefef;
+    padding: 15px 0;
+    border-radius: 5px;
+    border-right: #fff solid 6px;
+}
+#probars li:last-child{border-right: none;}
+#probars li p.icons {
+    font-size: 30px;
+    margin-bottom: 0;
+    color: #2d3950;
+}
+
+#probars li  p.title {
+    margin: 0px;
+    color: #2d3950;
+    font-weight: 500;
+    font-size:18px;
+}
+
+#probars li.active p.icons{color: #fff;}
+#probars li.active p.title{color: #fff;}
+/*#probars #account:before {
+    font-family: FontAwesome;
+    content: "\f13e"
+}
+
+#probars #personal:before {
+    font-family: FontAwesome;
+    content: "\f007"
+}
+
+#probars #payment:before {
+    font-family: FontAwesome;
+    content: "\f030"
+}
+
+#probars #confirm:before {
+    font-family: FontAwesome;
+    content: "\f00c"
+}*/
+
+/*#probars li:before {
+    width: 50px;
+    height: 50px;
+    line-height: 45px;
+    display: block;
+    font-size: 20px;
+    color: #ffffff;
+    background: lightgray;
+    border-radius: 50%;
+    margin: 0 auto 10px auto;
+    padding: 2px
+}
+
+#probars li:after {
+    content: '';
+    width: 100%;
+    height: 2px;
+    background: lightgray;
+    position: absolute;
+    left: 0;
+    top: 25px;
+    z-index: -1;
+}*/
+
+#probars li.active:before,
+#probars li.active:after {
+    background: #673AB7
+}
+
+.content_adres {
+    border: #ccc solid thin;
+    padding: 8px;
+}
+
+
+
+
+
+
+/*mycstm*/
+.step-header h1 {
+    font-size: 28px;
+    line-height: normal;
+    margin: 0px;
+}
+.step-header p {
+    font-size: 18px;
+    line-height: normal;
+}
+.cardpost a {
+    display: block;
+    color: #232e42;
+}
+.cardpost {
+    border: #e0e0e0 solid 2px;
+}
+.cardpost.active {
+    border: #207bff solid 2px;
+}
+
+
+
+.temp_post .upload_area {
+    background: #efefef;
+    display: block;
+    width: 100%;
+    padding:8px;
+    border: #ccc solid thin;
+    cursor: pointer;
+}
+.temp_post a{color: #000; text-decoration: none; display: block;}
+.temp_post .upload_area .title {
+    font-size: 12px;
+    text-transform: uppercase;
+    line-height: normal;
+    margin: 0px;
+    font-weight: 500;
+}
+.temp_post .upload_area .sub-title {
+    font-size:11px;
+    line-height: normal;
+    text-transform: uppercase;
+}
+.temp_post input.editsr{
+    width: 0px;
+    height: 0px;
+    opacity: 0;
+    display: none;
+}
+
+
+.design-templates {
+    height: 405px;
+    overflow-y: scroll;
+}
+.design-templates::-webkit-scrollbar{width:0px;}
+.design-templates .postcard-template{margin-top:20px;}
+.postcard-template:nth-child(-n+2) {
+    margin-top: 0;
+}
+.design-templates .postcard-template .clickable{cursor: pointer;}
+.card_canvas {
+    background: #fff;
+    border: 1px solid #979797;
+    margin: 0 auto;
+    height: 483px;
+    position: relative;
+     -webkit-box-shadow: 1px 1px 5px #aaa;
+    box-shadow: 1px 1px 5px #aaa;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    overflow: hidden;
+}
+.card_canvas img {
+    // object-fit: cover;  punch1
+    object-position: center;
+    height: 100%;
+    width: 100%;
+}
+.be-checkbox {
+    margin-top: 30px;
+}
+
+.card_canvas .preview {
+    // background: url(../images/bgprev.png);
+    background-size: cover;
+    background-position: top center;
+    position: absolute;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    content: "";
+    display: block;
+    background-repeat: no-repeat;
+}
+
+.mesg_canva {
+    background: #fff;
+    border: 1px solid #979797;
+    position: relative;
+     -webkit-box-shadow: 1px 1px 5px #aaa;
+    box-shadow: 1px 1px 5px #aaa;
+}
+#messageTextArea {
+    width: 100%;
+    border: none;
+    padding: 15px;
+    outline: none;
+    resize: none;
+    line-height: 26px;
+    font-size: 14px;
+}
+.mesg_canva .tools {
+    display: table-cell;
+    background: #f6f6f6;
+    width: 245px;
+    height: 100%;
+}
+.mesg_canva .tools .card_recipients {
+    font-weight: 400;
+    font-size: 12px;
+    padding: 10px;
+    text-align: left;
+}
+.mesg_canva .tools button {
+    display: block;
+    width: 100%;
+    border: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    font-weight: 400;
+    background: none;
+    font-size: 12px;
+    text-align: left;
+    padding: 5px 10px;
+    border-bottom: 1px solid #fff;
+}
+.updatenote {
+    width: 50%;
+    background: transparent;
+    height: 100%;
+    text-align: left;
+    padding: 15px;
+    margin-top: 20%;
+    font-size: 14px;
+    line-height: 26px;
+}
+.default_data {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    width: 370px;
+    height: 260px;
+}
+.default_data .return {
+    left: 0;
+    top: 0;
+    position: absolute;
+    font-size: 14px;
+    line-height: 16px;
+    width: auto;
+    text-align: left;
+}
+.default_data .recipient {
+    bottom: 12%;
+    position: absolute;
+    text-align: left;
+    line-height: 26px;
+    font-size: 18px;
+    left: 0;
+}
+
+
+
+
+#previewmodal .owl-carousel.crousel3 .owl-nav {
+    text-align: center;
+    margin-top: 20px;
+}
+#previewmodal .owl-carousel.crousel3 .owl-nav .owl-prev {
+    background: #207bff;
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+    line-height: 0;
+    color: #fff;
+    font-size: 50px;
+    outline: none;
+}
+#previewmodal .owl-carousel.crousel3 .owl-nav  .owl-next {
+    background: #207bff;
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+    line-height: 0;
+    color: #fff;
+    font-size: 50px;
+    margin-left: 15px;
+    outline: none;
+}
+
+.postcard-address-block {
+    position: absolute;
+    bottom: 1.3%;
+    right: 1%;
+    padding-top: 40.8%;
+    padding-left: 56.395%;
+    background-color: #fff;
+    text-align: left;
+    text-transform: uppercase;
+    font-size: .9em;
+    line-height: 1.2em;
+    .return {
+        position: absolute;
+        top: 11%;
+        left: 5%;
+        font-size: 0.8rem;
+        line-height: 1.3;
+    }
+    .recipient.large {
+        bottom: 22%;
+        line-height: 1.3rem;
+    }
+    .recipient {
+        position: absolute;
+        bottom: 25%;
+        left: 4.4%;
+        font-size: 0.9rem;
+    }
+}
+.img-365{
+    height: 366px;
+}
+
+

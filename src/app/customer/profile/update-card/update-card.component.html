@@ -1,0 +1,181 @@
+<app-header-customer [sideBar]="sideBar"></app-header-customer>
+<app-sidebar-customer #sideBar></app-sidebar-customer>
+<div class="main_area">
+	<!-- <?php include"sidebar.php";?> -->
+	
+	<!-- right area start -->
+	<section class="right_section">
+		<!-- <?php include"header.php";?> -->
+
+			<!-- inside_content_area start-->
+			<div class="content_area">
+
+
+				<div class="col-sm-12 top_selling">
+					<div class="inside">
+						<!-- <div class="title mb-0"><a href="profile.php?active=profile" class="btn btn-default mr-2"><i class="fas fa-step-backward"></i> Back</a> My Payments</div> -->
+							<div class="title mb-0"><a [routerLink]="'/customer/profile'" class="btn btn-default mr-2"><i class="fas fa-step-backward"></i> Back</a> My Payments</div>
+					</div>
+				</div>
+
+
+				<!-- main row start-->
+					<div class="col-sm-12">
+						<div class="row">
+
+							<!--content start -->
+                                <div class="col-sm-8 top_selling">
+									<div class="inside">
+                                        <div class="title">Manage your Payment Method</div>
+                                        <div class="methods">
+                                            <ul>
+                                                <li>
+                                                    <div class="titles">
+                                                        <label>
+                                                            <div class="headline">
+                                                                <span>Credit/Debit Card</span>
+                                                            </div>
+                                                            <div class="images">
+                                                                <p><img src="assets/images/stripe.png"></p>
+                                                            </div>
+                                                        </label>
+                                                    </div>
+                                                    <div class="details">
+                                                        <form  [formGroup]="paymentForm" (ngSubmit)="submitForm()">
+                                                            <div class="title">Your Payment Method</div>
+                                                            <div class="methods">
+                                                                <ul>
+                                                                    <li>
+                                                                        <div class="details">
+                                                                        
+                                                                                <div class="row">
+                                                                                    <div class="col-sm-12">
+                                                                                        <label>Card Number</label>
+                                                                                        <input type="text" formControlName="card_no" data-inputmask="'mask': '9999-9999-9999-9999', 'placeholder': ''" class="form-control" placeholder="XXXX-XXXX-XXXX-XXXX">
+                                                                                        <ng-container *ngIf="submit && paymentForm.get('card_no').errors">
+                                                                                            <small *ngIf="paymentForm.get('card_no').errors.required" class="error-text">Card number is required.</small>
+                                                                                            <small *ngIf="paymentForm.get('card_no').errors.minlength || paymentForm.get('card_no').errors.maxlength" class="error-text">Invalid card number format.</small>
+                                                                                        </ng-container>
+                                                                                    </div>
+                                                                                    <div class="col-sm-8">
+                                                                                        <div class="row">
+                                                                                            <div class="col-sm-12"><label>Expiration Date</label></div>
+                                                                                            <div class="col-sm-8">
+                                                                                                <select  class="form-control" formControlName="ccExpiryMonth"  [value]="" name="expiry_month"  id="expiry_month">
+                                                                                                    <option disabled="disabled" value="" selected="selected">Select Month</option>
+                                                                                                    <option *ngFor="let month of months" [value]="month">{{month}}</option>
+                                                                                                </select>
+                                                                                                <ng-container *ngIf="submit && paymentForm.get('ccExpiryMonth').errors">
+                                                                                                    <small *ngIf="paymentForm.get('ccExpiryMonth').errors.required" class="error-text">Expiry month is required.</small>
+                                                                                                </ng-container>
+                                                                                            </div>
+                                                                                            <div class="col-sm-4">
+                                                                                                <select  class="form-control" formControlName="ccExpiryYear"  [value]="" name="expiry_year"   id="expiry_year">
+                                                                                                    <option disabled="disabled" value="" selected="selected">Select Year</option>
+                                                                                                    <option *ngFor="let year of years" [value]="year">{{year}}</option>
+                                                                                                </select>
+                                                                                                <ng-container *ngIf="submit && paymentForm.get('ccExpiryYear').errors">
+                                                                                                    <small *ngIf="paymentForm.get('ccExpiryYear').errors.required" class="error-text">Expiry year is required.</small>
+                                                                                                </ng-container>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="col-sm-4">
+                                                                                        <label>Security Code (CVV)</label>
+                                                                                        <input type="text" data-inputmask="'mask': '999', 'placeholder': ''" formControlName="cvvNumber" class="form-control" placeholder="123">
+                                                                                        <ng-container *ngIf="submit && paymentForm.get('cvvNumber').errors">
+                                                                                            <small *ngIf="paymentForm.get('cvvNumber').errors.required" class="error-text">Card Security Number is required.</small>      
+                                                                                            <small *ngIf="paymentForm.get('cvvNumber').errors.minlength || paymentForm.get('cvvNumber').errors.maxlength" class="error-text">Invalid Card Security Number format.</small>
+                                                                                        </ng-container>
+                                                                                    </div>
+                                                                                    <!-- <div class="col-sm-12 terms mt-0"><input formControlName="card" type="checkbox"> Save this card for future payment</div> -->
+                                                                            </div>
+                                                                        </div>
+                                                                    </li>
+                                                                    
+                                                                </ul>
+                                                            </div>
+                            
+                                                            
+                                                            <div class="terms">
+                                                                <ng-container *ngIf="submit && paymentForm.get('terms').errors">
+                                                                    <small *ngIf="paymentForm.get('terms').errors.required" class="error-text error-big">*</small>
+                                                                </ng-container>
+                                                                <input type="checkbox" formControlName="terms"> By clicking the button, you agree to the <a [routerLink]="'/terms'">Terms and Conditions</a>
+                                                            </div>
+                            
+                                                            <div class="place_order"><button type="submit" class="btn btn-success" >Add Card</button></div>
+                                                        </form>
+                                                    </div>
+                                                </li>
+
+                                            </ul>
+                                        </div>
+									</div>
+								</div>
+                            <!--content end-->
+
+
+                            <!--content start -->
+                                <div class="col-sm-4 top_selling saved_cards">
+									<div class="inside">
+                                        <div class="title">Saved Cards</div>
+                                        
+                                        <div *ngIf="loader" class="loader"></div>
+                                        <div [class.opacity]="loader">
+                                            <div class="save_card" *ngFor="let card of cards;index as i" >
+                                                <label>
+                                                    <input type="radio" [value]="i" [(ngModel)]="cardActive" (ngModelChange)="onChange(card)" name="save"><span></span>
+                                                    <div class="holder_name">{{card.brand}}</div> 
+                                                    <div class="account_number">XXXX-XXXX-XXXX-{{card.last4}}</div>
+                                                    <div class="expire">{{card.exp_month}}/{{card.exp_year}}</div>
+                                                </label>
+                                                <div class="trash" *ngIf="i>0">
+                                                    <button (click)="deleteCards(card.id)" class="btn btn-danger"><i class="fa fa-trash"></i></button>
+                                                </div>
+                                            </div>
+                                        </div>
+									</div>
+
+								</div>
+                            <!--content end-->
+							
+						</div>
+					</div>
+					<!-- main row end-->
+
+
+			</div>
+			<!-- inside_content_area end-->
+
+	</section>
+	<!-- right area end -->
+</div>
+<!-- main div end -->
+
+  <div class="modal" id="myModal2">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+  
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Terms & Condition</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+  
+        <!-- Modal body -->
+        <div class="modal-body terms_condition">
+          <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+          <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+          <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages</p>
+        </div>
+  
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        </div>
+  
+      </div>
+    </div>
+  </div>
+  <!-- =======Terms & Condition End======= -->

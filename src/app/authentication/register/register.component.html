@@ -1,0 +1,256 @@
+<app-header></app-header>
+
+    <section id="e_profilebg">
+        <div class="container">
+            
+        <div class="row">
+            <div class="col-md-8 offset-md-2 col-sm-12 form-sec">
+                <div class="col-md-12 ">
+                    <h3 class="text-center text-info " [innerHTML]="heading_1">Find properties with equity finder</h3>
+
+                </div>
+               
+                    <!-- <div [class.dn]="!first_sec"> -->
+                        <div class="row">                                                       
+                            <div class="col-md-5">                                  
+                                <form [formGroup]="registerForm">                               
+                                <div class="form-group" *ngIf="stepFlag == 0">
+                                    <label for="f_name" class="required">Enter Full Name</label>                                   
+                                    <input type="text" class="form-control" id="f_name" formControlName="f_name"  placeholder="Enter Full Name" maxlength="40" >
+                                    <ng-container *ngIf="submit && registerForm.get('f_name').errors">
+                                        <small *ngIf="registerForm.get('f_name').errors.required" class="error-text">Name is required.</small>
+                                        <small *ngIf="registerForm.get('f_name').errors.minlength" class="error-text">Name should be minimum 2 characters.</small>
+                                        <small *ngIf="registerForm.get('f_name').errors.maxlength" class="error-text">Name should be maximum 40 characters.</small>
+                                        <small *ngIf="registerForm.get('f_name').errors.pattern" class="error-text">Name is not valid.</small>
+                                    </ng-container>
+                                </div>
+                                <!--  || (registerForm.get('f_name').dirty || registerForm.get('f_name').touched) 
+                                <div class="form-group">
+                                    <label for="username">Create Your Username</label>
+                                    <input type="text" class="form-control" id="username" formControlName="username"  placeholder="Enter username" >
+                                    <ng-container *ngIf="submit && registerForm.get('username').errors">
+                                        <small *ngIf="registerForm.get('username').errors.required" class="error-text">Username is required.</small>
+                                        <small *ngIf="registerForm.get('username').errors.minlength" class="error-text">Username should be minimum 6 characters.</small>
+                                        <small *ngIf="registerForm.get('username').errors.maxlength" class="error-text">Username should be maximum 20 characters.</small>
+                                    </ng-container>
+                                </div> -->
+                                <div class="form-group" *ngIf="stepFlag == 0">
+                                    <label  class="required" for="email">Email Address</label>
+                                    <input type="email" class="form-control" id="email" formControlName="email" placeholder="Enter email">
+                                    <ng-container *ngIf="registerForm.get('email').errors && submit">
+                                        <small *ngIf="registerForm.get('email').errors.required" class="error-text">Email is required.</small>
+                                        <small *ngIf="registerForm.get('email').errors.email" class="error-text">Invalid email format.</small>
+                                    </ng-container>
+                                    
+                                </div>
+                                
+                                <!-- <div class="form-group">
+                                    <label for="username">Create your user name</label>
+                                    <input type="text" class="form-control" id="username" formControlName="username"  placeholder="Enter username" >
+                                    <ng-container *ngIf="submit && registerForm.get('username').errors">
+                                        <small *ngIf="registerForm.get('username').errors.required" class="error-text">Username is required.</small>
+                                        <small *ngIf="registerForm.get('username').errors.minlength" class="error-text">Username should be minimum 6 characters.</small>
+                                        <small *ngIf="registerForm.get('username').errors.maxlength" class="error-text">Username should be maximum 30 characters.</small>
+                                    </ng-container>
+                                </div> -->
+                            
+                                <!-- <div class="form-group">
+                                    <label for="state">Select Your State</label> 
+                                    <select name="state" class="form-control" formControlName="state"  [value]="" (change)="onStateChange($event.target.value)" id="state">
+                                        <option value="">--Select State--</option>
+                                        <option  *ngFor="let state of states" [value]="state.ID">{{state.STATE_NAME}}</option>
+                                    </select>
+                                    <ng-container *ngIf="submit && registerForm.get('state').errors">
+                                        <small *ngIf="registerForm.get('state').errors.required" class="error-text">State is required.</small>
+                                    </ng-container>
+                                </div>
+                                <div class="form-group">
+                                    <label for="state">Select Your City</label>
+                                    <select name="city" class="form-control"  formControlName="city" [value]="" id="city">
+                                        <option value="">--Select City--</option>
+                                        <option  *ngFor="let city of cities" [value]="city.ID">{{city.CITY}}</option>
+                                    </select>
+                                    <ng-container *ngIf="submit && registerForm.get('city').errors">
+                                        <small *ngIf="registerForm.get('city').errors.required" class="error-text">City is required.</small>
+                                    </ng-container>
+                                </div> -->
+                                <!-- punch -->
+                                <div class="form-group" *ngIf="stepFlag == 1">
+                                    <label class="required"  for="phone">Mobile No:</label>
+                                    <input type="text" class="form-control" id="phone" formControlName="phone" (change)="onChangeFormatPhoneNumber($event)"  placeholder="Enter phone number">
+                                    <ng-container *ngIf="submit && registerForm.get('phone').errors">
+                                        <small *ngIf="registerForm.get('phone').errors.required" class="error-text">Mobile number is required.</small>
+                                        <small *ngIf="registerForm.get('phone').errors.pattern" class="error-text">Mobile Number is not valid.</small>
+                                        <small *ngIf="registerForm.get('phone').errors.minlength" class="error-text">Mobile Number should be minimum 10 Numbers.</small>
+                                        <small *ngIf="registerForm.get('phone').errors.maxlength" class="error-text">Mobile Number should be maximum 11 Numbers.</small>
+                                   </ng-container>
+                                </div>
+                                <!-- punch -->
+                                <!--<div class="form-group">
+                                    <label for="address">Address:</label>
+                                    <input type="text" class="form-control" id="address" formControlName="address"  placeholder="Enter address">
+                                    <ng-container *ngIf="submit && registerForm.get('address').errors">
+                                        <small *ngIf="registerForm.get('address').errors.required" class="error-text">Address is required.</small>
+                                    </ng-container>
+                                </div> -->
+                                
+                                <div class="form-group" *ngIf="stepFlag == 2">
+                                    <label  class="required" for="postal">Postal Code</label>
+                                    <input type="text" class="form-control" id="postal" formControlName="postal"  placeholder="Enter postal code" (change)="onChangeFormatPostal($event)">
+                                    <ng-container *ngIf="registerForm.get('postal').errors && submit">
+                                        <small *ngIf="registerForm.get('postal').errors.required" class="error-text">Postal code is required.</small>
+                                        <small *ngIf="registerForm.get('postal').errors.pattern" class="error-text">Postal code is not valid.</small>
+                                    </ng-container>
+                                </div>
+                              
+                                <div class="form-group" *ngIf="stepFlag == 2">
+                                    <label  class="required" for="industry">Choose Industry</label>
+                                    <select name="industry" class="form-control" formControlName="industry"  [value]="" (change)="onIndustryChange($event.target.value)" id="industry">
+                                        <option value="">--Select Industry--</option>                                        
+                                        <option  [value]="1">Mortgage Banker/Broker</option>
+                                        <option  [value]="2">Real Estate Agent/Broker</option>
+                                        <option  [value]="3">Insurance</option>
+                                        <option  [value]="4">Investigator </option>
+                                        <option  [value]="5">Lender</option>
+                                        <option  [value]="6">Other</option>
+                                    </select>                                    
+                                    <!-- <input type="text" class="form-control" id="industry" formControlName="industry"  placeholder="Enter industry" > -->
+                                    <ng-container *ngIf="registerForm.get('industry').errors && submit">
+                                        <small *ngIf="registerForm.get('industry').errors.required" class="error-text">industry is required.</small> 
+                                    </ng-container>
+                                </div>
+                                <!-- <div class="form-group">
+                                    <label for="pwd">Enter Password</label>
+                                    <input id="password" type="password" class="form-control" formControlName="password"  placeholder="Password">  
+                                    <ng-container *ngIf="submit && registerForm.get('password').errors">
+                                        <small *ngIf="registerForm.get('password').errors.required" class="error-text">Password is required.</small>
+                                        <small *ngIf="registerForm.get('password').errors.minlength" class="error-text">Password should be minimum 6 characters.</small>
+                                        <small *ngIf="registerForm.get('password').errors.maxlength" class="error-text">Password should be maximum 30 characters.</small>
+                                    </ng-container>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="pwd">Repeat Password</label>
+                                    <input type="password" class="form-control" id="pwd" formControlName="c_password"  placeholder="Enter password" >
+                                    <ng-container *ngIf="submit && registerForm.get('c_password').errors">
+                                        <small *ngIf="registerForm.get('c_password').errors.required" class="error-text">Password is required.</small>
+                                        <small *ngIf="registerForm.get('c_password').errors.minlength" class="error-text">Password should be minimum 6 characters.</small>
+                                        <small *ngIf="registerForm.get('c_password').errors.maxlength" class="error-text">Password should be maximum 30 characters.</small>
+                                        <small *ngIf="registerForm.get('c_password').errors.mustMatch" class="error-text">Password must be same.</small>
+                                    </ng-container>
+                                </div> -->
+                                <!-- punch -->
+                                <div class="form-group" *ngIf="stepFlag == 2"> 
+                                    <label  for="serviceCode">Service Code</label>
+                                    <input type="text" class="form-control" id="serviceCode" data-inputmask="'regex': '[0-9]*'" formControlName="serviceCode" placeholder="Service Code">
+                                    <!-- <ng-container *ngIf="submit && registerForm.get('serviceCode').errors">
+                                        <small *ngIf="registerForm.get('serviceCode').errors.required" class="error-text">Service Code is required.</small>
+                                    </ng-container> -->
+                                </div>
+                                <!-- punch -->
+                                <div class="form-group" *ngIf="stepFlag == 1 && !phoneVerify && sendFlag == 0">
+                                    <label  for="serviceCode">Phone Verification Code</label>
+                                    <!-- <input type="text" class="form-control" id="enterCode" [(ngModel)]="enterCode" name="enterCode"(change)="onEnterCode($event)" placeholder="Enter Code"> -->
+                                    <input type="text" #enterCodeBox class="form-control" (keyup.enter)="onEnterCode(enterCodeBox.value)"(blur)="onEnterCode(enterCodeBox.value)"placeholder="Enter Code">
+                                </div>
+                                <!-- punch -->
+                                <div class="form-group row"*ngIf="stepFlag == 1 && !phoneVerify && sendFlag == 0"  style="margin:0">
+                                    <!-- <span (click)="stepBtn(1)">Skip Phone Verification</span> -->
+                                    <a  class="btn btn-primary col-5 "style="margin:2px" (click)="resendBtn(0)">Resend</a>
+                                </div>
+                                <!-- punch -->
+                                <div class="form-group row" style="margin:0">
+                                    <button  class="btn btn-primary col-5"style="margin:2px" (click)="stepBtn(-1)" *ngIf="stepFlag != 0">Prev</button>
+                                    <button  class="btn btn-primary col-5"style="margin:2px" (click)="stepBtn(1)" *ngIf="stepFlag == 0 ||( stepFlag == 1 && sendFlag == 0)">Next</button>
+                                    <button  class="btn btn-primary col-5"style="margin:2px" (click)="resendBtn(1)" *ngIf="stepFlag ==1 && sendFlag == 1">Next</button>
+                                    <button  type="submit" class="btn btn-success col-5"style="margin:2px" (click)="submitForm('Next')"  *ngIf="stepFlag == 2">Free Trial</button>
+                                    <!-- <button  type="submit" style="float:right;" class="btn btn-success " (click)="submitForm('Previous')">Become Member</button> -->
+
+                                </div>
+                            </form>
+                            </div>
+                            <div id="regContent" class="col-md-7">                                                                
+                                <h6 class="text-success" [innerHTML]="sub_heading_1">Let us run day by day cloud operations for you</h6>
+                                <p class="pt-3" [innerHTML]="content_1">
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                                    incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+                                    exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                                </p>
+                                <h6 class="text-success" [innerHTML]="heading_2"></h6> 
+                                <b [innerHTML]="sub_heading_2_1"></b> 
+                                <p class="pt-3" [innerHTML]="content_2_1"></p> 
+                                <b [innerHTML]="sub_heading_2_2"></b> 
+                                <p class="pt-3" [innerHTML]="content_2_2"></p>
+                                <b [innerHTML]="sub_heading_2_3"></b> 
+                                <p class="pt-3" [innerHTML]="content_2_3"></p>                             
+                            </div>
+                        </div>
+
+                    <!-- </div> -->
+                    <!-- <div [class.dn]="!second_sec">
+                        <div class="form-group">
+                            <label for="name">First Name:</label>
+                            <input type="test" class="form-control" id="name" formControlName="name" placeholder="Enter first name">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="l_name">Last Name:</label>
+                            <input type="text" class="form-control" id="l_name" formControlName="l_name"  placeholder="Enter last name" >
+                        </div>
+                    
+                        <div class="form-group">
+                            <label for="company">Company Name:</label>
+                            <input id="company" type="text" class="form-control" formControlName="company"   placeholder="Enter Company">        
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="phone">Phone No:</label>
+                            <input type="text" class="form-control" id="phone" formControlName="phone"  placeholder="Enter phone number">
+                        </div>
+                        <div class="form-group">
+                            <button  type="button" (click)="second()" class="btn btn-success ">Continue</button>
+                        </div>
+                    </div>
+
+                    <div [class.dn]="!third_sec">
+                        <div class="form-group">
+                            <label for="name">Country:</label>
+                            <input type="country" class="form-control" id="country" formControlName="country" placeholder="Enter country">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="state">State:</label>
+                            <input type="text" class="form-control" id="state" formControlName="state"  placeholder="Enter state" >
+                        </div>
+                    
+                        <div class="form-group">
+                            <label for="city">City:</label>
+                            <input id="city" type="text" class="form-control" formControlName="city"   placeholder="Enter city">        
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="address">Address:</label>
+                            <input type="text" class="form-control" id="address" formControlName="address"  placeholder="Enter address">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="postal_code">Postal Code:</label>
+                            <input type="text" class="form-control" id="postal_code" formControlName="postal_code"  placeholder="Enter postal coder">
+                        </div>
+                        <div class="form-group">
+                            <button  type="submit"  class="btn btn-success ">Finish</button>
+                        </div>
+                    </div>     -->
+
+                
+            </div>
+
+            
+        </div>
+    </div>		
+    </section>
+
+
+
+    
+<app-footer></app-footer>

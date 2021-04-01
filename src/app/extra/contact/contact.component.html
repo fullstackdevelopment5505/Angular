@@ -1,0 +1,88 @@
+<app-header></app-header>
+<main role="main">
+        
+
+    <section id="contactbg">
+        <div class="container">
+
+            <div class="row">
+                <div class="col-md-12">
+                    <ngb-alert *ngIf="!staticAlertClosed" (close)="staticAlertClosed = true" [type]="'success'" [dismissible]="true">
+                        <strong>Success!</strong> 
+                        We appreciate that you’ve taken the time to write us. We have received your enquiry and will respond to you within 24 hours.  For urgent enquiries please call us on one of the telephone numbers below.
+                     </ngb-alert>
+                </div>             
+                <div class="col-md-5 col-lg-5">
+                    <div class="left_box" style="text-align:justify;">
+                        <h2 [innerHTML]="pageTitle">Contact Us</h2>
+                        <div *ngIf="pageContent" [innerHTML]="pageContent"></div>
+                        <div *ngIf="pageExtraContent" [innerHTML]="pageExtraContent"></div>
+                        <!-- <p>All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable.</p>
+                        <ul><li><a href="#"><i class="fa fa-envelope-o"></i> johndoe@official.com</a></li></ul> -->
+                    </div>
+    
+                </div>
+                <div class="col-md-7 col-lg-7">
+                    <form [formGroup]="contactForm" (ngSubmit)="submitForm()">
+                        <div class="right_box">
+                            <div class="flexform">
+                                <span><i class="fa fa-user"></i></span>
+                                <input type="text" class="formflds" formControlName="first_name" placeholder="First Name" name="">
+                            </div>
+                            <ng-container *ngIf="submit && contactForm.get('first_name').errors">
+                                <small *ngIf="contactForm.get('first_name').errors.required" class="error-text">First Name is required.</small>
+                                <small *ngIf="contactForm.get('first_name').errors.pattern" class="error-text">First Name is not valid.</small>
+                            </ng-container>
+                            <div class="flexform">
+                                <span><i class="fa fa-user"></i></span>
+                                <input type="text" class="formflds" formControlName="last_name" placeholder="Last Name" name="">
+                            </div>
+                            <ng-container *ngIf="submit && contactForm.get('last_name').errors">
+                                <small *ngIf="contactForm.get('last_name').errors.required" class="error-text">Last Name is required.</small>
+                                <small *ngIf="contactForm.get('last_name').errors.pattern" class="error-text">Last Name is not valid.</small>
+                            </ng-container>
+                            <div class="flexform">
+                                <span><i class="fa fa-envelope"></i></span>
+                                <input type="text" class="formflds" formControlName="email" placeholder="Email Address" name="">
+                            </div>
+                            <ng-container *ngIf="submit && contactForm.get('email').errors">
+                                <small *ngIf="contactForm.get('email').errors.required" class="error-text">Email is required.</small>
+                                <small *ngIf="contactForm.get('email').errors.email" class="error-text">Invalid email format.</small>
+                            </ng-container>
+                            <div class="flexform">
+                                <span><i class="fa fa-phone"></i></span>
+                                <input type="text" class="formflds" formControlName="phone" placeholder="Phone Number" (change)="onChangeFormatPhoneNumber($event)" name="">
+                            </div>
+                            <ng-container *ngIf="submit && contactForm.get('phone').errors">
+                                <small *ngIf="contactForm.get('phone').errors.required" class="error-text">Phone Number is required.</small>
+                                <small *ngIf="contactForm.get('phone').errors.pattern" class="error-text">Phone Number is not valid.</small>
+                                <small *ngIf="contactForm.get('phone').errors.minlength" class="error-text">Phone Number should be minimum 10 Numbers.</small>
+                                <small *ngIf="contactForm.get('phone').errors.maxlength" class="error-text">Phone Number should be maximum 11 Numbers.</small>
+                            </ng-container>
+                            <div class="flexform2">
+                                <textarea class="area" placeholder="Description" formControlName="description"></textarea>
+                            </div>
+                            <ng-container *ngIf="submit && contactForm.get('description').errors">
+                                <small *ngIf="contactForm.get('description').errors.required" class="error-text">Description is required.</small>
+                            </ng-container>
+                        </div>
+                        <div class="btn_center"><input type="submit" class="btns" value="Submit" name=""></div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+        </main>
+<app-footer></app-footer>

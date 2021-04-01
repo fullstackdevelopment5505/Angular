@@ -1,0 +1,294 @@
+<app-header-customer [sideBar]="sideBar"></app-header-customer>
+<app-sidebar-customer #sideBar></app-sidebar-customer>
+
+	<!-- right area start -->
+	<section class="right_section" [class.load]="load!=1">	
+
+        <!-- inside_content_area start-->
+            <div class="content_area">
+
+            
+                <!-- datepicker -->
+                        <!-- <div class="col-sm-12 top_bar_area">
+                            <div class="row">
+                                <div class="col-sm-12 top_btns">
+                                    <button   data-toggle="modal" data-target="#trans" class="btn btn-success">Transaction History <i class="fa fa-history"></i></button>
+                                </div>
+                            </div>
+                        </div> -->
+                    <!-- datepicker -->
+
+                <div class="col-sm-12">
+                    <div class="row">
+                        <!-- <div class="col-md-6 single_box">
+                            <div class="inside">
+                                <div class="icon"><img src="assets/images/wallet.svg"></div>
+                                <div class="title"> Total Deposit</div>
+                                <div class="cus_num">{{totalDeposite | currency}}</div>
+                            </div>
+                        </div>	 -->
+                        <div class="col-md-6 single_box">
+                            <div class="inside">
+                                <div class="icon"><img src="assets/images/wallet.svg"></div>
+                                <div class="title"> Current Wallet Balance</div>
+                                <div class="cus_num">{{currentPoint | currency}}</div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 single_box">
+                            <div class="inside"><a data-toggle="modal" data-target="#trans">
+                                <div class="icon"><img src="assets/images/wallet.svg"></div>
+                                <div class="title"> Transaction History</div>
+                                <div class="cus_num">{{totalTrans | number}}</div>
+                            </a></div>
+                        </div>	                        	
+                        <!-- <div class="col-md-4 single_box">
+                            <div class="inside">
+                                <div class="icon"><img src="assets/images/wallet.svg"></div>
+                                <div class="title">Points/Dollar</div>
+                                <div class="cus_num">{{pointsPerDollar}}</div>
+                            </div>
+                        </div>		 -->
+                    </div>
+                </div>
+                
+
+                <!-- main row start-->
+                <div class="col-sm-12">
+                    <div class="row">
+
+                        <!--content start -->
+                            <div class="col-sm-12 top_selling">
+                                <div class="inside">
+                                    <div class="row">
+                                    <div class="title col-md-8">Credit Plans</div>
+                                    <!-- <div class="col-md-4 text-right"><button class="btn btn-success" data-toggle="modal" data-target="#manageGridHot">Manage Grid</button></div> -->
+                                </div>
+                                    <table class="display responsive nowrap table-striped" width="100%">
+                                        <thead>
+                                            <tr>
+                                                <th>Amount</th>
+                                                <!-- <th>Credit</th> -->
+                                                <th>Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>$50</td>
+                                                <!-- <td>{{pointsPerDollar*50}} Points</td> -->
+                                                <td><button (click)="onModal(50)" data-toggle="modal" data-target="#myModal" class="btn btn-success">Add Funds</button></td>
+                                            </tr>
+                                            <tr>
+                                                <td>$100</td>
+                                                <!-- <td>{{pointsPerDollar*100}} Points</td> -->
+                                                <td><button (click)="onModal(100)" data-toggle="modal" data-target="#myModal" class="btn btn-success">Add Funds</button></td>
+                                            </tr>
+                                            <tr>
+                                                <td>$200</td>
+                                                <!-- <td>{{pointsPerDollar*200}} Points</td> -->
+                                                <td><button (click)="onModal(200)" data-toggle="modal" data-target="#myModal" class="btn btn-success">Add Funds</button></td>
+                                            </tr>
+                                            <tr>
+                                                <td>$500</td>
+                                                <!-- <td>{{pointsPerDollar*500}} Points</td> -->
+                                                <td><button (click)="onModal(500)" data-toggle="modal" data-target="#myModal" class="btn btn-success">Add Funds</button></td>
+                                            </tr>
+                                            <tr>
+                                                <td>$1000</td>
+                                                <!-- <td>{{pointsPerDollar*1000}} Points</td> -->
+                                                <td><button (click)="onModal(1000)" data-toggle="modal" data-target="#myModal" class="btn btn-success">Add Funds</button></td>
+                                            </tr>
+                                            <tr>
+                                                <td>$2000</td>
+                                                <!-- <td>{{pointsPerDollar*2000}} Points</td> -->
+                                                <td><button (click)="onModal(2000)" data-toggle="modal" data-target="#myModal" class="btn btn-success">Add Funds</button></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+
+                                </div>
+                            </div>
+                        <!--content end-->
+                        
+                    </div>
+                </div>
+                <!-- main row end-->
+
+                
+                    <!-- The Modal -->
+                    <div class="modal" id="trans">
+                        <div class="modal-dialog modal-lg">
+                        <div class="modal-content ">
+                            <!-- Modal Header -->
+                            <div class="modal-header">
+                                <h4 class="modal-title">Transaction History</h4>
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            </div>                        
+                            <!-- Modal body -->
+                            <div class="modal-body">
+                                <div class="col-sm-12 top_selling">
+                                    <div class="inside">
+                                        <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" id="crm" class="row-border hover">
+
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>        
+                        </div>
+                        </div> 
+                    </div>
+            </div>
+            <app-common-overlay *ngIf="load!=1"></app-common-overlay>
+        <!-- inside_content_area end-->
+<!-- The Modal -->
+<div class="modal" id="myModal">
+    <div class="modal-dialog modal-md">
+      <div class="modal-content ">
+  
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Add Funds</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        <form [formGroup]="depositeForm" (ngSubmit)="deposite()">
+        <!-- Modal body -->
+        <div class="modal-body">            
+            <div class="form-group">
+                <label for="amount">Amount</label>
+                <input type="text" class="form-control" data-inputmask="'alias': 'currency'" formControlName="amount"  name="amount" id="amount">
+                <ng-container *ngIf="submit && depositeForm.get('amount').errors">
+                    <small *ngIf="depositeForm.get('amount').errors.required" class="error-text">Amount is required.</small>      
+                    <small *ngIf="depositeForm.get('amount').errors.min" class="error-text">
+                        Minimum deposit into your wallet is $50.00
+                         <!-- Minimum amount should be between $50.00 -->
+                    </small>
+                </ng-container>
+            </div>
+        </div>  
+        <!-- Modal footer -->
+        <div class="modal-footer">
+            <button type="submit" class="btn btn-primary submit-button">Submit</button>
+        </div>
+    </form>
+      </div>
+    </div>
+</div> 
+
+
+
+</section>
+<!-- right area end -->
+<!-- Manage grid  -->
+<div class="modal" id="manageGridHot">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+  
+          <!-- Modal Header -->
+          <div class="modal-header">
+              <h4 class="modal-title">Manage Grid</h4>
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+          <form>
+            <!-- Modal body -->
+            <div class="modal-body">
+              <div class="row">
+                    <div class="col-sm-12">
+                        <div class="form-group">   
+                            <label>No. of columns</label>
+                            <select class="form-control" name="gridSelect" id="gridSelect">
+                                <option value="0">1</option>
+                                <option value="1">2</option>
+                                <option value="2">3</option>
+                                <option value="3">4</option>
+                                <option value="4">5</option>
+                                <option value="5">6</option>
+                                <option value="6">7</option>
+                                <option value="7">8</option>
+                                <option value="8">9</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <label>Field 1</label>
+                            <select  class="form-control" name="col0" >
+                                <!-- <option *ngFor="let col of manageGrid.gridColName;let i = index"  value="{{i}}">{{col}}</option>                                -->
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <label>Field 2</label>
+                            <select  class="form-control" name="col1">
+                                <!-- <option *ngFor="let col of manageGrid.gridColName;let i = index"  value="{{i}}">{{col}}</option>  -->
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <label>Field 3</label>
+                            <select  class="form-control" name="col2">
+                                <!-- <option *ngFor="let col of manageGrid.gridColName;let i = index"  value="{{i}}">{{col}}</option>  -->
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <label>Field 4</label>
+                            <select  class="form-control" name="col3">
+                                <!-- <option *ngFor="let col of manageGrid.gridColName;let i = index"  value="{{i}}">{{col}}</option>  -->
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <label>Field 5</label>
+                            <select  class="form-control" name="col4">
+                                <!-- <option *ngFor="let col of manageGrid.gridColName;let i = index"  value="{{i}}">{{col}}</option>  -->
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <label>Field 6</label>
+                            <select  class="form-control" name="col5">
+                                <!-- <option *ngFor="let col of manageGrid.gridColName;let i = index"  value="{{i}}">{{col}}</option>  -->
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <label>Field 7</label>
+                            <select  class="form-control" name="col6">
+                                <!-- <option *ngFor="let col of manageGrid.gridColName;let i = index"  value="{{i}}">{{col}}</option>  -->
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <label>Field 8</label>
+                            <select  class="form-control" name="col7">
+                                <!-- <option *ngFor="let col of manageGrid.gridColName;let i = index"  value="{{i}}">{{col}}</option>  -->
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <label>Field 9</label>
+                            <select  class="form-control" name="col8">
+                                <!-- <option *ngFor="let col of manageGrid.gridColName;let i = index"  value="{{i}}">{{col}}</option>  -->
+                            </select>
+                        </div>
+                    </div>
+        
+                </div>
+            </div>  
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-success">Save</button>
+                <button (click)="manageGridReset()" type="button" class="btn btn-info">Reset</button>
+                <button id="initGrid" (click)="manageGridInit()" type="button"></button>
+            </div>
+        </form>
+      </div>
+    </div>
+  </div>

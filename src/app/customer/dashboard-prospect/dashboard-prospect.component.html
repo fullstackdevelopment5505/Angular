@@ -1,0 +1,149 @@
+<!-- right area start -->
+<section class="">
+	<div class="content_area no-space">
+	<div class="col-sm-12">
+			<div class="row">
+				<!-- Interested properties start-->
+				
+				<!-- Interested properties end-->
+
+				<!--Highly Interested properties start-->
+				<div class="col-sm-12 top_selling">
+					<div class="row">
+                        <div class="title mb-4 col-md-8">Hot Prospects</div>
+                        <div class="col-md-4 text-right">
+                            <button class="btn btn-success" (click)="manageGridModal()">Manage Grid</button>
+                        </div>
+                    </div>
+                    <table datatable [dtOptions]="dtOptionsHotProspect" id="prospectTbl" class="row-border hover">
+                    </table>
+
+                    <div *ngIf="highly>4" class="view_all"><a [routerLink]="'/customer/hot'"
+                            class="btn btn-success btn-lg">View All</a></div>
+				</div>
+				<!--Highly Interested properties end-->
+			</div>
+		</div>
+	</div>
+</section>
+
+<!-- Manage grid  -->
+<div class="modal" id="manageGridWarm">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+  
+          <!-- Modal Header -->
+          <div class="modal-header">
+              <h4 class="modal-title">Manage Grid</h4>
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+          <form #manageGridForm="ngForm" (ngSubmit)="manageGridSubmit(manageGridForm.value)">
+            <!-- Modal body -->
+            <div class="modal-body">
+              <div class="row">
+                    <div class="col-sm-12">
+                        <div class="form-group">   
+                            <label>No. of columns</label>
+                            <select class="form-control" name="gridSelect" id="gridSelect" [(ngModel)]="manageGrid.gridSelect" (ngModelChange)="onGridSelectChange($event)">
+                                <option value="0">1</option>
+                                <option value="1">2</option>
+                                <option value="2">3</option>
+                                <option value="3">4</option>
+                                <option value="4">5</option>
+                                <option value="5">6</option>
+                                <option value="6">7</option>
+                                <option value="7">8</option>
+                                <option value="8">9</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <label>Field 1</label>
+                            <select [disabled]="manageGrid.gridsStatus[0]" class="form-control" name="col0" [(ngModel)]="manageGrid.gridCol[0]">
+                                <option *ngFor="let col of manageGrid.gridColName;let i = index"  value="{{i}}">{{col}}</option>                               
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <label>Field 2</label>
+                            <select [disabled]="manageGrid.gridsStatus[1]" class="form-control" name="col1" [(ngModel)]="manageGrid.gridCol[1]">
+                                <option *ngFor="let col of manageGrid.gridColName;let i = index"  value="{{i}}">{{col}}</option> 
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <label>Field 3</label>
+                            <select [disabled]="manageGrid.gridsStatus[2]" class="form-control" name="col2" [(ngModel)]="manageGrid.gridCol[2]">
+                                <option *ngFor="let col of manageGrid.gridColName;let i = index"  value="{{i}}">{{col}}</option> 
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <label>Field 4</label>
+                            <select [disabled]="manageGrid.gridsStatus[3]" class="form-control" name="col3" [(ngModel)]="manageGrid.gridCol[3]">
+                                <option *ngFor="let col of manageGrid.gridColName;let i = index"  value="{{i}}">{{col}}</option> 
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <label>Field 5</label>
+                            <select [disabled]="manageGrid.gridsStatus[4]" class="form-control" name="col4" [(ngModel)]="manageGrid.gridCol[4]">
+                                <option *ngFor="let col of manageGrid.gridColName;let i = index"  value="{{i}}">{{col}}</option> 
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <label>Field 6</label>
+                            <select [disabled]="manageGrid.gridsStatus[5]" class="form-control" name="col5" [(ngModel)]="manageGrid.gridCol[5]">
+                                <option *ngFor="let col of manageGrid.gridColName;let i = index"  value="{{i}}">{{col}}</option> 
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <label>Field 7</label>
+                            <select [disabled]="manageGrid.gridsStatus[6]" class="form-control" name="col6" [(ngModel)]="manageGrid.gridCol[6]">
+                                <option *ngFor="let col of manageGrid.gridColName;let i = index"  value="{{i}}">{{col}}</option> 
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <label>Field 8</label>
+                            <select [disabled]="manageGrid.gridsStatus[7]" class="form-control" name="col7" [(ngModel)]="manageGrid.gridCol[7]">
+                                <option *ngFor="let col of manageGrid.gridColName;let i = index"  value="{{i}}">{{col}}</option> 
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <label>Field 9</label>
+                            <select [disabled]="manageGrid.gridsStatus[8]" class="form-control" name="col8" [(ngModel)]="manageGrid.gridCol[8]">
+                                <option *ngFor="let col of manageGrid.gridColName;let i = index"  value="{{i}}">{{col}}</option> 
+                            </select>
+                        </div>
+                    </div>
+        
+                </div>
+            </div>  
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-success">Save</button>
+                <button (click)="manageGridReset()" type="button" class="btn btn-info">Reset</button>
+                <button id="initGridWarm" (click)="manageGridInit()" type="button"></button>
+            </div>
+        </form>
+      </div>
+    </div>
+</div>
+
+
+
+
+  

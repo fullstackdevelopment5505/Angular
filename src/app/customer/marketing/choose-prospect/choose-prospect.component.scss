@@ -1,0 +1,168 @@
+
+.dataTables_wrapper {
+    display: flex;
+    display: -webkit-flex;
+    flex-wrap: wrap;
+    -webkit-flex-wrap: wrap;
+    justify-content: space-between;
+    -webkit-justify-content: space-between;
+}
+table{
+    width: 100% !important;
+}
+th{
+    background: #232e42;
+    color: #fff;
+}
+.dt-buttons button.dt-button.buttons-copy {
+    background-image: url(../../../../assets/images/copy.png) !important;
+}
+.dt-buttons button.dt-button.buttons-excel {
+    background-image: url(../../../../assets/images/excel.png) !important;
+}
+.dt-buttons button.dt-button.buttons-csv {
+    background-image: url(../../../../assets/images/csv.png) !important;
+}
+.dt-buttons button.dt-button,  .dt-buttons button.dt-button:active {
+    all: initial;
+    width: 40px;
+    height: 40px;
+    background-color: transparent;
+    cursor: pointer;
+    // margin: 0px 0px;
+    border: 1px solid #ccc !important;
+    background: #f2f2f2 !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+    box-shadow: none !important;
+    background-size: 32px !important;
+}
+.dt-buttons button span{
+    color: transparent;
+}
+.dataTables_wrapper .dataTables_filter input {
+    border: 1px solid #ccc;
+    height: 36px;
+    border-radius: 5px;
+    padding: 8px;
+    width: 100%;
+    max-width: 230px;
+}
+.dataTables_wrapper .dataTables_filter label {
+    display: flex;
+    display: -webkit-flex;
+    align-items: center;
+    -webkit-align-items: center;
+    justify-content: flex-end;
+    -webkit-justify-content: flex-end;
+}
+.dataTables_wrapper .dataTables_length select {
+    height: 35px;
+    margin: 0 5px;
+    width: 70px;
+}
+.dataTables_wrapper .dataTables_paginate {
+    padding: 0;
+    margin-top: 10px;
+    border: 1px solid #dedede;
+    background: #f6f6f6;
+}
+.dataTables_wrapper:after{
+    display: none;
+}
+
+.right_area .inside .title, .top_selling .inside .title {
+    font-weight: 600;
+}
+.right_area .inside .title, .top_selling .inside .title, .single_box .inside .title {
+    font-size: 20px;
+    color: #6b6b6b;
+    margin-bottom: 13px;
+    text-transform: capitalize;
+}
+td.details-control {
+    background: url('../../../../assets/images/copy.png') no-repeat center center;
+    cursor: pointer;
+}
+tr.shown td.details-control {
+    background: url('../../../../assets/images/excel.png') no-repeat center center;
+}
+
+
+
+
+.textbox {
+    display: flex;
+    justify-content: flex-end;
+    display: -webkit-flex;
+    -webkit-justify-content: flex-end;
+}
+.btns {
+	margin         : 15px 0 0;
+	padding        : 0px;
+	background     : transparent;
+	display        : flex;
+	justify-content: flex-end;
+	align-items    : center;
+}
+
+ul.btnsLst{
+    display: flex;
+    display: -webkit-flex;
+    list-style-type: none;
+    li {
+        border: none;
+        margin: 0;
+        padding: 0;
+        display: inline-block;
+    }
+    li + li{
+        margin-left: 10px;
+    }
+    li button{
+        background: #1b86e3;
+        border-radius: 100px;
+        height: 45px;
+        width: 45px;
+        display: flex;
+        display: -webkit-flex;
+        align-items: center;
+        -webkit-align-items: center;
+        justify-content: center;
+        -webkit-justify-content: center;
+        padding: 7px;
+        margin: 0;
+    }
+    li button:hover{
+        color: white;
+    }
+}
+.btn-actions {
+    font-size: 24px;
+    text-align: center;
+    color: white;
+}
+
+
+ul.btnsLst li button {
+    border: none;
+    background: transparent;
+}
+.btn:disabled {
+    opacity: 0.55;
+    cursor: not-allowed;
+}
+
+
+.mark_sms_page td ul {
+    margin: 0;
+}
+.mark_sms_page td ul li {
+    display: block !important;
+}
+
+.mark_sms_page .dataTables_wrapper .dt-buttons{
+    padding: 0;
+    margin: 0;
+    border: none;
+}

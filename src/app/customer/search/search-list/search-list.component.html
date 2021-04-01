@@ -1,0 +1,109 @@
+<app-header-customer [sideBar]="sideBar"></app-header-customer>
+<app-sidebar-customer #sideBar></app-sidebar-customer>
+
+
+	<!-- right area start -->
+	<section class="right_section" [class.load]="load!=1">
+        <!-- inside_content_area start-->
+        <div class="content_area">
+
+                <!-- main row start-->
+                <div class="col-sm-12">
+                    <div class="row">
+
+                        <!--table start -->
+                        <div class="col-sm-12 top_selling">
+                                <div class="inside">
+                                    <div class="row">
+                                    <div class="title col-md-8">Saved Searches</div>
+                                    <div class="col-md-4 text-right"><button class="btn btn-success" (click)="manageGridModal()">Manage Grid</button></div>
+                                </div>
+                                    <table *ngIf="load==1" datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" id="crm" class="row-border hover">                                    
+                                    </table>
+                                    <table  *ngIf="load!=1" datatable  [dtOptions]="dtOptions"  class="row-border hover blurnew">
+                                        <thead>
+                                          <tr>
+                                            <th>Name</th>
+                                            <th>Action</th>
+                                          </tr>
+                                        </thead>
+                                        <tbody>
+                                          <tr>
+                                            <td>Offer Search</td>
+                                            <td>
+                                                <Button class="btn btn-success">View</Button>
+                                                <Button class="btn btn-success">Rename</Button>
+                                            </td>
+                                          </tr>
+                                          <tr>
+                                            <td>Action Search</td>
+                                            <td>
+                                                <Button class="btn btn-success">View</Button>
+                                                <Button class="btn btn-success">Rename</Button>
+                                            </td>
+                                          </tr>
+                                          <tr>
+                                            <td>Search Crystal</td>
+                                            <td>
+                                                <Button class="btn btn-success">View</Button>
+                                                <Button class="btn btn-success">Rename</Button>
+                                            </td>
+                                          </tr>
+                                          <tr>
+                                            <td>Search Jackie</td>
+                                            <td><Button class="btn btn-success">View</Button>
+                                                <Button class="btn btn-success">Rename</Button></td>
+                                          </tr>
+                                          <tr>
+                                            <td>Search Mateo</td>
+                                            <td><Button class="btn btn-success">View</Button>
+                                                <Button class="btn btn-success">Rename</Button></td>
+                                          </tr>
+                                        </tbody>
+                                      </table>  
+                                </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+        <app-common-overlay *ngIf="load!=1"></app-common-overlay>
+    </section>
+    <div class="modal" id="renameSearchModal">
+        <div class="modal-dialog modal-md">
+          <div class="modal-content ">    
+            <!-- Modal Header -->
+            <div class="modal-header">
+              <h4 class="modal-title">Rename Saved Search Name</h4>
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+        <form [formGroup]="renameForm" (ngSubmit)="renameFormSubmit()">
+            <!-- Modal body -->
+            <div class="modal-body">           
+              <div class="row">
+                <div class="col-sm-12">
+                   <div class="form-group">
+                      <label>Old Saved Search Name: </label>
+                      <input type="text" formControlName="oldSearchName" class="form-control" />			  
+                  </div>
+                 </div>
+                 <div class="col-sm-12">
+                   <div class="form-group">
+                     <label>New Saved Search Name: </label>
+                     <input type="text" formControlName="new_search_title" class="form-control" />
+                     <ng-container *ngIf="submit && renameForm.get('new_search_title').errors">
+                      <small *ngIf="renameForm.get('new_search_title').errors.required" class="error-text">New Saved Search Name is required.</small>
+                      <small *ngIf="renameForm.get('new_search_title').errors.maxlength" class="error-text">New Saved Search Name should be maximum 25 characters.</small>
+                    </ng-container>                  
+                  </div>
+                 </div>
+               </div>       
+            </div>  
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-primary submit-button">Submit</button>
+            </div>
+        </form>
+          </div>
+        </div>
+    </div>
+

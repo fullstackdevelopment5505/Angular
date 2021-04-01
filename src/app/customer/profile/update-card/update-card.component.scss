@@ -1,0 +1,290 @@
+.top_bar_area {
+    margin-top: 10px;
+}
+.from_to_filter {
+    margin-bottom: 30px;
+}
+
+.from_to_filter form, .from_to_filter {
+    display: flex;
+    display: -webkit-flex;
+    align-items: flex-end;
+    -webkit-align-items: flex-end;
+    flex-wrap: wrap;
+    -webkit-flex-wrap: wrap;
+    width: 100%;
+}
+.top_bar_area .view_back {
+    height: 46px;
+    margin-right: 15px;
+    font-size: 23px;
+    display: flex;
+    align-items: center;
+    -webkit-display: flex;
+    -webkit-align-items: center;
+}
+.from_to_filter .title {
+    font-size: 22px;
+    font-weight: 600;
+    height: 33px;
+    padding: 0 15px;
+}
+.top_selling .inside {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    margin-bottom: 30px;
+}
+.edit_profile_fields .form-group label{
+    font-size: 18px;
+    margin-bottom: 0px;
+    display: block;
+}
+.edit_profile_fields .form-group input.form-control,.edit_profile_fields .form-group select.form-control {
+    height: 50px;
+}
+.about_customer .edit_profile_image .inset {
+    border: 2px dashed #9a9a9a;
+    padding: 0;
+    text-align: center;
+    height: 265px;
+    margin-bottom: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    display: -webkit-flex;
+    -webkit-align-items: center;
+    -webkit-justify-content: center;
+}
+.about_customer .edit_profile_image .inset label {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    display: -webkit-flex;
+    -webkit-align-content: center;
+    -webkit-justify-content: center;
+    -webkit-flex-wrap: wrap;
+    cursor: pointer;
+}
+.about_customer .edit_profile_image input[type="file"] {
+    width: 220px;
+}
+.about_customer .edit_profile_image .inset span {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+}
+.about_customer .edit_profile_image .inset span img {
+    max-width: 80px;
+    margin: 0 auto 30px;
+    display: block;
+    opacity: 0.5;
+}
+.advance_search_data iframe {
+    margin-top: -140px;
+}
+
+
+
+
+
+
+
+/* 3-aug-2020-css-start*/
+
+
+/* payment start */
+.methods li{list-style-type: none;}
+.methods li .titles label {
+    display: flex;
+    display: -webkit-flex;
+    justify-content: space-between;
+    -webkit-justify-content: space-between;
+    align-items: center;
+    -webkit-align-items: center;
+    padding: 8px 10px;
+    cursor: pointer;
+    height: 50px;
+    margin-bottom: 0px;
+}
+.methods li .titles label .images {
+    display: flex;
+    display: -webkit-flex;
+}
+.methods li .titles label .images p {
+    max-width: 50px;
+    margin-left: 3px;
+    margin-bottom:0px;
+}
+.methods li .titles {
+    background: #f1f1f1;
+    border: 1px solid #d6d6d6;
+    margin-bottom: 20px;
+}
+.methods li .details {
+    margin-bottom: 20px;
+}
+.methods li .details label {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+.methods li .details .form-control {
+    height: 46px;
+}
+.methods li .details > .row > div {
+    margin-bottom: 20px;
+}
+.methods li .titles label input[type="radio"] {
+    width: 19px;
+    height: 20px;
+    vertical-align: sub;
+    margin-right: 8px;
+}
+.terms {
+    margin: 30px 0;
+}
+.terms input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    vertical-align: top;
+    margin-right: 8px;
+}
+.place_order button {
+    width: 100%;
+    font-size: 20px;
+    padding: 14px;
+}
+.total_amount li {
+    padding: 15px 0;
+    border-bottom: 1px solid #CCB;
+}
+.total_amount li strong {
+    font-weight: 600;
+    margin-right: 5px;
+}
+.subtotal {
+    display: flex;
+    justify-content: space-between;
+    display: -webkit-flex;
+    -webkit-justify-content: space-between;
+    align-items: center;
+    -webkit-align-items: center;
+    padding: 18px 10px;
+    background: #e4e4e4;
+}
+.subtotal strong {
+    font-weight: 500;
+    font-size: 17px;
+}
+.subtotal span {
+    font-weight: 600;
+    font-size: 30px;
+}
+.save_card label {
+    width: 100%;
+    display: block;
+    background: -webkit-linear-gradient(#ffffff, #e0e0e0);
+    background: linear-gradient(#ffffff, #e0e0e0);
+    background: -ms-linear-gradient(#ffffff, #e0e0e0);
+    padding: 15px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    cursor: pointer;
+    position: relative;
+}
+.save_card .holder_name {
+    font-size: 20px;
+    font-weight: 500;
+    text-transform: uppercase;
+}
+.save_card .account_number {
+    font-size: 18px;
+    margin: 9px 0 10px;
+    font-weight: 500;
+}
+.save_card .expire{
+    font-size: 18px;
+    font-weight: 500;
+}
+.save_card .trash {
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    font-size: 20px;
+    color: #2b2b2b;
+}
+.save_card {
+    margin-top: 15px;
+}
+.save_card label input{
+    display: none;
+}
+.save_card label span {
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+    width: 20px;
+    height: 20px;
+    border-radius: 100px;
+}
+.save_card label input:checked + span{
+    background-color: #28a745;
+}
+.save_card label input:checked + span::after {
+    content: "";
+    width: 12px;
+    height: 8px;
+    position: absolute;
+    left: 4px;
+    top: 5px;
+    border-left: 3px solid #fff;
+    border-bottom: 3px solid #fff;
+    transform: rotate(-60deg);
+    -webkit-transform: rotate(-60deg);
+}
+
+/* payment end */
+
+
+
+/* 3-aug-2020-css-end*/
+
+.opacity{
+    opacity: 0.5;
+}
+
+.inside{
+    position: relative;
+}
+.loader{
+    position: absolute;
+    left:40%;
+    top:35%;
+    z-index:1;
+}
+
+
+.loader {
+    border: 11px solid #f3f3f3;
+    border-radius: 50%;
+    border-top: 11px solid #3498db;
+    width: 80px;
+    height: 80px;
+    -webkit-animation: spin 2s linear infinite; /* Safari */
+    animation: spin 2s linear infinite;
+  }
+  
+  /* Safari */
+  @-webkit-keyframes spin {
+    0% { -webkit-transform: rotate(0deg); }
+    100% { -webkit-transform: rotate(360deg); }
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }

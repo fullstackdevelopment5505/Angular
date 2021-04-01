@@ -1,0 +1,54 @@
+<!--start-header-->
+<header class="container-fluid" id="tophead">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-3 logo">
+                <a [routerLink]="'/'">
+                    <img src="assets/images/logo.png">
+                </a>
+            </div>
+			
+			<div class="col-md-6 headnav">
+				<nav  class="navbar navbar-expand-lg navbar-dark ">
+				  <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navb">
+				    <span></span>
+				  </button>
+				  <div class="collapse navbar-collapse" id="navb">
+				    <ul class="navbar-nav mr-auto">
+				      <!-- <li class="nav-item"><a class="nav-link" [routerLink]="'/'">Home </a></li> -->
+				      <!-- <li class="nav-item"><a class="nav-link" [routerLink]="'/search'">Search</a></li>
+				      <li class="nav-item"><a class="nav-link" [routerLink]="'/account/transactions'">Leads</a></li>
+					  <li class="nav-item"><a class="nav-link" [routerLink]="'/account/payments'">Payments</a></li> -->
+				      <li class="nav-item"><a class="nav-link" [routerLink]="'/aboutus'">About</a></li>
+					  <li class="nav-item"><a class="nav-link" [routerLink]="'/kickstarter'">Kickstarter</a></li>
+					  <li class="nav-item"><a class="nav-link" [routerLink]="'/affiliate'" target="_blank">Affiliate</a></li>
+				      <!-- <li class="nav-item"><a class="nav-link" [routerLink]="'/search/explore'">Explore</a></li>
+					  <li class="nav-item"><a class="nav-link" [routerLink]="'/search/hot-leads'">Hot Leads</a></li> -->
+					  <!-- <li class="nav-item" *ngIf="!userLoggedIn"><a class="nav-link" [routerLink]="'/membership'">Membership</a></li> -->
+				      <li class="nav-item" *ngIf="!userLoggedIn || !paidMember"><a class="nav-link" [routerLink]="'/membership'">Membership</a></li>
+				      <!-- <li class="nav-item"><a class="nav-link" [routerLink]="'/about/career'">Career</a></li> -->
+				      <li class="nav-item"><a class="nav-link" [routerLink]="'/news'">Training Videos</a></li>
+				    </ul>
+				  </div>
+				</nav>
+			</div>
+
+			<div class="col-md-3 signup">
+				<div *ngIf="!userLoggedIn" class="btns">
+					<a [routerLink]="'/authentication/login'" class="login" >Login</a>
+   					<a [routerLink]="'/authentication/register'" class="sign">Sign Up</a>
+					<a  class="users"><i class="fa fa-user-circle-o"></i></a>
+				</div>
+				<div *ngIf="userLoggedIn" class="btns">
+
+					<a [routerLink]="'/customer'" class="sign">Dashboard</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</header>
+<!--end-header-->
+<div *ngIf="maintainance && maintainance.status==='1'" class="alert alert-danger alert-dismissible maintance-banner text-center mb-0">
+	<strong>{{maintainance && maintainance.maintenance_banner_title}}</strong>
+	<h5>{{maintainance && maintainance.maintenance_banner_content}}</h5>
+</div>

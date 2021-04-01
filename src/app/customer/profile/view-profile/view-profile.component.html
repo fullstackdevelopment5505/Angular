@@ -1,0 +1,209 @@
+<app-header-customer [sideBar]="sideBar"></app-header-customer>
+<app-sidebar-customer #sideBar></app-sidebar-customer>
+    <!-- right area start -->
+	<section class="right_section" [class.load]="load!=1" >
+
+        <!-- inside_content_area start-->
+        <div class="content_area" [class.blurnew]="load!=1">
+
+
+                    <!-- datepicker -->
+                        <div class="col-sm-12 top_bar_area">
+                            <div class="row">
+                                <div class="col-sm-12 top_btns">
+                                    
+                                    <a [routerLink]="'/customer/profile/update-card'"  class="btn btn-primary">My Payment Methods <i class="fa fa-dollar"></i></a>
+                                    <a data-toggle="modal" data-target="#changePasswordModal" class="btn btn-primary">Change Password<i class="fa fa-key"></i></a> 
+                                    <a [routerLink]="'/customer/profile/edit'" class="btn btn-primary">Edit Profile <i class="fa fa-edit"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    <!-- datepicker -->
+
+
+                <!-- main row start-->
+                <div class="col-sm-12">
+                    <div class="row">
+
+                        <!--Parent div start -->
+                            <div class="col-sm-8 top_selling profile_whole_detail">
+                                <div class="inside">
+                                    <div class="title">Profile</div>
+                                    <div class="row">
+                                        <div class="col-sm-12 all_customer_data">
+                                            <div class="profile_pic">
+                                                <img [src]="url" >
+                                            </div>
+                                            <div class="profile_left">
+                                                <h1>{{profileFullData.f_name}}</h1><!--{{profileFullData.l_name}} -->
+                                                <div class="member" *ngIf="membership!=null"><a ><img src="assets/images/trophy.png"> member</a></div>
+                                                <p><i class="fa fa-map-marker"></i>&nbsp;<span>{{profileFullData.address? profileFullData.address : "N/A"}}</span></p>
+                                                <p><i class="fa fa-envelope"></i> <span>Email: {{profileData.email}}</span></p>
+                                            </div>
+                                            <div class="profile_right">
+                                                <p><i class="fa fa-flag"></i><span>Country: US</span></p>
+                                                <!-- <p *ngIf="profileFullData"><i class="fa fa-map"></i> <span>State: {{profileFullData.STATE_NAME}}({{profileFullData.STATE_CODE}}) </span></p>
+                                                <p *ngIf="profileFullData"><i class="fa fa-map-pin"></i> <span>City: {{profileFullData.CITY}}</span></p> -->
+                                                <p *ngIf="profileFullData"><i class="fa fa-map-signs"></i> <span>Postal Code: {{profileFullData.postal}}</span></p>
+                                                <p *ngIf="profileFullData"><i class="fa fa-phone"></i> <span>Phone No:  {{profileFullData.phone? '+1'+ profileFullData.phone : "N/A"}}</span></p>
+                                                <p *ngIf="profileFullData"><i class="fa fa-industry"></i> <span>Industry:  {{profileFullData.industry? profileFullData.industry : "N/A"}}</span></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6 copy-and-qr mt-3">
+                                            <label>Referral Link</label>
+                                            <div class="inset">
+                                                <input type="text" value="{{profileData && profileData.username}}" class="form-control" #userinput>
+                                                <button (click)="copyAffiliate(userinput)" class="copy">Copy</button>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 copy-and-qr mt-3">
+                                            <label>Service Code</label>
+                                            <div class="inset">
+                                                <input type="text" value="{{profileData && profileData.service_code_prefix}}{{profileData && profileData.service_code}}" class="form-control" #userinput2>
+                                                <button (click)="copyServiceCode(userinput2)" class="copy">Copy</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        <!--Parent div end-->
+
+
+                        <!--Parent div start -->
+                            <div class="col-sm-4 top_selling customer_joined_details">
+                                <div class="inside">
+                                    <div class="customer_other_details">
+                                        <ul>
+                                           <li>
+                                                <strong>Joining Date:</strong>
+                                                <p style="margin-left: -94px;">{{profileData.created_at | date:'dd-MMM-yyyy'}}</p>
+                                            </li>
+                                            <li>
+                                                <strong>Report Purchased:</strong>
+                                                <p>{{purchasedRecord.count}}</p>
+                                            </li>
+                                            <li>
+                                                <strong>Sales Manager:</strong>
+                                                <p>House</p>
+                                            </li>
+                                            <li>
+                                                <strong>Sales Executive:</strong>
+                                                <p>House</p>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        <!--Parent div end-->
+
+                        <!--Parent div start -->
+                            <div class="col-sm-12 top_selling">
+                                <div class="inside about_customer">
+                                    <div class="title">About {{profileFullData.f_name}}</div>    
+                                    <div class="content">
+                                        <p>{{profileFullData.info?profileFullData.info:''}} </p>
+                                    </div>
+                                </div>
+                            </div>
+                        <!--Parent div end-->
+                        
+                        <!--Parent div start -->
+                            <!-- <div class="col-sm-12 top_selling">
+                                <div class="inside">
+                                    <div class="title">Recent used Area Filters:</div>    
+                                    <div class="areas">
+                                        <ul>
+                                            <li><a href="#">Sab Diego</a></li>
+                                            <li><a href="#">Los Angeles</a></li>
+                                            <li><a href="#">San Jose</a></li>
+                                            <li><a href="#">Fresno</a></li>
+                                            <li><a href="#">San Francisco</a></li>
+                                            <li><a href="#">Oakland</a></li>
+                                            <li><a href="#">Long Beach</a></li>
+                                            <li><a href="#">Riverside</a></li>
+                                            <li><a href="#">Palm Springs</a></li>
+                                            <li><a href="#">Pasadena</a></li>
+                                            <li><a href="#">Stockton</a></li>
+                                            <li><a href="#">Santa Monica</a></li>
+                                            <li><a href="#">modesto</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div> -->
+                        <!--Parent div end-->
+                        
+                         <!--Parent div start -->
+                            <!-- <div class="col-sm-12 top_selling">
+                                <div class="inside">
+                                    <img src="assets/images/map-marker.png" width="100%">
+                                </div>
+                            </div> -->
+                        <!--Parent div end-->
+                        
+                    </div>
+                </div>
+                <!-- main row end-->
+
+        </div>
+        <!-- inside_content_area end-->
+        <app-common-overlay *ngIf="load!=1"></app-common-overlay>
+</section>
+<!-- right area end -->
+<div class="modal" id="changePasswordModal">
+    <div class="modal-dialog modal-md">
+      <div class="modal-content ">    
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Change Password</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        <form [formGroup]="changePwdForm" (ngSubmit)="submitForm()">
+        <!-- Modal body -->
+        <div class="modal-body">           
+          <div class="row">
+            <div class="col-sm-12">
+               <div class="form-group">
+                  <label>Old Password: </label>
+                  <input type="password" class="form-control" placeholder="Password" formControlName="old_password">
+					<ng-container *ngIf="submit && changePwdForm.get('old_password').errors">
+						<small *ngIf="changePwdForm.get('old_password').errors.required" class="error-text">Old Password is required.</small>
+						<small *ngIf="changePwdForm.get('old_password').errors.minlength" class="error-text">Old Password should be minimum 6 characters.</small>
+					</ng-container>		  
+              </div>
+             </div>
+             <div class="col-sm-12">
+               <div class="form-group">
+                 <label>New Password: </label>
+                 <input type="password" class="form-control" placeholder="New Password" formControlName="password">
+					<ng-container *ngIf="submit && changePwdForm.get('password').errors">
+						<small *ngIf="changePwdForm.get('password').errors.required" class="error-text">New Password is required.</small>
+						<small *ngIf="changePwdForm.get('password').errors.minlength" class="error-text">New Password should be minimum 6 characters.</small>
+                    </ng-container>  
+                    <ng-container *ngIf="submit && changePwdForm.get('password_confirmation').errors">
+						<small *ngIf="changePwdForm.get('password_confirmation').errors.mustMatch" class="error-text">New Password must be same.</small>
+					</ng-container>               
+              </div>
+             </div>
+             <div class="col-sm-12">
+                <div class="form-group">
+                  <label>Confirm Password: </label>
+                  <input type="password" class="form-control" placeholder="Confirm New Password" formControlName="password_confirmation">
+					<ng-container *ngIf="submit && changePwdForm.get('password_confirmation').errors">
+						<small *ngIf="changePwdForm.get('password_confirmation').errors.required" class="error-text">Confirm Password is required.</small>
+						<small *ngIf="changePwdForm.get('password_confirmation').errors.minlength" class="error-text">Confirm Password should be minimum 6 characters.</small>
+						<small *ngIf="changePwdForm.get('password_confirmation').errors.mustMatch" class="error-text">Confirm Password must be same.</small>
+					</ng-container>               
+               </div>
+              </div>
+           </div>       
+        </div>  
+        <!-- Modal footer -->
+        <div class="modal-footer">
+            <button type="submit" class="btn btn-primary submit-button">Submit</button>
+        </div>
+    </form>
+      </div>
+    </div>
+</div>

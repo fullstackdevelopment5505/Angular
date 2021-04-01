@@ -1,0 +1,32 @@
+<div class="modal-header">
+    <h4 class="modal-title">Reminders</h4>
+    <button type="button" class="close" aria-label="Close" (click)="close()"><span aria-hidden="true">&times;</span></button>
+</div>
+
+<div class="modal-body">
+    <div class="all_reminders">
+        <ul class="mb-0">
+            <li *ngFor="let alert of data;let i=index;" (click)="activeReminder(i,alert.id)" [class.active]="i===active">
+                <a>
+                    <div class="left">
+                        <span><i class="fa fa-calendar"></i></span>
+                        <h2>{{alert.title}}</h2>
+                    </div>
+                    <div class="right">
+                        <span>{{alert.start | date}}</span>
+                        <p>{{alert.start | date:'shortTime'}}</p>
+                    </div>
+                </a> 
+            </li>
+            <li class="text-center" *ngIf="data.length===0">
+                No Pending Reminders
+            </li>
+        </ul>
+    </div>
+</div>
+
+<div class="modal-footer">
+    <button type="submit" [class.disabled]="reminderToDismiss.length===0 || data.length===0" (click)="openTab()" [disabled]="reminderToDismiss.length===0 || data.length===0"  class="btn btn-success">Open</button>
+    <button type="button" [class.disabled]="reminderToDismiss.length===0 || data.length===0" [disabled]="reminderToDismiss.length===0 || data.length===0" (click)="dismiss(1)" class="btn btn-danger">Dismiss</button>
+    <button type="button" [class.disabled]="data.length===0" [disabled]="data.length===0"  (click)="dismiss(2)" class="btn btn-danger">Dismiss All</button>
+</div>

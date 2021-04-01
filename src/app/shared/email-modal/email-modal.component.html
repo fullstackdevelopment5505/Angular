@@ -1,0 +1,45 @@
+<div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Email Template</h4>
+    <button type="button" class="close" aria-label="Close" (click)="close()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+
+    <div class="form-group">
+        <input type="text" placeholder="Email Subject" id="name" [(ngModel)]="subject" class="form-control">
+    </div>
+    <div class="form-group"> 
+        <quill-editor  [styles]="editorStyle"  (onEditorCreated)="selectionChange($event)" [(ngModel)]="content" placeholder="Enter Content"
+        required>
+        </quill-editor>
+        <div class="dynamic-button">
+            <button (click)="addText('%name%')" class="btn-default mr-2">First Name</button>
+            <button (click)="addText('%last_name%')" class="btn-default mr-2">Last Name</button>
+            <button (click)="addText('%apn%')" class="btn-default mr-2">APN</button>
+            <button (click)="addText('%address%')"  class="btn-default mr-2">Address</button>
+            <button (click)="addText('%price%')"  class="btn-default">Price</button>
+        </div>
+    </div>
+    <div class="form-group"> 
+        <label for="save">
+            <input id="save" [(ngModel)]="save" type="checkbox" >
+            Save Template?
+        </label>
+        <input type="text" [disabled]='!save'[(ngModel)]="title"  placeholder="Template Title"  class="form-control">
+    </div>
+
+    <div class="row text-center position-relative">
+        <hr class="w-100 d-block">
+        <h4 class="mx-auto d-block bg-default">OR</h4>
+    </div>
+    <select class="form-control mb-2" (change)="changeSelect($event)" name="" id="">
+        <option value="" disabled>--Select Template--</option>
+        <option *ngFor="let da of allEmail" value="{{da.id}}">{{da.template_title}}</option>
+    </select>
+    
+    <div class="form-group"> 
+        <button (click)='sendEmail()' class="btn btn-success">Send Email</button>
+    </div>
+
+  </div>

@@ -1,0 +1,74 @@
+<app-header-customer [sideBar]="sideBar"></app-header-customer>
+<app-sidebar-customer #sideBar></app-sidebar-customer>
+
+	<!-- right area start -->
+	<section class="right_section">
+
+        <!-- inside_content_area start-->
+        <div class="content_area">
+
+                    <!-- datepicker -->
+                        <div class="col-sm-12 top_bar_area">
+                            <div class="row">
+                                <div class="col-sm-12 from_to_filter">
+                                    <form>
+                                        <div class="view_back"><a [routerLink]="'/customer/messages'"><i class="fa fa-arrow-left"></i></a></div>
+                                        <div class="title">Send Message</div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    <!-- datepicker -->
+
+
+                <!-- main row start-->
+                <div class="col-sm-12">
+                    <div class="row">
+
+                        <!--  customer detail start-->
+                        <div class="col-sm-12 top_selling">
+                            <div class="inside">
+                                <div class="full_message_detail">
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label>Choose member</label>
+                                                <select class="form-control">
+                                                    <option>Member 1</option>
+                                                    <option>Member 2</option>
+                                                    <option>Member 3</option>
+                                                    <option>Member 4</option>
+                                                    <option>Member 5</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label>Subject</label>
+                                                <input type="text" class="form-control">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-12">
+                                            <div class="form-group">
+                                                <label>Message</label>
+                                                <textarea name="editor1"></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="reply_cta mt-4"><button class="btn btn-primary btn-lg">Send Message</button></div>
+                            </div>
+                        </div>
+                        <!--  customer detail end-->
+                        
+
+                    </div>
+                </div>
+                <!-- main row end-->
+
+        </div>
+        <!-- inside_content_area end-->
+
+</section>
+<!-- right area end -->

@@ -1,0 +1,167 @@
+#team-member{
+	position: relative;
+	display:flex;	
+}
+.team-member-text{
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+}
+.team-member-text h4{
+	color:#fff;
+	    font-size: 50px;
+    font-weight: 600;
+}
+#member-detail{
+	padding-top:35px;
+	padding-bottom:25px;
+	background:#1b86e30f;
+}
+#member-detail img{
+	margin-top:-100px;
+	border-radius: 4px;
+}
+.m_text h2{
+	font-size: 28px;
+	font-weight: 600;
+}
+.m_text p{
+	line-height: 26px;
+	margin-top: 20px;
+}
+.m_text b {
+    font-size: 23px;
+}
+.m_text h5{
+	padding-top:20px;
+	padding-bottom:20px;
+}
+.m_text ul li{
+	list-style: none;
+}
+.m_text i{
+	padding-right:10px;
+}
+.m_img{
+	height: 850px;
+}
+.m_img img{
+	height:100%;
+	object-fit: cover;
+}
+.icons{
+	display: flex;
+}
+i.fb {
+    font-size: 31px;
+    background:  #3b5998;
+    width: 50px;
+    height: 50px;
+    border-radius: 100px;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    color: #fff;
+    padding: 10px;
+    margin-left:10px;
+}
+i.fa.fa-linkedin {
+    font-size: 31px;
+    background: #0e76a8;
+    width: 50px;
+    height: 50px;
+    border-radius: 100px;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    color: #fff;
+    padding: 10px;
+}
+.m_text h6{
+	font-size:1.25rem;
+}
+.m_text{
+        line-height: 36px;        
+}
+.m_text h2{
+    font-size: 28px;
+    font-weight: 600;
+} 
+.contact i{
+	font-size: 23px;
+    font-weight: 600;
+    padding: 5px;
+    color: #1b86e3;
+    margin-right: 10px;
+}
+.contact span{
+	font-weight: 500;
+	color: #000;
+}
+
+#team-member .team-img {
+    height:400px;
+    overflow: hidden;
+    background: rgba(0,0,0,0.7);
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+#team-member .team-img img {
+    mix-blend-mode: overlay;
+    object-position: 2% 37%;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+
+
+/* Responsive Media Queries Start*/
+@media all and (max-width: 768px){
+	#member-detail img{
+	margin-top:20px;
+	border-radius: 4px;
+}
+}
+
+.icons .ln {
+    font-size: 35px;
+    color: #fff;
+    /* padding: 8px; */
+    border-radius: 100px;
+    background: #0e76a8;
+    width: 50px;
+    height: 50px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+.icons .fb{
+    color: #fff;
+    font-size: 35px;
+    /* padding: 11px; */
+    border-radius: 100px;
+    background: #3b5998;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+  width:50px;
+  height:50px;
+    display: inline-flex;
+}
+
+ul li:before {    
+    font-family: 'FontAwesome';
+    content: '\f067';
+    margin:0 5px 0 -15px;
+    color: #f00;
+}
+
+
+
+/* Responsive Media Queries End */

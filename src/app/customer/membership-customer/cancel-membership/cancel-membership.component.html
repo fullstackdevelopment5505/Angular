@@ -1,0 +1,178 @@
+<app-header-customer [sideBar]="sideBar"></app-header-customer>
+<app-sidebar-customer #sideBar></app-sidebar-customer>
+
+<!-- right area start -->
+<section class="right_section">
+
+        <!-- inside_content_area start-->
+			<div class="content_area">
+
+                <!-- main row start-->
+                <div class="col-sm-12">
+                    <div class="row">
+
+                        <!--content start -->
+                            <div class="col-sm-12 top_selling">
+                                <div class="alert alert-danger py-3">
+                                  Cancel Your Plan
+                                </div>
+                            </div>
+                        <!--content end-->
+                        
+
+                         <!--content start -->
+                            <div class="col-sm-12 top_selling membership_benefits">
+                                <div class="inside">
+                                    <div class="content">
+                                        <div class="card">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div id="msform">
+                                                        <!-- progressbar -->
+                                                        <ul id="progressbar">
+                                                            <li [class.active]="currentStep >= 1" id="account"><strong>Feedback</strong></li>
+                                                            <li [class.active]="currentStep >= 2" id="personal"><strong>Detail</strong></li>
+                                                            <li [class.active]="currentStep >= 3" id="payment"><strong>Others</strong></li>
+                                                            <li [class.active]="currentStep >= 4" id="confirm"><strong>Finish</strong></li>
+                                                        </ul> <!-- fieldsets -->
+
+
+                                                        <fieldset [style.display]="currentStep===1 ? 'block' : 'none'" [style.opacity]="currentStep===1 ? '1' : '0'">
+                                                            <div class="form-card">
+                                                                <div class="row">
+                                                                <!--content start -->
+                                                                    <div class="col-sm-8 top_selling">
+                                                                        <div class="inside">
+                                                                            <div class="title mem_tabs_title mb-3">Why do you want to cancel</div>
+                                                                            <div class="fedbacklist">
+                                                                                <ul>
+                                                                                    <li><input type="radio" name="a" value="1" [(ngModel)]="radio1" (ngModelChange)="modelChangeFn($event)" class="checks"> I'm having too many techincal issues.</li>
+                                                                                    <li><input type="radio" name="a" value="2" [(ngModel)]="radio1" (ngModelChange)="modelChangeFn($event)" class="checks"> The plan did not work as expected.</li>
+                                                                                    <li><input type="radio" name="a" value="3" [(ngModel)]="radio1" (ngModelChange)="modelChangeFn($event)" class="checks"> I'm not using the products often enough.</li>
+                                                                                    <li><input type="radio" name="a" value="4" [(ngModel)]="radio1" (ngModelChange)="modelChangeFn($event)" class="checks"> It's too expensive.</li>
+                                                                                    <li>
+                                                                                        <input type="radio" name="a" value="5" [(ngModel)]="radio1" (ngModelChange)="modelChangeFn($event)" class="checks"> Other (Please Specify).
+                                                                                        <textarea class="form-control mt-4 other_note" [class.disabled]="radio1!='5'" [(ngModel)]="reason" rows="4"></textarea>
+                                                                                    </li>
+                                                                                </ul>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                <!--content end-->
+                                                            
+
+                                                            <!--content start -->
+                                                                <div class="col-sm-4 top_selling">
+                                                                    <div class="inside">
+                                                                        <div class="title mem_tabs_title mb-3">About Membership</div>
+                                                                        <div class="about_membership">
+                                                                            <div class="list">
+                                                                                <strong>Membership Type:</strong>
+                                                                                <span>{{cancelMembership && cancelMembership.type}}</span>
+                                                                            </div>
+                                                                            <div class="list">
+                                                                                <strong>Membership Amount:</strong>
+                                                                                <span>${{cancelMembership && cancelMembership.amount}}</span>
+                                                                            </div>
+                                                                            <div class="list">
+                                                                                <strong>Purchase Date:</strong>
+                                                                                <span>{{userMembership && userMembership.created_at | date:'d-MMM-yyyy'}}</span>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            <!--content end-->
+                                                            </div>
+                                                            </div>
+                                                            <button type="button" name="next" class="next action-button" [class.disabled]="radio1=='0'" (click)="firstStep()">Next Step</button>
+                                                        </fieldset>
+
+
+                                                        <fieldset  [style.display]="currentStep===2 ? 'block' : 'none'" [style.opacity]="currentStep===2 ? '1' : '0'">
+                                                            <div class="form-card">
+                                                                <!--content start -->
+                                                                <div class="col-sm-12 top_selling">
+                                                                    <div class="title mb-3 mem_tabs_title">Canceling your plan today means:</div>
+                                                                    <div class="inside">
+                                                                        <div class="fedbacklist2">
+                                                                                <ul>
+                                                                                    <li><img src="assets/images/adv-search.png" width="50"> No Advance Search Benefits.</li>
+                                                                                    <li><img src="assets/images/precords.png" width="50"> No Purchase Records Benefits.</li>
+                                                                                    <li><img src="assets/images/marketing.png" width="50"> No Marketing Benefits.</li>
+                                                                                </ul>
+                                                                            </div>
+                                                                    </div>
+                                                                </div>
+                                                                <!--content end-->
+                                                            </div> 
+
+                                                            <button type="button" name="previous" class="previous action-button-previous" (click)="prevStep()">Previous</button>
+                                                            <button type="button" name="next" class="next action-button" (click)="secondStep()">Next Step</button>
+                                                        </fieldset>
+
+
+                                                        <fieldset [style.display]="currentStep===3 ? 'block' : 'none'" [style.opacity]="currentStep===3 ? '1' : '0'">
+                                                            <div class="form-card">
+                                                                <!--content start -->
+                                                                <div class="col-sm-12 top_selling">
+                                                                    <div class="title mb-3 mem_tabs_title">First, before decide you to cancel,</div>
+                                                                    <div class="inside">
+                                                                        <div class="fedbackcont">
+                                                                            <i class="fa fa-comment-o"></i>
+                                                                            <h2>Let's talk</h2>
+                                                                            <p>We can help you find the right way, answer any question, or maybe even give you a special offer.</p>
+                                                                            <button type="button" class="btn btn-success startchat" (click)="startChat()">Start Chat</button>
+                                                                        </div>
+                                                                        <div class="formspace" [class.active_form]="active_form===1">
+                                                                            <label>Subject</label>
+                                                                            <input type="text" [(ngModel)]="subject" class="form-control" name="">
+                                                                            <label>Comment</label>
+                                                                            <textarea class="form-control" [(ngModel)]="comment" rows="3"></textarea>
+                                                                            <input type="button" (click)="verifyMessage()" name="make_payment" class="btn btn-success mt-3"  value="Send" id="sends" />
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <!--content end-->
+                                                            </div>  
+                                                            <div class="col-sm-12"><span class="orline">OR</span></div>
+
+                                                            <button type="button" name="previous" class="previous action-button-previous" (click)="prevStep()">Previous</button>
+                                                            <button type="button" name="next" class="next action-button" (click)="makeRequest()">Cancel Membership</button>
+                                                        </fieldset>
+
+                                                        
+                                                        <fieldset [style.display]="currentStep===4 ? 'block' : 'none'" [style.opacity]="currentStep===4 ? '1' : '0'">
+                                                            <div class="form-card" id="r_approve">
+                                                                <!--content start -->
+                                                                <div class="col-sm-12 top_selling">
+                                                                    <div class="inside shadow-none">
+                                                                        <div class="fedbackcont">
+                                                                            <img src="assets/images/tick.svg" width="90">
+                                                                            <div class="title text-center text-success mt-3 mb-2 cancel_success_title">Your Membership Cancellation Request is Submitted Successfully</div>
+                                                                            <h5>{{cancelMessage}}</h5>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <!--content end-->
+                                                            </div> 
+                                                        </fieldset>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        <!--content end-->
+                        
+
+                    </div>
+                </div>
+                <!-- main row end-->
+
+        </div>
+        <!-- inside_content_area end-->
+
+</section>
+<!-- right area end -->

@@ -1,0 +1,79 @@
+<div class="modal-header">
+    <h4 class="modal-title">Add Reminder</h4>
+    <button type="button" class="close" aria-label="Close" (click)="close(1)"><span aria-hidden="true">&times;</span></button>
+</div>
+<form [formGroup]="reminderForm" (ngSubmit)="setReminder()">
+<div class="modal-body set_remider_modal">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="tagline"><p>Flagging creates a to-do item that reminds you to follow up. After you follow up, you can mark the to-do item complete</p></div>
+            <div class="row">
+                <div class="col-md-6 mt-3">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <label class="w-100">Pick a Date</label>
+                            <input formControlName="date" class="form-control" [minDate]="minDate" placeholder="MM-DD-YYYY" name="date"  ngbDatepicker  #date="ngbDatepicker">
+                            <div class="input-group-append">
+                                <button class="btn btn-default calendar border" (click)="date.toggle()" type="button"><i class="fa fa-calendar"></i></button>
+                            </div>
+                        </div>
+                        <ng-container *ngIf="submit && reminderForm.get('date').errors">
+                            <small *ngIf="reminderForm.get('date').errors.required" class="error-text">Date is required.</small>
+                        </ng-container>
+                    </div>
+                </div>
+                <div class="col-md-6 mt-3">
+                    <div class="form-group">
+                        <label>Pick a Time</label>
+                        <input formControlName="time" type="time" class="form-control">
+                        
+                        <ng-container *ngIf="submit && reminderForm.get('time').errors">
+                            <small *ngIf="reminderForm.get('time').errors.required" class="error-text">Time is required.</small>
+                        </ng-container>
+                    </div>
+                </div>
+                <div class="col-md-12 mt-3">
+                    <div class="form-group">
+                        <label>Add Note</label>
+                        <textarea formControlName="note" class="form-control" rows="6"></textarea>
+                        <ng-container *ngIf="submit && reminderForm.get('note').errors">
+                            <small *ngIf="reminderForm.get('note').errors.required" class="error-text">Note is required.</small>
+                        </ng-container>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6 previous_reminders">
+            <div class="tagline"><h1>Reminders</h1></div>
+            <div class="inset">
+                <ul>
+                    <li  *ngFor="let reminder of reminders">
+                        <div class="particular_box">
+                            <div class="left">
+                                <div class="timezone">
+                                    <p>{{reminder.start |  date:'shortTime'}}</p>
+                                    <p>{{reminder.start |  date}}</p>
+                                </div>
+                                <div class="content">
+                                    <p>{{reminder.title}}</p>
+                                </div>
+                            </div>
+                            <div class="right"><button type="button" class="btn btn-danger" (click)="deleteReminder(reminder.id)"><i class="fa fa-trash"></i></button></div>
+                        </div>
+                    </li>
+                    <li  *ngIf="reminders.length===0">
+                        <h5 class="mt-5 text-center">NO REMINDERS</h5>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal-footer">
+    <button type="submit" class="btn btn-success">Set Reminder</button>
+    <button type="button" class="btn btn-danger" (click)="close(1)">Close</button>
+</div>
+</form>

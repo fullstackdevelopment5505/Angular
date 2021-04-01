@@ -1,0 +1,129 @@
+<app-header></app-header>
+
+
+
+<section class="container-fluid" id="membershipbg">
+    <div class="container">
+        <div class="row">
+        <div class="col-md-4">
+            <div class="whitebg">
+
+                <div class="memrbox">
+                <h2 [innerHTML]="membershipPlanPageTitle"></h2>
+                <p [innerHTML]="membershipPlanDescription">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus vitae massa a dui efficitur pretium sit amet varius purus. Nullam quis lectus eu lorem vulputate condimentum.</p>
+                </div>
+
+                <div class="bluebg">
+                <div class="col-md-12">
+                    <div class="prices"><sup>$</sup>{{membershipPlanAmount}}</div>
+                    <div class="regular">
+                        <p *ngIf="membershipPlanLoginUsers">Login For: {{membershipPlanLoginUsers}} Person</p>
+                        <p *ngIf="membershipPlanType">Membership Type: {{membershipPlanType}}</p>
+                        <!-- <p *ngIf="membershipPlanUpdatedAt">Purchase Date: {{membershipPlanUpdatedAt | date:'d-MMM-yyyy'}}</p> -->
+                    </div>
+                </div>
+                </div>
+                
+                <div class="memrbox">
+                    <a [routerLink]="'/membership/payment'"><button type="button" class="btn btn-success btn-lg">Become Member</button></a>
+                </div>
+                
+            </div>
+        </div>
+
+
+        <div class="col-md-8">
+            <div class="inside">
+               <div class="title" [innerHTML]="page_title">Benefits Of Membership Plans</div>
+               <div class="content" [innerHTML]="page_content">
+                   <!-- <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
+                   <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</p>
+                   <ul>
+                        <li>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</li>
+                        <li>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</li>
+                        <li>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</li>
+                        <li>It is a long established fact that a reader will be distracted by the readable.</li>
+                    </ul> -->
+               </div>
+            </div>
+        </div>
+        </div>
+
+    </div>
+</section>
+
+
+
+
+<section id="memberwork">
+    <div class="container">
+        <div class="headings">
+            <h2 [innerHTML]="memberworkCntntHd">How It Works</h2>
+            <p [innerHTML]="memberworkCntntSubHd">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4">
+                <div class="boxmebr">
+                    <div class="imgcrcl"><img src="{{memberworkCntBoximage1}}"></div>
+                    <h3 [innerHTML]="memberworkCntBoxtitle1">Create an Account</h3>
+                    <p [innerHTML]="memberworkCntBox1content">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus vitae massa a dui efficitur</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="boxmebr">
+                    <div class="imgcrcl"><img src="{{memberworkCntBoximage2}}"></div>
+                    <h3 [innerHTML]="memberworkCntBoxtitle2">Buy Membership</h3>
+                    <p [innerHTML]="memberworkCntBox2content">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus vitae massa a dui efficitur</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="boxmebr">
+                    <div class="imgcrcl"><img src="{{memberworkCntBoximage3}}"></div>
+                    <h3 [innerHTML]="memberworkCntBoxtitle3">Download Report</h3>
+                    <p [innerHTML]="memberworkCntBox3content">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus vitae massa a dui efficitur</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+
+<!-- 
+<section id="kickbg">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="cleintbox4">
+                    <div class="heart-icon"><a href="javascript:void()"><i class="fa fa-heart-o unfill"></i><i class="fa fa-heart fillheart"></i></a></div>
+                    <div class="clientlogo4"><img src="assets/images/kick1.png"></div>
+                    <h3>Martin</h3>
+                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's</p>
+                    <a class="btn btn-primary explore" href="kickstarter-detail.html">Explore</a>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="cleintbox4">
+                    <div class="heart-icon"><a href="javascript:void()"><i class="fa fa-heart-o unfill"></i><i class="fa fa-heart fillheart"></i></a></div>
+                    <div class="clientlogo4"><img src="assets/images/kick2.png"></div>
+                    <h3>Robert</h3>
+                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's</p>
+                    <a class="btn btn-primary explore" href="kickstarter-detail.html">Explore</a>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="cleintbox4">
+                    <div class="heart-icon"><a href="javascript:void()"><i class="fa fa-heart-o unfill"></i><i class="fa fa-heart fillheart"></i></a></div>
+                    <div class="clientlogo4"><img src="assets/images/kick4.png"></div>
+                    <h3>Asle Gram</h3>
+                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's</p>
+                    <a class="btn btn-primary explore" href="kickstarter-detail.html">Explore</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section> -->
+
+
+<app-footer></app-footer>

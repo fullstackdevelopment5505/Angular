@@ -1,0 +1,38 @@
+<div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">SMS Template</h4>
+    <button type="button" class="close" aria-label="Close" (click)="close()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+
+    <div class="form-group">
+        <textarea #r  placeholder="SMS Template" id="name" rows="5" [(ngModel)]="subject" class="form-control"></textarea>
+        <div class="dynamic-button">
+          <button (click)="addText('%FULL_NAME%')" type="button" class="btn-default mr-2">Full Name</button>
+          <button (click)="addText('%FIRST_NAME%')" type="button" class="btn-default mr-2">First Name</button>
+          <button (click)="addText('%ADDRESS%')" type="button" class="btn-default mr-2">Address</button>
+          <button (click)="addText('%CITY%')" type="button" class="btn-default mr-2">City</button>
+          <button (click)="addText('%STATE%')" type="button" class="btn-default">State</button>
+      </div>
+    </div>   
+    <div class="form-group"> 
+      <label for="save">
+          <input id="save" [(ngModel)]="save" type="checkbox" >
+          Save Template?
+      </label>
+      <input type="text" [disabled]='!save'[(ngModel)]="title"  placeholder="Template Title"  class="form-control">
+    </div>
+    <div class="row text-center position-relative">
+      <hr class="w-100 d-block">
+      <h4 class="mx-auto d-block bg-default">OR</h4>
+  </div>
+    <select class="form-control mb-2" (change)="changeSelect($event)" name="" id="">
+        <option value="" disabled>--Select Template--</option>
+        <option *ngFor="let da of allMessages" value="{{da.message}}">{{da.template_title}}</option>
+    </select>
+    <div class="form-group"> 
+        <button (click)='sendSms()' class="btn btn-success">Send SMS</button>
+    </div>
+
+  </div>

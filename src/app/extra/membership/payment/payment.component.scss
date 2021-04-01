@@ -1,0 +1,224 @@
+#paymentbg {
+    margin: 0px;
+    padding: 60px 0px;
+    background: #f3f3f3;
+    position: relative;
+}
+#paymentbg .paybox {
+    margin: 0px auto;
+    padding: 20px;
+    background: #fff;
+    width: 100%;
+    max-width: 585px;
+}
+#paymentbg .paybox .label {
+    margin: 0px;
+    padding: 0px;
+    font-size: 20px;
+    font-weight: 500;
+}
+#paymentbg .paybox input.own-fild {
+    margin:15px 0;
+    padding: 0px 15px;
+    width: 100%;
+    height: 48px;
+    background: #f3f3f3;
+    border: #dcdcdc solid 1px;
+    border-radius: 5px;
+}
+#paymentbg .paybox .cvv_text {
+    margin: 0px;
+    padding: 12% 0 0;
+    font-size: 16px;
+}
+#paymentbg .paybox input.sendbtn2 {
+    width: 100%;
+    height: 55px;
+    color: #fff;
+    border: none;
+    background: #1e8ae5;
+    border-radius: 5px;
+    margin: 10px 0;
+    font-size: 20px;
+}
+
+
+
+@media all and (max-width: 767px){
+	#paymentbg .paybox .cvv_text{padding: 0px;}
+}
+
+
+
+
+/* payment start */
+.top_selling .inside {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    margin-bottom: 30px;
+}
+.right_area .inside .title {
+    font-size: 20px;
+    color: #6b6b6b;
+    margin-bottom: 13px;
+    text-transform: capitalize;
+}
+.methods li{list-style: none;}
+.methods li .titles label {
+    display: flex;
+    display: -webkit-flex;
+    justify-content: space-between;
+    -webkit-justify-content: space-between;
+    align-items: center;
+    -webkit-align-items: center;
+    padding: 8px 10px;
+    cursor: pointer;
+    height: 50px;
+}
+.methods li .titles label .images {
+    display: flex;
+    display: -webkit-flex;
+}
+.methods li .titles label .images p {
+    max-width: 50px;
+    margin-left: 3px;
+    margin-bottom: 0px;
+}
+.methods li .titles {
+    background: #f1f1f1;
+    border: 1px solid #d6d6d6;
+    margin-bottom: 20px;
+}
+.methods li .details label {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+.methods li .details .form-control {
+    height: 46px;
+}
+.methods li .details > .row > div {
+    margin-bottom: 20px;
+}
+.methods li .titles label input[type="radio"] {
+    width: 19px;
+    height: 20px;
+    vertical-align: sub;
+    margin-right: 8px;
+}
+.terms {
+    margin: 0 0 30px;
+}
+.terms input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    vertical-align: middle;
+    margin-right: 8px;
+}
+.place_order button {
+    width: 100%;
+    font-size: 20px;
+    padding: 14px;
+}
+.total_amount li {
+    padding: 15px 0;
+    border-bottom: 1px solid #CCB;
+    list-style: none;
+}
+.total_amount li strong {
+    font-weight: 600;
+    margin-right: 5px;
+}
+.subtotal {
+    display: flex;
+    justify-content: space-between;
+    display: -webkit-flex;
+    -webkit-justify-content: space-between;
+    align-items: center;
+    -webkit-align-items: center;
+    padding: 18px 10px;
+    background: #e4e4e4;
+}
+.subtotal strong {
+    font-weight: 500;
+    font-size: 17px;
+}
+.subtotal span {
+    font-weight: 600;
+    font-size: 30px;
+}
+.save_card label {
+    width: 100%;
+    display: block;
+    background: -webkit-linear-gradient(#ffffff, #e0e0e0);
+    background: linear-gradient(#ffffff, #e0e0e0);
+    background: -ms-linear-gradient(#ffffff, #e0e0e0);
+    padding: 15px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    cursor: pointer;
+    position: relative;
+}
+.save_card .holder_name {
+    font-size: 20px;
+    font-weight: 500;
+    text-transform: uppercase;
+}
+.save_card .account_number {
+    font-size: 18px;
+    margin: 9px 0 10px;
+    font-weight: 500;
+}
+.save_card .expire{
+    font-size: 18px;
+    font-weight: 500;
+    padding-bottom: 10px;
+    .btn-primary{
+        float: right;
+    }
+}
+.save_card .trash {
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    font-size: 20px;
+    color: #2b2b2b;
+}
+.save_card {
+    margin-top: 15px;    
+}
+.save_card label input{
+    display: none;
+}
+.save_card label span {
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+    width: 20px;
+    height: 20px;
+    border-radius: 100px;
+}
+.save_card label input:checked + span{
+    display: none;
+    background-color: #28a745;
+}
+.save_card label input:checked + span::after {
+    content: "";
+    width: 12px;
+    height: 8px;
+    position: absolute;
+    left: 4px;
+    top: 5px;
+    border-left: 3px solid #fff;
+    border-bottom: 3px solid #fff;
+    transform: rotate(-60deg);
+    -webkit-transform: rotate(-60deg);
+}
+small.error-text.error-big {
+    font-size: 22px;
+}
+/* payment end */
+
+
+

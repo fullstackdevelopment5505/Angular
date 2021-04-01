@@ -1,0 +1,213 @@
+
+/*news-detail*/
+#news_list {
+    padding: 30px 0;
+    margin: 0px;
+}
+#news_list h3 {
+    font-size: 28px;
+    font-weight: 500;
+    margin-bottom: 30px;
+}
+#news_list .newshead h3 {
+    font-size: 36px;
+    color: #1b86e3;
+    margin: 0px;
+    padding: 0px;
+}
+.rec_title{
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical; 
+}
+.newshead  ul.tags {
+    margin: 8px 0 0;
+    padding: 0px;
+}   
+
+.newshead ul.tags li {
+    margin: 0px;
+    padding: 0px;
+    list-style: none;
+    display: inline-block;
+    margin-right: 15px;
+    color: #000;
+    font-weight: 500;
+}
+#news_list .contentnews img {
+    width: 100%;
+    margin: 20px 0px;
+}
+#news_list .contentnews p {
+    font-size: 16px;
+    font-weight: 400;
+}
+
+#news_list .contentnews h3 {
+    color: #000;
+    font-size: 28px;
+    margin-bottom: 20px;
+    font-weight: 500;
+}
+/*news-detail-end*/
+
+/*around-you-css*/
+#latest_news1 {
+    padding: 40px 25px;
+    background: #f1f1f1;
+}
+#latest_news1 .cardbox {
+    background: #fff;
+    border: #D6D6D6 solid thin;
+    border-radius: 5px;
+    position: relative;
+    margin-bottom: 25px;
+}
+#latest_news1 .cardbox .imgrel {
+    width: 100%;
+    height: 160px;
+    overflow: hidden;
+}
+#latest_news1 .cardbox .imgrel img {
+    object-fit: cover;
+    width: 100%;
+}
+#latest_news1 .cardbox .contant {
+    margin: 0px;
+    padding:15px;
+}
+#latest_news1 .cardbox .contant ul {
+    margin: 0px;
+    padding: 0;
+}
+#latest_news1 .cardbox .contant ul li {
+    list-style: none;
+    display: inline-block;
+    font-weight: 500;
+    font-size: 16px;
+}
+#latest_news1 .cardbox .contant p {
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+#latest_news1 .cardbox .contant p a {
+    color: #000;
+}
+#latest_news1 h3 {
+    font-size: 28px;
+    font-weight: 500;
+    color: #000;
+    margin-bottom: 25px;
+}
+
+.chat_detail_link2 {
+    position: absolute;
+    top: 0;
+}
+.chat_detail_link2 p {
+    background: #0d8ee0;
+    color: #fff;
+    padding: 7px;
+    font-weight: 500;
+}
+.chat_detail_link2 .links {
+    margin: 0px;
+    padding: 0px;
+}
+.chat_detail_link2 .links ul {
+    margin: 0px;
+    padding: 0px;
+    display: flex;
+    justify-content: flex-end;
+    display: -webkit-flex;
+    -webkit-justify-content: flex-end;
+    flex-wrap: wrap;
+    -webkit-flex-wrap: wrap;
+}
+.chat_detail_link2 .links ul li {
+    list-style: none;
+    margin: 0px 0px 0 0;
+    padding: 5px;
+    display: flex;
+}
+.chat_detail_link2 .links ul li a {
+    margin: 0px 0px 0 0;
+    padding:5px;
+    color: #fff;
+    background: #1b86e3;
+    display: inline-block;
+    border: #1b86e3 solid 1px;
+    height: 35px;
+    width: 35px;
+    border-radius: 50%;
+}
+.chat_detail_link2 .links ul li a img.bulb, .chat_detail_link2 .links ul li a img.bulb2 {
+    max-width: 22px;
+    margin: 0px;
+}
+.chat_detail_link2 .links ul li a img.bulb2 {
+    display: none;
+}
+#latest_news1 .cardbox .contant p span {
+    color: #1b86e3;
+}
+/*around-css-end*/
+
+
+.catg_box {
+    margin: 0px;
+    padding: 0px;
+    background: #F3F3F3;
+}
+
+.catg_box ul {
+    margin: 0px;
+    padding: 0px;
+}
+
+.catg_box ul li {
+    list-style: none;
+    margin: 0px;
+    padding: 0;
+    display: block;
+    border-bottom: #E5E5E5 solid thin;
+}
+.catg_box ul li:last-child{border-bottom:none;}
+.catg_box ul li a {
+    margin: 0px;
+    padding: 15px;
+    display: block;
+    color: #000;
+    font-size: 18px;
+    font-weight: 500;
+    cursor: pointer; 
+}
+.catg_box ul li.active a {
+    color: #fff;
+    background-color:#007bff;
+}
+.recent_box {
+    margin: 0px;
+    padding: 0px;
+}
+.recent_box ul {
+    margin: 0px;
+    padding: 0px;
+}
+.recent_box ul li {
+    list-style: none;
+    display: block;
+    border-bottom: #E5E5E5 solid thin;
+    border-left: #1b86e3 solid 4px;
+    margin-top: 15px;
+}
+.recent_box ul li a {
+    margin: 0px;
+    padding: 5px 15px;
+    display: block;
+    font-size: 16px;
+    font-weight: 500;
+    color: #000;
+}

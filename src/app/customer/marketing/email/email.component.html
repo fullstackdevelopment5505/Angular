@@ -1,0 +1,243 @@
+<app-header-customer [sideBar]="sideBar"></app-header-customer>
+<app-sidebar-customer #sideBar></app-sidebar-customer>
+
+<!-- main div start -->
+<div class="main_area">
+	
+	<!-- right area start -->
+	<section class="right_section" *ngIf="isEmail" [class.load]="load!=1">
+
+			<!-- inside_content_area start-->
+			<div class="content_area">
+
+					<!-- main row start-->
+					<div class="col-sm-12">
+						<div class="row">
+
+
+							<div class="col-md-5 offset-md-7 mt-2 mb-4 text-right d-flex justify-content-end">
+								<a class="btn btn-primary text-nowrap ml-2" (click)="handleSection('NewEmail',0)">Create New Email </a>
+							</div>
+
+
+							<div class="tab-content design_liberary" style="width: 100%;">
+								<!-- Email Design -->
+								<div class="tab-pane container active" id="home">
+
+									<div *ngIf="load==1" class="col-sm-12 top_selling">
+											<div class="inside">
+												<div class="title">Saved Template</div>
+												<div class="lists mt-4">
+														<table class="table">
+															<thead>
+															  <tr>
+																<th scope="col">#</th>
+																<th scope="col">Subject</th>
+																<th scope="col">Action</th>
+															  </tr>
+															</thead>
+															<tbody>
+															  <tr *ngFor="let da of allEmail">
+																<td>{{da.id}}</td>
+																<td>{{da.template_title}}</td>
+																<td>
+																	<button (click)="continueTemplate(da.id)" class="btn btn-success">Continue with template</button>
+																</td>
+															  </tr>
+															</tbody>
+														  </table>
+														
+												</div>
+											</div>
+									</div>
+									<div *ngIf="load!=1" class="col-sm-12 top_selling">
+										<div class="inside">
+											<div class="title">Saved Template</div>
+											<div class="lists mt-4">
+												<div class="row">
+													<table class="table">
+														<thead>
+														  <tr>
+															<th scope="col">#</th>
+															<th scope="col">Subject</th>
+															<th scope="col">Action</th>
+														  </tr>
+														</thead>
+														<tbody>
+														  <tr>
+															<td>1</td>
+															<td>Adventure</td>
+															<td>
+																<button  class="btn btn-success">Continue with template</button>
+															</td>
+														  </tr>
+														  <tr>
+															<td>2</td>
+															<td>Ingrid & Anders</td>
+															<td>
+																<button  class="btn btn-success">Continue with template</button>
+															</td>
+														  </tr>
+														  <tr>
+															<td>3</td>
+															<td>Mercado</td>
+															<td>
+																<button  class="btn btn-success">Continue with template</button>
+															</td>
+														  </tr>
+
+														</tbody>
+													  </table>
+													
+												</div>
+											</div>
+										</div>
+									</div>
+
+								</div>
+								
+								
+							</div>
+							
+
+						</div>
+					</div>
+					<!-- main row end-->
+
+			</div>
+			<!-- inside_content_area end-->
+
+	</section>
+    <!-- right area end -->
+    <app-common-overlay *ngIf="load!=1"></app-common-overlay>
+    <!--new Email section start here-->
+    <section class="right_section" *ngIf="isNewEmail">
+
+			<!-- inside_content_area start-->
+			<div class="content_area">
+
+				<!--top start -->
+				<div class="col-sm-12 top_selling">
+					<div class="inside p-0 mb-0">
+						<div class="col-sm-12 title_canvas">
+							<div class="row align-items-center">
+								<div class="col-sm-6 left"><a (click)="backBtnClick()" class="btn btn-light"><i class="fas fa-step-backward"></i> Back</a></div>
+								<div class="col-sm-6 right d-flex justify-content-end">
+									<!-- <button class="btn btn-primary mr-2" id="save_data" [disabled]="!this.emailPostModel.template_content" (click)="saveEmailData()">Save</button> -->
+									<a  class="btn btn-success"  (click)="handleSection('chooseProspect',0)">Send</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!--top end-->
+				<div class="col-sm-12 top_selling">
+					<div class="inside mb-0 mt-4">
+						<div class="col-sm-12 double_divide_bottom">
+							<div class="row">
+
+								<div class="tab-content">
+									<!-- second-tab-->
+									<div *ngIf="isBuild">
+									<div class="tab-pane active" id="menu1">
+										<div class="w-100">
+											<div id="bar">
+											<!-- <email-editor  [options]="options" #editor></email-editor> -->
+											
+											<div class="form-group">
+												<input type="text" placeholder="Email Subject" id="name" [(ngModel)]="subject" class="form-control">
+											</div>
+											<div class="form-group"> 
+												<quill-editor  [styles]="editorStyle"  (onEditorCreated)="selectionChange($event)" [(ngModel)]="content" placeholder="Enter Content"
+												required>
+												</quill-editor>
+												<div class="dynamic-button">
+													<button (click)="addText('%name%')" class="btn-default mr-2">First Name</button>
+													<button (click)="addText('%last_name%')" class="btn-default mr-2">Last Name</button>
+													<button (click)="addText('%apn%')" class="btn-default mr-2">APN</button>
+													<button (click)="addText('%address%')"  class="btn-default mr-2">Address</button>
+													<button (click)="addText('%price%')"  class="btn-default">Price</button>
+												</div>
+											</div>
+
+											<div class="form-group text-left"> 
+												<label for="save">
+													<input id="save" [(ngModel)]="save" type="checkbox" >
+													Save Template?
+												</label>
+												<input type="text" [disabled]='!save'[(ngModel)]="title"  placeholder="Template Title"  class="form-control">
+											</div>
+											
+										 </div>
+										</div>
+									</div>
+									<!-- second-tab-end-->
+								</div>
+
+
+								
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- bottom area end -->
+
+			</div>
+			</div>
+			<!-- inside_content_area end-->
+
+    </section>
+     <!--new Email section end here-->
+</div>
+<!-- main div end -->
+
+
+<!-- Preview -->
+<div class="modal" id="myModal">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+  
+      <!-- Modal Header -->
+      <div class="modal-header">
+          <h4 class="modal-title">Design Preview</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+   
+      <!-- Modal body -->
+      <div class="modal-body">
+          <img src="assets/images/im2.png" width="100%">
+      </div>
+  
+      <!-- Modal footer -->
+      <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+      </div>
+  
+      </div>
+    </div>
+  </div>
+  
+  <!-- Preview recently email -->
+<div class="modal" id="myModalRecentEmail">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+  
+      <!-- Modal Header -->
+      <div class="modal-header">
+          <h4 class="modal-title">Design Preview</h4>
+          <!-- <button type="button" class="close" data-dismiss="modal">&times;</button> -->
+      </div>
+   
+      <!-- Modal body -->
+      <div class="modal-body">
+      <div [innerHtml]="emailPostModel.template_content"></div>
+      </div>
+  
+      <!-- Modal footer -->
+      <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+      </div>
+  
+      </div>
+    </div>
+  </div>

@@ -1,0 +1,707 @@
+<app-header></app-header>
+
+<section id="mapview">
+	<div class="col-md-12">
+		<div class="row">
+			<!-- <div class="col-md-4 nopadding fixdpic"><img *ngIf="!imageLoading" src="{{img}}"><p *ngIf="imageLoading">Loading</p></div> -->
+			<!-- <div class="col-md-12 nopadding">
+				<div class="row"> -->
+					<div class="col-6 pad-0">
+						<agm-map [latitude]="lat" [zoom]="zoom" [longitude]="lng" [mapTypeId]="'hybrid'">
+							<agm-marker  [latitude]="lat" [longitude]="lng"></agm-marker>
+						</agm-map>
+					</div>
+					<div class="col-6 pad-0">
+						<div style="width:100%"  id="pano"></div>
+					</div>
+				<!-- </div>
+			</div> -->
+
+		</div>
+	</div>
+</section>
+<section id="prop_detail_bg">
+	<div class="fixdpic" id="map"></div>
+    
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="share_box">
+					<div class="favicons2">
+						<ul>
+							<li><a href="javascript:void()" title="notes" data-toggle="modal" data-target="#myModal" class="intro"><img src="assets/images/notes.png"></a></li>
+							<li>
+								<a (click)="bulb()" href="javascript:void()" title="lightbulb">
+									<img [src]="imgStatus==1? 'assets/images/bulb2.png' : 'assets/images/bulb.png'"  class="bulb">
+								</a>
+							</li>
+							<li>
+								<a (click)="fire()" href="javascript:void()" title="fire">
+									<img [src]="imgStatus==2? 'assets/images/fire2.png' : 'assets/images/fire.png'"  class="fire">
+								</a>
+							</li>
+							<li><a href="javascript:void()" title="trash"><i class="fa fa-trash"></i></a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+
+
+
+<!-- modal_mynotes -->
+<div class="modal fade" id="myModal">
+    <div class="modal-dialog modal-md">
+      <div class="modal-content">
+      	<!-- Modal-Header-->
+        <div class="modal-header">
+          <h4 class="modal-title">My Notes</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        <!-- Modal-Header-end -->
+
+        <!-- Modal-body -->
+        <div class="modal-body" id="notes_bg">
+        	<form  [formGroup]="noteForm" (ngSubmit)="submitForm()">
+				<textarea class="areas" formControlName="note" placeholder="Add a note..."></textarea>
+				<input type="hidden" formControlName="id">
+        		<input type="submit" class="sendbtn" value="Send A Message" name="">
+        	</form>
+        </div>
+        <!-- Modal-body-end -->
+
+      </div>
+  </div>
+</div>
+<!-- modal_mynotes-end -->
+
+
+
+<!-- send_message -->
+<div class="modal fade" id="myModal2">
+    <div class="modal-dialog modal-md">
+      <div class="modal-content">
+      	<!-- Modal-Header-->
+        <div class="modal-header">
+          <h4 class="modal-title">Send A Message</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        <!-- Modal-Header-end -->
+
+        <!-- Modal-body -->
+        <div class="modal-body2" id="notes_bg">
+        	<div class="owner_detail">
+        		<div class="ownpic"><img src="assets/images/owner.png"></div>
+        		<div class="owner_content">
+        			<h3>Owner</h3>
+        			<p>{{property.OWNER_1_FULL_NAME}}</p>
+        			<p><i class="fa fa-map-marker"></i>  {{property.SITUS_FULL_ADDRESS}}</p>
+        		</div>
+        	</div>
+
+        	<div class="form_boxs">
+        		<form>
+        			<div class="label">Name</div>
+        			<input type="text" class="own-fild" name="">
+        			<div class="label">Email Address</div>
+        			<input type="email" class="own-fild" name="">
+        			<div class="label">Mobile Number</div>
+        			<input type="text" class="own-fild" name="">
+        			<div class="label">Message</div>
+        			<textarea class="tarea"></textarea>
+        			<input type="submit" class="sendbtn2" value="Send A Message" name="">
+        		</form>
+        	</div>
+
+        </div>
+        <!-- Modal-body-end -->
+
+      </div>
+  </div>
+</div>
+<!-- send_message-end -->
+
+
+<section id="prop_content_part">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-8 col-lg-9">
+				<div class="prop_head">
+					<h3>${{property.SalePrice | number}}</h3>
+				</div>
+				<div class="location"><i class="fa fa-map-marker"></i><a href="https://maps.google.com/?q={{property.SITUS_FULL_ADDRESS}}">
+				{{property.SITUS_FULL_ADDRESS}} </a> </div>
+
+				<div class="sidebar_box">
+					<div class="owner_box">
+						<h4>Owner</h4>
+						<p>{{property.OWNER_1_FULL_NAME}}</p>
+					</div>
+					<div class="owner_box">
+						<h4>APN</h4>
+						<p>{{property.APN_FORMATTED}}</p>
+					</div>
+					<div class="owner_box">
+						<h4>State</h4>
+						<p>{{property.MAIL_STATE}}</p>
+					</div>
+				</div>
+
+				<div class="prop_head_link">
+					<div class="grid_box">
+						<img src="assets/images/pbed.png">
+						<h2>Bedroom</h2>
+						<p>{{property.NUMBER_OF_BEDROOMS}}</p>
+					</div>
+					<div class="grid_box">
+						<img src="assets/images/pbath.png">
+						<h2>baths ( F/ H )</h2>
+						<p>{{property.NUMBER_OF_BATHS}}</p>
+					</div>
+					<div class="grid_box">
+						<img src="assets/images/lotarea.png">
+						<h2>Lot Area</h2>
+						<p>{{property.LOT_AREA}}</p>
+					</div>
+				</div>
+
+<!-- 
+				<div class="decrp_box">
+					<h3>Description</h3>
+					<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+				</div> -->
+
+				
+
+<!-- 
+				<div class="decrp_box">
+					<h3>Madison Huntsville</h3>
+					<div class="P_grids">
+						<div class="home_grid">
+							<h3>Assessor Roll</h3>
+							<h4>Available</h4>
+							<i class="fa fa-check-circle"></i>
+							<p>Last Update Date November, 2019</p>
+						</div>
+						<div class="home_grid">
+							<h3>Assessor Map</h3>
+							<h4>Available</h4>
+							<i class="fa fa-check-circle"></i>
+						</div>
+						<div class="home_grid">
+							<h3>Flex Search</h3>
+							<h4>Available</h4>
+							<i class="fa fa-check-circle"></i>
+						</div>
+					</div>
+				</div>
+
+
+				<div class="decrp_box">
+					<div class="accordianb_box">
+						<div class="accordian">
+							<div class="accordian-heading">
+								Deeds						      
+								<i class="fa fa-plus"></i>
+								<i class="fa fa-minus"></i>
+							</div>
+							<div class="accordian_content" style="display: none;">
+								<h3>Transaction Data</h3>
+								<div class="acord_grid">
+									<div class="grid_accord_box">
+										<p>Available</p>
+										<ul>
+											<li><i class="fa fa-check-circle"></i></li>
+											<li><i class="fa fa-check-circle"></i></li>
+											<li><i class="fa fa-check-circle"></i></li>
+											<li><i class="fa fa-check-circle"></i></li>
+											<li><i class="fa fa-check-circle"></i></li>
+											<li><i class="fa fa-check-circle"></i></li>
+											<li><i class="fa fa-check-circle"></i></li>
+										</ul>
+									</div>
+									<div class="grid_accord_box">
+										<p>Last Record Data</p>
+										<ul>
+											<li>November 05, 2019</li>
+											<li>November 05, 2019</li>
+											<li>November 05, 2019</li>
+											<li>November 05, 2019</li>
+											<li>November 05, 2019</li>
+											<li>November 05, 2019</li>
+											<li>November 05, 2019</li>
+										</ul>
+									</div>
+									<div class="grid_accord_box">
+										<p>Start Date</p>
+										<ul>
+											<li>January 1997</li>
+											<li>January 1997</li>
+											<li>January 1907</li>
+											<li>January 1997</li>
+											<li>January 1901</li>
+											<li>January 2010</li>
+											<li>January 2015</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="accordian">
+							<div class="accordian-heading">
+								Mortgages						      
+								<i class="fa fa-plus"></i>
+								<i class="fa fa-minus"></i>
+							</div>
+							<div class="accordian_content">
+								<h3>Transaction Data</h3>
+								<div class="acord_grid">
+									<div class="grid_accord_box">
+										<p>Available</p>
+										<ul>
+											<li><i class="fa fa-check-circle"></i></li>
+											<li><i class="fa fa-check-circle"></i></li>
+											<li><i class="fa fa-check-circle"></i></li>
+											<li><i class="fa fa-check-circle"></i></li>
+											<li><i class="fa fa-check-circle"></i></li>
+											<li><i class="fa fa-check-circle"></i></li>
+											<li><i class="fa fa-check-circle"></i></li>
+										</ul>
+									</div>
+									<div class="grid_accord_box">
+										<p>Last Record Data</p>
+										<ul>
+											<li>November 05, 2019</li>
+											<li>November 05, 2019</li>
+											<li>November 05, 2019</li>
+											<li>November 05, 2019</li>
+											<li>November 05, 2019</li>
+											<li>November 05, 2019</li>
+											<li>November 05, 2019</li>
+										</ul>
+									</div>
+									<div class="grid_accord_box">
+										<p>Start Date</p>
+										<ul>
+											<li>January 1997</li>
+											<li>January 1997</li>
+											<li>January 1907</li>
+											<li>January 1997</li>
+											<li>January 1901</li>
+											<li>January 2010</li>
+											<li>January 2015</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="accordian">
+							<div class="accordian-heading">
+								Assignments						      
+								<i class="fa fa-plus"></i>
+								<i class="fa fa-minus"></i>
+							</div>
+							<div class="accordian_content">
+								<h3>Transaction Data</h3>
+								<div class="acord_grid">
+									<div class="grid_accord_box">
+										<p>Available</p>
+										<ul>
+											<li><i class="fa fa-check-circle"></i></li>
+											<li><i class="fa fa-check-circle"></i></li>
+											<li><i class="fa fa-check-circle"></i></li>
+											<li><i class="fa fa-check-circle"></i></li>
+											<li><i class="fa fa-check-circle"></i></li>
+											<li><i class="fa fa-check-circle"></i></li>
+											<li><i class="fa fa-check-circle"></i></li>
+										</ul>
+									</div>
+									<div class="grid_accord_box">
+										<p>Last Record Data</p>
+										<ul>
+											<li>November 05, 2019</li>
+											<li>November 05, 2019</li>
+											<li>November 05, 2019</li>
+											<li>November 05, 2019</li>
+											<li>November 05, 2019</li>
+											<li>November 05, 2019</li>
+											<li>November 05, 2019</li>
+										</ul>
+									</div>
+									<div class="grid_accord_box">
+										<p>Start Date</p>
+										<ul>
+											<li>January 1997</li>
+											<li>January 1997</li>
+											<li>January 1907</li>
+											<li>January 1997</li>
+											<li>January 1901</li>
+											<li>January 2010</li>
+											<li>January 2015</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="accordian">
+							<div class="accordian-heading">
+								Releases						      
+								<i class="fa fa-plus"></i>
+								<i class="fa fa-minus"></i>
+							</div>
+							<div class="accordian_content">
+								<h3>Transaction Data</h3>
+								<div class="acord_grid">
+									<div class="grid_accord_box">
+										<p>Available</p>
+										<ul>
+											<li><i class="fa fa-check-circle"></i></li>
+											<li><i class="fa fa-check-circle"></i></li>
+											<li><i class="fa fa-check-circle"></i></li>
+											<li><i class="fa fa-check-circle"></i></li>
+											<li><i class="fa fa-check-circle"></i></li>
+											<li><i class="fa fa-check-circle"></i></li>
+											<li><i class="fa fa-check-circle"></i></li>
+										</ul>
+									</div>
+									<div class="grid_accord_box">
+										<p>Last Record Data</p>
+										<ul>
+											<li>November 05, 2019</li>
+											<li>November 05, 2019</li>
+											<li>November 05, 2019</li>
+											<li>November 05, 2019</li>
+											<li>November 05, 2019</li>
+											<li>November 05, 2019</li>
+											<li>November 05, 2019</li>
+										</ul>
+									</div>
+									<div class="grid_accord_box">
+										<p>Start Date</p>
+										<ul>
+											<li>January 1997</li>
+											<li>January 1997</li>
+											<li>January 1907</li>
+											<li>January 1997</li>
+											<li>January 1901</li>
+											<li>January 2010</li>
+											<li>January 2015</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="accordian">
+							<div class="accordian-heading">
+								Foreclosures						      
+								<i class="fa fa-plus"></i>
+								<i class="fa fa-minus"></i>
+							</div>
+							<div class="accordian_content">
+								<h3>Transaction Data</h3>
+								<div class="acord_grid">
+									<div class="grid_accord_box">
+										<p>Available</p>
+										<ul>
+											<li><i class="fa fa-check-circle"></i></li>
+											<li><i class="fa fa-check-circle"></i></li>
+											<li><i class="fa fa-check-circle"></i></li>
+											<li><i class="fa fa-check-circle"></i></li>
+											<li><i class="fa fa-check-circle"></i></li>
+											<li><i class="fa fa-check-circle"></i></li>
+											<li><i class="fa fa-check-circle"></i></li>
+										</ul>
+									</div>
+									<div class="grid_accord_box">
+										<p>Last Record Data</p>
+										<ul>
+											<li>November 05, 2019</li>
+											<li>November 05, 2019</li>
+											<li>November 05, 2019</li>
+											<li>November 05, 2019</li>
+											<li>November 05, 2019</li>
+											<li>November 05, 2019</li>
+											<li>November 05, 2019</li>
+										</ul>
+									</div>
+									<div class="grid_accord_box">
+										<p>Start Date</p>
+										<ul>
+											<li>January 1997</li>
+											<li>January 1997</li>
+											<li>January 1907</li>
+											<li>January 1997</li>
+											<li>January 1901</li>
+											<li>January 2010</li>
+											<li>January 2015</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="accordian">
+							<div class="accordian-heading">
+								HOA Liens						      
+								<i class="fa fa-plus"></i>
+								<i class="fa fa-minus"></i>
+							</div>
+							<div class="accordian_content">
+								<h3>Transaction Data</h3>
+								<div class="acord_grid">
+									<div class="grid_accord_box">
+										<p>Available</p>
+										<ul>
+											<li><i class="fa fa-check-circle"></i></li>
+											<li><i class="fa fa-check-circle"></i></li>
+											<li><i class="fa fa-check-circle"></i></li>
+											<li><i class="fa fa-check-circle"></i></li>
+											<li><i class="fa fa-check-circle"></i></li>
+											<li><i class="fa fa-check-circle"></i></li>
+											<li><i class="fa fa-check-circle"></i></li>
+										</ul>
+									</div>
+									<div class="grid_accord_box">
+										<p>Last Record Data</p>
+										<ul>
+											<li>November 05, 2019</li>
+											<li>November 05, 2019</li>
+											<li>November 05, 2019</li>
+											<li>November 05, 2019</li>
+											<li>November 05, 2019</li>
+											<li>November 05, 2019</li>
+											<li>November 05, 2019</li>
+										</ul>
+									</div>
+									<div class="grid_accord_box">
+										<p>Start Date</p>
+										<ul>
+											<li>January 1997</li>
+											<li>January 1997</li>
+											<li>January 1907</li>
+											<li>January 1997</li>
+											<li>January 1901</li>
+											<li>January 2010</li>
+											<li>January 2015</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="accordian">
+							<div class="accordian-heading">
+								PACE Liens					      
+								<i class="fa fa-plus"></i>
+								<i class="fa fa-minus"></i>
+							</div>
+							<div class="accordian_content">
+								<h3>Transaction Data</h3>
+								<div class="acord_grid">
+									<div class="grid_accord_box">
+										<p>Available</p>
+										<ul>
+											<li><i class="fa fa-check-circle"></i></li>
+											<li><i class="fa fa-check-circle"></i></li>
+											<li><i class="fa fa-check-circle"></i></li>
+											<li><i class="fa fa-check-circle"></i></li>
+											<li><i class="fa fa-check-circle"></i></li>
+											<li><i class="fa fa-check-circle"></i></li>
+											<li><i class="fa fa-check-circle"></i></li>
+										</ul>
+									</div>
+									<div class="grid_accord_box">
+										<p>Last Record Data</p>
+										<ul>
+											<li>November 05, 2019</li>
+											<li>November 05, 2019</li>
+											<li>November 05, 2019</li>
+											<li>November 05, 2019</li>
+											<li>November 05, 2019</li>
+											<li>November 05, 2019</li>
+											<li>November 05, 2019</li>
+										</ul>
+									</div>
+									<div class="grid_accord_box">
+										<p>Start Date</p>
+										<ul>
+											<li>January 1997</li>
+											<li>January 1997</li>
+											<li>January 1907</li>
+											<li>January 1997</li>
+											<li>January 1901</li>
+											<li>January 2010</li>
+											<li>January 2015</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+
+					</div>
+				</div> -->
+
+
+			</div>
+
+
+			<div class="col-md-4 col-lg-3">
+				
+				<div class="mainside">
+					<div class="accordian" style="margin-bottom:30px">
+						<div class="accordian-heading ">
+							Reports
+							<i class="fa fa-plus"></i>
+							<i class="fa fa-minus"></i>
+						</div>
+						<div class="accordian_content" id="reports" style="font-size: 13px; padding: 6px; display: block;">
+							<ul id="reportsIcons" style="list-style-type:none;">
+
+									<li>
+										<div>
+											<label for="">ForeclosureReport</label>
+										</div>
+										<div>
+											<a class="btn btn-chk" (click)="chkAvailability(1)" *ngIf="property.for_closue_status=='0'">Check Availablity</a><i *ngIf="loader1" class="fa fa-spinner fa-spin" style="font-size:18px"></i><i *ngIf="property.for_closue_status=='1'" (click)="reportDownload(1)" class="fa fa-download" aria-hidden="true"></i>
+										</div>
+									</li>
+									<li>
+										<div>
+											<label for="">OpenLienReport</label>
+										</div>
+										<div>
+											<a class="btn btn-chk" (click)="chkAvailability(2)" *ngIf="property.open_lien_status=='0'">Check Availablity</a><i *ngIf="loader2" class="fa fa-spinner fa-spin" style="font-size:18px"></i><i *ngIf="property.open_lien_status=='1'" (click)="reportDownload(2)" class="fa fa-download" aria-hidden="true"></i>
+										</div>
+									</li>
+									<li>
+										<div>
+											<label for="">PropertyDetailReport</label>
+										</div>
+										<div>
+											<a class="btn btn-chk" (click)="chkAvailability(3)" *ngIf="property.property_detail_status=='0'">Check Availablity</a><i *ngIf="loader3" class="fa fa-spinner fa-spin" style="font-size:18px"></i><i *ngIf="property.property_detail_status=='1'" (click)="reportDownload(3)" class="fa fa-download" aria-hidden="true"></i>
+										</div>
+									</li>
+									<li>
+										<div>
+											<label for="">TaxStatusReport</label>
+										</div>
+										<div>
+											<a class="btn btn-chk" (click)="chkAvailability(4)" *ngIf="property.tax_status_status=='0'">Check Availablity</a><i *ngIf="loader4" class="fa fa-spinner fa-spin" style="font-size:18px"></i><i *ngIf="property.tax_status_status=='1'"  (click)="reportDownload(4)" class="fa fa-download" aria-hidden="true"></i>
+										</div>
+									</li>
+								
+
+							</ul>
+
+						</div>
+					</div>
+					<!-- <div class="points">
+						<ul>
+							<li><a href="#"><i class="fa fa-credit-card"></i> Credits</a></li> -->
+							<!-- <li><a href="#"><i class="fa fa-usd"></i> Points</a></li>
+							<li><a href="#"><i class="fa fa-certificate"></i> Badges</a></li> -->
+						<!-- </ul>
+					</div> -->
+					<!-- <div class="gamingbox forspace">
+						<h2>Have a glance an your view report & and earn 10 points</h2>
+						<a href="#" class="tview">Total view report</a>
+					</div>
+					<div class="gamingbox forspace">
+						<h2>Have a glance an your view report & and earn 10 points</h2>
+						<a href="#" class="tview">Total view report</a>
+					</div> -->
+				</div>				
+			</div>
+		</div>
+
+
+	</div>
+</section>
+
+<!-- Modal -->
+<div class="modal fade" id="reportLink" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+	  <div class="modal-content">
+		<div class="modal-header">
+		  <h5 class="modal-title" id="exampleModalLabel">Report Link</h5>
+		  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+			<span aria-hidden="true">&times;</span>
+		  </button>
+		</div>
+		<div class="modal-body">
+		 	<a href="">Click here </a>to download the report link
+		</div>
+		<div class="modal-footer">
+		  <button type="button" class="btn btn-secondary" data-dismiss="modal">Ok</button>
+		</div>
+	  </div>
+	</div>
+  </div>
+
+<!-- The Modal -->
+<div class="modal" id="paymentModal">
+    <div class="modal-dialog modal-md">
+      <div class="modal-content ">
+  
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Add Credit</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+		<form [formGroup]="depositeForm" (ngSubmit)="deposite()">
+        <!-- Modal body -->
+        <div class="modal-body">            
+            <div class="form-group">
+                <label for="card_number">Card Number</label>
+                <input type="text" class="form-control" formControlName="card_no" name="card_number" id="card_number">
+                <ng-container *ngIf="submit && depositeForm.get('card_no').errors">
+                    <small *ngIf="depositeForm.get('card_no').errors.required" class="error-text">Card number is required.</small>
+                    <small *ngIf="depositeForm.get('card_no').errors.minlength || depositeForm.get('card_no').errors.maxlength" class="error-text">Invalid card number format.</small>
+                </ng-container>
+            </div>
+            <div class="form-group">
+                <label for="expiry_month">Expiry Month</label>
+                <select  class="form-control" name="expiry_month" formControlName="ccExpiryMonth"  id="expiry_month">
+                    <option *ngFor="let month of months" [value]="month">{{month}}</option>
+                </select>
+                <ng-container *ngIf="submit && depositeForm.get('ccExpiryMonth').errors">
+                    <small *ngIf="depositeForm.get('ccExpiryMonth').errors.required" class="error-text">Expiry month is required.</small>
+                </ng-container>
+            </div>
+            <div class="form-group">
+                <label for="expiry_year">Expiry Year</label>
+                <select  class="form-control" name="expiry_year" formControlName="ccExpiryYear"  id="expiry_year">
+                    <option *ngFor="let year of years" [value]="year">{{year}}</option>
+                </select>
+                <ng-container *ngIf="submit && depositeForm.get('ccExpiryYear').errors">
+                    <small *ngIf="depositeForm.get('ccExpiryYear').errors.required" class="error-text">Expiry year is required.</small>
+                </ng-container>
+            </div>
+            <div class="form-group">
+                <label for="cvv">CVV</label>
+                <input type="text" class="form-control"  formControlName="cvvNumber" name="cvv" id="cvv">
+                <ng-container *ngIf="submit && depositeForm.get('cvvNumber').errors">
+                    <small *ngIf="depositeForm.get('cvvNumber').errors.required" class="error-text">Expiry year is required.</small>      
+                    <small *ngIf="depositeForm.get('cvvNumber').errors.minlength || depositeForm.get('cvvNumber').errors.maxlength" class="error-text">Invalid Card Security Number format.</small>
+                </ng-container>
+            </div>
+            <div class="form-group">
+                <label for="amount">Amount</label>
+                <input type="text" class="form-control" formControlName="amount"  name="amount" id="amount">
+                <ng-container *ngIf="submit && depositeForm.get('amount').errors">
+                    <small *ngIf="depositeForm.get('amount').errors.required" class="error-text">Amount is required.</small>      
+                    <small *ngIf="depositeForm.get('amount').errors.min || depositeForm.get('amount').errors.max" class="error-text"> Minimum amount should be between 10 .</small>
+                </ng-container>
+            </div>                      
+        </div>  
+        <!-- Modal footer -->
+        <div class="modal-footer text-center">
+			<button type="submit" class="btn btn-primary submit-button">Submit</button> <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        </div>
+		</form>
+      </div>
+    </div>
+</div> 
+
+<app-footer></app-footer>

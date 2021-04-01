@@ -1,0 +1,697 @@
+<app-header-customer [sideBar]="sideBar"></app-header-customer>
+<app-sidebar-customer #sideBar></app-sidebar-customer>
+	<!-- right area start -->
+	<section class="right_section">	
+    <!-- inside_content_area start-->
+    <div class="content_area">
+<!-- punch -->
+    <section id="mapview">
+        <div class="col-md-12">
+            <div class="row">
+                <div class="col-md-12 top_selling">
+                    <ngb-alert *ngIf="defaultNote" (close)="defaultNote = false" [type]="'info'" [dismissible]="true">
+                        <strong>Note!</strong> 
+                        This is Approx Location Map.
+                    </ngb-alert>
+                </div> 
+                <div class="col-md-12 nopadding fixdpic" *ngIf="defaultImg" id="defaultImg"><img src="../../../../assets/images/banner2.png"><p>sorry you have no imaginary here</p></div>
+                <div class="col-6 top_selling mb-3" id="googleMap">
+                    <div class="inside mb-0 h-100">
+                        <agm-map [latitude]="lat" [zoom]="zoom" [longitude]="lng" [mapTypeId]="'hybrid'">
+                            <agm-marker  [latitude]="lat" [longitude]="lng"></agm-marker>
+                        </agm-map>
+                    </div>
+                </div>
+                <div class="col-6 top_selling mb-3">
+                    <div class="inside mb-0 h-100">
+                        <div style="width:100%"  id="pano"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="prop_detail_bg">
+        <div class="fixdpic" id="map"></div>
+        <div class="col-md-12">
+            <div class="share_box">
+                <div class="favicons2">
+                    <ul>
+                        <li>
+                            <a href="javascript:void()" title="opportunity status">
+                                <img [src]="OppStatusImg"  class="oppstatus">
+                            </a>
+                        </li>
+                        <li>
+                            <a (click)="bulb()" href="javascript:void()" title="lightbulb">
+                                <img [src]="imgStatus==1? 'assets/images/bulb.png' : 'assets/images/bulb2.png'"  class="bulb">
+                            </a>
+                        </li>
+                        <li>
+                            <a (click)="fire()" href="javascript:void()" title="fire">
+                                <img [src]="imgStatus==2? 'assets/images/fire.png' : 'assets/images/fire2.png'"  class="fire">
+                            </a>
+                        </li>
+                        <li>
+                            <a (click)="contactlog()" href="javascript:void()" title="Contact Log">
+                                <button open-log="property.property_id" class="btn btn-actions sn"></button>
+                            </a>
+                        </li>
+                        <li><a (click)="trash()" href="javascript:void()" title="trash"><i class="fa fa-trash"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+<!-- end punch -->
+        
+        <!-- <section id="mapview">
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="col-md-12 top_selling">
+                        <ngb-alert *ngIf="defaultNote" (close)="defaultNote = false" [type]="'info'" [dismissible]="true">
+                            <strong>Note!</strong> 
+                            This is Approx Location Map.
+                        </ngb-alert>
+                    </div> 
+                    <div class="col-md-12 nopadding fixdpic" *ngIf="defaultImg" id="defaultImg"><img src="../../../../assets/images/banner2.png"><p>sorry you have no imaginary here</p></div>
+                    
+                    <div class="col-6 top_selling mb-3" id="googleMap">
+                        <div class="inside mb-0 h-100">
+                            <agm-map [latitude]="lat" [zoom]="zoom" [longitude]="lng" [mapTypeId]="'hybrid'">
+                                <agm-marker  [latitude]="lat" [longitude]="lng"></agm-marker>
+                            </agm-map>
+                        </div>
+                    </div>
+                    <div class="col-6 top_selling mb-3">
+                        <div class="inside mb-0 h-100">
+                            <div style="width:100%"  id="pano"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section> -->
+
+
+
+
+
+        <!-- <section id="prop_detail_bg">
+            <div class="fixdpic" id="map"></div>
+            <div class="col-md-12">
+                <div class="share_box">
+                    <div class="favicons2">
+                        <ul>
+                          // comment this   <li><a href="javascript:void()" title="notes" data-toggle="modal" data-target="#myModal" class="intro"><img src="assets/images/notes.png"></a></li>
+            
+                            <li>
+                                <a href="javascript:void()" title="opportunity status">
+                                    <img [src]="OppStatusImg"  class="oppstatus">
+                                </a>
+                            </li>
+                            <li>
+                                <a (click)="bulb()" href="javascript:void()" title="lightbulb">
+                                    <img [src]="imgStatus==1? 'assets/images/bulb.png' : 'assets/images/bulb2.png'"  class="bulb">
+                                </a>
+                            </li>
+                            <li>
+                                <a (click)="fire()" href="javascript:void()" title="fire">
+                                    <img [src]="imgStatus==2? 'assets/images/fire.png' : 'assets/images/fire2.png'"  class="fire">
+                                </a>
+                            </li>
+                            <li>
+                                <a (click)="contactlog()" href="javascript:void()" title="Contact Log">
+                                    <button open-log="property.property_id" class="btn btn-actions sn"></button>
+                                </a>
+                            </li>
+                            <li><a (click)="trash()" href="javascript:void()" title="trash"><i class="fa fa-trash"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section> -->
+
+
+
+
+        <section id="prop_content_part" class="pt-3 pb-0">
+            <div class="col-sm-12">
+                <div class="row">
+                    <div class="col-md-7 col-lg-8 top_selling ">
+                        <div class="inside">
+                        <div class="prop_head">
+                            <h3 *ngIf="property.LMSSalePrice; else n_a">{{property.LMSSalePrice | currency : 'USD' : 'symbol' : '1.0-0'}}</h3>
+                            <ng-template #n_a>
+                                <h3>NA</h3>
+                            </ng-template>
+                        </div>
+                       <!-- punch -->
+                       <div class="location"><i class="fa fa-map-marker"></i><a *ngIf="property.Address" href="https://maps.google.com/?q={{property.Address}}, {{property.City}}, {{property.State}} {{property.Zip}}">
+                        {{property.Address}}, {{property.City}}, {{property.State}} {{property.Zip}}</a>
+                        <!-- end punch -->
+                        <!-- <div class="location"><i class="fa fa-map-marker"></i><a *ngIf="property.address" href="https://maps.google.com/?q={{property.address}}, {{property.city}}, {{property.state}} {{property.zip}}">
+                        {{property.address}}, {{property.city}}, {{property.state}} {{property.zip}}</a> -->
+                        <a *ngIf="property.SitusStreetName" href="https://maps.google.com/?q={{property.SitusHouseNumber}} {{property.SitusStreetName}} {{property.SitusMode}}, {{property.SitusCity}}, {{property.SitusState}} {{property.SitusZipCode}}" target="_blank">
+                            {{property.SitusHouseNumber}} {{property.SitusStreetName}} {{property.SitusMode}}, {{property.SitusCity}}, {{property.SitusState}} {{property.SitusZipCode}}</a>
+                        </div>
+        
+                        <hr class="w-100 d-block">
+        
+                        <div class="btnsclik_view">
+                            <button type="button" class="btns" [class.active]="currentStep === 1"  (click)="changeGrid(1)" id="listview"><i class="fa fa-th-list"></i> List</button>
+                            <button type="button" class="btns" [class.active]="currentStep === 2" (click)="changeGrid(2)" id="gridview"><i class="fa fa-th"></i> Grid</button>
+                        </div>
+        
+                        <div class="grid_change_view w-100" [class.grid_view]="currentStep===2">
+                        <div class="sidebar_box">
+                            <div class="owner_box">
+                                <h4><span><img src="assets/images/owner.svg"></span> Owner</h4>
+                                <!-- <p>{{property.Owner?property.Owner:property.OwnerFirstName_MI1}}</p> -->
+                               <!-- punch -->
+                                <p>{{property.Owner1FirstName}} {{property.OwnerLastname1}}</p>
+                                <!-- end punch -->
+                                <!-- <p>{{property.firstname}} {{property.lastname}}</p> -->
+                            </div>
+                        </div>
+                        <div class="sidebar_box">
+                            <div class="owner_box">
+                                <h4><span><img src="assets/images/city.svg"></span> City</h4>
+                                <!-- <p>{{property.city ? property.city :'N/A'}}</p> -->
+                                <p>{{property.SitusCity ? property.SitusCity :'N/A'}}</p>
+                            </div>
+                        </div>
+                        <div class="sidebar_box">
+                            <div class="owner_box">
+                                <h4><span><img src="assets/images/state.svg"></span> State</h4>
+                                <!-- <p>{{property.state?property.state:'N/A'}}</p> -->
+                                <!-- punch -->
+                                <p>{{property.State?property.State:property.SitusState}}</p>
+                                <!-- end punch -->
+                            </div>
+                        </div>
+                        <div class="sidebar_box">
+                            <div class="owner_box">
+                                <h4><span><img src="assets/images/city.svg"></span> County</h4>
+                                <p>{{property.County ? property.County :'N/A'}}</p>
+                            </div>
+                        </div>
+                        <div class="sidebar_box">
+                            <div class="owner_box">
+                                <h4><span><img src="assets/images/email.svg"></span> Email</h4>
+                                <p>{{property.email ? property.email : 'NA'}}</p>
+                                <!-- <div *ngIf="property.batch_search_email_flag==1;else templateName11">
+                                    <div *ngIf="property.email_search_flag==1;else templateName22">
+                                        <a>
+                                            <button (click)="sendMarketing('email')" type="button" class="btn btn-success" >Send email</button>
+                                        </a>
+                                    </div>
+                                    <ng-template #templateName22>
+                                        <button  type="button" class="btn btn-secondary" >Not Found!</button>
+                                    </ng-template>
+                                </div> -->
+                                <!-- <ng-template #templateName11>
+                                    <button (click)="addSMSEmailToProspects('email')"  type="button" class="btn btn-success" >Check Availability!</button>
+                                </ng-template> -->
+                            </div>
+                        </div>
+                        <div class="sidebar_box">
+                            <div class="owner_box">
+                                <h4><span><img src="assets/images/phone.svg"></span> Phone</h4>
+                                <p>{{property.phone?numberFormat(property.phone):'NA'}}</p>
+                                <!-- <div *ngIf="property.batch_search_phone_flag==1;else templateName1">
+                                    <div *ngIf="property.phone_search_flag==1;else templateName">
+                                        <a>
+                                            <button  (click)="sendMarketing('phone')" type="button" class="btn btn-success" >Send SMS</button>
+                                        </a>
+                                    </div>
+                                    <ng-template #templateName>
+                                        <button  type="button" class="btn btn-secondary" >Not Found!</button>
+                                    </ng-template>
+                                </div>
+                                <ng-template #templateName1>
+                                    <button (click)="addSMSEmailToProspects('phone')"  type="button" class="btn btn-success" >Check Availability!</button>
+                                </ng-template> -->
+                            </div>
+                        </div>
+                        <div class="sidebar_box">
+                            <div class="owner_box">
+                                <h4><span><img src="assets/images/addres.svg"></span> Address</h4>
+                                <p>{{property.address?property.address:'N/A' }}</p>
+                                <!-- <p *ngIf="!property.SitusHouseNumber">
+                                    <button (click)="addSMSEmailToProspects('postcard')" type="button" class="btn btn-success" >Check Availability!</button>
+                                </p>
+                                <p *ngIf="property.SitusHouseNumber">
+                                    <a >
+                                    <button (click)="sendMarketing('postcard')" type="button" class="btn btn-success mt-1" >Send Postcard</button>
+                                    </a>
+                                </p> -->
+                            </div>
+                        </div>
+                        <div class="sidebar_box">
+                            <div class="owner_box">
+                                <h4><span><img src="assets/images/year-build.svg"></span> Year Build Effective</h4>
+                                <p>{{property.YearBuilt?property.YearBuilt:'N/A'}}</p>
+                            </div>
+                        </div>
+                        <div class="sidebar_box">
+                            <div class="owner_box">
+                                <h4><span><img src="assets/images/owner-relationship.svg"></span> Owner Relationship Type</h4>
+                                <p>{{property.OwnerRelationshipType?property.OwnerRelationshipType:'N/A'}}</p>
+                            </div>
+                        </div>
+                        <div class="sidebar_box">
+                            <div class="owner_box">
+                                <h4><span><img src="assets/images/sub-division.svg"></span> Subdivision</h4>
+                                <p>{{property.Subdivision?property.Subdivision:'N/A'}}</p>
+                            </div>
+                        </div>
+                        <div class="sidebar_box">
+                            <div class="owner_box">
+                                <h4><span><img src="assets/images/land-use.svg"></span> Land Use</h4>
+                                <p>{{property.ACRES?property.ACRES:'N/A'}}</p>
+                            </div>
+                        </div>
+                        <div class="sidebar_box">
+                            <div class="owner_box">
+                                <h4><span><img src="assets/images/land-square.svg"></span>  Land Square Footage</h4>
+                                <p>{{property.LandSquareFootage?property.LandSquareFootage:'N/A'}}</p>
+                            </div>
+                        </div>
+                        <div class="sidebar_box">
+                            <div class="owner_box">
+                                <h4><span><img src="assets/images/building-area.svg"></span> Building Area Sqft</h4>
+                                <p>{{property.BuildingAreaSqft?property.BuildingAreaSqft:'N/A'}}</p>
+                            </div>
+                        </div>
+                        <div class="sidebar_box">
+                            <div class="owner_box">
+                                <h4><span><img src="assets/images/living-area.svg"></span> Gross Living Area</h4>
+                                <p>{{property.GrossLivingArea?property.GrossLivingArea:'N/A'}}</p>
+                            </div>
+                        </div>
+                        <div class="sidebar_box">
+                            <div class="owner_box">
+                                <h4><span><img src="assets/images/lot-area.svg"></span> Lot Area</h4>
+                                <p>{{property.LegalLot?property.LegalLot:'N/A'}}</p>
+                            </div>
+                        </div>
+                        <div class="sidebar_box">
+                            <div class="owner_box">
+                                <h4><span><img src="assets/images/elementary-school.svg"></span> Elementary School</h4>
+                                <p>{{property.ElementarySchool?property.ElementarySchool:'N/A'}}</p>
+                            </div>
+                        </div>
+                        <div class="sidebar_box">
+                            <div class="owner_box">
+                                <h4><span><img src="assets/images/tax-year.svg"></span> Tax Year</h4>
+                                <p>{{property.TaxYear?property.TaxYear:'N/A'}}</p>
+                            </div>
+                        </div>
+                        <div class="sidebar_box">
+                            <div class="owner_box">
+                                <h4><span><img src="assets/images/assessed-year.svg"></span> Assessed Year</h4>
+                                <p>{{property.AssessedYear?property.AssessedYear:'N/A'}}</p>
+                            </div>
+                        </div>
+                        <div class="sidebar_box">
+                            <div class="owner_box">
+                                <h4><span><img src="assets/images/value-land.svg"></span> Assessed Land Value</h4>
+                                <p>{{property.AssdLandValue?property.AssdLandValue:'N/A'}}</p>
+                            </div>
+                        </div>
+                        <div class="sidebar_box">
+                            <div class="owner_box">
+                                <h4><span><img src="assets/images/equity-percent.svg"></span> Home Equity Percentage</h4>
+                                <p>{{property.HomeEquityPercentage?property.HomeEquityPercentage:'N/A'}}</p>
+                            </div>
+                        </div>
+                        <div class="sidebar_box">
+                            <div class="owner_box">
+                                <h4><span><img src="assets/images/value-land.svg"></span> Home Equity Value </h4>
+                                <p>{{property.HomeEquityValue? property.HomeEquityValue : 'N/A'}}</p>
+                            </div>
+                        </div>
+                        <div class="sidebar_box">
+                            <div class="owner_box">
+                                <h4><span><img src="assets/images/neighbourhood-name.svg"></span> Neighborhood Name</h4>
+                                <p *ngIf="property.NeighborhoodName">{{property.NeighborhoodName}}</p>
+                                <p *ngIf="!property.NeighborhoodName">N/A</p>
+                            </div>
+                        </div>
+                        <div class="sidebar_box">
+                            <div class="owner_box">
+                                <h4><span><img src="assets/images/apn.png"></span> APN</h4>
+                                <p>{{property.apn?property.apn:'N/A'}}</p>
+                            </div>                            
+                        </div>                              
+                        <div class="sidebar_box">
+                            <div class="owner_box">
+                                <h4><span><img src="assets/images/birth.svg"></span>DOB</h4>
+                                <p>{{demographData && demographData.DOB?demographData.DOB:'N/A'}}</p>
+                            </div>                            
+                        </div>
+                        <div class="sidebar_box">
+                            <div class="owner_box">
+                                <h4><span><img src="assets/images/age-range.svg"></span>Age Range</h4>
+                                <p>{{demographData && demographData.AgeRange?demographData.AgeRange:'N/A'}}</p>
+                            </div>                            
+                        </div>
+                        <div class="sidebar_box">
+                            <div class="owner_box">
+                                <h4><span><img src="assets/images/ethincity.svg"></span>Ethnicity</h4>
+                                <p>{{demographData && demographData.EthnicGroup?demographData.EthnicGroup:'N/A'}}</p>
+                            </div>                            
+                        </div>
+                        <div class="sidebar_box">
+                            <div class="owner_box">
+                                <h4><span><img src="assets/images/single-parent.svg"></span>Single parent</h4>
+                                <p>{{demographData && demographData.SingleParent?demographData.SingleParent:'N/A'}}</p>
+                            </div>                            
+                        </div>
+                        <div class="sidebar_box">
+                            <div class="owner_box">
+                                <h4><span><img src="assets/images/senior-adult-hh.svg"></span>Senior adult in household</h4>
+                                <p>{{demographData && demographData.SeniorAdultInHousehold?demographData.SeniorAdultInHousehold:'N/A'}}</p>
+                            </div>                            
+                        </div>
+                        <div class="sidebar_box">
+                            <div class="owner_box">
+                                <h4><span><img src="assets/images/young-adult-hh.svg"></span>Young adult in household</h4>
+                                <p>{{demographData && demographData.YoungAdultInHousehold?demographData.YoungAdultInHousehold:'N/A'}}</p>
+                            </div>                            
+                        </div>
+                        <!-- <div class="sidebar_box">
+                            <div class="owner_box">
+                                <h4><span><img src="assets/images/.png"></span>Career women in household</h4>
+                                <p>{{demographData && demographData.DOB?demographData.DOB:'N/A'}}</p>
+                            </div>                            
+                        </div>
+                        <div class="sidebar_box">
+                            <div class="owner_box">
+                                <h4><span><img src="assets/images/.png"></span>Small office / Home office</h4>
+                                <p>{{demographData && demographData.DOB?demographData.DOB:'N/A'}}</p>
+                            </div>                            
+                        </div> -->
+                        <div class="sidebar_box">
+                            <div class="owner_box">
+                                <h4><span><img src="assets/images/owner.svg"></span>Business Owner</h4>
+                                <p>{{demographData && demographData.BusinessOwner?demographData.BusinessOwner:'N/A'}}</p>
+                            </div>                            
+                        </div>
+                        <div class="sidebar_box">
+                            <div class="owner_box">
+                                <h4><span><img src="assets/images/language.svg"></span>Language</h4>
+                                <p>{{demographData && demographData.Language?demographData.Language:'N/A'}}</p>
+                            </div>                            
+                        </div>
+                        <div class="sidebar_box">
+                            <div class="owner_box">
+                                <h4><span><img src="assets/images/relegious.svg"></span>Religious Affiliation</h4>
+                                <p>{{demographData && demographData.Religion?demographData.Religion:'N/A'}}</p>
+                            </div>                            
+                        </div>
+                        <div class="sidebar_box">
+                            <div class="owner_box">
+                                <h4><span><img src="assets/images/children.svg"></span>Number Of Children</h4>
+                                <p>{{demographData && demographData.NumberOfChildren?demographData.NumberOfChildren:'N/A'}}</p>
+                            </div>                            
+                        </div>
+                        <div class="sidebar_box">
+                            <div class="owner_box">
+                                <h4><span><img src="assets/images/marital-status.svg"></span>Marital Status</h4>
+                                <p>{{demographData && demographData.MaritalStatusInHousehold?demographData.MaritalStatusInHousehold:'N/A'}}</p>
+                            </div>                            
+                        </div>
+                        <div class="sidebar_box">
+                            <div class="owner_box">
+                                <h4><span><img src="assets/images/own-rent.svg"></span>Own/Rent</h4>
+                                <p>{{demographData && demographData.HomeOwnerRenter?demographData.HomeOwnerRenter:'N/A'}}</p>
+                            </div>                            
+                        </div>
+                        <div class="sidebar_box">
+                            <div class="owner_box">
+                                <h4><span><img src="assets/images/education.svg"></span>Education</h4>
+                                <p>{{demographData && demographData.Education?demographData.Education:'N/A'}}</p>
+                            </div>                            
+                        </div>
+                        <div class="sidebar_box">
+                            <div class="owner_box">
+                                <h4><span><img src="assets/images/occupation.svg"></span>Occupation - Industry</h4>
+                                <p>{{demographData && demographData.Occupation?demographData.Occupation:'N/A'}}</p>
+                            </div>                            
+                        </div>
+                        <div class="sidebar_box">
+                            <div class="owner_box">
+                                <h4><span><img src="assets/images/occupation.svg"></span>Occupation - Detail</h4>
+                                <p>{{demographData && demographData.OccupationDetail?demographData.OccupationDetail:'N/A'}}</p>
+                            </div>                            
+                        </div>
+                        <div class="sidebar_box">
+                            <div class="owner_box">
+                                <h4><span><img src="assets/images/gender.svg"></span>Gender</h4>
+                                <p>{{demographData && demographData.Gender?demographData.Gender:'N/A'}}</p>
+                            </div>                            
+                        </div>
+                        <div class="sidebar_box">
+                            <div class="owner_box">
+                                <h4><span><img src="assets/images/children.svg"></span>Presence of Children</h4>
+                                <p>{{demographData && demographData.PresenceOfChildren?demographData.PresenceOfChildren:'N/A'}}</p>
+                            </div>                            
+                        </div>
+                        </div>
+        
+                            <div class="prop_head_link">
+                                <div class="grid_box">
+                                    <img src="assets/images/pbed.png">
+                                    <h2>Bedroom</h2>
+                                    <p *ngIf="property.Bedrooms || property.SumOfBedRooms">{{property.Bedrooms?property.Bedrooms:property.SumOfBedRooms}}</p>
+                                </div>
+                                <div class="grid_box">
+                                    <img src="assets/images/pbath.png">
+                                    <h2>baths ( F/ H )</h2>
+                                    <p *ngIf="property.Bathrooms || property.BathroomsNew">{{property.Bathrooms?property.Bathrooms:property.BathroomsNew}}</p>
+                                </div>
+                                <div class="grid_box">
+                                    <img src="assets/images/lotarea.png">
+                                    <h2 >Dining Room</h2>
+                                    <p *ngIf="property.DiningRooms || property.NumberOfDiningRooms">{{property.NumberOfDiningRooms?property.NumberOfDiningRooms:property.DiningRooms}}</p>
+                        
+                                </div>
+                                <div class="grid_box">
+                                    <img src="assets/images/pliving.png">
+                                    <h2 >Family Room</h2>
+                                    <p *ngIf="property.NumberOfFamilyRooms || property.FamilyRooms">{{property.NumberOfFamilyRooms?property.NumberOfFamilyRooms:property.FamilyRooms}}</p>
+                                </div>
+                                
+        
+        
+                            </div>
+                        </div>    
+                    </div>
+        
+        
+                    <!-- <div class="col-md-4 col-lg-3">
+                        <div class="col-md-12">
+                            <div class="title-cta mt-2 mb-2">
+                                <div class="dropdown mr-2 text-center">
+                                  <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">Set Opportunity Status</button>
+                                  <div class="dropdown-menu">
+                                    <button class="dropdown-item" (click)="setOppurtunity('1')"><img src="assets/images/pros.png"> Prospecting</button>
+                                    <button class="dropdown-item" (click)="setOppurtunity('2')"><img src="assets/images/qulification.png"> Qualification</button>
+                                    <button class="dropdown-item" (click)="setOppurtunity('3')"><img src="assets/images/analysis.png"> Needs Analysis</button>
+                                    <button class="dropdown-item" (click)="setOppurtunity('4')"><img src="assets/images/value-proposition.png"> Value Proposition</button>
+                                    <button class="dropdown-item" (click)="setOppurtunity('5')"><img src="assets/images/dec-make.png"> Id. Decision Makers</button>
+                                    <button class="dropdown-item" (click)="setOppurtunity('6')"><img src="assets/images/per-analysis.png"> Perception Analysis </button>
+                                    <button class="dropdown-item" (click)="setOppurtunity('7')"><img src="assets/images/proposal.png"> Proposal/Price Quote</button>
+                                    <button class="dropdown-item" (click)="setOppurtunity('8')"><img src="assets/images/negotion.png"> Negotiation/Review</button>	
+                                    <button class="dropdown-item" (click)="setOppurtunity('9')"><img src="assets/images/closed-won.png"> Closed Won</button>
+                                    <button class="dropdown-item" (click)="setOppurtunity('10')"><img src="assets/images/lost.png"> Closed Lost</button>
+                                  </div>
+                                </div>
+                              </div>
+                        </div>
+                    </div> -->
+        
+        
+                    
+                </div>
+            </div>
+        </section>
+    </div>
+    <!-- inside_content_area end-->
+    </section>
+
+
+
+  <!--successful-modal-->
+  <div class="modal" id="wallet_success">
+    <div class="modal-dialog modal-md">
+      <div class="modal-content">
+  
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+  
+        <div class="modal-body">
+          <div class="row successful_payment">
+            <div class="text-center chknew"><img src="assets/images/check.png"></div>
+            <h3>Your payment is successfull. please check the records in Queue.</h3>
+            <div class="text-center">
+              <button type="button" class="btn btn-success" id="genieffect">OK</button>
+            </div>
+          </div>
+        </div>
+  
+      </div>
+    </div>
+  </div>
+<!--successful-modal-end-->
+<!-- modal_mynotes -->
+<div class="modal fade" id="myModal">
+    <div class="modal-dialog modal-md">
+      <div class="modal-content">
+      	<!-- Modal-Header-->
+        <div class="modal-header">
+          <h4 class="modal-title">My Notes</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        <!-- Modal-Header-end -->
+
+        <!-- Modal-body -->
+        <div class="modal-body" id="notes_bg">
+        	<form  [formGroup]="noteForm" (ngSubmit)="submitForm()">
+				<textarea class="areas" formControlName="note" placeholder="Add a note..."></textarea>
+				<input type="hidden" formControlName="id">
+        		<input type="submit" class="sendbtn" value="Send A Message" name="">
+        	</form>
+        </div>
+        <!-- Modal-body-end -->
+
+      </div>
+  </div>
+</div>
+<!-- modal_mynotes-end -->
+
+
+
+<!-- send_message -->
+<div class="modal fade" id="myModal2">
+    <div class="modal-dialog modal-md">
+      <div class="modal-content">
+      	<!-- Modal-Header-->
+        <div class="modal-header">
+          <h4 class="modal-title">Send A Message</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        <!-- Modal-Header-end -->
+
+        <!-- Modal-body -->
+        <div class="modal-body2" id="notes_bg">
+        	<div class="owner_detail">
+        		<div class="ownpic"><img src="assets/images/owner.png"></div>
+        		<div class="owner_content">
+        			<h3>Owner</h3>
+        			<p>{{property.OwnerFirstName_MI1}}</p>
+        			<p><i class="fa fa-map-marker"></i>  {{property.Address}}</p>
+        		</div>
+        	</div>
+
+        	<div class="form_boxs">
+        		<form>
+        			<div class="label">Name</div>
+        			<input type="text" class="own-fild" name="">
+        			<div class="label">Email Address</div>
+        			<input type="email" class="own-fild" name="">
+        			<div class="label">Mobile Number</div>
+        			<input type="text" class="own-fild" name="">
+        			<div class="label">Message</div>
+        			<textarea class="tarea"></textarea>
+        			<input type="submit" class="sendbtn2" value="Send A Message" name="">
+        		</form>
+        	</div>
+
+        </div>
+        <!-- Modal-body-end -->
+
+      </div>
+  </div>
+</div>
+<!-- send_message-end -->
+
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="reportLink" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+	  <div class="modal-content">
+		<div class="modal-header">
+		  <h5 class="modal-title" id="exampleModalLabel">Report Link</h5>
+		  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+			<span aria-hidden="true">&times;</span>
+		  </button>
+		</div>
+		<div class="modal-body">
+		 	<a href="">Click here </a>to download the report link
+		</div>
+		<div class="modal-footer">
+		  <button type="button" class="btn btn-secondary" data-dismiss="modal">Ok</button>
+		</div>
+	  </div>
+	</div>
+  </div>
+
+<!-- The Modal -->
+<div class="modal" id="paymentModal">
+    <div class="modal-dialog modal-md">
+      <div class="modal-content ">
+  
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <button (click)="closeDepositeForm()" type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+		<form [formGroup]="depositeForm" (ngSubmit)="deposite()">
+        <!-- Modal body -->
+        <div class="modal-body">            
+			<div class="row">
+				<div class="col-sm-4">
+					<div class="form-group">
+						<label>Total Reports</label>
+						<p><b>1</b></p>
+					</div>
+				</div>
+				<div class="col-sm-4">
+					<div class="form-group">
+						<label>Total Amount</label>
+						<p><b>{{amountToDeduct | currency}}</b></p>
+					</div>
+				</div>
+				<div class="col-sm-4">
+					<div class="form-group">
+						<label class="w-100"><div class="d-flex justify-content-between">Wallet Amount</div></label>
+						<p><b>{{currentAmount | currency}}</b></p>
+					</div>
+				</div>
+				<div class="text-center mt-3">
+					<img class="walletimage" src="assets/images/wallet.svg" width="100">
+					<p class="h5 mt-3">Ooops! You’ve to recharge your wallet with {{minAmount() | currency}} Amount to Purchase the reports.</p>
+				</div>          
+				<div class="col-sm-12">
+					<div class="form-group">
+						<label for="amount">Amount</label>
+						<input type="text" class="form-control" data-inputmask="'alias': 'currency'" formControlName="amount"  id="amount">
+						<ng-container *ngIf="submit && depositeForm.get('amount').errors">
+							<small *ngIf="depositeForm.get('amount').errors.required" class="error-text">Amount is required.</small>      
+							<small *ngIf="depositeForm.get('amount').errors.min" class="error-text"> Minimum amount should be {{minAmount() | currency}}.</small>
+						</ng-container>
+					</div>
+				</div>
+			</div>                      
+        </div>  
+        <!-- Modal footer -->
+        <div class="modal-footer text-center">
+			<button type="submit" class="btn btn-primary submit-button">Submit</button> <!-- <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button> -->
+        </div>
+		</form>
+      </div>
+    </div>
+</div> 

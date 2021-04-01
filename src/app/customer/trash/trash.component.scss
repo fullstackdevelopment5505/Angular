@@ -1,0 +1,279 @@
+.top_selling .inside {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background: #fff;
+    padding: 20px !important;
+    border-radius: 5px;
+    margin-bottom: 30px;
+}
+.right_area .inside .title, .top_selling .inside .title {
+    font-weight: 600;
+}
+.right_area .inside .title, .top_selling .inside .title, .single_box .inside .title {
+    font-size: 20px;
+    color: #6b6b6b;
+    margin-bottom: 13px;
+    text-transform: capitalize;
+}
+
+
+
+.dataTables_wrapper {
+    display: flex;
+    display: -webkit-flex;
+    flex-wrap: wrap;
+    -webkit-flex-wrap: wrap;
+    justify-content: space-between;
+    -webkit-justify-content: space-between;
+}
+table{
+    width: 100% !important;
+}
+th{
+    background: #232e42;
+    color: #fff;
+}
+.dt-buttons button.dt-button.buttons-copy {
+    background-image: url(../../../assets/images/copy.png) !important;
+}
+.dt-buttons button.dt-button.buttons-excel {
+    background-image: url(../../../assets/images/excel.png) !important;
+}
+.dt-buttons button.dt-button.buttons-csv {
+    background-image: url(../../../assets/images/csv.png) !important;
+}
+.dt-buttons button.dt-button.buttons-pdf {
+    background-image: url(../../../assets/images/pdf.png) !important;
+}
+.dt-buttons button.dt-button,  .dt-buttons button.dt-button:active {
+    all: initial;
+    width: 40px;
+    height: 40px;
+    background-color: transparent;
+    cursor: pointer;
+    // margin: 0px 0px;
+    border: 1px solid #ccc !important;
+    background: #f2f2f2 !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+    box-shadow: none !important;
+    background-size: 32px !important;
+}
+.dt-buttons button span{
+    color: transparent;
+}
+.dataTables_wrapper .dataTables_filter input {
+    border: 1px solid #ccc;
+    height: 36px;
+    border-radius: 5px;
+    padding: 8px;
+    width: 100%;
+    max-width: 230px;
+}
+.dataTables_wrapper .dataTables_filter label {
+    display: flex;
+    display: -webkit-flex;
+    align-items: center;
+    -webkit-align-items: center;
+    justify-content: flex-end;
+    -webkit-justify-content: flex-end;
+}
+.dataTables_wrapper .dataTables_length select {
+    height: 35px;
+    margin: 0 5px;
+    width: 70px;
+}
+.dataTables_wrapper .dataTables_paginate {
+    padding: 0;
+    margin-top: 10px;
+    border: 1px solid #dedede;
+    background: #f6f6f6;
+}
+.dataTables_wrapper:after{
+    display: none;
+}
+.dataTables_wrapper table .btn {
+    margin-right: 0;
+}
+.trash_datatable .btnsLst button{
+    pointer-events: none;
+    cursor:default;
+}
+.trash_datatable .relative a button{
+    cursor:default;
+    pointer-events: none;
+}
+
+
+// ========================================
+
+.secondary_tooltip,
+.fetch_records_cta,
+.pending_data_cta{
+    position:relative;
+}
+.secondary_tooltip::after {
+    content: "Not Found";
+    position: absolute;
+    background: rgb(0, 0, 0);
+    padding: 4px 9px;
+    border-radius: 3px;
+    font-size: 16px;
+    left: 50%;
+    transform: translateX(-50%);
+    -webkit-transform: translateX(-50%);
+    top: 49px;
+    color: #fff;
+    z-index: 999;
+    display: none;
+}
+.secondary_tooltip::before {
+    content: "";
+    border: 10px solid;
+    border-color: #000 transparent transparent;
+    position: absolute;
+    top: 31px;
+    -webkit-transform: rotate(180deg);
+    transform: rotate(180deg) translateX(-50%);
+    -webkit-transform: rotate(180deg) translateX(-50%);
+    left: 0;
+    display: none;
+}
+.secondary_tooltip:hover::after,
+.secondary_tooltip:hover::before,
+.trash_datatable .relative a:hover .secondary_tooltip::after,
+.trash_datatable .relative a:hover .secondary_tooltip::before{
+    display:block;
+}
+
+
+.fetch_records_cta::after {
+    content: "Fetched";
+    position: absolute;
+    background: rgb(0, 0, 0);
+    padding: 4px 9px;
+    border-radius: 3px;
+    font-size: 16px;
+    left: 50%;
+    transform: translateX(-50%);
+    -webkit-transform: translateX(-50%);
+    top: 49px;
+    color: #fff;
+    z-index: 999;
+    display: none;
+}
+.fetch_records_cta::before {
+    content: "";
+    border: 10px solid;
+    border-color: #000 transparent transparent;
+    position: absolute;
+    top: 31px;
+    -webkit-transform: rotate(180deg);
+    transform: rotate(180deg) translateX(-50%);
+    -webkit-transform: rotate(180deg) translateX(-50%);
+    left: 0;
+    display: none;
+}
+.fetch_records_cta:hover::after,
+.fetch_records_cta:hover::before,
+.pending_btn:hover .pending_data_cta::before,
+.pending_btn:hover .pending_data_cta::after,
+.trash_datatable .relative a:hover .pending_data_cta::after,
+.trash_datatable .relative a:hover .pending_data_cta::before{
+    display:block;
+}
+
+
+.pending_data_cta::after {
+    content: "Pending Data";
+    position: absolute;
+    background: rgb(0, 0, 0);
+    padding: 4px 9px;
+    border-radius: 3px;
+    font-size: 16px;
+    left: 50%;
+    transform: translateX(-50%);
+    -webkit-transform: translateX(-50%);
+    top: 49px;
+    color: #fff;
+    z-index: 999;
+    display: none;
+}
+.pending_data_cta::before {
+    content: "";
+    border: 10px solid;
+    border-color: #000 transparent transparent;
+    position: absolute;
+    top: 31px;
+    transform: rotate(180deg) translateX(-50%);
+    -webkit-transform: rotate(180deg) translateX(-50%);
+    left: 0;
+    display: none;
+}
+.pending_data_cta:hover::after,
+.pending_data_cta:hover::before,
+.trash_datatable .relative a:hover .fetch_records_cta::after,
+.trash_datatable .relative a:hover .fetch_records_cta::before{
+    display:block;
+}
+
+
+.last_contact {
+    font-size: 13px;
+    width: 100%;
+    display: block;
+    margin-top: 6px;
+    color: red;
+}
+
+
+.trash_component  .trash_datatable_not_member tr th:nth-child(5),
+.trash_component  .trash_datatable_not_member tr td:nth-child(5) {
+    display: none !important;
+}
+
+
+
+
+
+
+
+
+ul li button.bulbs{
+    background-image: url(../../../assets/images/bulb.png);
+    background-size: 26px 26px;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+ul li button.bulbs2{
+    background-image: url(../../../assets/images/bulb2.png);
+    background-size: 26px 26px;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+ul li button.fires{
+    background-image: url(../../../assets/images/fire.png);
+    background-size: 26px 26px;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+ul li button.fires2{
+    background-image: url(../../../assets/images/fire2.png);
+    background-size: 26px 26px;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+ul li button.sn{
+    background-image: url(../../../assets/images/snotes.png);
+    background-size: 26px 26px;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+ul li button.dels{
+    background-image: url(../../../assets/images/trash.png);
+    background-size: 26px 26px;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.trash_datatable #crm ul li button {
+    background-color: #1b86e3;
+}

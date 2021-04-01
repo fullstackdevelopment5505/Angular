@@ -1,0 +1,31 @@
+<app-header></app-header>
+
+
+<section id="forgot_bg">
+	<div class="container">
+		<div class="col-md-6 offset-md-3">
+			<div class="forgot_box">
+				<h5>Forgot Password</h5>
+				<p>We will email you a link to reset your password</p>
+				<form [formGroup]="forgotPwdForm" (ngSubmit)="submitForm()">
+				<div class="flexform">
+					<span><i class="fa fa-envelope"></i></span>
+					<input type="email" class="formflds" formControlName="email"  placeholder="Enter Email">
+						<ng-container *ngIf="submit || forgotPwdForm.get('email').errors && (forgotPwdForm.get('email').dirty || forgotPwdForm.get('email').touched)">
+							<small *ngIf="forgotPwdForm.get('email').errors.required" class="error-text">Email is required.</small>
+							<small *ngIf="forgotPwdForm.get('email').errors.email" class="error-text">Invalid email format.</small>
+						</ng-container>
+				</div>
+
+				<div class="btn_center">
+					<button type="submit" class="send">Send</button>
+				</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</section>
+
+
+
+<app-footer></app-footer>

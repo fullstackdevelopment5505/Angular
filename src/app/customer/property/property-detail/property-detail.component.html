@@ -1,0 +1,902 @@
+<app-header-customer [sideBar]="sideBar"></app-header-customer>
+<app-sidebar-customer #sideBar></app-sidebar-customer>
+	<!-- right area start -->
+	<section class="right_section">
+    <!-- inside_content_area start-->
+    <div class="content_area">
+
+
+        <section id="mapview">
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="col-md-12 top_selling">
+                        <ngb-alert *ngIf="defaultNote" (close)="defaultNote = false" [type]="'info'" [dismissible]="true">
+                            <strong>Note!</strong>
+                            This is Approx Location Map.
+                        </ngb-alert>
+                    </div>
+                    <div class="col-md-12 nopadding fixdpic" *ngIf="defaultImg" id="defaultImg"><img src="../../../../assets/images/banner2.png"><p>sorry you have no imaginary here</p></div>
+                    <!-- <div class="col-md-4 nopadding fixdpic"><img *ngIf="!imageLoading" src="{{img}}"><p *ngIf="imageLoading">Loading</p></div> -->
+                    <!-- <div class="col-md-12 nopadding">
+                        <div class="row"> -->
+                    <div class="col-6 top_selling mb-3" id="googleMap">
+                        <div class="inside mb-0 h-100">
+                            <agm-map [latitude]="lat" [zoom]="zoom" [longitude]="lng" [mapTypeId]="'hybrid'">
+                                <agm-marker  [latitude]="lat" [longitude]="lng"></agm-marker>
+                            </agm-map>
+                        </div>
+                    </div>
+                    <div class="col-6 top_selling mb-3">
+                        <div class="inside mb-0 h-100">
+                            <div style="width:100%"  id="pano"></div>
+                        </div>
+                    </div>
+                    <!-- </div>
+                    </div> -->
+                </div>
+            </div>
+        </section>
+
+
+
+
+
+        <section id="prop_detail_bg" class="status_bg_detail">
+            <div class="fixdpic" id="map"></div>
+            <div class="col-md-12">
+                <div class="share_box">
+                    <div class="favicons2">
+                        <ul>
+                            <!-- <li><a href="javascript:void()" title="notes" data-toggle="modal" data-target="#myModal" class="intro"><img src="assets/images/notes.png"></a></li> -->
+                            <li class="dropdown_status dropdown_report ">
+                                <a href="javascript:void()" title="Reports" class="dropdown-toggle"  data-toggle="dropdown"><img src="assets/images/report-icon.png"></a>
+                                <div class="inside reports_detail_data dropdown-menu">
+                                    <div class="accordian">
+                                        <div class="accordian-heading ">Reports</div>
+                                        <div class="accordian_content" id="reports">
+                                            <ul>
+                                                <li>
+                                                    <div><label for="">ForeclosureReport</label></div>
+                                                    <div><a class="btn btn-chk" (click)="chkAvailability(1)" *ngIf="property.for_closue_status=='0'">Check Availablity</a><i *ngIf="loader1" class="fa fa-spinner fa-spin" style="font-size:18px"></i><i *ngIf="property.for_closue_status=='1'" (click)="reportDownload(1)" class="fa fa-download" aria-hidden="true"></i></div>
+                                                </li>
+                                                <li>
+                                                    <div><label for="">OpenLienReport</label></div>
+                                                    <div><a class="btn btn-chk" (click)="chkAvailability(2)" *ngIf="property.open_lien_status=='0'">Check Availablity</a><i *ngIf="loader2" class="fa fa-spinner fa-spin" style="font-size:18px"></i><i *ngIf="property.open_lien_status=='1'" (click)="reportDownload(2)" class="fa fa-download" aria-hidden="true"></i></div>
+                                                </li>
+                                                <li>
+                                                    <div><label for="">PropertyDetailReport</label></div>
+                                                    <div><a class="btn btn-chk" (click)="chkAvailability(3)" *ngIf="property.property_detail_status=='0'">Check Availablity</a><i *ngIf="loader3" class="fa fa-spinner fa-spin" style="font-size:18px"></i><i *ngIf="property.property_detail_status=='1'" (click)="reportDownload(3)" class="fa fa-download" aria-hidden="true"></i></div>
+                                                </li>
+                                                <li>
+                                                    <div><label for="">TaxStatusReport</label></div>
+                                                    <div><a class="btn btn-chk" (click)="chkAvailability(4)" *ngIf="property.tax_status_status=='0'">Check Availablity</a><i *ngIf="loader4" class="fa fa-spinner fa-spin" style="font-size:18px"></i><i *ngIf="property.tax_status_status=='1'"  (click)="reportDownload(4)" class="fa fa-download" aria-hidden="true"></i></div>
+                                                </li>
+                                                <li>
+                                                    <div><label for="">TotalViewReport</label></div>
+                                                    <div><a class="btn btn-chk" (click)="chkAvailability(5)" *ngIf="property.total_view_report_flag=='0'">Check Availablity</a><i *ngIf="loader5" class="fa fa-spinner fa-spin" style="font-size:18px"></i><i *ngIf="property.total_view_report_flag=='1'" (click)="reportDownload(5)" class="fa fa-download" aria-hidden="true"></i></div>
+                                                </li>
+                                                <li>
+                                                    <div><label for="">TransactionHistoryReport</label></div>
+                                                    <div><a class="btn btn-chk" (click)="chkAvailability(6)" *ngIf="property.transaction_hostory_report_flag=='0'">Check Availablity</a><i *ngIf="loader6" class="fa fa-spinner fa-spin" style="font-size:18px"></i><i *ngIf="property.transaction_hostory_report_flag=='1'" (click)="reportDownload(6)" class="fa fa-download" aria-hidden="true"></i></div>
+                                                </li>
+                                                <li>
+                                                    <div><label for="">SalesComparables</label></div>
+                                                    <div><a class="btn btn-chk" (click)="chkAvailability(7)" *ngIf="property.sales_comparable_report_flag=='0'">Check Availablity</a><i *ngIf="loader7" class="fa fa-spinner fa-spin" style="font-size:18px"></i><i *ngIf="property.sales_comparable_report_flag=='1'" (click)="reportDownload(7)" class="fa fa-download" aria-hidden="true"></i></div>
+                                                </li>
+                                                <li>
+                                                    <div><label for="">TitleChainAndLienReport</label></div>
+                                                    <div><a class="btn btn-chk" (click)="chkAvailability(8)" *ngIf="property.title_chain_lien_report_flag=='0'">Check Availablity</a><i *ngIf="loader8" class="fa fa-spinner fa-spin" style="font-size:18px"></i><i *ngIf="property.title_chain_lien_report_flag=='1'" (click)="reportDownload(8)" class="fa fa-download" aria-hidden="true"></i></div>
+                                                </li>
+                                                <li>
+                                                    <div><label for="">HOALienReport</label></div>
+                                                    <div><a class="btn btn-chk" (click)="chkAvailability(9)" *ngIf="property.hoa_lien_report_flag=='0'">Check Availablity</a><i *ngIf="loader9" class="fa fa-spinner fa-spin" style="font-size:18px"></i><i *ngIf="property.hoa_lien_report_flag=='1'" (click)="reportDownload(9)" class="fa fa-download" aria-hidden="true"></i></div>
+                                                </li>
+                                                <li>
+                                                    <div><label for="">PaceLienReport</label></div>
+                                                    <div><a class="btn btn-chk" (click)="chkAvailability(10)" *ngIf="property.pace_lien_report_flag=='0'">Check Availablity</a><i *ngIf="loader10" class="fa fa-spinner fa-spin" style="font-size:18px"></i><i *ngIf="property.pace_lien_report_flag=='1'" (click)="reportDownload(10)" class="fa fa-download" aria-hidden="true"></i></div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="dropdown_status">
+                                <a  title="opportunity status" class="dropdown-toggle"  data-toggle="dropdown"><img [src]="OppStatusImg"  class="oppstatus"></a>
+                                <div class="dropdown-menu">
+                                    <button class="dropdown-item" (click)="setOppurtunity('1')"><img src="assets/images/pros.png"> Prospecting</button>
+                                    <button class="dropdown-item" (click)="setOppurtunity('2')"><img src="assets/images/qulification.png"> Qualification</button>
+                                    <button class="dropdown-item" (click)="setOppurtunity('3')"><img src="assets/images/analysis.png"> Needs Analysis</button>
+                                    <button class="dropdown-item" (click)="setOppurtunity('4')"><img src="assets/images/value-proposition.png"> Value Proposition</button>
+                                    <button class="dropdown-item" (click)="setOppurtunity('5')"><img src="assets/images/dec-make.png"> Id. Decision Makers</button>
+                                    <button class="dropdown-item" (click)="setOppurtunity('6')"><img src="assets/images/per-analysis.png"> Perception Analysis </button>
+                                    <button class="dropdown-item" (click)="setOppurtunity('7')"><img src="assets/images/proposal.png"> Proposal/Price Quote</button>
+                                    <button class="dropdown-item" (click)="setOppurtunity('8')"><img src="assets/images/negotion.png"> Negotiation/Review</button>
+                                    <button class="dropdown-item" (click)="setOppurtunity('9')"><img src="assets/images/closed-won.png"> Closed Won</button>
+                                    <button class="dropdown-item" (click)="setOppurtunity('10')"><img src="assets/images/lost.png"> Closed Lost</button>
+                                </div>
+                            </li>
+                            <li>
+                                <a (click)="bulb()"  title="lightbulb">
+                                    <img [src]="imgStatus==1? 'assets/images/bulb.png' : 'assets/images/bulb2.png'"  class="bulb">
+                                </a>
+                            </li>
+                            <li>
+                                <a (click)="fire()" title="fire">
+                                    <img [src]="imgStatus==2? 'assets/images/fire.png' : 'assets/images/fire2.png'"  class="fire">
+                                </a>
+                            </li>
+                            <li>
+                                <a (click)="contactlog()" title="Contact Log">
+                                    <button open-log="property.property_id" class="btn btn-actions sn"></button>
+                                </a>
+                            </li>
+                            <li>
+                                <a (click)="reminder()" title="Set Reminder">
+                                    <img src="assets/images/reminder.png"  class="fire">
+                                </a>
+                            </li>
+                            <li><a (click)="trash()"  title="trash"><i class="fa fa-trash"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+
+
+        <section id="prop_content_part" class="pt-3 pb-0">
+            <div class="col-sm-12">
+                <div class="row">
+
+                    <div class="col-md-12 col-lg-12 top_selling ">
+                        <div class="inside">
+                            <div class="prop_head">
+                                <h3 *ngIf="property.LMSSalePrice; else n_a">{{property.LMSSalePrice | currency : 'USD' : 'symbol' : '1.0-0'}}</h3>
+                                <ng-template #n_a>
+                                    <h3>NA</h3>
+                                </ng-template>
+                            </div>
+                            <div class="location mb-3"><i class="fa fa-map-marker"></i><a *ngIf="property.Address" href="https://maps.google.com/?q={{property.Address}}, {{property.City}}, {{property.State}} {{property.Zip}}">
+                                {{property.Address}}, {{property.City}}, {{property.State}} {{property.Zip}}</a>
+                                <a *ngIf="property.SitusStreetName" href="https://maps.google.com/?q={{property.SitusHouseNumber}} {{property.SitusStreetName}} {{property.SitusMode}}, {{property.SitusCity}}, {{property.SitusState}} {{property.SitusZipCode}}" target="_blank">
+                                {{property.SitusHouseNumber}} {{property.SitusStreetName}} {{property.SitusMode}}, {{property.SitusCity}}, {{property.SitusState}} {{property.SitusZipCode}}</a>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6 prop_new_data">
+                                    <div class="inset">
+                                        <span><p><img src="assets/images/market.png"></p> Market Value Est:</span>
+                                        <p>{{property.MktTotalValue?'$':''}}{{property.MktTotalValue?property.MktTotalValue:'N/A'}}</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 prop_new_data">
+                                    <div class="inset">
+                                        <span><p><img src="assets/images/market.png"></p> Est. Equity:</span>
+                                        <p>{{property.HomeEquityPercentage?property.HomeEquityPercentage:'N/A'}}{{property.HomeEquityPercentage?'%':''}}</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 prop_new_data full_mob">
+                                    <div class="inset">
+                                        <span><p><img src="assets/images/porp-building.png"></p> Subject Property:</span>
+                                        <!-- <p *ngIf="property.Address">
+                                            {{property.Address}}, {{property.City}}, {{property.State}} {{property.Zip}}
+                                        </p>
+                                        <p *ngIf="property.SitusStreetName">
+                                            {{property.SitusHouseNumber}} {{property.SitusStreetName}} {{property.SitusMode}}, {{property.SitusCity}}, {{property.SitusState}} {{property.SitusZipCode}}
+                                        </p> -->
+                                        <p>{{property.SitusHouseNumber}} {{property.SitusDirection}} {{property.SitusStreetName}} {{property.SitusMode}} {{property.SitusPostDirection}} {{property.SitusUnitNumber}} {{property.SitusCity}} {{property.SitusState}} {{property.SitusZipCode}}</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 prop_new_data">
+                                    <div class="inset">
+                                        <span><p><img src="assets/images/map.png"></p> County:</span>
+                                        <p>{{property.County ? property.County :'N/A'}}</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-12 prop_new_data">
+                                    <div class="inset">
+                                        <span><p><img src="assets/images/apn_data.png"></p> APN#:</span>
+                                        <p>{{property.APNFormatted ? property.APNFormatted :'N/A'}}</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-12 prop_new_data">
+                                    <div class="inset">
+                                        <span><p><img src="assets/images/opportunity.png"></p> Opportunity Zone:</span>
+                                        <p>{{property.OpportunityZone ? property.OpportunityZone :'N/A'}}</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+
+
+                    <div class="col-md-12 col-lg-12 top_selling ">
+                        <div class="inside">
+                            <div class="col-md-12 prop_new_title"><span>owner information</span></div>
+                            <div class="row">
+                                <div class="col-md-3 prop_new_data">
+                                    <div class="inset">
+                                        <span><p><img src="assets/images/owner_new.png"></p> Owner:</span>
+                                        <p>{{property.Owner1FirstName}} {{property.OwnerLastname1}}</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 prop_new_data">
+                                    <div class="inset">
+                                        <span><p><img src="assets/images/gender.png"></p> Gender:</span>
+                                        <p>{{property.Gender ? property.Gender :'N/A'}}</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 prop_new_data">
+                                    <div class="inset">
+                                        <span><p><img src="assets/images/dob.png"></p> DOB:</span>
+                                        <p>{{property.DOB ? property.DOB :'N/A'}}</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 prop_new_data">
+                                    <div class="inset">
+                                        <span><p><img src="assets/images/occupation.png"></p> Occupation:</span>
+                                        <p>{{property.Occupation ? property.Occupation :'N/A'}}</p>
+                                    </div>
+                                </div>
+                                <!-- <div class="col-md-3 prop_new_data">
+                                    <div class="inset">
+                                        <span><p><img src="assets/images/owner_new.png"></p> Owner 2:</span>
+                                        <p></p>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 prop_new_data">
+                                    <div class="inset">
+                                        <span><p><img src="assets/images/gender.png"></p> Gender:</span>
+                                        <p></p>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 prop_new_data">
+                                    <div class="inset">
+                                        <span><p><img src="assets/images/dob.png"></p> DOB:</span>
+                                        <p>02/19551</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 prop_new_data">
+                                    <div class="inset">
+                                        <span><p><img src="assets/images/occupation.png"></p> Occupation:</span>
+                                        <p>Attorney</p>
+                                    </div>
+                                </div> -->
+                                <div class="col-md-3 prop_new_data">
+                                    <div class="inset">
+                                        <span><p><img src="assets/images/relationship.png"></p> Relationship:</span>
+                                        <p>{{property.OwnerRelationshipType?property.OwnerRelationshipType:'N/A'}}</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 prop_new_data">
+                                    <div class="inset">
+                                        <span><p><img src="assets/images/kids-couple.png"></p> Children:</span>
+                                        <p>{{property.PresenceOfChildren?property.PresenceOfChildren:'N/A'}}</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 prop_new_data">
+                                    <div class="inset">
+                                        <span><p><img src="assets/images/owner_new.png"></p> # Properties Owned:</span>
+                                        <p>{{property.Owner1PropertiesOwned?property.Owner1PropertiesOwned:'N/A'}}</p>
+                                    </div>
+                                </div>
+                                <!-- <div class="col-md-3 prop_new_data">
+                                    <div class="inset">
+                                        <span><p><img src="assets/images/credit-card.png"></p>Credit Worth:</span>
+                                        <p>{{property.CreditRating?property.CreditRating:'N/A'}}</p>
+                                    </div>
+                                </div> -->
+                                <div class="col-md-3 prop_new_data">
+                                    <div class="inset">
+                                        <span><p><img src="assets/images/market.png"></p>Census Median Household Income: </span>
+                                        <p>{{property.MedianHouseholdIncome?'$':''}}{{property.MedianHouseholdIncome?property.MedianHouseholdIncome:'N/A'}}</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 prop_new_data">
+                                    <div class="inset">
+                                        <span><p><img src="assets/images/year-build.png"></p>Investing Estimated Residential Properties Owned:</span>
+                                        <p>{{property.Investing?property.Investing:'N/A'}}</p>
+                                    </div>
+                                </div>
+                                <!-- <div class="col-md-3 prop_new_data">
+                                    <div class="inset">
+                                        <span><p><img src="assets/images/dob.png"></p>DOB: </span>
+                                        <p>196712</p>
+                                    </div>
+                                </div> -->
+                                <!-- <div class="col-md-3 prop_new_data">
+                                    <div class="inset">
+                                        <span><p><img src="assets/images/gender.png"></p>Gender Code: </span>
+                                        <p>Demo</p>
+                                    </div>
+                                </div> -->
+                                <div class="col-md-3 prop_new_data">
+                                    <div class="inset">
+                                        <span><p><img src="assets/images/market.png"></p>Estimated Household Income:</span>
+                                        <p>{{property.EstimatedHouseholdIncome?'$':''}}{{property.EstimatedHouseholdIncome?property.EstimatedHouseholdIncome:'N/A'}}</p>
+                                    </div>
+                                </div>
+                                <!-- <div class="col-md-3 prop_new_data">
+                                    <div class="inset">
+                                        <span><p><img src="assets/images/market.png"></p>Net Worth:</span>
+                                        <p>{{property.EstimatedHouseholdIncome?property.EstimatedHouseholdIncome:'N/A'}}</p>
+                                    </div>
+                                </div> -->
+                                <div class="col-md-3 prop_new_data">
+                                    <div class="inset">
+                                        <span><p><img src="assets/images/elementary-school.png"></p>Education:</span>
+                                        <p>{{property.Education?property.Education:'N/A'}}</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 prop_new_data">
+                                    <div class="inset">
+                                        <span><p><img src="assets/images/kids-couple.png"></p>Presence Of Children:</span>
+                                        <p>{{property.PresenceOfChildren?property.PresenceOfChildren:'N/A'}}</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 prop_new_data">
+                                    <div class="inset">
+                                        <span><p><img src="assets/images/marriage.png"></p>Marital Status In Household:</span>
+                                        <p>{{property.MaritalStatusInHousehold?property.MaritalStatusInHousehold:'N/A'}}</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 prop_new_data">
+                                    <div class="inset">
+                                        <span><p><img src="assets/images/home.png"></p>Home Owner Renter:</span>
+                                        <p>{{property.HomeOwnerRenter?property.HomeOwnerRenter:'N/A'}}</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 prop_new_data">
+                                    <div class="inset">
+                                        <span><p><img src="assets/images/year-build.png"></p>Investing Real Estate:</span>
+                                        <p>{{property.Investing?property.Investing:'N/A'}}</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 prop_new_data">
+                                    <div class="inset">
+                                        <span><p><img src="assets/images/donation.png"></p>Charitable Donations:</span>
+                                        <p>{{property.CharitableDonations?property.CharitableDonations:'N/A'}}</p>
+                                    </div>
+                                </div>
+                                <!-- <div class="col-md-3 prop_new_data">
+                                    <div class="inset">
+                                        <span><p><img src="assets/images/home.png"></p>Veteran In Household:</span>
+                                        <p>{{property.SeniorAdultInHousehold?property.SeniorAdultInHousehold:'N/A'}}</p>
+                                    </div>
+                                </div> -->
+                                <!-- <div class="col-md-3 prop_new_data">
+                                    <div class="inset">
+                                        <span><p><img src="assets/images/history.png"></p>Military History:</span>
+                                        <p>{{property.SeniorAdultInHousehold?property.SeniorAdultInHousehold:'N/A'}}</p>
+                                    </div>
+                                </div> -->
+                                <div class="col-md-12 prop_new_data">
+                                    <div class="inset">
+                                        <span><p><img src="assets/images/angel.png"></p>Religion:</span>
+                                        <p>{{property.Religion?property.Religion:'N/A'}}</p>
+                                    </div>
+                                </div>
+                                <!-- <div class="col-md-3 prop_new_data">
+                                    <div class="inset">
+                                        <span><p><img src="assets/images/credit-card.png"></p>Credit Rating:</span>
+                                        <p>{{property.Religion?property.Religion:'N/A'}}</p>
+                                    </div>
+                                </div> -->
+
+
+                                <div class="col-md-4 prop_new_data">
+                                    <div class="inset">
+                                        <span><p><img src="assets/images/mobile-number.png"></p> Mobile Number 1:</span>
+                                        <p>{{property.phone?numberFormat(property.phone):'NA'}}</p>
+                                        <!-- <div *ngIf="pencilButton" class="edit_icons"><button (click)="sendMarketing('phone')"><i  class="fa fa-pencil-alt"></i></button></div> -->
+                                        <div class="inside_buttons">
+                                            <span class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-ellipsis-v"></i></span>
+                                            <div class="send_cta dropdown-menu">
+                                                <div *ngIf="property.batch_search_phone_flag==1;else templateName1">
+                                                    <div *ngIf="property.phone_search_flag==1;else templateName">
+                                                        <button (click)="sendMarketing('phone')" class="btn btn-success"><i class="fa fa-envelope"></i> Send SMS</button>
+                                                    </div>
+                                                    <ng-template #templateName>
+                                                        <button class="btn btn-secondary" >Not Found!</button>
+                                                    </ng-template>
+                                                </div>
+                                                <ng-template #templateName1>
+                                                    <button (click)="addSMSEmailToProspects('phone')" type="button" class="btn btn-success">Check Availability!</button>
+                                                </ng-template>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 prop_new_data">
+                                    <div class="inset">
+                                        <span><p><img src="assets/images/email.png"></p> Email 1:</span>
+                                        <p>{{property.email ? property.email : 'NA'}}</p>
+                                        <div class="inside_buttons">
+                                            <span class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-ellipsis-v"></i></span>
+                                            <div class="send_cta dropdown-menu">
+                                                <div  *ngIf="property.batch_search_email_flag==1;else templateName11">
+                                                    <div *ngIf="property.email_search_flag==1;else templateName22">
+                                                        <button (click)="sendMarketing('email')"  class="btn btn-success"><i class="fa fa-envelope"></i> Send Email</button>
+                                                    </div>
+                                                    <ng-template #templateName22>
+                                                        <button class="btn btn-secondary" >Not Found!</button>
+                                                    </ng-template>
+                                                </div>
+                                                <ng-template #templateName11>
+                                                    <button (click)="addSMSEmailToProspects('email')" type="button" class="btn btn-success" >Check Availability!</button>
+                                                </ng-template>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 prop_new_data">
+                                    <div class="inset">
+                                        <span><p><img src="assets/images/email.png"></p> Alt Email 1:</span>
+                                        <p>{{property.alternate_email1 ? property.alternate_email1 : 'NA'}}</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 prop_new_data">
+                                    <div class="inset">
+                                        <span><p><img src="assets/images/mobile-number.png"></p> Landline:</span>
+                                        <p *ngIf="property && property.phone2 && property.phone2.length>0; else  noEmail2">
+                                            <span class="inline_landline"  *ngFor="let phone of property.phone2">
+                                                {{numberFormat(phone)}}
+                                            </span>
+                                        </p>
+                                        <ng-template #noEmail2>NA</ng-template>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 prop_new_data">
+                                    <div class="inset">
+                                        <span><p><img src="assets/images/email.png"></p> Email 2:</span>
+                                        <p>{{property.email2 ? property.email2 : 'NA'}}</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 prop_new_data">
+                                    <div class="inset">
+                                        <span><p><img src="assets/images/email.png"></p> Alt Email 2:</span>
+                                        <p>{{property.alternate_email2 ? property.alternate_email2 : 'NA'}}</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-12 prop_new_data">
+                                    <div class="inset">
+                                        <span><p><img src="assets/images/email.png"></p> Mailing Address:</span>
+                                        <p *ngIf="property.MailHouseNumber || property.MailHouseNumber2 || property.MailDirection || property.MailStreetName || property.MailStreetNameSuffix || property.MailPostDirection || property.MailUnitNumber || property.MailCity || property.AlternateMailingCity || property.MailState || property.MailZZIP9 ; else noAddress">{{property.MailHouseNumber}} {{property.MailHouseNumber2}} {{property.MailDirection}} {{property.MailStreetName}} {{property.MailStreetNameSuffix}} {{property.MailPostDirection}} {{property.MailUnitNumber}} {{property.MailCity}} {{property.AlternateMailingCity}} {{property.MailState}} {{property.MailZZIP9}}</p>
+                                        <ng-template #noAddress>NA</ng-template>
+                                        <div class="inside_buttons" *ngIf="property.MailHouseNumber || property.MailHouseNumber2 || property.MailDirection || property.MailStreetName || property.MailStreetNameSuffix || property.MailPostDirection || property.MailUnitNumber || property.MailCity || property.AlternateMailingCity || property.MailState || property.MailZZIP9 ">
+                                            <span class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-ellipsis-v"></i></span>
+                                            <div class="send_cta dropdown-menu"><button (click)="sendMarketing('postcard')" class="btn btn-success"><i class="fa fa-id-card"></i> Send Postcard</button></div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-12 prop_new_data">
+                                    <div class="inset">
+                                        <span><p><img src="assets/images/email.png"></p> Alt Mailing Address:</span>
+                                        <p>{{property.AlternateMailingCity}} {{property.AlternateSitusCity}} {{property.AlternateAPN}}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12 col-lg-12 top_selling ">
+                        <div class="inside">
+                            <div class="col-md-12 prop_new_title"><span>property information</span></div>
+                            <div class="row">
+                                <div class="col-md-4 prop_new_data">
+                                    <div class="inset">
+                                        <span><p><img src="assets/images/year-build.png"></p> Year Built:</span>
+                                        <p>{{property.YearBuilt?property.YearBuilt:'N/A'}}</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 prop_new_data">
+                                    <div class="inset">
+                                        <span><p><img src="assets/images/porp-building.png"></p> Land Use:</span>
+                                        <p>{{property.LandUse?property.LandUse:'N/A'}}</p>
+                                    </div>
+                                </div>
+                                <!-- <div class="col-md-4 prop_new_data">
+                                    <div class="inset">
+                                        <span><p><img src="assets/images/status.png"></p> Default Status:</span>
+                                        <p>{{property.status?property.status:'N/A'}}</p>
+                                    </div>
+                                </div> -->
+                                <!-- <div class="col-md-3 prop_new_data">
+                                    <div class="inset">
+                                        <span><p><img src="assets/images/status.png"></p> Listing Status:</span>
+                                        <p>{{property.LandUse?property.LandUse:'N/A'}}</p>
+                                    </div>
+                                </div> -->
+                                <!-- <div class="col-md-4 prop_new_data">
+                                    <div class="inset">
+                                        <span><p><img src="assets/images/home.png"></p> HOA:</span>
+                                        <p>{{property.LandUse?property.LandUse:'N/A'}}</p>
+                                    </div>
+                                </div> -->
+                                <div class="col-md-4 prop_new_data">
+                                    <div class="inset">
+                                        <span><p><img src="assets/images/subdivision.png"></p> Subdivision:</span>
+                                        <p>{{property.Subdivision?property.Subdivision:'N/A'}}</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 prop_new_data">
+                                    <div class="inset">
+                                        <span><p><img src="assets/images/gender.png"></p> Neighborhood:</span>
+                                        <p>{{property.NeighborhoodName?property.NeighborhoodName:'N/A'}}</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 prop_new_data">
+                                    <div class="inset">
+                                        <span><p><img src="assets/images/land-square.png"></p> Total Sq Ft:</span>
+                                        <p>{{property.BuildingAreaSqft?property.BuildingAreaSqft:'N/A'}}</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 prop_new_data">
+                                    <div class="inset">
+                                        <span><p><img src="assets/images/land-square.png"></p> Liv Area Sq Ft:</span>
+                                        <p>{{property.SumOfAboveLivingSquareFootage?property.SumOfAboveLivingSquareFootage:'N/A'}}</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 prop_new_data">
+                                    <div class="inset">
+                                        <span><p><img src="assets/images/land-square.png"></p> Land Sq Ft:</span>
+                                        <p>{{property.LandSquareFootage?property.LandSquareFootage:'N/A'}}</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 prop_new_data">
+                                    <div class="inset">
+                                        <span><p><img src="assets/images/bed_new.png"></p> Bedrooms:</span>
+                                        <p>{{property.SumOfBedRooms?property.SumOfBedRooms:'N/A'}}</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 prop_new_data">
+                                    <div class="inset">
+                                        <span><p><img src="assets/images/bathroom.png"></p> Bathrooms:</span>
+                                        <p>{{property.FullBaths?property.FullBaths:'N/A'}}</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 prop_new_data">
+                                    <div class="inset">
+                                        <span><p><img src="assets/images/bath_new.png"></p> ½ Baths:</span>
+                                        <p>{{property.HalfBaths?property.HalfBaths:'N/A'}}</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 prop_new_data">
+                                    <div class="inset">
+                                        <span><p><img src="assets/images/garage.png"></p> Garage:</span>
+                                        <p>{{property.GarageType?property.GarageType:'N/A'}}</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 prop_new_data">
+                                    <div class="inset">
+                                        <span><p><img src="assets/images/year-build.png"></p> Construction:</span>
+                                        <p>{{property.ConstructionType?property.ConstructionType:'N/A'}}</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 prop_new_data">
+                                    <div class="inset">
+                                        <span><p><img src="assets/images/foundation.png"></p> Foundation:</span>
+                                        <p>{{property.Foundation?property.Foundation:'N/A'}}</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 prop_new_data">
+                                    <div class="inset">
+                                        <span><p><img src="assets/images/parking.png"></p> Parking:</span>
+                                        <p>{{property.ParkingType?property.ParkingType:'N/A'}}</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 prop_new_data">
+                                    <div class="inset">
+                                        <span><p><img src="assets/images/swimming.png"></p> Pools:</span>
+                                        <p>{{property.Pool?property.Pool:'N/A'}}</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 prop_new_data">
+                                    <div class="inset">
+                                        <span><p><img src="assets/images/land-square.png"></p> # of Floors:</span>
+                                        <!-- punch4 <p>{{property.SumOfGroundFloorSquareFeet?property.SumOfGroundFloorSquareFeet:'N/A'}}</p> -->
+                                        <!-- punch4 --><p>{{property.StoriesNumber?property.StoriesNumber:'N/A'}}</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 prop_new_data">
+                                    <div class="inset">
+                                        <span><p><img src="assets/images/condition.png"></p> Condition:</span>
+                                        <p>{{property.Condition?property.Condition:'N/A'}}</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-12 prop_new_data">
+                                    <div class="inset">
+                                        <span><p><img src="assets/images/elementary-school.png"></p> School District:</span>
+                                        <p>{{property.SchoolDistrict1?property.SchoolDistrict1:'N/A'}}</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 prop_new_data">
+                                    <div class="inset">
+                                        <span><p><img src="assets/images/elementary-school.png"></p> Elem School:</span>
+                                        <p>{{property.ElementarySchool?property.ElementarySchool:'N/A'}}</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 prop_new_data">
+                                    <div class="inset">
+                                        <span><p><img src="assets/images/elementary-school.png"></p> Middle School:</span>
+                                        <p>{{property.MiddleSchool?property.MiddleSchool:'N/A'}}</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 prop_new_data">
+                                    <div class="inset">
+                                        <span><p><img src="assets/images/elementary-school.png"></p> High School:</span>
+                                        <p>{{property.HighSchool?property.HighSchool:'N/A'}}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                    <div class="col-md-12 col-lg-12 top_selling ">
+                        <div class="inside">
+                            <div class="col-md-12 prop_new_title"><span>Financial information</span></div>
+                            <div class="row">
+                                <div class="col-md-4 prop_new_data">
+                                    <div class="inset">
+                                        <span><p><img src="assets/images/orig-lender.png"></p> Orig. Lender:</span>
+                                        <p>{{property.LMSLender?property.LMSLender:'N/A'}}</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 prop_new_data">
+                                    <div class="inset">
+                                        <span><p><img src="assets/images/mortgage.png"></p> 1st Mortgage Type:</span>
+                                        <p>{{property.LMSFirstMtgAmount?'$':''}}{{property.LMSFirstMtgAmount?property.LMSFirstMtgAmount:'N/A'}}</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 prop_new_data">
+                                    <div class="inset">
+                                        <span><p><img src="assets/images/porp-building.png"></p> Title Company:</span>
+                                        <p>{{property.LMSTitleCompany?property.LMSTitleCompany:'N/A'}}</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 prop_new_data">
+                                    <div class="inset">
+                                        <span><p><img src="assets/images/market.png"></p> Est. Mkt Value:</span>
+                                        <p>{{property.MktTotalValue?'$':''}}{{property.MktTotalValue?property.MktTotalValue:'N/A'}}</p>
+                                    </div>
+                                </div>
+                                <!-- <div class="col-md-4 prop_new_data">
+                                    <div class="inset">
+                                        <span><p><img src="assets/images/market.png"></p> Total 1st Mortgage:</span>
+                                        <p>{{property.LMSFirstMtgAmount?property.LMSFirstMtgAmount:'N/A'}}</p>
+                                    </div>
+                                </div> -->
+                                <div class="col-md-4 prop_new_data">
+                                    <div class="inset">
+                                        <span><p><img src="assets/images/market.png"></p> Total 2nd Mtg:</span>
+                                        <p>{{property.LMSSecondMtgAmount?'$':''}}{{property.LMSSecondMtgAmount?property.LMSSecondMtgAmount:'N/A'}}</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 prop_new_data">
+                                    <div class="inset">
+                                        <span><p><img src="assets/images/market.png"></p> Assessed Value:</span>
+                                        <p>{{property.AssdTotalValue?'$':''}}{{property.AssdTotalValue?property.AssdTotalValue:'N/A'}}</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 prop_new_data">
+                                    <div class="inset">
+                                        <span><p><img src="assets/images/market.png"></p> Market Land Value:</span>
+                                        <p>{{property.MktLandValue?'$':''}}{{property.MktLandValue?property.MktLandValue:'N/A'}}</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 prop_new_data">
+                                    <div class="inset">
+                                        <span><p><img src="assets/images/tax-year.png"></p> Taxes:</span>
+                                        <p>{{property.TotalValueTaxable?'$':''}}{{property.TotalValueTaxable?property.TotalValueTaxable:'N/A'}} / {{property.TaxYear?property.TaxYear:'N/A'}} , {{property.PropertyTax?property.PropertyTax:'N/A'}}</p> <!--punch2-->
+                                    </div>
+                                </div>
+                                <!-- <div class="col-md-4 prop_new_data">
+                                    <div class="inset">
+                                        <span><p><img src="assets/images/market.png"></p> Est. Equity:</span>
+                                        <p>{{property.HomeEquityPercentage?property.HomeEquityPercentage:'N/A'}}</p>
+                                    </div>
+                                </div> -->
+                                <!-- <div class="col-md-4 prop_new_data">
+                                    <div class="inset">
+                                        <span><p><img src="assets/images/market.png"></p> Cash Offer Value:</span>
+                                        <p>$300,000</p>
+                                    </div>
+                                </div> -->
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </section>
+
+    </div>
+    <!-- inside_content_area end-->
+    </section>
+
+
+
+
+
+
+
+
+  <!--successful-modal-->
+  <div class="modal" id="wallet_success">
+    <div class="modal-dialog modal-md">
+      <div class="modal-content">
+
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+
+        <div class="modal-body">
+          <div class="row successful_payment">
+            <div class="text-center chknew"><img src="assets/images/check.png"></div>
+            <h3>Your payment is successfull. please check the records in Queue.</h3>
+            <div class="text-center">
+              <button type="button" class="btn btn-success" id="genieffect">OK</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+<!--successful-modal-end-->
+<!-- modal_mynotes -->
+<div class="modal fade" id="myModal">
+    <div class="modal-dialog modal-md">
+      <div class="modal-content">
+      	<!-- Modal-Header-->
+        <div class="modal-header">
+          <h4 class="modal-title">My Notes</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        <!-- Modal-Header-end -->
+
+        <!-- Modal-body -->
+        <div class="modal-body" id="notes_bg">
+        	<form  [formGroup]="noteForm" (ngSubmit)="submitForm()">
+				<textarea class="areas" formControlName="note" placeholder="Add a note..."></textarea>
+				<input type="hidden" formControlName="id">
+        		<input type="submit" class="sendbtn" value="Send A Message" name="">
+        	</form>
+        </div>
+        <!-- Modal-body-end -->
+
+      </div>
+  </div>
+</div>
+<!-- modal_mynotes-end -->
+
+
+
+<!-- send_message -->
+<div class="modal fade" id="myModal2">
+    <div class="modal-dialog modal-md">
+      <div class="modal-content">
+      	<!-- Modal-Header-->
+        <div class="modal-header">
+          <h4 class="modal-title">Send A Message</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        <!-- Modal-Header-end -->
+
+        <!-- Modal-body -->
+        <div class="modal-body2" id="notes_bg">
+        	<div class="owner_detail">
+        		<div class="ownpic"><img src="assets/images/owner_new.png"></div>
+        		<div class="owner_content">
+        			<h3>Owner</h3>
+        			<p>{{property.OwnerFirstName_MI1}}</p>
+        			<p><i class="fa fa-map-marker"></i>  {{property.Address}}</p>
+        		</div>
+        	</div>
+
+        	<div class="form_boxs">
+        		<form>
+        			<div class="label">Name</div>
+        			<input type="text" class="own-fild" name="">
+        			<div class="label">Email Address</div>
+        			<input type="email" class="own-fild" name="">
+        			<div class="label">Mobile Number</div>
+        			<input type="text" class="own-fild" name="">
+        			<div class="label">Message</div>
+        			<textarea class="tarea"></textarea>
+        			<input type="submit" class="sendbtn2" value="Send A Message" name="">
+        		</form>
+        	</div>
+
+        </div>
+        <!-- Modal-body-end -->
+
+      </div>
+  </div>
+</div>
+<!-- send_message-end -->
+
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="reportLink" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+	  <div class="modal-content">
+		<div class="modal-header">
+		  <h5 class="modal-title" id="exampleModalLabel">Report Link</h5>
+		  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+			<span aria-hidden="true">&times;</span>
+		  </button>
+		</div>
+		<div class="modal-body">
+		 	<a href="">Click here </a>to download the report link
+		</div>
+		<div class="modal-footer">
+		  <button type="button" class="btn btn-secondary" data-dismiss="modal">Ok</button>
+		</div>
+	  </div>
+	</div>
+  </div>
+
+<!-- The Modal -->
+<div class="modal" id="paymentModal">
+    <div class="modal-dialog modal-md">
+      <div class="modal-content ">
+
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <button (click)="closeDepositeForm()" type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+		<form [formGroup]="depositeForm" (ngSubmit)="deposite()">
+        <!-- Modal body -->
+        <div class="modal-body">
+			<div class="row">
+				<div class="col-sm-4">
+					<div class="form-group">
+						<label>Total Reports</label>
+						<p><b>1</b></p>
+					</div>
+				</div>
+				<div class="col-sm-4">
+					<div class="form-group">
+						<label>Total Amount</label>
+						<p><b>{{amountToDeduct | currency}}</b></p>
+					</div>
+				</div>
+				<div class="col-sm-4">
+					<div class="form-group">
+						<label class="w-100"><div class="d-flex justify-content-between">Wallet Amount</div></label>
+						<p><b>{{currentAmount | currency}}</b></p>
+					</div>
+				</div>
+				<div class="text-center mt-3">
+					<img class="walletimage" src="assets/images/wallet.svg" width="100">
+					<p class="h5 mt-3">Ooops! You've to recharge your wallet with {{minAmount() | currency}} Amount to Purchase the reports.</p>
+				</div>
+				<div class="col-sm-12">
+					<div class="form-group">
+						<label for="amount">Amount</label>
+						<input type="text" class="form-control" data-inputmask="'alias': 'currency'" formControlName="amount"  id="amount">
+						<ng-container *ngIf="submit && depositeForm.get('amount').errors">
+							<small *ngIf="depositeForm.get('amount').errors.required" class="error-text">Amount is required.</small>
+							<small *ngIf="depositeForm.get('amount').errors.min" class="error-text"> Minimum amount should be {{minAmount() | currency}}.</small>
+						</ng-container>
+					</div>
+				</div>
+			</div>
+        </div>
+        <!-- Modal footer -->
+        <div class="modal-footer text-center">
+			<button type="submit" class="btn btn-primary submit-button">Submit</button> <!-- <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button> -->
+        </div>
+		</form>
+      </div>
+    </div>
+</div>

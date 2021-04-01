@@ -1,0 +1,181 @@
+<app-header-customer [sideBar]="sideBar"></app-header-customer>
+<app-sidebar-customer #sideBar></app-sidebar-customer>
+
+	<!-- right area start -->
+	<section class="right_section">
+
+        <!-- inside_content_area start-->
+        <div class="content_area">
+
+                    <!-- title area -->
+                        <div class="col-sm-12 top_bar_area">
+                            <div class="row">
+                                <div class="col-sm-12 from_to_filter">
+                                    <form>
+                                        <div class="view_back"><a [routerLink]="'/customer/profile'"><i class="fa fa-arrow-left"></i></a></div>
+                                        <div class="title">Edit Profile</div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    <!-- title area -->
+
+
+                <!-- main row start-->
+                <div class="col-sm-12">
+                    <div class="row">
+
+                         <!--Parent div start -->
+                            <div class="col-sm-12 top_selling">
+                                <div class="inside about_customer">
+                                    <form  [formGroup]="profileForm" (ngSubmit)="submitForm()">
+                                        <div class="row">
+                                            <div class="col-sm-3 edit_profile_image">
+                                                <div class="inset">
+                                                    <label>
+                                                        <span><img [src]="url"></span>
+                                                        <input formControlName="file" (change)="onFileChange($event)" type="file">
+                                                        <ng-container *ngIf="submit && profileForm.get('file').errors">
+                                                            <small *ngIf="profileForm.get('file').errors.required" class="error-text">Image is required.</small>
+                                                        </ng-container>
+                                                    </label>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-sm-9 edit_profile_fields">
+                                                <div class="row">
+                                                    <div class="col-sm-4 edit_profile_box">
+                                                        <div class="form-group">
+                                                            <label>Full Name</label>
+                                                            <input id="f_name" type="text" formControlName="f_name"  class="form-control">
+                                                            <ng-container *ngIf="submit && profileForm.get('f_name').errors">
+                                                                <small *ngIf="profileForm.get('f_name').errors.required" class="error-text">Name is required.</small>
+                                                                <small *ngIf="profileForm.get('f_name').errors.minlength" class="error-text">Name should be minimum 2 characters.</small>
+                                                                <small *ngIf="profileForm.get('f_name').errors.maxlength" class="error-text">Name should be maximum 40 characters.</small>
+                                                                <small *ngIf="profileForm.get('f_name').errors.pattern" class="error-text">Name is not valid.</small>
+                                                            </ng-container>
+                                                        </div>
+                                                    </div>
+                                                    <!-- <div class="col-sm-4 edit_profile_box">
+                                                        <div class="form-group">
+                                                            <label>Last Name</label>
+                                                            <input type="text" formControlName="l_name"  class="form-control">
+                                                            <ng-container *ngIf="submit && profileForm.get('l_name').errors">
+                                                                <small *ngIf="profileForm.get('l_name').errors.required" class="error-text">Last Name is required.</small>
+                                                            </ng-container>
+                                                        </div>
+                                                    </div> -->
+                                                    <div class="col-sm-4 edit_profile_box">
+                                                        <div class="form-group">
+                                                            <label>Email</label>
+                                                            <input type="text"  formControlName="email" class="form-control">
+                                                            <ng-container *ngIf="submit && profileForm.get('email').errors">
+                                                                <small *ngIf="profileForm.get('email').errors.required" class="error-text">Email is required.</small>
+                                                                <small *ngIf="profileForm.get('email').errors.email" class="error-text">Invalid Email Format.</small>
+                                                            </ng-container>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-4 edit_profile_box">
+                                                        <div class="form-group">
+                                                            <label>Mobile No.</label>
+                                                            <input type="text" formControlName="phone" data-inputmask="'mask': '+1 (999) 999-9999', 'placeholder': ''" class="form-control">  <!-- (change)="onChangeFormatPhoneNumber($event)" -->
+                                                            <ng-container *ngIf="submit && profileForm.get('phone').errors">
+                                                                <small *ngIf="profileForm.get('phone').errors.required" class="error-text">Mobile number is required.</small>
+                                                                <small *ngIf="profileForm.get('phone').errors.pattern" class="error-text">Mobile Number is not valid.</small>
+                                                                <small *ngIf="profileForm.get('phone').errors.minlength" class="error-text">Mobile Number should be minimum 10 Numbers.</small>
+                                                                <small *ngIf="profileForm.get('phone').errors.maxlength" class="error-text">Mobile Number should be maximum 11 Numbers.</small>
+                                                            </ng-container>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-6 edit_profile_box">
+                                                        <div class="form-group">
+                                                            <label>Industry</label>
+                                                            <select name="industry" class="form-control" formControlName="industry"  [value]="" id="industry">
+                                                                <option value="" disabled>--Select Industry--</option>                                        
+                                                                <option  [value]="1">Mortgage Banker/Broker</option>
+                                                                <option  [value]="2">Real Estate Agent/Broker</option>
+                                                                <option  [value]="3">Insurance</option>
+                                                                <option  [value]="4">Investigator </option>
+                                                                <option  [value]="5">Lender</option>
+                                                                <option  [value]="6">Other</option>
+                                                            </select>  
+                                                            <ng-container *ngIf="submit && profileForm.get('industry').errors">
+                                                                <small *ngIf="profileForm.get('industry').errors.required" class="error-text">industry is required.</small> 
+                                                            </ng-container>
+                                                        </div>
+                                                    </div>
+                                                    <!-- <div class="col-sm-4 edit_profile_box">
+                                                        <div class="form-group">
+                                                            <label for="state">Select Your State:</label> 
+                                                            <select name="state"  class="form-control" formControlName="state"  [value]="profileFullData.stateID" (change)="onStateChange($event.target.value)" id="state">
+                                                                <option value="">--Select State--</option>
+                                                                <option  *ngFor="let state of states" [value]="state.ID">{{state.STATE_NAME}}</option>
+                                                            </select>
+                                                            <ng-container *ngIf="submit && profileForm.get('state').errors">
+                                                                <small *ngIf="profileForm.get('state').errors.required" class="error-text">State is required.</small>
+                                                            </ng-container>
+                                                        </div>
+                                                    </div>
+                                                    
+                                                    
+                                                    <div class="col-sm-4 edit_profile_box">
+                                                        <div class="form-group">
+                                                            <label for="state">Select Your City:</label>
+                                                            <select name="city"  class="form-control"  formControlName="city" [value]="profileFullData.cityID" id="city">
+                                                                <option value="">--Select City--</option>
+                                                                <option  *ngFor="let city of cities" [value]="city.ID">{{city.CITY}}</option>
+                                                            </select>
+                                                            <ng-container *ngIf="submit && profileForm.get('city').errors">
+                                                                <small *ngIf="profileForm.get('city').errors.required" class="error-text">City is required.</small>
+                                                            </ng-container>
+                                                        </div>
+                                                    </div>  -->
+                                                    <div class="col-sm-6 edit_profile_box">
+                                                        <div class="form-group">
+                                                            <label>Postal Code</label>
+                                                            <input id="postal" type="text" formControlName="postal" data-inputmask="'mask': '99999[-9999]', 'greedy': 'false', 'placeholder': ''"  class="form-control">
+                                                            <ng-container *ngIf="submit && profileForm.get('postal').errors">
+                                                                <small *ngIf="profileForm.get('postal').errors.required" class="error-text">Postal Code is required.</small>
+                                                                <small *ngIf="profileForm.get('postal').errors.pattern" class="error-text">Postal code is not valid.</small>
+                                                            </ng-container>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-12 edit_profile_box">
+                                                        <div class="form-group">
+                                                            <label>Address</label>
+                                                            <input type="text" formControlName="address"   class="form-control">
+                                                            <ng-container *ngIf="submit && profileForm.get('address').errors">
+                                                                <small *ngIf="profileForm.get('address').errors.required" class="error-text">Address is required.</small>
+                                                                <small *ngIf="profileForm.get('address').errors.maxlength" class="error-text">Address should be maximum 80 characters.</small>
+                                                            </ng-container>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-sm-12 edit_profile_fields">
+                                                <div class="form-group">
+                                                    <label>A Little About Yourself</label>
+                                                    <textarea class="form-control"  formControlName="info" rows="10"></textarea>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-sm-12 view_all">
+                                                <button type="submit" class="btn btn-primary btn-lg">Save Profile</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        <!--Parent div end-->
+
+                        
+                    </div>
+                </div>
+                <!-- main row end-->
+
+        </div>
+        <!-- inside_content_area end-->
+
+</section>
+<!-- right area end -->

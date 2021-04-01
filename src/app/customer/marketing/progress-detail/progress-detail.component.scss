@@ -1,0 +1,151 @@
+span.updateclr {
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+    position: relative;
+    top: 6px;
+    margin-left: 8px;
+}
+.tableadmin {
+    width: 100%;
+    margin-bottom:1rem;
+    color: #212529;
+}
+table.tableadmin thead th {
+    background: #232e42;
+    color: #fff;
+    padding: 15px;
+}
+table.tableadmin td {
+    padding: 15px;
+    vertical-align: middle;
+    width: 50%;
+}
+table.tableadmin tr:nth-child(odd) {
+    background-color: #f2f2f2;
+}
+table.tableadmin tr:nth-child(even) {
+    background-color: #fff;
+}
+
+
+.user_area h5 {
+    font-size: 20px;
+    font-weight: 600;
+    color: #207bff;
+    padding: 0;
+    margin: 0px;
+}
+.user_area .time {
+    font-size: 14px;
+    color: #000;
+    font-weight:400;
+}
+.user_area h6 {
+    font-weight: 400;
+    color: #000;
+    padding: 0;
+}
+.user_area .mn-cmnt {
+    font-weight: 400;
+    color: #000;
+    padding: 0;
+    margin-top: 10px;
+    line-height: 24px;
+}
+.user_area:nth-child(1){margin-top: 0px;}
+.user_area {
+    margin-top: 30px;
+    background: #f2f2f2;
+    padding: 15px;
+    border: #e6e6e6 solid thin;
+}
+.user_area.admin {
+    border: #cadcf9 solid thin;
+    background: #e8f1ff;
+    padding: 15px;
+    width: 100%;
+    margin-top: 24px;
+}
+.inside.scrool {
+    height: 500px;
+    overflow: auto;
+}
+.admin_right {
+    width: 96%;
+    margin-left: 4%;
+    border: #c7c7c7 solid thin;
+    padding: 12px;
+    margin-top: 15px;
+}
+
+
+
+
+
+.lists .inset {
+    background: #e4e4e4;
+    border: 1px solid #b3b3b3;
+    position: relative;
+}
+.lists .inset .sms_view p {
+    padding: 5px;
+    color: #000;
+    font-size: 14px;
+    position: inherit;
+    background: transparent;
+}
+.lists .inset p {
+    background: #207bff;
+    padding: 5px;
+    color: #fff;
+    font-size: 14px;
+    position: absolute;
+}
+.lists .inset .overlap {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    top: 0;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    display: -webkit-flex;
+    -webkit-align-items: center;
+    -webkit-justify-content: center;
+    transition: 0.3s;
+    -webkit-transition: 0.3s;
+    opacity: 0;
+}
+.lists .inset:hover .overlap{
+    opacity: 1;
+}
+.lists .inset span {
+    display: block;
+}
+.lists .inset span img {
+    width: 100%;
+}
+.lists .inset h3 {
+    text-align: center;
+    font-size: 20px;
+    padding: 10px;
+    font-weight: 600;
+    color: black;
+}
+.headingarea {
+    text-align: center;
+}
+.headingarea h2 {
+    font-size: 26px;
+    font-weight: 500;
+    line-height: normal;
+    color: #2faf4e;
+}
+.headingarea h4 {
+    font-size: 18px;
+    line-height: normal;
+    color: #000;
+}

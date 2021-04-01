@@ -1,0 +1,519 @@
+.affiliatebg {
+    padding: 40px 40px 100px;
+    margin: 0px;
+    background-size: cover;
+    background-position: center;
+    background-color: #1b86e3;
+    position: relative;
+    overflow: hidden;
+    height: 550px;
+}
+.affiliatebg .content h1 {
+    font-size: 60px;
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: 800;
+}
+
+.affiliatebg .content p {
+    color: #fff;
+    font-size: 22px;
+    line-height: 32px;
+}
+.shape {
+    position: static;
+    z-index: 1;
+}
+
+.shape::after {
+    background: #004B8D;
+    position: absolute;
+    display: block;
+    content: "";
+    width: 746px;
+    height: 440px;
+    top: 0;
+    right: 0;
+    border-radius: 200px 0px 0px 200px;
+    z-index: -1;
+    margin-top: 12px;
+}
+.shape::before {
+    background: #004B8D;
+    position: absolute;
+    display: block;
+    content: "";
+    width: 596px;
+    height: 440px;
+    bottom: -400px;
+    left: 0;
+    border-radius: 100%;
+    z-index: -1;
+}
+
+
+
+.compets {
+    padding:50px;
+    margin: 0px;
+    background:#f2f2f2;
+}
+.compets .comptext {
+    text-align: center;
+    margin-bottom: 30px;
+    padding: 0px;
+}
+.compets .comptext h2 {
+    /* margin: 0px; */
+    padding: 0px;
+    text-transform: capitalize;
+    font-weight: 700;
+}
+.compets .comptext p {
+    text-align: center;
+    font-size: 22px;
+}
+.compet_part {
+    padding: 40px;
+    background: #fff;
+    box-shadow: 0 10px 40px 0 rgba(47,47,47,.2);
+    box-sizing: border-box;
+    transition: all .2s linear;
+    margin-bottom:30px;
+    border-radius:5px;
+    text-align: center;
+}
+.compet_part .icon {
+    width: 100px;
+    height: 100px;
+    margin: 0 auto;
+}
+.compet_part h3 {
+    font-size: 20px;
+    margin: 18px 0px;
+    padding: 0px;
+    font-weight: 900;
+}
+.compet_part p {
+    font-size: 16px;
+    margin: 0px;
+    padding: 0px;
+}
+
+
+
+
+
+
+
+.passivebg {
+    padding:50px;
+    margin: 0px;
+    background:#1b86e3;
+}
+.passivebg .comptext {
+    text-align: center;
+    margin-bottom:40px;
+    padding: 0px;
+    color: #fff;
+}
+.passivebg .table{background:#fff;}
+.passivebg h2 {
+    color: #fff;
+}
+.passivebg p {
+    color: #fff;
+    font-size: 18px;
+}
+.passivebg ul {
+    margin:20px 0 0;
+	padding: 0px;
+	li {
+		list-style: none;
+		display: block;
+		font-size: 22px;
+		color: #fff;
+		padding-top: 8px;
+		i {
+			color: #fff;
+			margin-right: 12px;
+		}
+	}
+	li::before {
+		content: "\f058";
+		font-family: 'FontAwesome';
+		padding: 0 10px 0 0;
+	}
+}
+
+
+
+.peopelsome {
+    padding:50px;
+    margin: 0px;
+    background:#fff;
+}
+.peopelsome .comptext {
+    text-align: center;
+    margin-bottom: 30px;
+    padding: 0px;
+}
+.affipeople {
+    padding: 20px 20px;
+    background: #fff;
+    box-shadow: 0 2px 25px rgba(0,0,0,0.2);
+    text-align: center;
+    border-radius: 5px;
+    -webkit-transition: 0.5s;
+    -moz-transition: 0.5s;
+    -o-transition: 0.5s;
+    transition: 0.5s;
+    margin-bottom: 30px;
+}
+.affipeople .clientlogo4 {
+    height: 180px;
+    width: 180px;
+    border-radius: 50%;
+    margin: 0 auto;
+    overflow: hidden;
+}
+.affipeople h3 {
+    color: #0D8EE0;
+    cursor: pointer;
+    margin-top: 12px;
+}
+.affipeople .clientlogo4 img {
+    height: 100%;
+    object-fit: cover;
+    width: 100%;
+}
+.cleintbox4 p {
+    margin: 0px 0 0;
+    padding: 0px;
+    font-size: 16px;
+    font-weight: 400;
+    color: #000;
+}                            
+
+
+
+
+
+
+/*graphics*/
+.started{padding: 50px 0px;}
+.started .comptext {
+    text-align: center;
+    margin-bottom: 40px;
+    padding: 0px;
+}
+article.flowdesign{
+
+	background: linear-gradient(to right, #fff 20%, #f2f2f2 80%);
+	box-shadow: 0 -2px 23px 0 rgba(47,47,47,.2);
+	border-radius: 100px;
+    padding: 15px;
+    width: 100%;
+    position: relative;
+    z-index: 1;
+}
+article.flowdesign::after {
+    background: #f20;
+    content: "";
+    display: block;
+    width: 450px;
+    height: 109%;
+    right: -2%;
+    position: absolute;
+    top: 0;
+    background: linear-gradient(to right, transparent 20%, #fff 80%);
+    z-index: -1;
+}
+article.flowdesign .content h3 {
+    font-size: 28px;
+    font-weight: 900;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+article.flowdesign .content p {
+    font-size: 20px;
+    margin: 0px;
+}
+article.flowdesign .icons {
+    width: auto;
+    height: auto;
+    border-radius: 50%;
+    padding: 25px;
+    background: linear-gradient(to right, #38a7ed 20%, #58b4ef 80%);
+    border:#0d8ee0 solid thin;
+}
+
+
+article.centerside{
+
+	background: linear-gradient(to right, #fff 20%, #f2f2f2 80%);
+	box-shadow: 0 -2px 23px 0 rgba(47,47,47,.2);
+	border-radius: 100px;
+    padding: 15px;
+    width: 100%;
+    position: relative;
+    z-index: 1;
+    margin-top:0px;
+}
+article.centerside::before {
+    background: #f20;
+    content: "";
+    display: block;
+    width: 450px;
+    height:109%;
+    left: -2%;
+    position: absolute;
+    top: 0;
+    background: linear-gradient(to left, transparent 20%, #fff 80%);
+    z-index: -1;
+}
+article.centerside .content2{text-align: right;}
+article.centerside .content2 h3 {
+    font-size: 28px;
+    font-weight: 900;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+article.centerside .content2 p {
+    font-size: 20px;
+    margin: 0px;
+}
+article.centerside .icons {
+    width: auto;
+    height: auto;
+    border-radius: 50%;
+    padding: 25px;
+    background: linear-gradient(to right, #38a7ed 20%, #58b4ef 80%);
+    border:#0d8ee0 solid thin;
+}
+
+
+article.rightside{
+
+	background: linear-gradient(to right, #fff 20%, #f2f2f2 80%);
+	box-shadow: 0 -2px 23px 0 rgba(47,47,47,.2);
+	border-radius: 100px;
+    padding: 15px;
+    width: 100%;
+    position: relative;
+    z-index: 1;
+}
+article.rightside::after {
+    background: #f20;
+    content: "";
+    display: block;
+    width: 450px;
+    height: 109%;
+    right: -2%;
+    position: absolute;
+    top: 0;
+    background: linear-gradient(to right, transparent 20%, #fff 80%);
+    z-index: -1;
+}
+article.rightside .content h3 {
+    font-size: 28px;
+    font-weight: 900;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+article.rightside .content p {
+    font-size: 20px;
+    margin: 0px;
+}
+article.rightside .icons {
+    width: auto;
+    height: auto;
+    border-radius: 50%;
+    padding: 25px;
+    background: linear-gradient(to right, #38a7ed 20%, #58b4ef 80%);
+    border:#0d8ee0 solid thin;
+}
+
+
+
+
+/*faq-css*/
+.faqaffbg {
+    padding:50px;
+    margin: 0px;
+    background:#ECEFF3;
+}
+.faqaffbg .comptext {
+    text-align: center;
+    margin-bottom: 30px;
+    padding: 0px;
+}
+.faqlists ul {
+    margin: 0px;
+    padding: 0px;
+    column-count: 3;
+    column-gap:20px;
+}
+.faqlists ul li {
+    list-style: none;
+    display: inline-block;
+    background: #fff;
+    padding:20px;
+    box-shadow: 0 7px 11px -5px rgba(103,123,160,0.28);
+    border-radius: 5px;
+    margin-top: 20px;
+    
+}
+.faqlists ul li h6 {
+    font-size: 22px;
+    font-weight: 900;
+}
+.faqlists ul li p {
+    font-size: 18px;
+    margin: 0px;
+    padding: 0px;
+}
+.question-text{font-size: 18px; font-weight: 500; text-align: center;}
+.question-text a.here {
+    display: inline-block;
+    background: #1b86e3;
+    padding: 2px;
+    border-radius: 50px;
+    color: #fff;
+    width: 80px;
+    text-transform: capitalize;
+}
+.question-text a:hover{background:#28a745;}
+/*faq-css-end*/
+
+
+
+
+
+
+
+
+
+
+
+/*login-css*/
+.loginbg {
+    padding: 50px;
+    margin: 0px;
+    background: #ECEFF3;
+}
+.loginbg .loginarea {
+    background: #fff;
+    width: 100%;
+    max-width: 450px;
+    margin: 0 auto;
+    padding:20px;
+    box-shadow: 0 7px 11px -5px rgba(103,123,160,0.28);
+    border-radius: 5px;
+}
+.loginbg .loginarea .gent {
+    text-align: center;
+    font-size: 26px;
+    font-weight: 500;
+    margin-bottom: 18px;
+}
+.loginbg .loginarea .login_logo{text-align: center; margin-bottom: 25px;}
+.loginbg .loginarea .login_logo img{width: 232px;}
+.loginbg .loginarea .form-control {
+    height: 50px;
+}
+.loginbg .loginarea .custmbtn {
+    margin-top: 20px;
+}
+.loginbg .loginarea .custmbtn .cstmbtn {
+    width: calc(50% - 2px);
+}
+.loginbg .loginarea .form-group label {
+    font-size: 18px;
+    font-weight: 500;
+}
+.loginbg .loginarea .form-check label {
+    font-size: 18px;
+    font-weight: 500;
+}
+/*login-css-end*/
+
+
+
+@media all and (max-width:1800px){
+
+.shape::after{width: 616px; height: 450px;}
+.affiliatebg{height: auto;}
+.shape::before{width: 476px; height: 430px;}
+}
+
+
+
+@media all and (max-width:1500px){
+
+
+.shape::after{width: 506px; height: 390px;}
+.affiliatebg{height: auto;}
+.shape::before{width: 476px; height: 430px;}
+.shape img {width: 470px;}
+}
+
+@media all and (max-width:1200px){
+.affiliatebg .content h1{font-size: 40px;}
+.affiliatebg .content h1{font-size: 40px;}
+.shape::after{width: 386px; height: 440px;}
+.affiliatebg{height: auto;}
+.shape::before{width: 476px; height: 430px;}
+}
+
+@media all and (max-width: 1024px){
+
+.affiliatebg .content h1{font-size: 40px;}
+.shape::after{width: 336px; height: 370px;}
+.affiliatebg{height: auto;}
+.shape::before{width: 476px; height: 430px;}
+}
+
+
+@media all and (max-width: 991px){
+
+.affiliatebg{overflow: initial; height: auto;}
+.shape::after, .shape::before{display: none;}
+
+article.flowdesign .icons{height: 110px; width: 110px; margin-top: 25px;}
+article.centerside .icons{height: 110px; width: 110px; margin-top: 25px;}
+article.rightside .icons{height: 110px; width: 110px; margin-top: 25px;}
+
+}
+
+
+@media all and (max-width: 767px){
+
+.affiliatebg{overflow: initial; height: auto;}
+.shape::after, .shape::before{display: none;}
+
+.affiliatebg .content h1{font-size: 30px;}
+.affiliatebg .content p{font-size: 16px;}
+.affiliatebg img {
+    margin-top: 45px;
+    width: 100%;
+}
+article.flowdesign .icons{width: 100px; height: 100px; margin: 0 auto;}
+article.flowdesign{border-radius: 5px; text-align: center;}
+article.flowdesign::after{display: none;}
+
+article.centerside{border-radius: 5px; margin-top: 25px;}
+article.centerside::before{display: none;}
+article.centerside .content2{text-align: center;}
+article.centerside .icons{width: 100px; height: 100px; margin: 0 auto;}
+article.centerside .mobflex {
+    display: flex;
+    flex-direction: column-reverse;
+}
+article.rightside .icons{width: 100px; height: 100px; margin: 0 auto;}
+article.rightside{border-radius: 5px; text-align: center; margin-top: 25px;}
+article.rightside::after{display: none;}
+
+.compets, .passivebg, .peopelsome, .faqaffbg{padding: 20px;}
+.faqlists ul{column-count: 1;}
+}

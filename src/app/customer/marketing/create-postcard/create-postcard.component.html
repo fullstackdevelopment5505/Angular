@@ -1,0 +1,343 @@
+<app-header-customer [sideBar]="sideBar"></app-header-customer>
+<app-sidebar-customer #sideBar></app-sidebar-customer>
+
+<section class="right_section" [class.load]="load!=1">
+    <!-- inside_content_area start-->
+    <div class="content_area">
+
+        <!-- main row start-->
+        <div class="col-sm-12">
+            <div class="row">
+
+                <!--table start -->
+                <div class="col-sm-12 top_selling">
+                    <div class="inside">
+                        <form id="msform">
+                            <ul id="probars">
+                                <li [class.active]="currentStep >= 1" id="account">
+                                    <p class="icons"><i class="fa fa-columns"></i></p>
+                                    <p class="title"><strong>Type</strong></p>
+                                </li>
+                                <li [class.active]="currentStep >= 2" id="personal">
+                                    <p class="icons"><i class="fa fa-address-card"></i></p>
+                                    <p class="title"><strong>Design</strong></p>
+                                </li>
+                                <li  [class.active]="currentStep >= 3" id="payment">
+                                    <p class="icons"><i class="fa fa-comments"></i></p>
+                                    <p class="title"><strong>Message</strong></p>
+                                </li>
+                                <li  [class.active]="currentStep >= 4" id="confirm">
+                                    <p class="icons"><i class="fa fa-thumbs-up"></i></p>
+                                    <p class="title"><strong>Thanks</strong></p>
+                                </li>
+                            </ul>
+
+                            <fieldset [style.display]="currentStep===1 ? 'block' : 'none'" [style.opacity]="currentStep===1 ? '1' : '0'">
+                                <div class="step-header">
+                                    <h1>Select the Postcard Size</h1>
+                                    <p>Postcards 4x6 and 6x9</p>
+                                </div>
+                                <div class="row justify-content-center align-item-center d-flex mt-4">
+                                    <div class="col-md-4 prnt">
+                                        <div class="cardpost" [class.active]="activeCard==1">
+                                            <a (click)="selectCard(1)" href="javascript:void()">
+                                                <img src="assets/images/4x6.png">
+                                                <h3>4x6 Postcard</h3>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 prnt">
+                                        <div class="cardpost" [class.active]="activeCard==2">
+                                            <a (click)="selectCard(2)" href="javascript:void()">
+                                                <img src="assets/images/4x6.png">
+                                                <h3>6x9 Postcard</h3>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button type="button" (click)="nextFirst()" class="next action-button" >Next</button>
+                            </fieldset>
+
+                            <form  [formGroup]="cardForm" (ngSubmit)="submitCard()">
+                                <fieldset [style.display]="currentStep===2 ? 'block' : 'none'" [style.opacity]="currentStep===2 ? '1' : '0'">
+                                    <div class="step-header">
+                                        <h1>Design Your Image</h1>
+                                        <p>Use our design tools to help you design the perfect image!</p>
+                                    </div>
+                                    <div class="row mt-4">
+                                        <div class="col-lg-5">
+                                            <div class="row">
+                                                <div class="col-lg-6">
+                                                    <div class="temp_post">
+                                                        <input type="file" formControlName="file" (change)="onImageChange($event)" id="upload_postcard" class="editsr" name="">
+                                                        <label class="upload_area" for="upload_postcard">
+                                                            <div class="title">upload</div>
+                                                            <div class="sub-title">your 1875 X 1275 Png/Jpg</div>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <div class="temp_post">
+                                                        <a href="javascript:()"  (click)="createCustom(content)">
+                                                        <div class="upload_area">
+                                                            <div class="title">Customer Design Service</div>
+                                                            <div class="sub-title">our team will be build it</div>
+                                                        </div>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+                                            <div class="row design-templates mt-4" *ngIf="postCard && postCard.image_templates && postCard.image_templates.length>0; else noImage">
+
+                                                <div class="col col-md-6 postcard-template" *ngFor="let template of postCard.image_templates">
+                                                    <div (click)="changeImage(template.template_image_path)" class="clickable"><img src="{{template.template_image_path}}"></div>
+                                                </div>
+
+                                            </div>
+
+                                            <ng-template #noImage>
+                                                <div class="alert alert-dark" role="alert">
+                                                    No image available
+                                                </div>
+                                            </ng-template>
+
+                                        </div>
+                                        <div class="col-lg-7">
+                                            <div class="card_canvas">
+                                                <img [src]="defaultSideImage">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="justify-content-center align-item-center">
+                                        <div class="be-checkbox">
+                                            <label for="save_image_template" style="font-size: 15px;">
+
+                                                <input formControlName="save_as_template" id="save_image_template" type="checkbox">
+                                                Save as Image Template
+                                            </label>
+                                        </div>
+                                    </div>
+
+                                    <button type="button" (click)="prev()" class="previous action-button-previous mr-2" >Previous</button>
+                                    <button type="button" (click)="nextSecond()" name="next" class="next action-button" value="Next" > Next </button>
+                                </fieldset>
+
+
+                                <fieldset [style.display]="currentStep===3 ? 'block' : 'none'" [style.opacity]="currentStep===3 ? '1' : '0'">
+                                    <div class="step-header">
+                                        <h1>Design Your Image</h1>
+                                        <p>Use our design tools to help you design the perfect image!</p>
+                                    </div>
+                                    <div class="row mt-4">
+                                        <div class="col-lg-12">
+                                            <div class="row">
+                                                <div class="col-lg-8">
+                                                    <div class="temp_post temp_post text-left">
+                                                        <p class="h5">Note To Recipents</p>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-4">
+                                                    <div class="temp_post">
+                                                        <select formControlName="handwriting_styles" class="form-control">
+                                                            <option value="">Select Hardwriting Style</option>
+                                                            <option *ngFor="let font of postCard && postCard.handwriting_styles && postCard.handwriting_styles.data" value="{{font.handwriting_style_id}}">{{font.name}}</option>
+                                                        </select>
+                                                        <ng-container *ngIf="submitCard && cardForm.get('handwriting_styles').errors">
+                                                            <small *ngIf="cardForm.get('handwriting_styles').errors.required" class="error-text">Hardwriting is required.</small>
+                                                        </ng-container>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="row design-templates mt-4">
+                                                <div class="col-lg-12">
+                                                    <div class="mesg_canva">
+                                                        <textarea formControlName="message" #r  id="messageTextArea" rows="4" placeholder="Enter your message here..."></textarea>
+                                                        <ng-container *ngIf="submitCard && cardForm.get('message').errors">
+                                                            <small *ngIf="cardForm.get('message').errors.required" class="error-text">Message is required.</small>
+                                                            <small *ngIf="cardForm.get('message').errors.maxlength" class="error-text">Message should be maximum 240 characters.</small>
+                                                        </ng-container>
+                                                    </div>
+                                                    <div class="dynamic-button">
+                                                        <button (click)="addText('%FULL_NAME%')" type="button" class="btn-default mr-2">Full Name</button>
+                                                        <button (click)="addText('%FIRST_NAME%')" type="button" class="btn-default mr-2">First Name</button>
+                                                        <button (click)="addText('%ADDRESS%')" type="button" class="btn-default mr-2">Address</button>
+                                                        <button (click)="addText('%CITY%')" type="button" class="btn-default mr-2">City</button>
+                                                        <button (click)="addText('%STATE%')" type="button" class="btn-default">State</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <button type="button" (click)="prev()" class="previous action-button-previous mr-2" >Previous</button>
+                                    <button type="button" (click)="postCardPreview()"  class="btn btn-success  mr-2">
+                                        Preview
+                                        <span *ngIf="previewFlag" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                                    </button>
+                                    <button type="submit"  class="next action-button" > Send
+                                        <span *ngIf="submitFlag" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                                    </button>
+                                </fieldset>
+                            </form>
+
+                            <fieldset [style.display]="currentStep===4 ? 'block' : 'none'" [style.opacity]="currentStep===4 ? '1' : '0'">
+                                <div class="form-card">
+                                    <div class="text-center p-4">
+                                        <img src="assets/images/by_postcard.png">
+                                        <p class="h1 mt-2">Thanks For Submiting</p>    
+                                        <p class="h5">Your postcard/s have been sent successfully in the thanks page</p>
+                                        <a [routerLink]="'/customer/purchased-history'"><button type="button" class="btn btn-success mt-3">Back To Home</button></a>
+                                    </div>
+                                </div>
+                            </fieldset>
+
+                        </form>
+                    </div>
+                </div>
+                <!--table-end-->
+
+
+            </div>
+        </div>
+    </div>
+    <app-common-overlay *ngIf="load!=1"></app-common-overlay>
+</section>
+
+
+<ng-template #content let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Customer Design Service</h4>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <div class="border p-4">
+            <p class="text-center"><img src="assets/images/postcard_new.svg" width="500"></p>
+            <p class="h5">Customer designer service is available for customers with minimum prices to design a postcard. Our super talented graphic designing team will assist you in designing you beautiful card. We may need some information for you. If you are intersted, kindly go to next step.</p>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" (click)="modal.close('confirm')" class="btn btn-primary cstmdesign">Confirm</button>
+        <button type="button" (click)="modal.close('Close click')" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+    </div>
+</ng-template>
+
+
+<ng-template #content1 let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Customer Design Service</h4>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <form  [formGroup]="postCardForm" (ngSubmit)="submitForm()">
+        <div class="modal-body">
+
+                <div class="form-group">
+                <label>What is the goal of your campaign?</label>
+                <input type="text" formControlName="comapany_goal" class="form-control mt-2">
+                <ng-container *ngIf="submit && postCardForm.get('comapany_goal').errors">
+                    <small *ngIf="postCardForm.get('comapany_goal').errors.required" class="error-text">Campaign Goal is required.</small>
+                </ng-container>
+                </div>
+                <div class="form-group">
+                <label>Who are you targeting?</label>
+                <input type="text" formControlName="targets" class="form-control mt-2">
+                <ng-container *ngIf="submit && postCardForm.get('targets').errors">
+                    <small *ngIf="postCardForm.get('targets').errors.required" class="error-text">Targeting is required.</small>
+                </ng-container>
+                </div>
+                <div class="form-group border p-3">
+                <div class="row">
+                    <div class="col-lg-4">
+                        <label>Choose Primary Color</label>
+                        <input type="color" formControlName="primary_color"  id="colorpicker" class="form-control" pattern="^#+([a-fA-F0-9]{6}|[a-fA-F0-9]{3})$">
+                        <div class="d-flex mt-3">
+                            <input type="text" id="hexcolor" disabled class="form-control entrclr" pattern="^#+([a-fA-F0-9]{6}|[a-fA-F0-9]{3})$" value="{{postCardForm.get('primary_color').value}}">
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <label>Choose Secondary Color</label>
+                        <input type="color" formControlName="secondary_color"  id="colorpicker2" class="form-control" pattern="^#+([a-fA-F0-9]{6}|[a-fA-F0-9]{3})$">
+                        <div class="d-flex mt-3">
+                            <input type="text" id="hexcolor2" disabled class="form-control entrclr" pattern="^#+([a-fA-F0-9]{6}|[a-fA-F0-9]{3})$" value="{{postCardForm.get('secondary_color').value}}">
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+
+                        <label>Handwriting style.</label>
+                        <select formControlName="font_family" class="form-control">
+                            <option value="">Select Font</option>
+                            <option *ngFor="let font of postCard && postCard.handwriting_styles && postCard.handwriting_styles.data">{{font.name}}</option>
+                        </select>
+                        <ng-container *ngIf="submit && postCardForm.get('font_family').errors">
+                            <small *ngIf="postCardForm.get('font_family').errors.required" class="error-text">Font is required.</small>
+                        </ng-container>
+                    </div>
+                </div>
+                </div>
+                <div class="form-group">
+                <label>Please share the content you want to print on the postcard.</label>
+                <textarea formControlName="postcard_content" class="form-control" rows="3"></textarea>
+                <ng-container *ngIf="submit && postCardForm.get('postcard_content').errors">
+                    <small *ngIf="postCardForm.get('postcard_content').errors.required" class="error-text">Content is required.</small>
+                </ng-container>
+                </div>
+                <div class="form-group">
+                    <label>Upload Design Sample: (Maximum file size: 2 MB)</label>
+                <input type="file" formControlName="design_sample" (change)="onFileChange($event)" class="form-control mt-2">
+                <ng-container *ngIf="submit && postCardForm.get('design_sample').errors">
+                    <small *ngIf="postCardForm.get('design_sample').errors.required" class="error-text">Design Sample is required.</small>
+                </ng-container>
+                </div>
+                <div class="form-group">
+                <label>Any additional note to designer.</label>
+                <textarea formControlName="additional_notes" class="form-control mt-3" rows="2"></textarea>
+                <ng-container *ngIf="submit && postCardForm.get('additional_notes').errors">
+                    <small *ngIf="postCardForm.get('additional_notes').errors.required" class="error-text">Note is required.</small>
+                </ng-container>
+                </div>
+        </div>
+        <div class="modal-footer">
+            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="button" (click)="modal.close('Close click')" class="btn btn-danger" >Cancel</button>
+        </div>
+    </form>
+</ng-template>
+
+<ng-template #slider let-modal>
+    <div class="modal-header">
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <div  class="row cleintbox4">
+            <div  class="col-lg-6">
+                <img  class="border img-365" [src]="defaultSideImage">
+            </div>
+            <div  class="col-lg-6 position-relative">
+                <img  class="border" [src]="previewTemplate && previewTemplate.data">
+                <div class="postcard-address-block">
+                    <div class="return">
+                        <div>{{name}}</div>
+                         <div>{{address}} {{postal}}</div>
+                        </div>
+                        <div class="recipient large">
+                            <div class="barcode"></div>
+                            <div>{{resAddress && resAddress.name}}</div>
+                            <!-- <div>{{resAddress && resAddress.address}}</div> punch1 -->
+                            <div>{{resAddress && resAddress.address.split(' ')[0]}} {{resAddress && resAddress.address.split(' ')[1]}}</div>
+                            <!-- <div>{{resAddress && resAddress.city}}, {{resAddress  && resAddress.country}} {{resAddress && resAddress.postal_code}}</div>  punch1-->
+                            <div>{{resAddress && resAddress.city}}, {{resAddress && resAddress.address.split(' ')[3]}} {{resAddress && resAddress.postal_code.slice(0,5)}}-{{resAddress && resAddress.postal_code.slice(5,9)}}</div>
+                        </div>
+                    </div>
+            </div>
+        </div>
+    </div>
+</ng-template>

@@ -1,0 +1,96 @@
+<app-header></app-header>
+
+    <section id="e_profilebg">
+        <div class="container">
+            
+        <div class="row">            
+            <div class="col-md-8 offset-md-2 col-sm-12 form-sec">
+                <div class="row">  
+                    <div class="col-md-12 text-right">
+                        <a [routerLink]="'/customer'"  class="btn btn-warning float-right">Skip</a>
+                    </div>
+                </div>
+                <div class="col-md-12 ">
+                    <h3 class="text-center text-info" [innerHTML]="heading_1">Complete your Profile and earn points</h3>
+
+                </div>
+                <form [formGroup]="registerForm" (ngSubmit)="submitForm()" >
+                        <div class="row">
+                            <div class="col-md-5">
+                                <div class="form-group">
+                                    <label for="name">First Name:</label>
+                                    <input type="test" class="form-control" id="name" formControlName="f_name" placeholder="Enter first name">
+                                    <ng-container *ngIf="submit && registerForm.get('f_name').errors">
+                                        <small *ngIf="registerForm.get('f_name').errors.required" class="error-text">Email is required.</small>
+                                    </ng-container>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="l_name">Last Name:</label>
+                                    <input type="text" class="form-control" id="l_name"  formControlName="l_name"   placeholder="Enter last name" >
+                                    <ng-container *ngIf="submit && registerForm.get('l_name').errors">
+                                        <small *ngIf="registerForm.get('l_name').errors.required" class="error-text">First name is required.</small>
+                                    </ng-container>
+                                </div>
+                            
+                                <div class="form-group">
+                                    <label for="company">Company Name:</label>
+                                    <input id="company" type="text" class="form-control"   formControlName="company"  placeholder="Enter Company"> 
+                                    <ng-container *ngIf="submit && registerForm.get('company').errors">
+                                        <small *ngIf="registerForm.get('company').errors.required" class="error-text">Last name is required.</small>
+                                    </ng-container>     
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="phone">Phone No:</label>
+                                    <input type="text" class="form-control" id="phone"  formControlName="phone"   placeholder="Enter phone number">
+                                    <ng-container *ngIf="submit && registerForm.get('phone').errors">
+                                        <small *ngIf="registerForm.get('phone').errors.required" class="error-text">Phone is required.</small>
+                                    </ng-container>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="address">Address:</label>
+                                    <input type="text" class="form-control" id="address"  formControlName="address"   placeholder="Enter address">
+                                    <ng-container *ngIf="submit && registerForm.get('address').errors">
+                                        <small *ngIf="registerForm.get('address').errors.required" class="error-text">Address is required.</small>
+                                    </ng-container>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="postal_code">Postal Code:</label>
+                                    <input type="text" class="form-control" id="postal_code"  formControlName="postal"   placeholder="Enter postal coder">
+                                    <ng-container *ngIf="submit && registerForm.get('postal').errors">
+                                        <small *ngIf="registerForm.get('postal').errors.required" class="error-text">Postal Code is required.</small>
+                                    </ng-container>
+                                </div>
+                                <div class="form-group">
+                                    <button  type="submit" class="btn btn-success ">Continue</button>
+                                    <a [routerLink]="'/customer'"  class="btn btn-warning float-right">Skip</a>
+                                </div>
+                            </div>
+                            <div class="col-md-7">
+                                <h6 class="text-success" [innerHTML]="sub_heading_1">Let us run day by day cloud operations for you</h6>
+                                <p class="pt-3" [innerHTML]="content_1">
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                                    incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+                                    exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                                </p>
+                                <h6 class="text-success pho" [innerHTML]="sub_heading_2_1"></h6>
+                                <p class="pt-3" [innerHTML]="content_2_1">
+                                <h6 class="text-success pho" [innerHTML]="sub_heading_2_2"></h6>
+                                <p class="pt-3" [innerHTML]="content_2_2">
+                                <h6 class="text-success pho" [innerHTML]="sub_heading_2_3"></h6>
+                                <p class="pt-3" [innerHTML]="content_2_3">
+                            </div>
+                    </div>
+                </form>
+                </div>
+            </div>  
+        </div>		
+    </section>
+
+
+
+    
+<app-footer></app-footer>

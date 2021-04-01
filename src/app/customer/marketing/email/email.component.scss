@@ -1,0 +1,84 @@
+
+.btn-light {
+    color           : #212529;
+    background-color: #f8f9fa;
+    border-color    : #f8f9fa;
+}
+
+.btn-light:hover {
+    color           : #212529;
+    background-color: #e2e6ea;
+    border-color    : #dae0e5;
+}
+
+.inside li {
+    list-style-type: none;
+    list-style-position: none;
+    padding: 0px;
+}
+
+.double_divide_bottom .nav-item a {
+    border-radius: 5px;
+    padding: 14px;
+    font-size: 18px;
+    color: black;
+    cursor: pointer;
+}
+
+.double_divide_bottom .right_part .top_title {
+    margin: 0 -15px;
+    padding: 15px;
+    border-bottom: 1px solid #d0d0d0;
+    margin-bottom: 15px;
+}
+.nav-pills .nav-link.active, .nav-pills .show>.nav-link {
+    color: #fff !important;
+    background-color: #007bff;
+}
+div#bar {
+    text-align: right;
+    margin-bottom: 15px;
+}
+div#bar button{
+    color: #fff !important;
+    background-color: #007bff;
+    border-radius: 5px;
+    padding: 7px 10px;
+    font-size: 18px;
+    border: none;
+}
+
+.recent_info {
+    text-align: center;
+    border: 3px dashed red;
+    background: #ffeeee;
+    font-size: 24px;
+    font-weight: 600;
+    padding: 70px 15px;
+    text-transform: capitalize;
+}
+.recent_info span {
+    display: block;
+    margin-top: 15px;
+}
+.top_selling .inside{
+    padding:20px
+}
+.dynamic-button{
+    margin-top: 10px;
+    justify-content: center;
+    display: flex;
+    .btn-default{
+        font-size: 12px;
+        padding: 3px 8px;
+        background: transparent;
+        color: #000 !important;
+        border: 1px solid !important;
+        border-radius: 3px
+    }
+}
+.bg-default{
+    background: #fff;
+    margin-top: -40px;
+    padding: 10px;
+}

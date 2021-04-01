@@ -1,0 +1,57 @@
+<app-header></app-header>
+<section id="team-member">
+    <div class="team-img">
+        <img src="{{teamDetail.header_image}}">
+    </div>
+    <div class="team-member-text">
+        <h4>{{teamDetail.designation}}</h4>
+    </div>
+ </section>
+
+
+<section id="member-detail">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 col-md-7 m_text">
+                <div class="m_text" [innerHTML]="description"></div>
+                <hr />
+                <h6>Contact Details:</h6>
+                <div class="contact">
+                    <a href="#"><i class="fa fa-phone"></i><span>{{teamDetail.phone_number}}</span></a><a href="#"><i class="fa fa-envelope ml-3"></i><span>{{teamDetail.email}}</span></a>
+                </div>
+                <div class="icons mt-3">
+                    <a *ngIf="facebook_url" [href]="facebook_url" target="_blank"><i class="fa fa-linkedin"></i></a><a *ngIf="linkedin_url" [href]="linkedin_url" target="_blank"><i class="fa fa-facebook fb"></i></a>
+                </div>
+            </div>
+            <!-- <div class="col-sm-12 col-md-7 m_text">
+                <h2>Robert Cayouette</h2>
+                <em>Chief Executive Officer</em>
+                <p><b>John</b> has more than 25 years of experience advising family offices, hedge funds, private equity funds, 
+                funds of funds and REITS. She consults on a host of tax issues, among them individual, fiduciary, 
+                partnership and estate and gift tax returns. Previously, she served as a Senior Tax Manager at a Big 
+                Four firm and vice president/controller with a national real estate investment firm.</p>
+                <hr />
+                <h5>John’s experience extends to:</h5>
+                <ul>
+                    <li><i class="fa fa-map-marker"></i>Guiding clients in staying compliant with effective rules and company policies and procedures.</li>
+                    <li><i class="fa fa-map-marker"></i>Offering insights to mitigate exposure and risk and improve efficiency.</li>
+                    <li><i class="fa fa-map-marker"></i>Identifying and pursuing tax savings opportunities.</li>
+                    <li><i class="fa fa-map-marker"></i>Working with clients and their attorneys to help ensure the efficient administration of trusts and estates.</li>
+                </ul>
+                <hr />
+                <h6>Contact Details:</h6>
+                <div class="contact">
+                    <a href="#"><i class="fa fa-phone"></i><span>+123 45698712</span></a><a href="#"><i class="fa fa-envelope ml-3"></i><span>abc@gmail.com</span></a>
+                </div>
+                <div class="icons mt-3">
+                    <a href=""><i class="fa fa-linkedin"></i></a><a href=""><i class="fa fa-facebook fb"></i></a>
+                </div>
+            </div>  -->
+            <div class="col-sm-12 col-md-5 m_img">
+                <img class="" src="{{image}}">
+            </div>
+            
+        </div>
+    </div>
+</section>
+<app-footer></app-footer>

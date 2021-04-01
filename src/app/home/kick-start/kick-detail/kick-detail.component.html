@@ -1,0 +1,391 @@
+<app-header></app-header>
+<!-- listing-area -->
+<section id="kickbg2">
+	<div class="container">
+		<div class="row">
+			<div class="listing_heading">
+				<div class="headtitle">
+					<h2>Kickstarter</h2>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-3 white_box_shadow">
+				<div class="cleintbox5">
+					<!-- <div class="red-icon"><a (click)="saveLikes()"><i *ngIf="status" class="fa fa-heart fillheart"></i> <i  *ngIf="!status" class="fa fa-heart-o"></i></a></div> -->
+					<div *ngIf="image" class="clientlogo4"><img src="{{image}}"></div>
+					<div *ngIf="!image" class="clientlogo4"><img src="../../../../assets/images/profile.png"></div>
+					<h3>{{name}}</h3>
+				</div>
+			</div>
+			<div class="col-md-9">
+				<div class="cleintbox_cont" style="padding-top: 20px;">
+					<p [innerHTML]="description"></p>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<!-- listing-area-end-->
+
+
+
+
+<!-- <section class="kicktable">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="table-reponsive">
+					<table class="table">
+						<tr>
+							<th>Sr No</th>
+							<th>City</th>
+							<th>State</th>
+							<th>County</th>
+							<th>Zip Code</th>
+							<th>Address</th>
+							<th>Status</th>
+							<th>Action</th>
+						</tr>
+						<tr>
+							<td>1</td>
+							<td>Los Angeles</td>
+							<td>California</td>
+							<td>is</td>
+							<td>99553</td>
+							<td>714 N VINE ST ANAHEIM, CA 92805</td>
+							<td>
+								<div class="chat_detail_link4">
+									<div class="links">
+										<ul>
+											<li>
+												<a href="javascript:void()">
+													<img src="assets/images/bulb.png" class="bulb">
+													<img src="assets/images/bulb2.png" class="bulb2" >
+												</a>
+											</li>
+											<li>
+												<a href="javascript:void()">
+													<img src="assets/images/fire.png" class="bulb">
+													<img src="assets/images/fire2.png" class="bulb2">
+												</a>
+											</li>
+											<li><a href="javascript:void()" class="trash"><i class="fa fa-trash"></i></a></li>
+										</ul>
+									</div>
+								</div>
+							</td>
+							<td><button class="views" (click) = viewPg()>View</button></td>
+						</tr>
+						<tr>
+							<td>2</td>
+							<td>Little Rock</td>
+							<td>Arkansas</td>
+							<td>Not</td>
+							<td>99553</td>
+							<td>714 N VINE ST ANAHEIM, CA 92805</td>
+							<td>
+								<div class="chat_detail_link4">
+									<div class="links">
+										<ul>
+											<li>
+												<a href="javascript:void()">
+													<img src="assets/images/bulb.png" class="bulb" style="">
+													<img src="assets/images/bulb2.png" class="bulb2">
+												</a>
+											</li>
+											<li>
+												<a href="javascript:void()">
+													<img src="assets/images/fire.png" class="bulb">
+													<img src="assets/images/fire2.png" class="bulb2">
+												</a>
+											</li>
+											<li><a href="javascript:void()" class="trash"><i class="fa fa-trash"></i></a></li>
+										</ul>
+									</div>
+								</div>
+							</td>
+							<td><button class="views" (click) = viewPg()>View</button></td>
+						</tr>
+						<tr>
+							<td>3</td>
+							<td>Miami</td>
+							<td>Florida</td>
+							<td>is</td>
+							<td>99553</td>
+							<td>714 N VINE ST ANAHEIM, CA 92805</td>
+							<td>
+								<div class="chat_detail_link4">
+									<div class="links">
+										<ul>
+											<li>
+												<a href="javascript:void()">
+													<img src="assets/images/bulb.png" class="bulb" style="">
+													<img src="assets/images/bulb2.png" class="bulb2">
+												</a>
+											</li>
+											<li>
+												<a href="javascript:void()">
+													<img src="assets/images/fire.png" class="bulb">
+													<img src="assets/images/fire2.png" class="bulb2">
+												</a>
+											</li>
+											<li><a href="javascript:void()" class="trash"><i class="fa fa-trash"></i></a></li>
+										</ul>
+									</div>
+								</div>
+							</td>
+							<td><button class="views" (click) = viewPg()>View</button></td>
+						</tr>
+						<tr>
+							<td>4</td>
+							<td>Atlanta</td>
+							<td>Georgia</td>
+							<td>Not</td>
+							<td>99553</td>
+							<td>714 N VINE ST ANAHEIM, CA 92805</td>
+							<td>
+								<div class="chat_detail_link4">
+									<div class="links">
+										<ul>
+											<li>
+												<a href="javascript:void()">
+													<img src="assets/images/bulb.png" class="bulb" style="">
+													<img src="assets/images/bulb2.png" class="bulb2">
+												</a>
+											</li>
+											<li>
+												<a href="javascript:void()">
+													<img src="assets/images/fire.png" class="bulb">
+													<img src="assets/images/fire2.png" class="bulb2">
+												</a>
+											</li>
+											<li><a href="javascript:void()" class="trash"><i class="fa fa-trash"></i></a></li>
+										</ul>
+									</div>
+								</div>
+							</td>
+							<td><button class="views" (click) = viewPg()>View</button></td>
+						</tr>
+						<tr>
+							<td>5</td>
+							<td>Honolulu</td>
+							<td>Hawaii</td>
+							<td>is</td>
+							<td>99553</td>
+							<td>714 N VINE ST ANAHEIM, CA 92805</td>
+							<td>
+								<div class="chat_detail_link4">
+									<div class="links">
+										<ul>
+											<li>
+												<a href="javascript:void()">
+													<img src="assets/images/bulb.png" class="bulb" style="">
+													<img src="assets/images/bulb2.png" class="bulb2">
+												</a>
+											</li>
+											<li>
+												<a href="javascript:void()">
+													<img src="assets/images/fire.png" class="bulb">
+													<img src="assets/images/fire2.png" class="bulb2">
+												</a>
+											</li>
+											<li><a href="javascript:void()" class="trash"><i class="fa fa-trash"></i></a></li>
+										</ul>
+									</div>
+								</div>
+							</td>
+							<td><button class="views" (click) = viewPg()>View</button></td>
+						</tr>
+						<tr>
+							<td>6</td>
+							<td>Boise</td>
+							<td>Idaho</td>
+							<td>Not</td>
+							<td>99553</td>
+							<td>714 N VINE ST ANAHEIM, CA 92805</td>
+							<td>
+								<div class="chat_detail_link4">
+									<div class="links">
+										<ul>
+											<li>
+												<a href="javascript:void()">
+													<img src="assets/images/bulb.png" class="bulb" style="">
+													<img src="assets/images/bulb2.png" class="bulb2">
+												</a>
+											</li>
+											<li>
+												<a href="javascript:void()">
+													<img src="assets/images/fire.png" class="bulb">
+													<img src="assets/images/fire2.png" class="bulb2">
+												</a>
+											</li>
+											<li><a href="javascript:void()" class="trash"><i class="fa fa-trash"></i></a></li>
+										</ul>
+									</div>
+								</div>
+							</td>
+							<td><button class="views" (click) = viewPg()>View</button></td>
+						</tr>
+						<tr>
+							<td>7</td>
+							<td>Indianapolis</td>
+							<td>Indiana</td>
+							<td>is</td>
+							<td>99553</td>
+							<td>714 N VINE ST ANAHEIM, CA 92805</td>
+							<td>
+								<div class="chat_detail_link4">
+									<div class="links">
+										<ul>
+											<li>
+												<a href="javascript:void()">
+													<img src="assets/images/bulb.png" class="bulb" style="">
+													<img src="assets/images/bulb2.png" class="bulb2">
+												</a>
+											</li>
+											<li>
+												<a href="javascript:void()">
+													<img src="assets/images/fire.png" class="bulb">
+													<img src="assets/images/fire2.png" class="bulb2">
+												</a>
+											</li>
+											<li><a href="javascript:void()" class="trash"><i class="fa fa-trash"></i></a></li>
+										</ul>
+									</div>
+								</div>
+							</td>
+							<td><button class="views" (click) = viewPg()>View</button></td>
+						</tr>
+						<tr>
+							<td>8</td>
+							<td>Kansas City</td>
+							<td>Kansas</td>
+							<td>Not</td>
+							<td>99553</td>
+							<td>714 N VINE ST ANAHEIM, CA 92805</td>
+							<td>
+								<div class="chat_detail_link4">
+									<div class="links">
+										<ul>
+											<li>
+												<a href="javascript:void()">
+													<img src="assets/images/bulb.png" class="bulb" style="">
+													<img src="assets/images/bulb2.png" class="bulb2">
+												</a>
+											</li>
+											<li>
+												<a href="javascript:void()">
+													<img src="assets/images/fire.png" class="bulb">
+													<img src="assets/images/fire2.png" class="bulb2">
+												</a>
+											</li>
+											<li><a href="javascript:void()" class="trash"><i class="fa fa-trash"></i></a></li>
+										</ul>
+									</div>
+								</div>
+							</td>
+							<td><button class="views" (click) = viewPg()>View</button></td>
+						</tr>
+						<tr>
+							<td>9</td>
+							<td>Louisville</td>
+							<td>Kentucky</td>
+							<td>is</td>
+							<td>99553</td>
+							<td>714 N VINE ST ANAHEIM, CA 92805</td>
+							<td>
+								<div class="chat_detail_link4">
+									<div class="links">
+										<ul>
+											<li>
+												<a href="javascript:void()">
+													<img src="assets/images/bulb.png" class="bulb" style="">
+													<img src="assets/images/bulb2.png" class="bulb2">
+												</a>
+											</li>
+											<li>
+												<a href="javascript:void()">
+													<img src="assets/images/fire.png" class="bulb">
+													<img src="assets/images/fire2.png" class="bulb2">
+												</a>
+											</li>
+											<li><a href="javascript:void()" class="trash"><i class="fa fa-trash"></i></a></li>
+										</ul>
+									</div>
+								</div>
+							</td>
+							<td><button class="views">View All</button></td>
+						</tr>
+						<tr>
+							<td>10</td>
+							<td>New Orleans</td>
+							<td>Louisiana</td>
+							<td>Not</td>
+							<td>99553</td>
+							<td>714 N VINE ST ANAHEIM, CA 92805</td>
+							<td>
+								<div class="chat_detail_link4">
+									<div class="links">
+										<ul>
+											<li>
+												<a href="javascript:void()">
+													<img src="assets/images/bulb.png" class="bulb" style="">
+													<img src="assets/images/bulb2.png" class="bulb2">
+												</a>
+											</li>
+											<li>
+												<a href="javascript:void()">
+													<img src="assets/images/fire.png" class="bulb">
+													<img src="assets/images/fire2.png" class="bulb2">
+												</a>
+											</li>
+											<li><a href="javascript:void()" class="trash"><i class="fa fa-trash"></i></a></li>
+										</ul>
+									</div>
+								</div>
+							</td>
+							<td><button class="views" (click) = viewPg()>View</button></td>
+						</tr>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+</section> -->
+
+
+
+
+<section id="kicker">
+	<div class="container">
+		<h2 class="other_kick">Other Kickstarters</h2>
+        <div class="row" id="top_space">
+            <div class="col-md-12">
+                <owl-carousel
+                [options]="{items: 3,margin: 20,padding: 15,  navigation: false}"
+                [items]=images
+                [carouselClasses]="['owl-theme', 'row', 'sliding']">
+                    <!-- slides1 -->
+                    
+                    <div class="item cleintbox4" *ngFor="let image of images;let i = index">
+                        <!-- <div class="heart-icon"><a (click)="saveLike(i,image.id)"><i *ngIf="image.status" class="fa fa-heart fillheart"></i> <i  *ngIf="!image.status" class="fa fa-heart-o"></i></a></div> -->
+						<div *ngIf="image.profile_image" class="clientlogo4"><img src="{{image.profile_image.filename}}"></div>
+						<div *ngIf="!image.profile_image" class="clientlogo4"><img src="../../../../assets/images/profile.png"></div>
+                        <div class="reco_contents">
+                        <a [routerLink]="'/kickstarter/'+image.user_id"><h3>{{image.name}}</h3></a>
+                        <p class="img_desc">{{image.description}}</p>
+
+						<a class="btn btn-primary explore" [routerLink]="'../../kickstarter/'+image.user_id">Explore</a>
+						
+    
+                        </div>
+                    </div>
+    
+                </owl-carousel>
+            </div>
+            </div>
+    </div>
+</section>
+
+<app-footer></app-footer>

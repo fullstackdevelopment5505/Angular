@@ -1,0 +1,264 @@
+.top_bar_area {
+    margin-top: 10px;
+}
+
+/*voucher page css start*/
+.top_btns {
+    margin-bottom: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    display: -webkit-flex;
+    -webkit-align-items: center;
+    -webkit-justify-content: flex-end;
+    a{
+        color: #fff;;
+    }
+}
+.top_btns .btn {
+    margin: 10px 0 0 10px;
+    height: 46px;
+    border-radius: 100px;
+    padding: 10px 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+.top_btns .btn i {
+    margin-left: 8px;
+}
+/*voucher page css end*/
+.top_selling .inside {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    margin-bottom: 30px;
+}
+.right_area .inside .title, .top_selling .inside .title, .single_box .inside .title {
+    font-size: 20px;
+    color: #6b6b6b;
+    margin-bottom: 13px;
+    text-transform: capitalize;
+}
+.right_area .inside .title, .top_selling .inside .title {
+    font-weight: 600;
+}
+
+/* profile Page css Start */
+.table td strong {
+    font-weight: 600;
+}
+.areas ul {
+    display: flex;
+    flex-wrap: wrap;
+    display: -webkit-flex;
+    -webkit-flex-wrap: wrap;
+}
+.areas li {
+    display: inline-block;
+    margin:5px 5px 0 0;
+}
+.areas li a {
+    background: #207bff;
+    color: #fff;
+    display: inline-block;
+    padding: 15px;
+    border-radius: 5px;
+}
+.all_customer_data {
+    display: flex;
+    display: -webkit-flex;
+}
+.all_customer_data .profile_pic img {
+    border-radius: 100px;
+    max-height: 160px;
+    width: 100%;
+    object-fit: cover;
+}
+.all_customer_data .profile_pic {
+    max-width: 160px;
+    width: 100%;
+    position: relative;
+}
+.all_customer_data .profile_left,
+.all_customer_data .profile_right {
+    padding-left: 20px;
+    width: 100%;
+}
+.all_customer_data .profile_left h1 {
+    font-size: 24px;
+    margin-bottom: 10px;
+    font-weight: 600;
+    word-break: break-word;
+}
+.all_customer_data .profile_left .member {
+    font-size: 18px;
+    text-transform: capitalize;
+    font-weight: 500;
+    margin-bottom: 15px;
+}
+.all_customer_data .profile_left p,
+.all_customer_data .profile_right p {
+    display: block;
+    width: 100%;
+    font-weight: 500;
+    font-size: 17px;
+    margin: 0 0 10px 0;
+    line-height: 20px;
+    display: flex;
+    display: -webkit-flex;  
+    word-break: break-word; 
+}
+.about_customer .content {
+    line-height: 25px;
+    font-size: 17px;
+}
+.about_customer .content p {
+    margin-top: 15px;
+}
+.all_customer_data .profile_left i,
+.all_customer_data .profile_right i {
+    width: 25px;
+}
+.all_customer_data .profile_left span,
+.all_customer_data .profile_right span {
+    display: inline-block;
+}
+.all_customer_data .profile_left .member a img {
+    max-width: 23px;
+    margin: 0 6px 0 0;
+    background: #fff;
+    border-radius: 100px;
+    padding: 2px;
+}
+.all_customer_data .profile_left .member a {
+    display: flex;
+    align-items: center;
+    display: -webkit-flex;
+    -webkit-align-items: center;
+    background: #20d246;
+    color: #fff;
+    max-width: 140px;
+    border-radius: 100px;
+    padding: 6px;
+}
+.customer_other_details ul{
+    margin-bottom: 0;
+}
+.customer_other_details li {
+    margin: 0 ;
+    display: block;
+    p{
+        margin: 0;
+        word-break: normal;
+    }
+}
+.customer_other_details li:nth-child(2n) {
+    background: #e8e8e8;
+    border: 1px solid #d8d8d8;
+}
+.customer_other_details li {
+    display: flex;
+    display: -webkit-flex;
+    padding: 14px 15px;
+}
+.customer_other_details li strong {
+    font-weight: 600;
+    width: 100%;
+
+}
+.edit_profile_fields .form-group label{
+    font-size: 18px;
+    margin-bottom: 10px;
+    display: block;
+}
+.edit_profile_fields .form-group input.form-control {
+    height: 50px;
+}
+.about_customer .edit_profile_image .inset {
+    border: 2px dashed #9a9a9a;
+    padding: 0;
+    text-align: center;
+    height: 265px;
+    margin-bottom: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    display: -webkit-flex;
+    -webkit-align-items: center;
+    -webkit-justify-content: center;
+}
+.about_customer .edit_profile_image .inset label {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    display: -webkit-flex;
+    -webkit-align-content: center;
+    -webkit-justify-content: center;
+    -webkit-flex-wrap: wrap;
+    cursor: pointer;
+}
+.about_customer .edit_profile_image input[type="file"] {
+    width: 220px;
+}
+.about_customer .edit_profile_image .inset span {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+}
+.about_customer .edit_profile_image .inset span img {
+    max-width: 80px;
+    margin: 0 auto 30px;
+    display: block;
+    opacity: 0.5;
+}
+.advance_search_data iframe {
+    margin-top: -140px;
+}
+/* profile Page css End */
+
+
+.copy-and-qr .inset {
+    border-radius: 5px;
+    padding: 0;
+    background: #fff;
+    color: #fff;
+    width: 100%;
+    font-size: 16px;
+    display: flex;
+    display: -webkit-flex;
+    justify-content: center;
+    -webkit-justify-content: center;
+    align-items: center;
+    -webkit-align-items: center;
+    align-content: center;
+    -webkit-align-content: center;
+    overflow: hidden;
+}
+.copy-and-qr label {
+    font-weight: 600;
+    margin-top: 10px;
+}
+.copy-and-qr .inset input {
+    height: 50px;
+    border-radius: 0;
+    background: #f1f1f1;
+    pointer-events: none;
+}
+.copy-and-qr button {
+    background: #207bff;
+    padding: 14px;
+    display: inline-block;
+    text-transform: capitalize;
+    cursor: pointer;
+    min-width: 90px;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 500;
+    height: 50px;
+    border: none;
+    color: white;
+    outline: none;
+}

@@ -1,0 +1,3350 @@
+{
+    "ethnicity": [
+        "African American",
+        "Arabic",
+        "Asian",
+        "Caucasian",
+        "Chinese",
+        "Filipino",
+        "Hispanic",
+        "Indian",
+        "Japanese",
+        "Korean",
+        "Native American",
+        "Russian",
+        "Two or More",
+        "Vietnamese"
+    ],
+    "corporateOwned": [
+        {
+            "val": 2,
+            "text": "Include All Ownership Types"
+        },
+        {
+            "val": 1,
+            "text": "Only Corporate Owned"
+        },
+        {
+            "val": 0,
+            "text": "Exclude Corporate Owned"
+        }
+    ],
+    "doNotMail": [
+        {
+            "val": 1,
+            "text": "Only Do Not Mail"
+        },
+        {
+            "val": 0,
+            "text": "Exclude Do Not Mail"
+        }
+    ],
+    "exemption": [
+        {
+            "val": 1,
+            "text": "Cemetery Exemption"
+        },
+        {
+            "val": 2,
+            "text": "Disabled Exemption"
+        },
+        {
+            "val": 3,
+            "text": "Homestead Exemption"
+        },
+        {
+            "val": 4,
+            "text": "Hospital Exemption"
+        },
+        {
+            "val": 5,
+            "text": "Library Exemption"
+        },
+        {
+            "val": 6,
+            "text": "Museum Exemption"
+        },
+        {
+            "val": 7,
+            "text": "Religious Exemption"
+        },
+        {
+            "val": 8,
+            "text": "School/College Exemption"
+        },
+        {
+            "val": 9,
+            "text": "Senior Citizen Exemption"
+        },
+        {
+            "val": 10,
+            "text": "Utilities Exemption"
+        },
+        {
+            "val": 11,
+            "text": "Veteran Exemption"
+        },
+        {
+            "val": 12,
+            "text": "Welfare Exemption"
+        },
+        {
+            "val": 13,
+            "text": "Widow Exemption"
+        }
+    ],
+    "ownerOccupied": [
+        {
+            "val": "O",
+            "text": "Owner Occupied"
+        },
+        {
+            "val": "A",
+            "text": "Absentee Owner"
+        },
+        {
+            "val": "U",
+            "text": "Unknown"
+        }
+    ],
+    "streetDir": [
+        "E",
+        "N",
+        "NE",
+        "NW",
+        "S",
+        "SE",
+        "SW",
+        "W"
+    ],
+    "streetTypes": [
+        {
+            "val": "ST",
+            "text": "Street"
+        },
+        {
+            "val": "RD",
+            "text": "Road"
+        },
+        {
+            "val": "DR",
+            "text": "Drive"
+        },
+        {
+            "val": "AVE,AVEN",
+            "text": "Avenue"
+        },
+        {
+            "val": "LN,LANE",
+            "text": "Lane"
+        },
+        {
+            "val": "CT",
+            "text": "Court"
+        },
+        {
+            "val": "CIR",
+            "text": "Circle"
+        },
+        {
+            "val": "WAY",
+            "text": "Way"
+        },
+        {
+            "val": "PL",
+            "text": "Place"
+        },
+        {
+            "val": "BLVD,BOUL",
+            "text": "Boulevard"
+        },
+        {
+            "val": "TRL",
+            "text": "Trail"
+        },
+        {
+            "val": "TER",
+            "text": "Terrace"
+        },
+        {
+            "val": "HWY",
+            "text": "Highway"
+        },
+        {
+            "val": "PKWY",
+            "text": "Parkway"
+        },
+        {
+            "val": "LOOP",
+            "text": "Loop"
+        },
+        {
+            "val": "CV",
+            "text": "Cove"
+        },
+        {
+            "val": "PIKE",
+            "text": "Pike"
+        },
+        {
+            "val": "RUN",
+            "text": "Run"
+        },
+        {
+            "val": "RDG",
+            "text": "Ridge"
+        },
+        {
+            "val": "PT",
+            "text": "Point"
+        },
+        {
+            "val": "PARK",
+            "text": "Park"
+        },
+        {
+            "val": "CRK",
+            "text": "Creek"
+        },
+        {
+            "val": "SQ",
+            "text": "Square"
+        },
+        {
+            "val": "TRCE",
+            "text": "Trace"
+        },
+        {
+            "val": "PATH",
+            "text": "Path"
+        },
+        {
+            "val": "EXT",
+            "text": "Extension"
+        },
+        {
+            "val": "Crossing",
+            "text": "XING"
+        },
+        {
+            "val": "PASS",
+            "text": "Pass"
+        },
+        {
+            "val": "HL,HILL",
+            "text": "Hill"
+        },
+        {
+            "val": "TPKE",
+            "text": "Turnpike"
+        },
+        {
+            "val": "BND",
+            "text": "Bend"
+        },
+        {
+            "val": "HTS",
+            "text": "Heights"
+        },
+        {
+            "val": "BR",
+            "text": "Branch"
+        },
+        {
+            "val": "WALK",
+            "text": "Walk"
+        },
+        {
+            "val": "VW,VIEW",
+            "text": "View"
+        },
+        {
+            "val": "HOLW",
+            "text": "Hollow"
+        },
+        {
+            "val": "ROW",
+            "text": "Row"
+        },
+        {
+            "val": "LK",
+            "text": "Lake"
+        },
+        {
+            "val": "PLZ",
+            "text": "Plaza"
+        },
+        {
+            "val": "FRK",
+            "text": "Fork"
+        },
+        {
+            "val": "GLN",
+            "text": "Glen"
+        },
+        {
+            "val": "ALY",
+            "text": "Alley"
+        },
+        {
+            "val": "LNDG",
+            "text": "Landing"
+        },
+        {
+            "val": "VLG",
+            "text": "Village"
+        },
+        {
+            "val": "CRES",
+            "text": "Crescent"
+        },
+        {
+            "val": "EST",
+            "text": "Estate"
+        },
+        {
+            "val": "VIS",
+            "text": "Vista"
+        },
+        {
+            "val": "RIV",
+            "text": "River"
+        },
+        {
+            "val": "MNR",
+            "text": "Manor"
+        },
+        {
+            "val": "IS",
+            "text": "Island"
+        },
+        {
+            "val": "GRV",
+            "text": "Grove"
+        },
+        {
+            "val": "FWY",
+            "text": "Freeway"
+        },
+        {
+            "val": "HLS",
+            "text": "Hills"
+        },
+        {
+            "val": "VLY",
+            "text": "Valley"
+        },
+        {
+            "val": "GRN",
+            "text": "Green"
+        },
+        {
+            "val": "CMN",
+            "text": "Common"
+        },
+        {
+            "val": "BLF",
+            "text": "Bluff"
+        },
+        {
+            "val": "MDWS",
+            "text": "Meadows"
+        },
+        {
+            "val": "SPGS",
+            "text": "Springs"
+        },
+        {
+            "val": "ESTS",
+            "text": "Estates"
+        },
+        {
+            "val": "SPUR",
+            "text": "Spur"
+        },
+        {
+            "val": "CRST",
+            "text": "Crest"
+        },
+        {
+            "val": "EXPY",
+            "text": "Expressway"
+        },
+        {
+            "val": "CYN",
+            "text": "Canyon"
+        },
+        {
+            "val": "MTN",
+            "text": "Mountain"
+        },
+        {
+            "val": "BYP",
+            "text": "Bypass"
+        },
+        {
+            "val": "OVAL",
+            "text": "Oval"
+        },
+        {
+            "val": "FRST",
+            "text": "Forest"
+        },
+        {
+            "val": "CTR",
+            "text": "Center"
+        },
+        {
+            "val": "LAND",
+            "text": "Land"
+        },
+        {
+            "val": "CURV",
+            "text": "Curve"
+        },
+        {
+            "val": "GDNS",
+            "text": "Gardens"
+        },
+        {
+            "val": "MDW",
+            "text": "Meadow"
+        },
+        {
+            "val": "COR",
+            "text": "Corner"
+        },
+        {
+            "val": "FLS",
+            "text": "Falls"
+        },
+        {
+            "val": "CMNS",
+            "text": "Commons"
+        },
+        {
+            "val": "KNL",
+            "text": "Knoll"
+        },
+        {
+            "val": "STA",
+            "text": "Station"
+        },
+        {
+            "val": "SHRS",
+            "text": "Shores"
+        },
+        {
+            "val": "HBR",
+            "text": "Harbor"
+        },
+        {
+            "val": "BRK",
+            "text": "Brook"
+        },
+        {
+            "val": "RNCH",
+            "text": "Ranch"
+        },
+        {
+            "val": "BCH",
+            "text": "Beach"
+        },
+        {
+            "val": "ISLE",
+            "text": "Isle"
+        },
+        {
+            "val": "CLB",
+            "text": "Club"
+        },
+        {
+            "val": "RTE",
+            "text": "Route"
+        },
+        {
+            "val": "ML",
+            "text": "Mill"
+        },
+        {
+            "val": "MEWS",
+            "text": "Mews"
+        },
+        {
+            "val": "PNES",
+            "text": "Pines"
+        },
+        {
+            "val": "SHR",
+            "text": "Shore"
+        },
+        {
+            "val": "PR",
+            "text": "Prairie"
+        },
+        {
+            "val": "HVN",
+            "text": "Haven"
+        },
+        {
+            "val": "PSGE",
+            "text": "Passage"
+        },
+        {
+            "val": "SPG",
+            "text": "Spring"
+        },
+        {
+            "val": "CSWY",
+            "text": "Causeway"
+        },
+        {
+            "val": "CRSE",
+            "text": "Course"
+        },
+        {
+            "val": "KY",
+            "text": "Key"
+        },
+        {
+            "val": "MALL",
+            "text": "Mall"
+        },
+        {
+            "val": "BRG",
+            "text": "Bridge"
+        },
+        {
+            "val": "KNLS",
+            "text": "Knolls"
+        },
+        {
+            "val": "MT",
+            "text": "Mount"
+        },
+        {
+            "val": "CP",
+            "text": "Camp"
+        },
+        {
+            "val": "FLD",
+            "text": "Field"
+        },
+        {
+            "val": "STS",
+            "text": "Streets"
+        },
+        {
+            "val": "PNE",
+            "text": "Pine"
+        },
+        {
+            "val": "RDS",
+            "text": "Roads"
+        },
+        {
+            "val": "RST",
+            "text": "Rest"
+        },
+        {
+            "val": "LDG",
+            "text": "Lodge"
+        },
+        {
+            "val": "SMT",
+            "text": "Summit"
+        },
+        {
+            "val": "LKS",
+            "text": "Lakes"
+        },
+        {
+            "val": "TRAK",
+            "text": "Track"
+        },
+        {
+            "val": "GTWY",
+            "text": "Gateway"
+        },
+        {
+            "val": "GDN",
+            "text": "Garden"
+        },
+        {
+            "val": "FLT",
+            "text": "Flat"
+        },
+        {
+            "val": "JCT",
+            "text": "Junction"
+        },
+        {
+            "val": "WL",
+            "text": "Well"
+        },
+        {
+            "val": "BYU",
+            "text": "Bayou"
+        },
+        {
+            "val": "CLF",
+            "text": "Cliff"
+        },
+        {
+            "val": "DV",
+            "text": "Divide"
+        },
+        {
+            "val": "FRY",
+            "text": "Ferry"
+        },
+        {
+            "val": "FRD",
+            "text": "Ford"
+        },
+        {
+            "val": "VIA",
+            "text": "Viaduct"
+        },
+        {
+            "val": "FLDS",
+            "text": "Fields"
+        },
+        {
+            "val": "DL",
+            "text": "Dale"
+        },
+        {
+            "val": "XRD",
+            "text": "Crossroad"
+        },
+        {
+            "val": "ARC",
+            "text": "Arcade"
+        },
+        {
+            "val": "STRA",
+            "text": "Stravenue"
+        },
+        {
+            "val": "STRM",
+            "text": "Stream"
+        },
+        {
+            "val": "WLS",
+            "text": "Wells"
+        },
+        {
+            "val": "CTS",
+            "text": "Courts"
+        },
+        {
+            "val": "ORCH",
+            "text": "Orchard"
+        },
+        {
+            "val": "TRFY",
+            "text": "Trafficway"
+        },
+        {
+            "val": "MLS",
+            "text": "Mills"
+        },
+        {
+            "val": "NCK",
+            "text": "Neck"
+        },
+        {
+            "val": "BLFS",
+            "text": "Bluffs"
+        },
+        {
+            "val": "CORS",
+            "text": "Corners"
+        },
+        {
+            "val": "FRG",
+            "text": "Forge"
+        },
+        {
+            "val": "PLNS",
+            "text": "Plains"
+        },
+        {
+            "val": "BTM",
+            "text": "Bottom"
+        },
+        {
+            "val": "TRWY",
+            "text": "Throughway"
+        },
+        {
+            "val": "PLN",
+            "text": "Plain"
+        },
+        {
+            "val": "DM,DAM",
+            "text": "Dam"
+        },
+        {
+            "val": "ANX",
+            "text": "Anex"
+        },
+        {
+            "val": "RUE",
+            "text": "Rue"
+        },
+        {
+            "val": "UN",
+            "text": "Union"
+        },
+        {
+            "val": "VL",
+            "text": "Ville"
+        },
+        {
+            "val": "EXTS",
+            "text": "Extensions"
+        },
+        {
+            "val": "CTRS",
+            "text": "Centers"
+        },
+        {
+            "val": "PORT,PRT",
+            "text": "Port"
+        },
+        {
+            "val": "VLGS",
+            "text": "Villages"
+        },
+        {
+            "val": "NULL",
+            "text": "No Type"
+        },
+        {
+            "val": "CLFS",
+            "text": "Cliffs"
+        },
+        {
+            "val": "FT",
+            "text": "Fort"
+        },
+        {
+            "val": "FLTS",
+            "text": "Flats"
+        },
+        {
+            "val": "SHLS",
+            "text": "Shoals"
+        },
+        {
+            "val": "INLT",
+            "text": "Inlet"
+        },
+        {
+            "val": "SKWY",
+            "text": "Skyway"
+        },
+        {
+            "val": "LGT",
+            "text": "Light"
+        },
+        {
+            "val": "FALL",
+            "text": "Fall"
+        },
+        {
+            "val": "RPDS",
+            "text": "Rapids"
+        },
+        {
+            "val": "RADL",
+            "text": "Radial"
+        },
+        {
+            "val": "GRNS",
+            "text": "Greens"
+        },
+        {
+            "val": "SHL",
+            "text": "Shoal"
+        },
+        {
+            "val": "RDGS",
+            "text": "Ridges"
+        },
+        {
+            "val": "OPAS",
+            "text": "Overpass"
+        },
+        {
+            "val": "GRVS",
+            "text": "Groves"
+        },
+        {
+            "val": "CPE",
+            "text": "Cape"
+        },
+        {
+            "val": "LCK",
+            "text": "Lock"
+        },
+        {
+            "val": "FRKS",
+            "text": "Forks"
+        },
+        {
+            "val": "BRKS",
+            "text": "Brooks"
+        },
+        {
+            "val": "ROAD",
+            "text": "Road"
+        },
+        {
+            "val": "WALL",
+            "text": "Wall"
+        },
+        {
+            "val": "LGTS",
+            "text": "Lights"
+        },
+        {
+            "val": "RAMP",
+            "text": "Ramp"
+        },
+        {
+            "val": "LF",
+            "text": "Loaf"
+        },
+        {
+            "val": "MSN",
+            "text": "Mission"
+        },
+        {
+            "val": "CVS",
+            "text": "Coves"
+        },
+        {
+            "val": "TUNL",
+            "text": "Tunnel"
+        },
+        {
+            "val": "MTWY",
+            "text": "Motorway"
+        },
+        {
+            "val": "DRS",
+            "text": "Drives"
+        },
+        {
+            "val": "PTS",
+            "text": "Points"
+        },
+        {
+            "val": "VWS",
+            "text": "Views"
+        },
+        {
+            "val": "KYS",
+            "text": "Keys"
+        },
+        {
+            "val": "ISS",
+            "text": "Islands"
+        },
+        {
+            "val": "MTNS",
+            "text": "Mountains"
+        },
+        {
+            "val": "XRDS",
+            "text": "Crossroads"
+        },
+        {
+            "val": "TRLR",
+            "text": "Trailer"
+        },
+        {
+            "val": "WAYS",
+            "text": "Ways"
+        },
+        {
+            "val": "UPAS",
+            "text": "Underpass"
+        },
+        {
+            "val": "CIRS",
+            "text": "Circles"
+        },
+        {
+            "val": "BG,BURG",
+            "text": "Burg"
+        },
+        {
+            "val": "LCKS",
+            "text": "Locks"
+        },
+        {
+            "val": "SQS",
+            "text": "Squares"
+        }
+    ],
+    "landUse": [
+        {
+            "val": -1,
+            "text": "Same As Subject"
+        },
+        {
+            "val": 500,
+            "text": "Agricultural (Nec)"
+        },
+        {
+            "val": 505,
+            "text": "Agricultural Plant"
+        },
+        {
+            "val": 510,
+            "text": "Animal Farm"
+        },
+        {
+            "val": 512,
+            "text": "Avocado Grove"
+        },
+        {
+            "val": 514,
+            "text": "Citrus Grove"
+        },
+        {
+            "val": 515,
+            "text": "Dairy Farm"
+        },
+        {
+            "val": 520,
+            "text": "Fallow Land"
+        },
+        {
+            "val": 511,
+            "text": "Farms"
+        },
+        {
+            "val": 530,
+            "text": "Field & Seed"
+        },
+        {
+            "val": 533,
+            "text": "Fisheries"
+        },
+        {
+            "val": 540,
+            "text": "Forest"
+        },
+        {
+            "val": 542,
+            "text": "Greenbelt"
+        },
+        {
+            "val": 501,
+            "text": "Livestock"
+        },
+        {
+            "val": 502,
+            "text": "Nursery/Horticulture"
+        },
+        {
+            "val": 550,
+            "text": "Orchard"
+        },
+        {
+            "val": 560,
+            "text": "Pasture"
+        },
+        {
+            "val": 562,
+            "text": "Poultry Ranch"
+        },
+        {
+            "val": 509,
+            "text": "Ranch"
+        },
+        {
+            "val": 356,
+            "text": "Stockyard"
+        },
+        {
+            "val": 570,
+            "text": "Truck Crops"
+        },
+        {
+            "val": 575,
+            "text": "Vineyard"
+        },
+        {
+            "val": 366,
+            "text": "Winery"
+        },
+        {
+            "val": 201,
+            "text": "Air Rights"
+        },
+        {
+            "val": 433,
+            "text": "Animal Hospital/Vet"
+        },
+        {
+            "val": 276,
+            "text": "Apparel"
+        },
+        {
+            "val": 203,
+            "text": "Auto Equipment"
+        },
+        {
+            "val": 204,
+            "text": "Auto Repair"
+        },
+        {
+            "val": 205,
+            "text": "Auto Sales"
+        },
+        {
+            "val": 208,
+            "text": "Auto Wrecking"
+        },
+        {
+            "val": 243,
+            "text": "Bar"
+        },
+        {
+            "val": 209,
+            "text": "Business Park"
+        },
+        {
+            "val": 210,
+            "text": "Carwash"
+        },
+        {
+            "val": 701,
+            "text": "Casino"
+        },
+        {
+            "val": 212,
+            "text": "Cemetery"
+        },
+        {
+            "val": 200,
+            "text": "Commercial (Nec)"
+        },
+        {
+            "val": 211,
+            "text": "Commercial Building"
+        },
+        {
+            "val": 213,
+            "text": "Commercial Condominium"
+        },
+        {
+            "val": 214,
+            "text": "Convalescent Hospital"
+        },
+        {
+            "val": 215,
+            "text": "Convention Center"
+        },
+        {
+            "val": 248,
+            "text": "Converted Residence"
+        },
+        {
+            "val": 217,
+            "text": "Department Store"
+        },
+        {
+            "val": 642,
+            "text": "Enterprise Zone"
+        },
+        {
+            "val": 218,
+            "text": "Facilities"
+        },
+        {
+            "val": 221,
+            "text": "Fast Food Franchise"
+        },
+        {
+            "val": 432,
+            "text": "Fin/Insurance/Real Estate"
+        },
+        {
+            "val": 223,
+            "text": "Financial Building"
+        },
+        {
+            "val": 284,
+            "text": "Food Stores"
+        },
+        {
+            "val": 225,
+            "text": "Funeral Home"
+        },
+        {
+            "val": 226,
+            "text": "Garage"
+        },
+        {
+            "val": 229,
+            "text": "Greenhouse"
+        },
+        {
+            "val": 230,
+            "text": "Hospital"
+        },
+        {
+            "val": 234,
+            "text": "Kennel"
+        },
+        {
+            "val": 239,
+            "text": "Laboratory"
+        },
+        {
+            "val": 240,
+            "text": "Laundromat"
+        },
+        {
+            "val": 290,
+            "text": "Leased Land/Bldg"
+        },
+        {
+            "val": 236,
+            "text": "Loft Building"
+        },
+        {
+            "val": 237,
+            "text": "Medical Building"
+        },
+        {
+            "val": 238,
+            "text": "Medical Condo"
+        },
+        {
+            "val": 251,
+            "text": "Misc Building"
+        },
+        {
+            "val": 269,
+            "text": "Misc Commercial Services"
+        },
+        {
+            "val": 249,
+            "text": "Misc Improvements"
+        },
+        {
+            "val": 202,
+            "text": "Multiple Uses"
+        },
+        {
+            "val": 242,
+            "text": "Nightclub"
+        },
+        {
+            "val": 157,
+            "text": "Nursing Home"
+        },
+        {
+            "val": 245,
+            "text": "Office & Residential"
+        },
+        {
+            "val": 246,
+            "text": "Office & Showroom"
+        },
+        {
+            "val": 244,
+            "text": "Office Building"
+        },
+        {
+            "val": 247,
+            "text": "Office Condo"
+        },
+        {
+            "val": 156,
+            "text": "Orphanage"
+        },
+        {
+            "val": 252,
+            "text": "Parking Lot"
+        },
+        {
+            "val": 255,
+            "text": "Parking Structure"
+        },
+        {
+            "val": 250,
+            "text": "Pre Fabricated Bldg"
+        },
+        {
+            "val": 257,
+            "text": "Produce Market"
+        },
+        {
+            "val": 434,
+            "text": "Public Storage"
+        },
+        {
+            "val": 261,
+            "text": "Restaurant Building"
+        },
+        {
+            "val": 262,
+            "text": "Restaurant Drive In"
+        },
+        {
+            "val": 282,
+            "text": "Retail Trade"
+        },
+        {
+            "val": 207,
+            "text": "Salvage Improv"
+        },
+        {
+            "val": 266,
+            "text": "Service Station"
+        },
+        {
+            "val": 268,
+            "text": "Service Station/Market"
+        },
+        {
+            "val": 270,
+            "text": "Shopping Center"
+        },
+        {
+            "val": 278,
+            "text": "Store Building"
+        },
+        {
+            "val": 220,
+            "text": "Store Franchise"
+        },
+        {
+            "val": 279,
+            "text": "Stores & Offices"
+        },
+        {
+            "val": 281,
+            "text": "Stores & Residential"
+        },
+        {
+            "val": 273,
+            "text": "Strip Commercial Center"
+        },
+        {
+            "val": 283,
+            "text": "Supermarket"
+        },
+        {
+            "val": 285,
+            "text": "Tavern"
+        },
+        {
+            "val": 364,
+            "text": "Warehouse"
+        },
+        {
+            "val": 302,
+            "text": "Brewery"
+        },
+        {
+            "val": 303,
+            "text": "Bulk Plant"
+        },
+        {
+            "val": 304,
+            "text": "Cannery"
+        },
+        {
+            "val": 308,
+            "text": "Chemical"
+        },
+        {
+            "val": 301,
+            "text": "Commercial/Industrial"
+        },
+        {
+            "val": 311,
+            "text": "Dump Site"
+        },
+        {
+            "val": 312,
+            "text": "Durable Goods"
+        },
+        {
+            "val": 316,
+            "text": "Food Processing"
+        },
+        {
+            "val": 318,
+            "text": "Grain Elevator"
+        },
+        {
+            "val": 320,
+            "text": "Heavy Industrial"
+        },
+        {
+            "val": 300,
+            "text": "Industrial (Nec)"
+        },
+        {
+            "val": 321,
+            "text": "Industrial Condominium"
+        },
+        {
+            "val": 322,
+            "text": "Industrial Park"
+        },
+        {
+            "val": 323,
+            "text": "Industrial Plant"
+        },
+        {
+            "val": 324,
+            "text": "Light Industrial"
+        },
+        {
+            "val": 328,
+            "text": "Lumber Mill"
+        },
+        {
+            "val": 326,
+            "text": "Lumber Yard"
+        },
+        {
+            "val": 331,
+            "text": "Metal Product"
+        },
+        {
+            "val": 349,
+            "text": "Mine/Quarry"
+        },
+        {
+            "val": 334,
+            "text": "Mineral Processing"
+        },
+        {
+            "val": 333,
+            "text": "Mineral Rights"
+        },
+        {
+            "val": 336,
+            "text": "Mini Warehouse"
+        },
+        {
+            "val": 338,
+            "text": "Multi Tenant Industrial"
+        },
+        {
+            "val": 313,
+            "text": "Non Durable Goods"
+        },
+        {
+            "val": 342,
+            "text": "Packing"
+        },
+        {
+            "val": 310,
+            "text": "Paper & Allied Industry"
+        },
+        {
+            "val": 344,
+            "text": "Petroleum"
+        },
+        {
+            "val": 352,
+            "text": "R&D Facility"
+        },
+        {
+            "val": 358,
+            "text": "Storage"
+        },
+        {
+            "val": 361,
+            "text": "Storage Tanks"
+        },
+        {
+            "val": 353,
+            "text": "Technological Industry"
+        },
+        {
+            "val": 309,
+            "text": "Textile/Clothes/Carpet Indust"
+        },
+        {
+            "val": 620,
+            "text": "Art"
+        },
+        {
+            "val": 671,
+            "text": "Charitable Organization"
+        },
+        {
+            "val": 610,
+            "text": "Community Center"
+        },
+        {
+            "val": 609,
+            "text": "Correctional Facility"
+        },
+        {
+            "val": 603,
+            "text": "County Property"
+        },
+        {
+            "val": 660,
+            "text": "Educational Service"
+        },
+        {
+            "val": 607,
+            "text": "Embassies/Chanceries"
+        },
+        {
+            "val": 615,
+            "text": "Federal Building"
+        },
+        {
+            "val": 614,
+            "text": "Federal Property"
+        },
+        {
+            "val": 654,
+            "text": "High School"
+        },
+        {
+            "val": 611,
+            "text": "Historical District"
+        },
+        {
+            "val": 798,
+            "text": "Library/Museum"
+        },
+        {
+            "val": 630,
+            "text": "Military Building"
+        },
+        {
+            "val": 604,
+            "text": "Municipal Property"
+        },
+        {
+            "val": 690,
+            "text": "Nature Facility"
+        },
+        {
+            "val": 652,
+            "text": "Nursery School"
+        },
+        {
+            "val": 605,
+            "text": "Police/Fire/Civil Defense"
+        },
+        {
+            "val": 640,
+            "text": "Possessory Interest"
+        },
+        {
+            "val": 655,
+            "text": "Private School"
+        },
+        {
+            "val": 600,
+            "text": "Public (Nec)"
+        },
+        {
+            "val": 665,
+            "text": "Public School"
+        },
+        {
+            "val": 670,
+            "text": "Public Service"
+        },
+        {
+            "val": 675,
+            "text": "Religious"
+        },
+        {
+            "val": 650,
+            "text": "School"
+        },
+        {
+            "val": 664,
+            "text": "Sec Educational School"
+        },
+        {
+            "val": 602,
+            "text": "State Property"
+        },
+        {
+            "val": 641,
+            "text": "Tax Abatement"
+        },
+        {
+            "val": 601,
+            "text": "Tax Exempt"
+        },
+        {
+            "val": 680,
+            "text": "University"
+        },
+        {
+            "val": 606,
+            "text": "Us Postal Service"
+        },
+        {
+            "val": 656,
+            "text": "Vocational/Trade School"
+        },
+        {
+            "val": 703,
+            "text": "Amphitheatre"
+        },
+        {
+            "val": 706,
+            "text": "Amusement Arcade"
+        },
+        {
+            "val": 709,
+            "text": "Amusement Park"
+        },
+        {
+            "val": 712,
+            "text": "Auditorium"
+        },
+        {
+            "val": 724,
+            "text": "Billiard Hall"
+        },
+        {
+            "val": 721,
+            "text": "Bowling Alley"
+        },
+        {
+            "val": 725,
+            "text": "Club"
+        },
+        {
+            "val": 727,
+            "text": "Country Club"
+        },
+        {
+            "val": 733,
+            "text": "Dance Hall"
+        },
+        {
+            "val": 795,
+            "text": "Drive In Theater"
+        },
+        {
+            "val": 742,
+            "text": "Golf Course"
+        },
+        {
+            "val": 745,
+            "text": "Golf Range"
+        },
+        {
+            "val": 750,
+            "text": "Gymnasium"
+        },
+        {
+            "val": 754,
+            "text": "Lake/River/Beach"
+        },
+        {
+            "val": 755,
+            "text": "Marina Facility"
+        },
+        {
+            "val": 757,
+            "text": "Park"
+        },
+        {
+            "val": 766,
+            "text": "Race Track"
+        },
+        {
+            "val": 769,
+            "text": "Racquet Court"
+        },
+        {
+            "val": 700,
+            "text": "Recreational (Nec)"
+        },
+        {
+            "val": 775,
+            "text": "Rv Park"
+        },
+        {
+            "val": 780,
+            "text": "Skating Rink"
+        },
+        {
+            "val": 787,
+            "text": "Stable"
+        },
+        {
+            "val": 784,
+            "text": "Stadium"
+        },
+        {
+            "val": 790,
+            "text": "Swimming Pool"
+        },
+        {
+            "val": 770,
+            "text": "Tennis Club"
+        },
+        {
+            "val": 796,
+            "text": "Theater"
+        },
+        {
+            "val": 797,
+            "text": "Tourist Attraction/Exhibits"
+        },
+        {
+            "val": 699,
+            "text": "Zoo"
+        },
+        {
+            "val": 109,
+            "text": "Cabin"
+        },
+        {
+            "val": 112,
+            "text": "Condominium"
+        },
+        {
+            "val": 111,
+            "text": "Cooperative"
+        },
+        {
+            "val": 117,
+            "text": "High Rise Condo"
+        },
+        {
+            "val": 138,
+            "text": "Manufactured Home"
+        },
+        {
+            "val": 116,
+            "text": "Mid Rise Condo"
+        },
+        {
+            "val": 137,
+            "text": "Mobile Home"
+        },
+        {
+            "val": 133,
+            "text": "Multi Family Dwelling"
+        },
+        {
+            "val": 148,
+            "text": "Pud"
+        },
+        {
+            "val": 100,
+            "text": "Residential (Nec)"
+        },
+        {
+            "val": 163,
+            "text": "SFR"
+        },
+        {
+            "val": 102,
+            "text": "Townhouse/Rowhouse"
+        },
+        {
+            "val": 106,
+            "text": "Apartment"
+        },
+        {
+            "val": 103,
+            "text": "Apartment/Hotel"
+        },
+        {
+            "val": 114,
+            "text": "Common Area"
+        },
+        {
+            "val": 113,
+            "text": "Condominium Project"
+        },
+        {
+            "val": 206,
+            "text": "Condotel"
+        },
+        {
+            "val": 115,
+            "text": "Duplex"
+        },
+        {
+            "val": 118,
+            "text": "Frat/Sorority House"
+        },
+        {
+            "val": 155,
+            "text": "Group Quarters"
+        },
+        {
+            "val": 728,
+            "text": "Health Club"
+        },
+        {
+            "val": 127,
+            "text": "Hotel"
+        },
+        {
+            "val": 134,
+            "text": "Mixed Complex"
+        },
+        {
+            "val": 136,
+            "text": "Mobile Home Park"
+        },
+        {
+            "val": 142,
+            "text": "Motel"
+        },
+        {
+            "val": 132,
+            "text": "Multi Family 10 Units Less"
+        },
+        {
+            "val": 131,
+            "text": "Multi Family 10 Units Plus"
+        },
+        {
+            "val": 151,
+            "text": "Quadruplex"
+        },
+        {
+            "val": 119,
+            "text": "Residence Hall/Dormitories"
+        },
+        {
+            "val": 130,
+            "text": "Resort Hotel"
+        },
+        {
+            "val": 167,
+            "text": "Time Share"
+        },
+        {
+            "val": 199,
+            "text": "Time Share Condo"
+        },
+        {
+            "val": 164,
+            "text": "Transient Lodging"
+        },
+        {
+            "val": 165,
+            "text": "Triplex"
+        },
+        {
+            "val": 806,
+            "text": "Aircraft Facility"
+        },
+        {
+            "val": 808,
+            "text": "Airport"
+        },
+        {
+            "val": 801,
+            "text": "Communication Facility"
+        },
+        {
+            "val": 867,
+            "text": "Easement"
+        },
+        {
+            "val": 818,
+            "text": "Electrical Facility "
+        },
+        {
+            "val": 830,
+            "text": "Gas Production"
+        },
+        {
+            "val": 839,
+            "text": "Marine Facility"
+        },
+        {
+            "val": 850,
+            "text": "Port/Harbor"
+        },
+        {
+            "val": 864,
+            "text": "Radio Facility"
+        },
+        {
+            "val": 860,
+            "text": "Railroad Facility"
+        },
+        {
+            "val": 863,
+            "text": "Recording Studio"
+        },
+        {
+            "val": 354,
+            "text": "Shipyard"
+        },
+        {
+            "val": 872,
+            "text": "Telephone Facility"
+        },
+        {
+            "val": 800,
+            "text": "Transport (Nec)"
+        },
+        {
+            "val": 877,
+            "text": "Transport Facility"
+        },
+        {
+            "val": 879,
+            "text": "Truck Terminal"
+        },
+        {
+            "val": 875,
+            "text": "Tv Facility"
+        },
+        {
+            "val": 880,
+            "text": "Utilities"
+        },
+        {
+            "val": 883,
+            "text": "Waste Disposal"
+        },
+        {
+            "val": 886,
+            "text": "Well/Gas/Oil"
+        },
+        {
+            "val": 885,
+            "text": "Well/Water"
+        },
+        {
+            "val": 430,
+            "text": "Agricultural Land"
+        },
+        {
+            "val": 410,
+            "text": "Barren Land "
+        },
+        {
+            "val": 415,
+            "text": "Commercial Acreage"
+        },
+        {
+            "val": 420,
+            "text": "Commercial Lot"
+        },
+        {
+            "val": 421,
+            "text": "Common Land"
+        },
+        {
+            "val": 425,
+            "text": "Desert "
+        },
+        {
+            "val": 435,
+            "text": "Industrial Acreage"
+        },
+        {
+            "val": 440,
+            "text": "Industrial Lot"
+        },
+        {
+            "val": 401,
+            "text": "Marshland"
+        },
+        {
+            "val": 135,
+            "text": "Mobile Home Lot"
+        },
+        {
+            "val": 445,
+            "text": "Mountainous Land"
+        },
+        {
+            "val": 450,
+            "text": "Multi Family Acreage"
+        },
+        {
+            "val": 452,
+            "text": "Multi Family Lot"
+        },
+        {
+            "val": 618,
+            "text": "Native American Property"
+        },
+        {
+            "val": 446,
+            "text": "Natural Resources"
+        },
+        {
+            "val": 453,
+            "text": "Open Space"
+        },
+        {
+            "val": 998,
+            "text": "Real Property (Nec)"
+        },
+        {
+            "val": 455,
+            "text": "Recreational Acreage"
+        },
+        {
+            "val": 460,
+            "text": "Residential Acreage"
+        },
+        {
+            "val": 465,
+            "text": "Residential Lot"
+        },
+        {
+            "val": 160,
+            "text": "Rural Homesite"
+        },
+        {
+            "val": 400,
+            "text": "Vacant Land (Nec)"
+        },
+        {
+            "val": 481,
+            "text": "Vacant Lmtd/No Dev Potential"
+        },
+        {
+            "val": 454,
+            "text": "Vacant Mobile Home"
+        },
+        {
+            "val": 480,
+            "text": "Waste Land"
+        },
+        {
+            "val": 490,
+            "text": "Wildlife Refuge"
+        }
+
+
+    ],
+    "siteInfluence": [
+        {
+            "val": "IBS",
+            "text": "Business"
+        },
+        {
+            "val": "IYB",
+            "text": "Business Cluster"
+        },
+        {
+            "val": "IYC",
+            "text": "Central Business"
+        },
+        {
+            "val": "IYD",
+            "text": "Commercial/Industrial"
+        },
+        {
+            "val": "IIN",
+            "text": "Industrial"
+        },
+        {
+            "val": "IYI",
+            "text": "Industrial Size "
+        },
+        {
+            "val": "IYM",
+            "text": "Major Strip"
+        },
+        {
+            "val": "IYP",
+            "text": "Perm Central Business"
+        },
+        {
+            "val": "IYS",
+            "text": "Secondary Bus Strip"
+        },
+        {
+            "val": "IGC",
+            "text": "Golf Course"
+        },
+        {
+            "val": "IGL",
+            "text": "Golf/Lake"
+        },
+        {
+            "val": "IGW",
+            "text": "Golf/Water"
+        },
+        {
+            "val": "IGR",
+            "text": "Greenbelt"
+        },
+        {
+            "val": "IGG",
+            "text": "Greenbelt/Golf Course"
+        },
+        {
+            "val": "IPF",
+            "text": "Park Front"
+        },
+        {
+            "val": "IPA",
+            "text": "Park Land"
+        },
+        {
+            "val": "15",
+            "text": "Historical"
+        },
+        {
+            "val": "IBL",
+            "text": "Back Lot"
+        },
+        {
+            "val": "ICR",
+            "text": "Corner"
+        },
+        {
+            "val": "ICE",
+            "text": "Corner/Extra Front"
+        },
+        {
+            "val": "ICL",
+            "text": "Corner/Landlock"
+        },
+        {
+            "val": "ICW",
+            "text": "Corner/Landlock/Woodlot"
+        },
+        {
+            "val": "ICS",
+            "text": "Corner/Restrictions"
+        },
+        {
+            "val": "ICT",
+            "text": "Corner/Waterfront "
+        },
+        {
+            "val": "ICO",
+            "text": "Corner/Woodlot"
+        },
+        {
+            "val": "ICN",
+            "text": "Corner/Woodlot/Waterfront"
+        },
+        {
+            "val": "4",
+            "text": "Interior"
+        },
+        {
+            "val": "IRL",
+            "text": "Irregular Lot"
+        },
+        {
+            "val": "IRL",
+            "text": "Irregular Lot"
+        },
+        {
+            "val": "IIW",
+            "text": "Island No Waterfront"
+        },
+        {
+            "val": "ILL",
+            "text": "Landlocked"
+        },
+        {
+            "val": "ILW",
+            "text": "Landlocked/Waterfront "
+        },
+        {
+            "val": "ILT",
+            "text": "Landlocked/Woodlot "
+        },
+        {
+            "val": "ILD",
+            "text": "Landlocked/Woodlot/Waterfront"
+        },
+        {
+            "val": "3",
+            "text": "Perimeter"
+        },
+        {
+            "val": "IPE",
+            "text": "Perimeter Lot"
+        },
+        {
+            "val": "IRE",
+            "text": "Rear"
+        },
+        {
+            "val": "IYA",
+            "text": "Apt/Condo Complex"
+        },
+        {
+            "val": "IFL",
+            "text": "Four Plex Lot "
+        },
+        {
+            "val": "ITH",
+            "text": "Townhouse"
+        },
+        {
+            "val": "ITL",
+            "text": "Tri Plex Lot"
+        },
+        {
+            "val": "IAL",
+            "text": "Alley"
+        },
+        {
+            "val": "IAC",
+            "text": "Alley/Corner"
+        },
+        {
+            "val": "IBR",
+            "text": "Beach Road"
+        },
+        {
+            "val": "6",
+            "text": "Busy Street"
+        },
+        {
+            "val": "999",
+            "text": "Bypass"
+        },
+        {
+            "val": "ICU",
+            "text": "Cul-De-Sac"
+        },
+        {
+            "val": "IDD",
+            "text": "ce Dead End"
+        },
+        {
+            "val": "12",
+            "text": "Flag Lot"
+        },
+        {
+            "val": "IHI",
+            "text": "Highway"
+        },
+        {
+            "val": "9",
+            "text": "Highway Frontage"
+        },
+        {
+            "val": "IPC",
+            "text": "Poor Access"
+        },
+        {
+            "val": "IPV",
+            "text": "Private Road"
+        },
+        {
+            "val": "IRO",
+            "text": "Road"
+        },
+        {
+            "val": "IST",
+            "text": "Street"
+        },
+        {
+            "val": "ITR",
+            "text": "Traffic"
+        },
+        {
+            "val": "IAG",
+            "text": "Agricultural"
+        },
+        {
+            "val": "IRU",
+            "text": "Rural"
+        },
+        {
+            "val": "5",
+            "text": "Rural Property"
+        },
+        {
+            "val": "VAI",
+            "text": "Airport"
+        },
+        {
+            "val": "VBA",
+            "text": "Bay"
+        },
+        {
+            "val": "VBL",
+            "text": "Canal"
+        },
+        {
+            "val": "VCN",
+            "text": "Canyon"
+        },
+        {
+            "val": "VCV",
+            "text": "Canyon/Valley"
+        },
+        {
+            "val": "VCI",
+            "text": "City"
+        },
+        {
+            "val": "VGC",
+            "text": "Golf Course"
+        },
+        {
+            "val": "VGP",
+            "text": "Greenbelt/Park"
+        },
+        {
+            "val": "VGU",
+            "text": "Gulf"
+        },
+        {
+            "val": "VHV",
+            "text": "Hill/Valley"
+        },
+        {
+            "val": "VHM",
+            "text": "Hills/Mountains"
+        },
+        {
+            "val": "VIT",
+            "text": "Inland Waterway"
+        },
+        {
+            "val": "VIW",
+            "text": "Intercoastal Waterway "
+        },
+        {
+            "val": "VIS",
+            "text": "Interstate"
+        },
+        {
+            "val": "VLG",
+            "text": "Lagoon"
+        },
+        {
+            "val": "VLA",
+            "text": "Lake"
+        },
+        {
+            "val": "VLP",
+            "text": "Lake/Pond"
+        },
+        {
+            "val": "VCP",
+            "text": "Monservation / Protected Area"
+        },
+        {
+            "val": "VMN",
+            "text": "Mountain"
+        },
+        {
+            "val": "VMO",
+            "text": "Mountain/Ocean"
+        },
+        {
+            "val": "VOB",
+            "text": "Obstructed"
+        },
+        {
+            "val": "VOC",
+            "text": "Ocean"
+        },
+        {
+            "val": "VPA",
+            "text": "Park"
+        },
+        {
+            "val": "VPG",
+            "text": "Parking"
+        },
+        {
+            "val": "VPD",
+            "text": "Pond"
+        },
+        {
+            "val": "VPL",
+            "text": "Pool"
+        },
+        {
+            "val": "VRC",
+            "text": "Recreational"
+        },
+        {
+            "val": "VRR",
+            "text": "River"
+        },
+        {
+            "val": "VRD",
+            "text": "Road"
+        },
+        {
+            "val": "VST",
+            "text": "Street"
+        },
+        {
+            "val": "VSN",
+            "text": "Suburban"
+        },
+        {
+            "val": "VWR",
+            "text": "Water"
+        },
+        {
+            "val": "VWV",
+            "text": "Water View"
+        },
+        {
+            "val": "VWD",
+            "text": "Woodland"
+        },
+        {
+            "val": "IBY",
+            "text": "Bay"
+        },
+        {
+            "val": "IBA",
+            "text": "Bay Access"
+        },
+        {
+            "val": "IBF",
+            "text": "Bay Front"
+        },
+        {
+            "val": "IBI",
+            "text": "Bay Front Island"
+        },
+        {
+            "val": "IBM",
+            "text": "Bay Front Main-Land"
+        },
+        {
+            "val": "IBU",
+            "text": "Bayou"
+        },
+        {
+            "val": "IBC",
+            "text": "Beach"
+        },
+        {
+            "val": "IBB",
+            "text": "Behind Bay Front"
+        },
+        {
+            "val": "IBG",
+            "text": "Behind Gulf Front"
+        },
+        {
+            "val": "ICA",
+            "text": "Canal "
+        },
+        {
+            "val": "ICD",
+            "text": "Canal Drainage"
+        },
+        {
+            "val": "ICF",
+            "text": "Canal Front "
+        },
+        {
+            "val": "ICI",
+            "text": "Canal Front Island"
+        },
+        {
+            "val": "ICM",
+            "text": "Canal Main-Land"
+        },
+        {
+            "val": "ICB",
+            "text": "Canal/Waterfront"
+        },
+        {
+            "val": "ICC",
+            "text": "Creek "
+        },
+        {
+            "val": "10",
+            "text": "Creek Frontage"
+        },
+        {
+            "val": "ICK",
+            "text": "Creek/River"
+        },
+        {
+            "val": "IFD",
+            "text": "Flood Line"
+        },
+        {
+            "val": "IFP",
+            "text": "Flood Plain"
+        },
+        {
+            "val": "IGU",
+            "text": "Gulf"
+        },
+        {
+            "val": "IIT",
+            "text": "Inland Waterway"
+        },
+        {
+            "val": "IIS",
+            "text": "Island"
+        },
+        {
+            "val": "IIF",
+            "text": "Island Gulf Front"
+        },
+        {
+            "val": "ILA",
+            "text": "Lagoon"
+        },
+        {
+            "val": "ILK",
+            "text": "Lake"
+        },
+        {
+            "val": "ILF",
+            "text": "Lake Front"
+        },
+        {
+            "val": "11",
+            "text": "Lake Frontage"
+        },
+        {
+            "val": "ILP",
+            "text": "Lake/Pond"
+        },
+        {
+            "val": "IOC",
+            "text": "Ocean"
+        },
+        {
+            "val": "IPD",
+            "text": "Pond"
+        },
+        {
+            "val": "IPO",
+            "text": "Pool"
+        },
+        {
+            "val": "IRI",
+            "text": "River"
+        },
+        {
+            "val": "13",
+            "text": "Small Lake Or Pond"
+        },
+        {
+            "val": "ISL",
+            "text": "Submerged Land"
+        },
+        {
+            "val": "IWT",
+            "text": "Water"
+        },
+        {
+            "val": "IWA",
+            "text": "Water Access "
+        },
+        {
+            "val": "1",
+            "text": "Water Front"
+        },
+        {
+            "val": "IWC",
+            "text": "Water/Cul-De-Sac "
+        },
+        {
+            "val": "IWS",
+            "text": "Waterfalls"
+        },
+        {
+            "val": "IWF",
+            "text": "Waterfront"
+        },
+        {
+            "val": "IWE",
+            "text": "Wetland "
+        },
+        {
+            "val": "IAI",
+            "text": "Airport"
+        },
+        {
+            "val": "ICY",
+            "text": "City"
+        },
+        {
+            "val": "IDO",
+            "text": "Downtown"
+        },
+        {
+            "val": "IDR",
+            "text": "Drainage"
+        },
+        {
+            "val": "IDE",
+            "text": "Drainage Easement"
+        },
+        {
+            "val": "IDU",
+            "text": "Duplex Lots"
+        },
+        {
+            "val": "IES",
+            "text": "Easement"
+        },
+        {
+            "val": "IEF",
+            "text": "Extra Front "
+        },
+        {
+            "val": "IER",
+            "text": "Extra Front/Restrictions"
+        },
+        {
+            "val": "IIC",
+            "text": "Inside City"
+        },
+        {
+            "val": "INC",
+            "text": "Inside City"
+        },
+        {
+            "val": "INC",
+            "text": "Intracoastal"
+        },
+        {
+            "val": "IMH",
+            "text": "Mobile Home"
+        },
+        {
+            "val": "IMO",
+            "text": "Mountain"
+        },
+        {
+            "val": "INB",
+            "text": "Non Buildable"
+        },
+        {
+            "val": "IOT",
+            "text": "Outside City"
+        },
+        {
+            "val": "IPR",
+            "text": "Preserve"
+        },
+        {
+            "val": "IRA",
+            "text": "Ravine"
+        },
+        {
+            "val": "IRC",
+            "text": "Recreational"
+        },
+        {
+            "val": "IRS",
+            "text": "Restrictions"
+        },
+        {
+            "val": "ISU",
+            "text": "Suburban"
+        },
+        {
+            "val": "IUR",
+            "text": "Urban"
+        },
+        {
+            "val": "IVA",
+            "text": "Valley"
+        },
+        {
+            "val": "16",
+            "text": "Wooded Lot"
+        },
+        {
+            "val": "IWL",
+            "text": "Woodland"
+        },
+        {
+            "val": "IWW",
+            "text": "Woodlot/Waterfront"
+        },
+        {
+            "val": "IZL",
+            "text": "Zero Lot Line"
+        }
+
+    ],
+    "salePriceType": [
+        {
+            "val": "C",
+            "text": "Confirmed"
+        },
+        {
+            "val": "E",
+            "text": "Estimated"
+        },
+        {
+            "val": "F",
+            "text": "Full Value"
+        },
+        {
+            "val": "M",
+            "text": "Committed"
+        },
+        {
+            "val": "N",
+            "text": "Not Disclosed"
+        },
+        {
+            "val": "P",
+            "text": "Partial"
+        },
+        {
+            "val": "R",
+            "text": "Lease"
+        },
+        {
+            "val": "U",
+            "text": "Unknown"
+        },
+        {
+            "val": "V",
+            "text": "Verified"
+        }
+    ],
+    "recordingMonth": [
+        {
+            "val": 1,
+            "text": "January"
+        },
+        {
+            "val": 2,
+            "text": "February"
+        },
+        {
+            "val": 3,
+            "text": "March"
+        },
+        {
+            "val": 4,
+            "text": "April"
+        },
+        {
+            "val": 5,
+            "text": "May"
+        },
+        {
+            "val": 6,
+            "text": "June"
+        },
+        {
+            "val": 7,
+            "text": "July"
+        },
+        {
+            "val": 8,
+            "text": "August"
+        },
+        {
+            "val": 9,
+            "text": "September"
+        },
+        {
+            "val": 10,
+            "text": "October"
+        },
+        {
+            "val": 11,
+            "text": "November"
+        },
+        {
+            "val": 12,
+            "text": "December"
+        }
+    ],
+    "deedType": [
+        {
+            "val": "GCT",
+            "text": "Committee Deed"
+        },
+        {
+            "val": "GCE,TCE,XCE",
+            "text": "Conservator’s Deed"
+        },
+        {
+            "val": "GCV,XCV",
+            "text": "Conveyance Deed"
+        },
+        {
+            "val": "GCR,XCR",
+            "text": "Corporate Deed"
+        },
+        {
+            "val": "QCQ,XCQ",
+            "text": "Corporation Quit Claim Deed"
+        },
+        {
+            "val": "GCD,QCD,TCD,UCD,XCD",
+            "text": "Correction Deed"
+        },
+        {
+            "val": "GCA,XCA",
+            "text": "County Deed"
+        },
+        {
+            "val": "GDC",
+            "text": "Declaration"
+        },
+        {
+            "val": "GDD,XDD,QDD,TDD,UDD",
+            "text": "Deed"
+        },
+        {
+            "val": "GDA,XDA",
+            "text": "Deed of Assumption"
+        },
+        {
+            "val": "GDI,XDI",
+            "text": "Deed of Distribution"
+        },
+        {
+            "val": "GDE,XDE",
+            "text": "Deed of Exchange"
+        },
+        {
+            "val": "GXD,XXD",
+            "text": "Exchange Deed"
+        },
+        {
+            "val": "GEJ",
+            "text": "Executor Joint Tenant"
+        },
+        {
+            "val": "GEX,XEX,TEX",
+            "text": "Executors Deed"
+        },
+
+        {
+            "val": "GXP",
+            "text": "Exemption Deed"
+        },
+        {
+            "val": "GFS,XFS",
+            "text": "Fee Simple Deed"
+        },
+        {
+            "val": "GFI,XFI",
+            "text": "Fiduciary Deed"
+        },
+        {
+            "val": "GWD,QWD,XWD,TWD,UWD",
+            "text": "General Warranty Deed"
+        },
+        {
+            "val": "GGF,XGF,UGF",
+            "text": "Gift Deed "
+        },
+        {
+            "val": "GGD,XGD",
+            "text": "Grant Deed "
+        },
+        {
+            "val": "GGR",
+            "text": "Ground Lease"
+        },
+        {
+            "val": "GGU,QGU,XGU",
+            "text": "Guardian Deed"
+        },
+        {
+            "val": "GGJ",
+            "text": "Guardian Joint Tenant"
+        },
+        {
+            "val": "GIV,XIV",
+            "text": "Individual Grant Deed"
+        },
+        {
+            "val": "GIN",
+            "text": "Institutional Deed "
+        },
+
+        {
+            "val": "GIC",
+            "text": "Intercompany Deed Transfer "
+        },
+        {
+            "val": "GID",
+            "text": "Interfamily Deed"
+        },
+        {
+            "val": "GIF",
+            "text": "Interfamily Deed Transfer"
+        },
+        {
+            "val": "GIT,XIT",
+            "text": "Interspousal Deed Transfer"
+        },
+        {
+            "val": "GSU,XSU",
+            "text": "Joint Survivorship/Right of"
+        },
+        {
+            "val": "GJT,XJT",
+            "text": "Joint Tenancy Deed"
+        },
+        {
+            "val": "GQJ,QQJ,XQJ",
+            "text": "Joint Tenancy Quit Claim Deed"
+        },
+        {
+            "val": "GLD",
+            "text": "Land Contract"
+        },
+        {
+            "val": "GLT",
+            "text": "Land Court (Massachusetts)"
+        },
+        {
+            "val": "GLE",
+            "text": "Lease (Hawaii)"
+        },
+        {
+            "val": "GLA,XLA",
+            "text": "Lease Agreement"
+        },
+
+        {
+            "val": "GLL",
+            "text": "Leasehold Conv. With Agreement of Sale (FeePurchase) (Hawaii)"
+        },
+        {
+            "val": "GLS",
+            "text": "Leasehold Conv. with an Agreement of Sale(Hawaii)"
+        },
+        {
+            "val": "GLH,XLH",
+            "text": "Leasehold Deed"
+        },
+        {
+            "val": "GLM,XLM",
+            "text": "Limited Warranty Deed"
+        },
+        {
+            "val": "GOT",
+            "text": "Miscellaneous Document"
+        },
+        {
+            "val": "GPD,GPD",
+            "text": "Partnership Grant Deed"
+        },
+        {
+            "val": "GPN",
+            "text": "Patent (Land)"
+        },
+        {
+            "val": "GPO",
+            "text": "Pay Off Deed"
+        },
+        {
+            "val": "GPJ",
+            "text": "Personal Rep Joint Tenant"
+        },
+        {
+            "val": "GPR,QPR,TPR,XPR",
+            "text": "Personal Rep's Deed"
+        },
+        {
+            "val": "GPV",
+            "text": "Private Sale"
+        },
+
+        {
+            "val": "QQC,GQC,TQC,XQC",
+            "text": "Quit Claim Deed"
+        },
+        {
+            "val": "GRC,XRC",
+            "text": "Receiver's Deed"
+        },
+        {
+            "val": "GRL,QRL,TRL,XRL",
+            "text": "Release/Satisfaction of Agreement of Sale (Leasehold) (Hawaii)"
+        },
+        {
+            "val": "GRD,TRD,QRD,XRD,URD",
+            "text": "Re-recorded Deed"
+        },
+        {
+            "val": "GRA",
+            "text": "Satisfaction of Land Contract (Wisconsin) or Release/Satisfaction of Agreement of Sale (Fee Property) (Hawaii)"
+        },
+        {
+            "val": "GSW,XSW",
+            "text": "Special Warranty Deed"
+        },
+        {
+            "val": "GSJ,XSJ",
+            "text": "Special Warranty Deed/Joint Tenant"
+        },
+        {
+            "val": "GSA",
+            "text": "State Deed"
+        },
+        {
+            "val": "GSR",
+            "text": "Straw Deed"
+        },
+        {
+            "val": "GHC",
+            "text": "Sub Agreement of Sale (Hawaii)"
+        },
+        {
+            "val": "GHS",
+            "text": "Sub Commercial Lease (Hawaii)"
+        },
+
+        {
+            "val": "GSL",
+            "text": "Sub Lease"
+        },
+        {
+            "val": "GTT",
+            "text": "Torrens Document"
+        },
+        {
+            "val": "GXX",
+            "text": "Transaction History Record"
+        },
+        {
+            "val": "GDT,GTO",
+            "text": "Transfer on Death Deed"
+        },
+        {
+            "val": "GTA",
+            "text": "Trust Agreement"
+        },
+        {
+            "val": "GTD,XTD,UTD",
+            "text": "Trustee Deed"
+        },
+        {
+            "val": "GTU,XTU",
+            "text": "Trustee's Deed (Transfer)"
+        },
+        {
+            "val": "GTJ,XTJ",
+            "text": "Trustee's Joint Tenant"
+        },
+        {
+            "val": "GUD,XUD",
+            "text": "Unit Deed"
+        },
+        {
+            "val": "GVL",
+            "text": "Vendor's Lien"
+        },
+        {
+            "val": "GWJ,XWJ",
+            "text": "Warranty Deed Joint Tenant"
+        },
+        {
+            "val": "UCO",
+            "text": "Commissioner's Deed (Foreclosure)"
+        },
+        {
+            "val": "UDL,GDL,XDL",
+            "text": "Deed in Lieu of Foreclosure"
+        },
+        {
+            "val": "UDS,QDS",
+            "text": "Distress Sale"
+        },
+        {
+            "val": "UFD,GFD,QFD,TFD,XFD",
+            "text": "Foreclosure Deed"
+        },
+        {
+            "val": "UFR",
+            "text": "Forfeiture Deed"
+        },
+        {
+            "val": "UOR",
+            "text": "Legal Action/Court Order"
+        },
+        {
+            "val": "UMA",
+            "text": "Marshalls Deed"
+        },
+        {
+            "val": "UMD,GMD",
+            "text": "Masters Deed"
+        },
+        {
+            "val": "UMF",
+            "text": "Mortgage Foreclosure Deed"
+        },
+        {
+            "val": "UPA",
+            "text": "Public Auction Deed"
+        },
+        {
+            "val": "UPT",
+            "text": "Public Trustees Deed"
+        },
+        {
+            "val": "URF,XRF",
+            "text": "Referees Deed"
+        },
+        {
+            "val": "USO",
+            "text": "Selling Officer's Deed"
+        },
+        {
+            "val": "UST",
+            "text": "Settlement Deed"
+        },
+        {
+            "val": "USC",
+            "text": "Sheriff's Certificate of Foreclosure Sale"
+        },
+        {
+            "val": "USD,XSD,GSD",
+            "text": "Sheriff's Deed"
+        },
+        {
+            "val": "UTX",
+            "text": "Tax Deed"
+        },
+        {
+            "val": "UTE,GTE,XTE",
+            "text": "Trustee's Deed Upon Sale"
+        },
+        {
+            "val": "GCN,XCN",
+            "text": "Condominium Deed"
+        },
+        {
+            "val": "GCS,XCS",
+            "text": "Contract of Sale"
+        },
+        {
+            "val": "UAU",
+            "text": "Auction"
+        },
+        {
+            "val": "GAJ,XAJ",
+            "text": "Administrator Joint Tenancy"
+        },
+        {
+            "val": "GAD,XAD",
+            "text": "Administrator's Deed"
+        },
+        {
+            "val": "GSX",
+            "text": "Affidavit Death of Trustee/Successor Trustee(Los Angeles)"
+        },
+        {
+            "val": "GAF,XAF",
+            "text": "Affidavit/Affidavit of Death"
+        },
+        {
+            "val": "GAG,XAG",
+            "text": "Agreement of Sale"
+        },
+        {
+            "val": "GAT,XAT",
+            "text": "Apartment Deed"
+        },
+        {
+            "val": "GAA",
+            "text": "Assignment and Agreement of Sale"
+        },
+        {
+            "val": "GAN,XAN",
+            "text": "Assignment Deed"
+        },
+        {
+            "val": "GAR",
+            "text": "Assignment of Agreement of Sale (Hawaii)"
+        },
+        {
+            "val": "GAC",
+            "text": "Assignment of Commercial Lease (Hawaii)"
+        },
+        {
+            "val": "GAH",
+            "text": "Assignment of Sub Commercial Lease (Hawaii)"
+        },
+        {
+            "val": "GAB",
+            "text": "Assignment of Sub Lease (Hawaii)"
+        },
+        {
+            "val": "GAL,XAL",
+            "text": "Assignment/Assumption of Lease/Subls"
+        },
+        {
+            "val": "GBS,XBS,QBS",
+            "text": "Bargain & Sale Deed"
+        },
+        {
+            "val": "GBD",
+            "text": "Beneficiary Deed (Buyer ID = 'BE')"
+        },
+        {
+            "val": "GXL,XXL",
+            "text": "Cancellation of Lease in HI"
+        },
+        {
+            "val": "GCH",
+            "text": "Cash Sale Deed"
+        },
+        {
+            "val": "GCP",
+            "text": "Certificate of Purchase"
+        },
+        {
+            "val": "GRE,QRE,XRE",
+            "text": "Certificate of Redemption"
+        },
+        {
+            "val": "UTC",
+            "text": "Certificate of Title (FL)"
+        }
+
+    ],
+    "mortgageType": [
+        {
+            "val": "CDA",
+            "text": "Community Dev Auth."
+        },
+        {
+            "val": "CNV",
+            "text": "Conventional"
+        },
+        {
+            "val": "CON",
+            "text": "Construction"
+        },
+        {
+            "val": "FHA",
+            "text": "FHA"
+        },
+        {
+            "val": "PP",
+            "text": "Private Party"
+        },
+        {
+            "val": "REV",
+            "text": "Reverse"
+        },
+        {
+            "val": "SBA",
+            "text": "SBA"
+        },
+        {
+            "val": "VA",
+            "text": "VA"
+        }
+    ],
+    "financingDeedType": [
+        {
+            "val": "GCL,TCL,XCL",
+            "text": "Construction Deed of Trust"
+        },
+        {
+            "val": "TTR,XTR,QTR,GTR",
+            "text": "Deed of Trust"
+        },
+        {
+            "val": "TDP",
+            "text": "Down Payment Assistance Loan"
+        },
+        {
+            "val": "TEQ,XEQ",
+            "text": "Equity or Credit Line"
+        },
+        {
+            "val": "TIM,XIM",
+            "text": "Indemnity Deed of Trust"
+        },
+        {
+            "val": "XTL,TTL",
+            "text": "Leasehold Deed of Trust"
+        },
+        {
+            "val": "TMO,XMO",
+            "text": "Loan Modification Agreement"
+        },
+        {
+            "val": "TMG,XMG,GMG",
+            "text": "Mortgage"
+        },
+        {
+            "val": "GAI,TAI,QAI,XAI",
+            "text": "All Inclusive Deed of Trust"
+        },
+        {
+            "val": "TRV,XRV",
+            "text": "Revolving Line of Credit"
+        },
+        {
+            "val": "TSE,XSE,GSE",
+            "text": "Security Deed/Security Deed of Trust"
+        },
+        {
+            "val": "TAP,XAP",
+            "text": "Assumption"
+        }
+    ],
+    "interstRateType": [
+        {
+            "val": "FIX",
+            "text": "Fixed"
+        },
+        {
+            "val": "ADJ",
+            "text": "Adjustable"
+        },
+        {
+            "val": "VAR",
+            "text": "Variable"
+        },
+        {
+            "val": "BAL",
+            "text": "Balloon"
+        },
+        {
+            "val": "GRA",
+            "text": "Graduated"
+        }
+    ],
+    "foreclosureStatus": [
+        {
+            "val": 1,
+            "text": "Default"
+        },
+        {
+            "val": 2,
+            "text": "Auction"
+        },
+        {
+            "val": 3,
+            "text": "REO"
+        },
+        {
+            "val": 4,
+            "text": "REO Sale"
+        },
+        {
+            "val": 5,
+            "text": "Short Sale"
+        }
+    ],
+    "listingStatus": [
+        {
+            "val": 1,
+            "text": "Active"
+        },
+        {
+            "val": 2,
+            "text": "Pending"
+        }
+    ],
+    "sellerCarryBack": [
+        {
+            "val": 1,
+            "text": "Only Seller Carrybacks"
+        },
+        {
+            "val": 0,
+            "text": "No Seller Carrybacks"
+        }
+    ],
+    "canadianMailingProvince": [
+        {
+            "val": "AB",
+            "text": "Alberta"
+        },
+        {
+            "val": "BC",
+            "text": "British Columbia"
+        },
+        {
+            "val": "MB",
+            "text": "Manitoba"
+        },
+        {
+            "val": "NB",
+            "text": "New Brunswick"
+        },
+        {
+            "val": "NL",
+            "text": "Newfoundland And Labrador"
+        },
+        {
+            "val": "NT",
+            "text": "Nova Scotia"
+        },
+        {
+            "val": "NS",
+            "text": "Northwest Territories"
+        },
+        {
+            "val": "NU",
+            "text": "Nunavut"
+        },
+        {
+            "val": "ON",
+            "text": "Ontario"
+        },
+        {
+            "val": "PE",
+            "text": "Prince Edward Island"
+        },
+        {
+            "val": "QC",
+            "text": "Quebec"
+        },
+        {
+            "val": "SK",
+            "text": "Saskatchewan"
+        }
+        ,
+        {
+            "val": "YT",
+            "text": "Yukon"
+        }
+    ],
+    "poolOption": [
+        {
+            "val": 0,
+            "text": "Yes"
+        },
+        {
+            "val": 1,
+            "text": "No"
+        }
+    ]
+}

@@ -1,0 +1,267 @@
+<app-header-customer [sideBar]="sideBar"></app-header-customer>
+<app-sidebar-customer #sideBar></app-sidebar-customer>
+
+
+
+	<!-- right area start -->
+	<section class="right_section">
+        <!-- inside_content_area start-->
+        <div class="content_area">
+
+            
+
+            <div class="col-sm-12">
+                <div class="row">
+                    <div class="col-md-12 text-right mb-3">
+                        <a (click)="searchAgain()"><Button class="btn btn-success mr-3">Search Again</Button></a>
+                        <!-- <button class="btn btn-success" data-toggle="modal" data-target="#manageGridHot">Manage Grid</button> -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- main row start-->
+            <div class="col-sm-12">
+                <div class="row">
+                    <!--table start -->                    
+                    <div class="col-sm-12 top_selling">
+                        <div class="inside">
+                            <div class="title">Saved Detail</div>
+                            <table style="width:100%" class="table">
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Is/Is Between</th>
+                                    <th>Value</th>
+                                </tr>
+                                <tr>
+                                  <td>State</td>
+                                  <td>-</td>
+                                  <td>{{mainData.state?.text}}</td>
+                                </tr>
+                                <tr *ngIf="mainData.county.length>0">
+                                  <td>County</td>
+                                  <td>{{mainData.countySelect}}</td>
+                                  <td><span *ngFor="let county of mainData.county"> {{county.text}} </span></td>
+                                </tr>
+                                <tr *ngIf="mainData.city.length>0">
+                                    <td>City</td>
+                                    <td>{{mainData.citySelect}}</td>
+                                    <td><span *ngFor="let city of mainData.city"> {{city.text}} </span></td>
+                                  </tr>
+                                  <tr *ngIf="mainData.zipcode">
+                                    <td>Zip</td>
+                                    <td>{{mainData.zipSelect}}</td>
+                                    <td><span> {{mainData.zipcode}} </span></td>
+                                  </tr>
+                                <tr *ngIf="mainData.land">
+                                    <td>Land Use</td>
+                                    <td>-</td>
+                                    <td><span *ngFor="let land of mainData.land"> {{land.text}} </span></td>
+                                </tr>
+                                <tr *ngIf="mainData.exemption">
+                                    <td>Exemption</td>
+                                    <td>-</td>
+                                    <td><span *ngFor="let exemption of mainData.exemption"> {{exemption.text}} </span></td>
+                                </tr>
+                                <tr *ngIf="mainData.occupancy">
+                                    <td>Occupancy</td>
+                                    <td>-</td>
+                                    <td><span *ngFor="let occupancy of mainData.occupancy"> {{occupancy.text}} </span></td>
+                                </tr>
+                                <tr *ngIf="mainData.salesFrom">
+                                    <td>Last Sale Recording Date</td>
+                                    <td>{{mainData.saleSelect}}</td>
+                                    <td>
+                                        <span *ngIf="mainData.salesFrom &&  mainData.saleSelect!='is between'; else sec">{{mainData.salesFrom.day}}-{{getMonthName(mainData.salesFrom.month)}}-{{mainData.salesFrom.year}}</span>
+                                        <ng-template #sec>
+                                            <span *ngIf="mainData.saleSelect!='is' && mainData.salesTo && mainData.salesFrom; else thrd">{{mainData.salesFrom.day}}-{{getMonthName(mainData.salesFrom.month)}}-{{mainData.salesFrom.year}} to {{mainData.salesTo.day}}-{{getMonthName(mainData.salesTo.month)}}-{{mainData.salesTo.year}}</span>
+                                        </ng-template>
+                                        <ng-template #thrd></ng-template>
+                                    </td>
+                                    <!-- <td>{{mainData.salesFrom?.year}}-{{mainData.salesFrom?.month}}-{{mainData.salesFrom?.day}}  {{mainData.salesTo?.year}}-{{mainData.salesTo?.month}}-{{mainData.salesTo?.day}}</td> -->
+                                </tr>
+                                <tr *ngIf="mainData.mortgageAmountFrom">
+                                    <td>Mortgage Amount</td>
+                                    <td>{{mainData.mortgageAmountSelect}}</td>
+                                    <td *ngIf="mainData.mortgageAmountTo">{{mainData.mortgageAmountFrom}} to {{mainData.mortgageAmountTo}}</td>
+                                    <td *ngIf="!mainData.mortgageAmountTo">{{mainData.mortgageAmountFrom}}</td>
+                                </tr>
+                                <tr *ngIf="mainData.mortgageRecordingFrom">
+                                    <td>Mortgage Recording Date</td>
+                                    <td>{{mainData.mortgageRecordingDate}}</td>
+                                    <td *ngIf="mainData.mortgageRecordingTo">{{mainData.mortgageRecordingFrom?.day}}-{{getMonthName(mainData.mortgageRecordingFrom?.month)}}-{{mainData.mortgageRecordingFrom?.year}} to {{mainData.mortgageRecordingTo?.day}}-{{getMonthName(mainData.mortgageRecordingTo?.month)}}-{{mainData.mortgageRecordingTo?.year}}</td>
+                                    <td *ngIf="!mainData.mortgageRecordingTo">{{mainData.mortgageRecordingFrom?.day}}-{{getMonthName(mainData.mortgageRecordingFrom?.month)}}-{{mainData.mortgageRecordingFrom?.year}}</td>
+                                </tr>
+                                <tr *ngIf="mainData.mortgageType">
+                                    <td>Mortgage Type</td>
+                                    <td>-</td>
+                                    <td><span *ngFor="let mortgage of mainData.mortgageType"> {{mortgage.text}} </span></td>
+                                </tr>
+                                <tr *ngIf="mainData.mortgageInterestFrom">
+                                    <td>Interest Rate Between</td>
+                                    <td>{{mainData.mortgageInterestStatus}}</td>
+                                    <td *ngIf="mainData.mortgageInterestTo">{{mainData.mortgageInterestFrom}} to {{mainData.mortgageInterestTo}}</td>
+                                    <td *ngIf="!mainData.mortgageInterestTo">{{mainData.mortgageInterestFrom}}</td>
+                                </tr>
+                                <tr *ngIf="mainData.maxOpenLien">
+                                    <td>Max Open Lien</td>
+                                    <td>-</td>
+                                    <td><span *ngFor="let lien of mainData.maxOpenLien"> {{lien.text}} </span></td>
+                                </tr>
+                                <tr *ngIf="mainData.equityFrom">
+                                    <td>Equity Percentage</td>
+                                    <td>{{mainData.equityStatus}}</td>
+                                    <td *ngIf="mainData.equityTo">{{mainData.equityFrom}} to {{mainData.equityTo}}</td>
+                                    <td *ngIf="!mainData.equityTo">{{mainData.equityFrom}}</td>
+                                </tr>
+                                <tr *ngIf="mainData.listingStatus">
+                                    <td>Listing Status</td>
+                                    <td>-</td>
+                                    <td><span *ngFor="let listing of mainData.listingStatus"> {{listing.text}} </span></td>
+                                </tr>
+                                <tr *ngIf="mainData.listingPriceFrom">
+                                    <td>Listing Price</td>
+                                    <td>{{mainData.listingPriceStatus}}</td>
+                                    <td *ngIf="mainData.listingPriceTo">{{mainData.listingPriceFrom}} to {{mainData.listingPriceTo}}</td>
+                                    <td *ngIf="!mainData.listingPriceTo">{{mainData.listingPriceFrom}}</td>
+                                </tr>
+                                <tr *ngIf="mainData.forclosureStatus">
+                                    <td>Forclosure Information</td>
+                                    <td>-</td>
+                                    <td>{{mainData.forclosureStatus?.text}}</td>
+                                </tr>
+                                <tr *ngIf="mainData.forclosureDateFrom">
+                                    <td>Foreclosure Event Date</td>
+                                    <td>{{mainData.forclosureDateStatus}}</td>
+                                    <td *ngIf="mainData.forclosureDateTo">{{mainData.forclosureDateFrom?.day}}-{{getMonthName(mainData.forclosureDateFrom?.month)}}-{{mainData.forclosureDateFrom?.year}} to {{mainData.forclosureDateTo?.day}}-{{getMonthName(mainData.forclosureDateTo?.month)}}-{{mainData.forclosureDateTo?.year}}</td>
+                                    <td *ngIf="!mainData.forclosureDateTo">{{mainData.forclosureDateFrom?.day}}-{{getMonthName(mainData.forclosureDateFrom?.month)}}-{{mainData.forclosureDateFrom?.year}}</td>
+                                </tr>
+                                <tr *ngIf="mainData.forclosureAmountFrom">
+                                    <td>Foreclosure Amount</td>
+                                    <td>{{mainData.forclosureAmountStatus}}</td>
+                                    <td *ngIf="mainData.forclosureAmountTo">{{mainData.forclosureAmountFrom}} to {{mainData.forclosureAmountTo}}</td>
+                                    <td *ngIf="!mainData.forclosureAmountTo">{{mainData.forclosureAmountFrom}}</td>
+                                </tr>
+                              </table>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+
+        <!-- Manage grid  -->
+<div class="modal" id="manageGridHot">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+  
+          <!-- Modal Header -->
+          <div class="modal-header">
+              <h4 class="modal-title">Manage Grid</h4>
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+          <form>
+            <!-- Modal body -->
+            <div class="modal-body">
+              <div class="row">
+                    <div class="col-sm-12">
+                        <div class="form-group">   
+                            <label>No. of columns</label>
+                            <select class="form-control" name="gridSelect" id="gridSelect">
+                                <option value="0">1</option>
+                                <option value="1">2</option>
+                                <option value="2">3</option>
+                                <option value="3">4</option>
+                                <option value="4">5</option>
+                                <option value="5">6</option>
+                                <option value="6">7</option>
+                                <option value="7">8</option>
+                                <option value="8">9</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <label>Field 1</label>
+                            <select  class="form-control" name="col0" >
+                                <!-- <option *ngFor="let col of manageGrid.gridColName;let i = index"  value="{{i}}">{{col}}</option>                                -->
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <label>Field 2</label>
+                            <select  class="form-control" name="col1">
+                                <!-- <option *ngFor="let col of manageGrid.gridColName;let i = index"  value="{{i}}">{{col}}</option>  -->
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <label>Field 3</label>
+                            <select  class="form-control" name="col2">
+                                <!-- <option *ngFor="let col of manageGrid.gridColName;let i = index"  value="{{i}}">{{col}}</option>  -->
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <label>Field 4</label>
+                            <select  class="form-control" name="col3">
+                                <!-- <option *ngFor="let col of manageGrid.gridColName;let i = index"  value="{{i}}">{{col}}</option>  -->
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <label>Field 5</label>
+                            <select  class="form-control" name="col4">
+                                <!-- <option *ngFor="let col of manageGrid.gridColName;let i = index"  value="{{i}}">{{col}}</option>  -->
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <label>Field 6</label>
+                            <select  class="form-control" name="col5">
+                                <!-- <option *ngFor="let col of manageGrid.gridColName;let i = index"  value="{{i}}">{{col}}</option>  -->
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <label>Field 7</label>
+                            <select  class="form-control" name="col6">
+                                <!-- <option *ngFor="let col of manageGrid.gridColName;let i = index"  value="{{i}}">{{col}}</option>  -->
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <label>Field 8</label>
+                            <select  class="form-control" name="col7">
+                                <!-- <option *ngFor="let col of manageGrid.gridColName;let i = index"  value="{{i}}">{{col}}</option>  -->
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <label>Field 9</label>
+                            <select  class="form-control" name="col8">
+                                <!-- <option *ngFor="let col of manageGrid.gridColName;let i = index"  value="{{i}}">{{col}}</option>  -->
+                            </select>
+                        </div>
+                    </div>
+        
+                </div>
+            </div>  
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-success">Save</button>
+                <button (click)="manageGridReset()" type="button" class="btn btn-info">Reset</button>
+                <button id="initGrid" (click)="manageGridInit()" type="button"></button>
+            </div>
+        </form>
+      </div>
+    </div>
+  </div>

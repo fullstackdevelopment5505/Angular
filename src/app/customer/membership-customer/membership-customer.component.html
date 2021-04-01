@@ -1,0 +1,120 @@
+<app-header-customer [sideBar]="sideBar"></app-header-customer>
+<app-sidebar-customer #sideBar></app-sidebar-customer>
+	<!-- right area start -->
+	<section class="right_section">
+
+
+        <!-- inside_content_area start-->
+        <div class="content_area">
+
+                <!-- main row start-->
+                <div class="col-sm-12">
+                    <div class="row">
+
+                        <!--content start -->
+                            <div class="col-sm-8 top_selling">
+                                <div class="inside">
+                                    <div class="title">Your Membership Plan</div>
+                                    
+                                    <div class="membership_details">
+                                        <div class="image"><img src="{{url}}"></div>
+                                        <div class="membership_data">
+                                            <div class="data_left">
+                                                <div class="name">hi, {{userName}}</div>
+                                                <label *ngIf="membership==1">Auto Renew on <span>{{userData.member.expire_at | amLocale:'en' | amDateFormat:'D-MMM-YYYY'}}</span></label>
+                                                <div class="available_plan" *ngIf="membership==1">
+                                                    <div class="alert alert-info ">
+                                                        Thanks for being our Member.
+                                                    </div>
+                                                    <!-- <span>{{day}} Days Left in membership</span> -->
+                                                    <!-- <div class="progress"  style="height:30px"><div class="progress-bar bg-success progress-bar-striped progress-bar-animated" [style.width.%]="progress" style="width:40%; height:30px;">{{progress}}%</div></div> -->
+                                                </div>
+                                            </div>
+                                            <div class="trophy" *ngIf="membership==1"><img src="assets/images/badge.png"></div>
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                            </div> 
+                        <!--content end-->
+                        
+
+                        <!--content start -->
+                            <div class="col-sm-4 top_selling">
+                                <div class="inside">
+                                    <div class="title">About Membership</div>
+                                    <div class="about_membership">
+                                        <div class="list">
+                                            <strong>Membership Type:</strong>
+                                            <span>{{membershipPlanType}}</span>
+                                        </div>
+                                        <div class="list">
+                                            <strong>Membership Amount:</strong>
+                                            <span>${{membershipAmount}}</span>
+                                        </div>
+                                        <div class="list" *ngIf="membership==1">
+                                            <strong>Purchase Date:</strong>
+                                            <span>{{userData.member.created_at | amLocale:'en' | amDateFormat:'D-MMM-YYYY'}}</span>
+                                        </div>
+                                    </div>
+                                    <div class="member_cta">
+                                        <a *ngIf="membership!=1" [routerLink]="'/membership/payment'" class="btn btn-primary">Buy Membership</a>
+                                        <!-- <a *ngIf="membership==1" href="javascript:void()" (click)="cancelMembership()" class="btn btn-danger">Cancel Membership</a>&nbsp; -->
+                                        <!-- <a *ngIf="membership==1" [routerLink]="'/contact'" class="btn btn-custom">Contact Us</a> -->
+                                        <a *ngIf="membership==1" [routerLink]="'/customer/cancel-membership'" class="btn btn-danger">Cancel Plan</a>
+                                        <!-- &nbsp;<a *ngIf="membership==1" [routerLink]="'/membership/payment'" class="btn btn-success">Upgrade Membership</a> -->
+                                    </div>
+                                </div>
+                            </div>
+                        <!--content end-->
+                        
+
+                         <!--content start -->
+                            <div class="col-sm-12 top_selling membership_benefits">
+                                <div class="inside">
+                                    <div class="title" [innerHTML]="page_title">Benefits Of Membership test Plans</div>
+                                   <div class="content">
+                                    <div [innerHTML]="page_content"></div>
+                                       <!-- <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
+                                       <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</p>
+                                        <ul>
+                                            <li>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</li>
+                                            <li>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</li>
+                                            <li>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</li>
+                                            <li>It is a long established fact that a reader will be distracted by the readable.</li>
+                                        </ul>
+                                       <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</p> -->
+                                   <div class="text-center"><a class="btn btn-primary" [routerLink]="'/customer'">Dashboard</a></div>
+                                    </div>
+                                </div>
+                            </div>
+                        <!--content end-->
+                        
+
+                    </div>
+                </div>
+                <!-- main row end-->
+
+        </div>
+        <!-- inside_content_area end-->
+
+
+        <ng-template #content let-modal>
+            <div class="modal-header">
+              <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+                <div class="row successful_payment">
+                    <div class="text-center"><img class="walletimage" src="assets/images/wallet.svg" width="100"></div>
+
+                    <h3>You are almost done! Please deposit funds into your wallet to proceed.</h3>
+                    <button class="btn btn-success mr-2" (click)="modal.close('Deposite')" type="button">Deposit Now</button>
+                    <button class="btn btn-danger" (click)="modal.close('Close click')" type="button">Cancel</button>
+                </div>
+            </div>
+          </ng-template>
+
+</section>
+<!-- right area end -->

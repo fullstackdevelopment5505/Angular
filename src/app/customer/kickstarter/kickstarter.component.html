@@ -1,0 +1,69 @@
+<app-header-customer [sideBar]="sideBar"></app-header-customer>
+<app-sidebar-customer #sideBar></app-sidebar-customer>
+  	<!-- right area start -->
+	<section class="right_section" [class.load]="load!=1">
+        <!-- inside_content_area start-->
+        <div class="content_area">
+
+                <!-- main row start-->
+                <div class="col-sm-12">
+                    <div class="row">
+
+                        <!--table start -->
+                        <div class="col-sm-12 top_selling" *ngIf="load==1">
+                                <div class="inside pad">
+                                    <div class="row">
+                                        <div class="title col-md-8">Kickstarters</div>
+                                        <div class="col-md-4 text-right"><button class="btn btn-success"  (click)="manageGridModal()">Manage Grid</button></div>
+                                    </div>
+                                    <table datatable [dtOptions]="dtOptions" id="crm" class="row-border hover">
+
+                                    </table>
+                                </div>
+                        </div>
+                        <div class="col-sm-12 top_selling " *ngIf="load!=1">
+                            <div class="inside pad">
+                                <div class="row">
+                                    <div class="title col-md-8">Kickstarters</div>
+                                    <div class="col-md-4 text-right"><button class="btn btn-success"  (click)="manageGridModal()">Manage Grid</button></div>
+                                </div>
+                                <table datatable  [dtOptions]="dtOptions"  class="row-border hover blurnew">
+                                    <thead>
+                                      <tr>
+                                        <th>Name</th>
+                                        <th>Action</th>
+                                      </tr>
+                                    </thead>
+                                    <tbody>
+                                      <tr>
+                                        <td>Search Like Allan</td>
+                                        <td><Button class="btn btn-success">View</Button></td>
+                                      </tr>
+                                      <tr>
+                                        <td>Search Like Cheryl</td>
+                                        <td><Button class="btn btn-success">View</Button></td>
+                                      </tr>
+                                      <tr>
+                                        <td>Search Like Crystal</td>
+                                        <td><Button class="btn btn-success">View</Button></td>
+                                      </tr>
+                                      <tr>
+                                        <td>Search Like Jackie</td>
+                                        <td><Button class="btn btn-success">View</Button></td>
+                                      </tr>
+                                      <tr>
+                                        <td>Search Like Mateo</td>
+                                        <td><Button class="btn btn-success">View</Button></td>
+                                      </tr>
+                                    </tbody>
+                                  </table>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+        
+	<app-common-overlay *ngIf="load!=1"></app-common-overlay>
+    </section>
+<!-- Manage grid  -->

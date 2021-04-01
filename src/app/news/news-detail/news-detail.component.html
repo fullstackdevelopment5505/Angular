@@ -1,0 +1,79 @@
+<app-header></app-header>
+
+<section id="news_list">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-9">
+				<div class="newshead">
+					<h3>{{news.title}}</h3>
+					<ul class="tags">
+						<li *ngIf="news.role_detail">Posted By: <span [innerHTML]="news.role_detail.role"></span></li>
+						<li><i class="fa fa-clock"></i>{{news.date | date:'d-MMM-yyyy'}}</li>
+						<!-- <li><i class="fa fa-eye"></i>{{news.views}} views</li> -->
+					</ul>
+
+					<div class="contentnews">
+						<!-- <img src="{{news.filename}}"> -->
+						<a  *ngIf="!news.vimeo_id" [routerLink]="'/news/'+news.url"><img class="img-responsive" src="{{news.filename}}"></a>
+						<iframe *ngIf="news.vimeo_id" [src]="news.vimeo_url |safe" class="vimeo_box" frameborder="0" allowfullscreen allow="autoplay; encrypted-media" width="100%" height="500"></iframe>
+						<div [innerHTML]="news.description"></div>	
+					</div>
+				</div>
+
+			</div>
+
+			<div class="col-md-3">
+				<h3>Categories</h3>
+				<div class="catg_box">
+					<ul>
+						<!-- <li *ngFor="let category of category"><a >{{category.name}}</a></li> -->
+						<li *ngFor="let category of category;let i = index" [ngClass]="{'active': selectedItem == category}"><a (click)="showNewsByCat(i, category)">{{category.name}}</a></li>					
+					</ul>
+				</div>
+				
+				<h3 *ngIf="recentByCategory.length>0" class="mt-5">Recent News</h3>
+				<div class="recent_box">
+					<ul>
+						<li *ngFor="let recent of recentByCategory"><a [routerLink]="'/news/'+recent.url">{{recent.title}}</a></li>
+					</ul>
+				</div>
+			</div>
+
+		</div>
+	</div>
+</section>
+
+
+<!-- latest-news-->
+<section id="latest_news1">
+	<div class="container">
+		<div *ngIf="relatedNews.length>0" class="row">
+			<div class="col-md-12">
+				<h3>Related Post</h3>
+			</div>
+		</div>
+		<div class="row">
+			<div  *ngFor="let recent of relatedNews" class="col-md-3">
+				<div class="cardbox">
+					<div class="imgrel">
+						<a [routerLink]="'/news/'+recent.url"><img src="{{recent.filename}}"></a>
+					</div>
+					<div class="chat_detail_link2">
+						<p>{{recent.date | date:'d-MMM-yyyy'}}</p>
+					</div>
+					<div class="contant">
+						<p class="rec_title"><a [routerLink]="'/news/'+recent.url">{{recent.title}}</a></p>
+						<p>Posted by: <span *ngIf="recent.role_detail" [innerHTML]="recent.role_detail.role"></span><span *ngIf="!recent.role_detail">Admin</span></p>					
+					</div>
+				</div>
+			</div>
+
+
+		</div>
+
+	</div>
+</section>
+<!-- latest-news-end-->
+
+
+<app-footer></app-footer>

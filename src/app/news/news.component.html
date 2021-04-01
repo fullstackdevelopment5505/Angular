@@ -1,0 +1,43 @@
+<app-header></app-header>
+
+<section id="news_list">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-9">
+				<h3>Videos</h3>
+				<div *ngFor="let news of newsByCategory" class="ns top_space">
+					<div class="img">
+						<a  *ngIf="!news.vimeo_id" [routerLink]="'/news/'+news.url"><img class="img-responsive" src="{{news.filename}}"></a>
+						<iframe *ngIf="news.vimeo_id" [src]="news.vimeo_url |safe" class="vimeo_box" frameborder="0" allowfullscreen allow="autoplay; encrypted-media"></iframe>
+						
+						<p class="stamp bg-primary">{{news.date | date:'d-MMM-yyyy'}}</p>
+					</div>
+					<div class="desc">
+						<h4>{{news.title}}</h4>
+						<p class="small" [innerHTML]="news.small_description">s</p>
+						<p><strong>Posted By:</strong><a class="pl-1 text-secondary" ><strong *ngIf="news.role_detail" [innerHTML]="news.role_detail.role"></strong><strong *ngIf="!news.role_detail">Admin</strong></a>
+							<span class="readmore"><a [routerLink]="'/news/'+news.url">Read More <i class="fa fa-angle-right"></i></a></span>
+						</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-3">
+				<h3>Categories</h3>
+				<div class="catg_box">
+					<ul>
+						<li *ngFor="let category of category;let i = index" [ngClass]="{'active': selectedItem == category}"><a (click)="showNewsByCat(i, category)">{{category.name}}</a></li>
+					</ul>
+				</div>				
+				<h3 *ngIf="recentByCategory.length>0" class="mt-5">Recent News</h3>
+				<div class="recent_box">
+					<ul>
+						<li *ngFor="let recent of recentByCategory"><a [routerLink]="'/news/'+recent.url">{{recent.title}}</a></li>
+					</ul>
+				</div>
+			</div>
+
+		</div>
+	</div>
+</section>
+
+<app-footer></app-footer>

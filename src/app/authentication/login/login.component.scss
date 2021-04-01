@@ -1,0 +1,175 @@
+#loginbg {
+    margin: 0px;
+    padding:60px 0px;
+    background: rgba(0,0,0,0.6) url(../../../assets/images/banner.png);
+    background-blend-mode: multiply;
+    position: relative;
+    background-size: cover;
+}
+#loginbg .login_box{
+
+	margin: 0px auto;
+	padding: 0px;
+	background: #fff;
+	width: 100%;
+	max-width: 990px;
+}
+#loginbg .login_box .left_login{
+
+	margin: 0px;
+	padding: 25px;
+	background: #c8eefb;
+	text-align: center;
+	min-height: 566px;
+}
+#loginbg .login_box .right_login{
+
+	margin: 0px;
+	padding:25px;
+	background: #fff;
+	min-height: 566px;
+}
+#loginbg .login_box .row{margin: 0px;}
+#loginbg .login_box .left_login p {
+    margin:20px 0 0;
+    padding: 0px;
+    text-align: left;
+    line-height: 28px;
+    font-size: 18px;
+}
+
+#loginbg .login_box .right_login .flexform {
+    margin: 25px 0 0;
+    padding: 0px;
+    display: flex;
+    align-items: center;
+    background: #f2f2f2;
+    border-radius: 5px;
+}
+#loginbg .login_box .right_login .flexform span {
+    padding: 0px 0 0;
+    margin: 0px;
+    height: 60px;
+    width: 50px;
+    text-align: center;
+    border-right: #494949 solid thin;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    display: -webkit-flex;
+    -webkit-align-items: center;
+    -webkit-justify-content: center;
+}
+#loginbg .login_box .right_login .flexform input.formflds {
+    margin: 0px;
+    padding: 0px 15px;
+    width: 100%;
+    height: 60px;
+    background: transparent;
+    border: none;
+    font-size: 18px;
+}
+#loginbg .login_box .right_login h2 {
+    margin: 0px;
+    padding: 0px;
+    font-size: 26px;
+    color: #1b86e3;
+    text-align: center;
+}
+#loginbg .login_box .right_login  .forgot {
+    text-align: right;
+    margin: 0px;
+    padding: 15px 0px;
+}
+#loginbg .login_box .right_login .forgot a {
+    color: #000;
+    margin: 0px;
+    padding: 0px;
+}
+#loginbg .login_box .right_login .btn_center {
+    text-align: center;
+    width: 100%;
+    margin:0px 0px 0px;
+}
+#loginbg .login_box .right_login .btn_center button.loginbtn {
+    margin: 0px auto;
+    padding: 0px;
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    height: 70px;
+    border-radius: 50px;
+    background: #1b86e3;
+    color: #fff;
+    border: none;
+    font-size: 22px;
+    text-transform: uppercase;
+    outline: none;
+}
+#loginbg .login_box .right_login .acounts {
+    padding: 15px 0;
+    margin: 0px;
+    text-align: center;
+    font-weight: 500;
+    font-size: 20px;
+}
+#loginbg .login_box .right_login .seprator {
+    margin: 0 auto 15px;
+    padding: 15px 0;
+    font-size: 18px;
+    color: #000;
+    text-align: center;
+    font-weight: 500;
+    text-transform: uppercase;
+    position: relative;
+    width: 100%;
+    max-width: 174px;
+    line-height: 0;
+}
+#loginbg .login_box .right_login .seprator::before {
+    content: "";
+    position: absolute;
+    display: block;
+    width: 60px;
+    height: 1px;
+    background: #000;
+    left: 0;
+    margin-top: 0;
+}
+#loginbg .login_box .right_login .seprator::after {
+    content: "";
+    position: absolute;
+    display: block;
+    width: 70px;
+    height: 1px;
+    background: #000;
+    right: 0;
+    margin-top: 0;
+}
+#loginbg .login_box .right_login .social{
+
+	margin: 0px;
+	padding:0px;
+}
+#loginbg .login_box .right_login .social ul{
+
+	margin: 0px;
+	padding:0px;
+	text-align: center;
+}
+#loginbg .login_box .right_login .social ul li{
+
+	margin: 0px;
+	padding:0px;
+	list-style: none;
+	display: inline-block;
+}
+#loginbg .login_box .right_login .social ul li a{
+
+	margin: 0px 5px;
+	padding:0px;
+	list-style: none;
+	display: inline-block;
+}
+

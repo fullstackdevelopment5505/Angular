@@ -1,0 +1,100 @@
+<app-header-customer [sideBar]="sideBar"></app-header-customer>
+<app-sidebar-customer #sideBar></app-sidebar-customer>
+
+	<!-- right area start -->
+	<section class="right_section">
+
+
+        <!-- inside_content_area start-->
+        <div class="content_area">
+
+                <!-- main row start-->
+                <div class="col-sm-12">
+                    <div class="row">
+
+                        <!--content start -->
+                            <div class="col-sm-8 top_selling mt-4 saved_cards">
+                                <div class="inside">
+                                    <form  [formGroup]="advanceForm" (ngSubmit)="submitForm()">
+                                        <div class="title">Add Amount</div>
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                            <div class="input-group-text">$</div>
+                                            </div>
+                                            <input type="text" class="form-control"  (keyup)="handleChangeAmount($event)" formControlName="amount" value="$499" placeholder="Amount">
+                                        </div>
+                                        <ng-container *ngIf="advanceForm.get('amount').errors && submit">
+                                            <small *ngIf="advanceForm.get('amount').errors.required" class="error-text">Amount is required.</small>
+                                            <small *ngIf="advanceForm.get('amount').errors.pattern" class="error-text">Amount is not valid.</small>
+                                        </ng-container>
+                                        <hr/>
+
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <div class="save_card">
+                                                    <label>
+                                                        <input type="radio" class="wchk" (change)="handleChange('499')" formControlName="type" value="1"><span></span>
+                                                        <div class="holder_name">$499</div> 
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="save_card">
+                                                    <label>
+                                                        <input type="radio" class="wchk" (change)="handleChange('599')" formControlName="type"  value="2"><span></span>
+                                                        <div class="holder_name">$599</div> 
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="save_card">
+                                                    <label>
+                                                        <input type="radio" class="wchk" (change)="handleChange('999')" formControlName="type"   value="3" ><span></span>
+                                                        <div class="holder_name">$999</div> 
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        
+
+                                        <hr class="mb-4 mt-4 w-100">
+                                        <div class="place_order"><button type="submit" [disabled]="disabled" class="btn btn-success" >Continue Payment</button></div>
+                                    </form>
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="title2">Selected Card</div>
+                                <div class="card-style">
+                                    <h2>{{cardDetail && cardDetail.funding | titlecase}} Card</h2>
+                                    <h3>XXXX-XXXX-XXXX-{{cardDetail && cardDetail.last4}}</h3>
+                                    <h4>{{cardDetail && cardDetail.exp_month}}/{{cardDetail && cardDetail.exp_year}}</h4>
+                                    <h1>{{cardDetail && cardDetail.brand | uppercase}}</h1>
+                                </div>
+                            </div>
+                        <!--content end-->
+
+
+                       
+                        
+                    </div>
+                </div>
+                <!-- main row end-->
+        </div>
+
+        <ng-template #content let-modal>
+            <div class="modal-header">
+              <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+                <div class="row successful_payment">
+                    <div class="text-center"><img class="walletimage"  src="assets/images/check.png"></div>
+                    <h3>You have deposited {{responseDetail && responseDetail.amount | currency}} into your wallet. Continue to your transaction</h3>
+                    <button class="btn btn-success yesi" (click)="modal.close('Close click')" type="button">OK</button>
+                </div>
+            </div>
+          </ng-template>
+ 
+    </section>

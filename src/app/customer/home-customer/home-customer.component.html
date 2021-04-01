@@ -1,0 +1,125 @@
+<app-header-customer [sideBar]="sideBar"></app-header-customer>
+<app-sidebar-customer #sideBar></app-sidebar-customer>
+
+<!-- right area start -->
+<section class="right_section" [class.load]="load!=1">
+	<div class="content_area">
+		<div class="col-sm-12">
+			<div class="row">
+				<div class="col-md-3 single_box">
+					<div class="inside">
+						<!-- <a [routerLink]="'/customer/purchased-history'"> -->
+						<div class="icon"><img src="assets/images/notes-1.png"></div>
+						<div class="title">Total Purchased Reports</div>
+						<div class="cus_num">{{purchase}}</div>
+						<!-- </a> -->
+					</div>
+				</div>
+				<div class="col-md-3 single_box">
+					<div class="inside">
+						<a *ngIf="userIsMember" [routerLink]="'/customer/warm'">
+							<div class="icon"><img src="assets/images/bulb.png"></div>
+							<div class="title">Warm Prospects</div>
+							<div class="cus_num">{{intrested}}</div>
+						</a>
+						<a *ngIf="!userIsMember" data-toggle="modal" data-target="#confirmModal">
+							<div class="icon"><img src="assets/images/bulb2.png"></div>
+							<div class="title">Warm Prospects</div>
+							<div class="cus_num">{{intrested}}</div>
+						</a>
+					</div>
+				</div>
+				<div class="col-md-3 single_box">
+					<div class="inside"><a *ngIf="userIsMember" [routerLink]="'/customer/hot'">
+							<div class="icon"><img src="assets/images/fire.png"></div>
+							<div class="title">Hot Prospects</div>
+							<div class="cus_num">{{highly}}</div>
+						</a><a *ngIf="!userIsMember" data-toggle="modal" data-target="#confirmModal">
+							<div class="icon"><img src="assets/images/fire2.png"></div>
+							<div class="title">Hot Prospects</div>
+							<div class="cus_num">{{highly}}</div>
+						</a></div>
+				</div>
+				<div class="col-md-3 single_box">
+					<div class="inside"><a *ngIf="userIsMember" [routerLink]="'/customer/search-list'">
+							<div class="icon"><img src="assets/images/heart.png"></div>
+							<div class="title">Saved Searches</div>
+							<div class="cus_num">{{search}}</div>
+						</a><a *ngIf="!userIsMember" data-toggle="modal" data-target="#confirmModal">
+							<div class="icon"><img src="assets/images/heart.png"></div>
+							<div class="title">Saved Searches</div>
+							<div class="cus_num">{{search}}</div>
+						</a></div>
+				</div>
+			</div>
+		</div>
+
+		<div class="col-sm-12" *ngIf="load==1">
+			<div class="row">
+				<!-- Interested properties start-->
+				<div class="col-sm-12 top_selling">
+					<div class="inside p-0">
+						<app-dashboard-prospectwarm></app-dashboard-prospectwarm>
+					</div>
+					<div class="inside p-0">
+						<app-dashboard-prospect></app-dashboard-prospect>
+					</div>
+				</div>
+                
+				<!--Highly Interested properties end-->
+			</div>
+		</div>
+		<div class="col-sm-12" *ngIf="load!=1">
+			<app-common-table [title]="'Warm Prospects'"></app-common-table>
+		</div>
+
+	</div>
+
+	<!-- <div *ngIf="showCookiesDialog" class="alert alert-dismissible text-center cookiealert show" role="alert">
+		<div class="cookiealert-container">
+			<div class="col-md-6 offset-md-3 mb-3">
+			  <p style="line-height: 26px;">{{cookiesContent}}<a href="#" target="_blank">Privacy Policy</a></p>
+			</div>
+			<button type="button" class="btn btn-success btn-sm acceptcookies" (click)="acceptCookies()" aria-label="Close">Accept</button>
+			<button type="button" class="btn btn-outline-success btn-sm removCookies" (click)="declineCookies()" aria-label="Close">Decline</button>
+		</div>
+	</div> -->
+	<app-common-overlay *ngIf="load!=1"></app-common-overlay>
+
+
+	<div class="modal show" *ngIf="showSessionDialog" id="sessionexpire" aria-modal="true" style="padding-right: 17px; display: block;">
+		<div class="modal-dialog modal-md">
+		  <div class="modal-content">
+	  
+			<!-- Modal Header -->
+			<div class="modal-header">
+			  <h4 class="modal-title">Session Expire Warning</h4>
+			  <!-- <button type="button" class="close" data-dismiss="modal">×</button> -->
+			</div>
+	  
+			<!-- Modal body -->
+			<div class="modal-body">
+			  <div class="text-center">
+				<img src="assets/images/expired.png" width="150">
+				<p class="h3">Session Expired. Please Sign In</p>
+				<p>{{sessionExpire}}</p>
+			  </div>
+			</div>
+	  
+			<!-- Modal footer -->
+			<div class="modal-footer">
+			  <a [routerLink]="'/authentication/login'"><button type="button" class="btn btn-primary" data-dismiss="modal">Ok</button></a>
+			</div>
+	  
+		  </div>
+		</div>
+	  </div>
+
+</section>
+
+
+
+
+
+
+  

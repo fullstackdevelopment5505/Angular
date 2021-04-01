@@ -1,0 +1,63 @@
+<app-header></app-header>
+
+<!--banner-section-->
+<section id="loginbg">
+	<div class="container">
+		<div class="login_box">
+			<div class="row">
+				<div class="col-md-6 nopadding">
+					<div class="left_login">
+						<img src="assets/images/login.png">
+						
+						<p [innerHTML]="pageContent">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</p>
+					</div>
+				</div>
+				<div class="col-md-6 nopadding">
+					<div class="right_login">
+						<h2 [innerHTML]="pageTitle">Login</h2>
+						<ngb-alert *ngIf="!staticAlertClosed" (close)="staticAlertClosed = true" [type]="'danger'" style="margin-top: 25px;" [dismissible]="true">
+							<strong>Error!</strong> 
+							{{errMsg}}
+						 </ngb-alert>
+						<form  [formGroup]="loginForm" (ngSubmit)="submitForm()">
+						<div class="flexform">
+							<span><i class="fa fa-envelope"></i></span>
+							<input type="text" class="formflds" formControlName="email" placeholder="Email" name="">
+						</div>
+						<ng-container *ngIf="submit && loginForm.get('email').errors">
+							<small *ngIf="loginForm.get('email').errors.required" class="error-text">Email is required.</small>
+							<small *ngIf="loginForm.get('email').errors.email" class="error-text">Invalid email format.</small>
+						</ng-container>
+						<div class="flexform">
+							<span><i class="fa fa-key"></i></span>
+							<input type="password" class="formflds"  formControlName="password" placeholder="Password" name="">
+						</div>
+						<ng-container *ngIf="submit && loginForm.get('password').errors">
+							<small *ngIf="loginForm.get('password').errors.required" class="error-text">Password is required.</small>
+							<small *ngIf="loginForm.get('password').errors.minlength" class="error-text">Password should be minimum 6 characters.</small>
+							<small *ngIf="loginForm.get('password').errors.maxlength" class="error-text">Password should be maximum 30 characters.</small>
+						</ng-container>
+						<div class="forgot"><a [routerLink]="'/authentication/forgot'">Forgot Password?</a></div>
+						<div class="btn_center">
+							<button type="submit" class="loginbtn">Login</button>
+						</div>
+						</form>
+						<div class="acounts">Don't have an account? <a  [routerLink]="'/authentication/register'">Register</a></div>
+						<!-- <div class="seprator">Or</div>
+						<div class="social">
+							<ul>
+								<li><a href="#"><img src="assets/images/fb.png"></a></li>
+							</ul>
+						</div> -->
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+</section>
+<!--banner-section-end-->
+
+
+<app-footer></app-footer>

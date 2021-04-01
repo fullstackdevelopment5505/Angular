@@ -1,0 +1,683 @@
+<app-header-customer [sideBar]="sideBar"></app-header-customer>
+<app-sidebar-customer #sideBar></app-sidebar-customer>
+
+<!-- right area start -->
+<div class="main_area">
+
+    <!-- right area start -->
+    <section class="right_section" *ngIf="isSMS" [class.load]="load!=1">
+
+        <!-- inside_content_area start-->
+        <div class="content_area">
+
+            <!-- main row start-->
+            <div class="col-sm-12">
+                <div class="row">
+                    <div class="col-md-5 offset-md-7 mt-2 mb-4 text-right d-flex justify-content-end">
+                        <a class="btn btn-primary text-nowrap ml-2" (click)="handleSection('SendSMS')">Send SMS </a>
+                    </div>
+
+
+                    <!--table start -->
+                    <div class="col-sm-12 top_selling" *ngIf="load==1">
+                        <div class="inside">
+                            <div class="title">Saved Templates</div>
+                                    <div class="lists mt-4">
+                                            <table class="table">
+                                                <thead>
+                                                  <tr>
+                                                    <th scope="col">#</th>
+                                                    <th scope="col">Subject</th>
+                                                    <th scope="col">Action</th>
+                                                  </tr>
+                                                </thead>
+                                                <tbody>
+                                                  <tr *ngFor="let da of allMessages">
+                                                    <td>{{da.id}}</td>
+                                                    <td>{{da.template_title}}</td>
+                                                    <td>
+                                                        <button (click)="handleSection('SendSMS',da.message,da.template_title)" class="btn btn-success">Continue with template</button>
+                                                    </td>
+                                                  </tr>
+                                                </tbody>
+                                              </table>
+                                            
+                                    </div>
+
+                        </div>
+                    </div>
+                    <!--table end-->
+
+                    <div class="col-sm-12 top_selling" *ngIf="load!=1">
+                        <div class="inside">
+                            <div class="title">Saved Templates</div>
+                            <div class="lists mt-4">
+                                <div class="recent_info">You did not use any template yet.  <span><a style="color: #007bff; cursor: pointer;" (click)="handleSection('SendSMS')">let's create one</a></span></div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+            <!-- main row end-->
+
+        </div>
+        <!-- inside_content_area end-->
+
+
+        <app-common-overlay *ngIf="load!=1"></app-common-overlay>
+    </section>
+    <!-- right area end -->
+
+    <!--Create new SMS section start here-->
+
+    <section class="right_section" *ngIf="isCreateNewSMS">
+
+        <!-- inside_content_area start-->
+        <div class="content_area">
+
+            <!-- main row start-->
+            <div class="col-sm-12">
+                <div class="row">
+
+
+                    <!--table start -->
+                    <div class="col-sm-12 top_selling">
+                        <div class="inside">
+                            <div class="title">
+                                <a (click)="backBtnClick()" class="btn btn-default mr-2"><i
+                                        class="fas fa-step-backward"></i> Back</a>
+                                Send SMS
+                            </div>
+                            <hr>
+                            <div class="lists mt-4">
+                                <div class="row">
+                                    <div class="col-md-8 col-lg-8 mt-4 center_zone">
+                                        <!-- <div class="form-group">
+                                            <label class="mb-2">From</label>
+                                            <div class="d-flex">
+                                                <ng-select class="form-control mr-2" style="padding: 0;"
+                                                    data-placeholder="--Select Option--">
+                                                    <ng-option *ngFor="let sf of sendFrom" value="{{sf.text}}">
+                                                        {{sf.text}}
+                                                    </ng-option>
+                                                </ng-select>
+                                                <ng-select class="form-control mr-2" style="padding: 0;"
+                                                    [(ngModel)]="smsData.numbers" [multiple]="true"
+                                                    data-placeholder="--Select Number--">
+                                                    <ng-option *ngFor="let st of sendTo" value="{{st.text}}">{{st.text}}
+                                                    </ng-option>
+                                                </ng-select>
+                                            </div>
+                                        </div> -->
+                                        <!-- <div class="form-group">
+                                            <label>Title</label>
+                                            <input type="text" class="form-control" placeholder="Title" [(ngModel)]="smsTitle">
+                                            <p style="color:red;">{{errorMsg}}</p>
+                                        </div> -->
+                                        <div class="form-group">
+                                            <label class="mb-2">Message</label>
+                                            <textarea class="form-control" #r rows="18" id="message_data" name="mas"
+                                            [(ngModel)]="smsData.message" placeholder="Type a Message"></textarea>
+                                            <div class="dynamic-button">
+                                                <button (click)="addText('%FULL_NAME%')" type="button" class="btn-default mr-2">Full Name</button>
+                                                <button (click)="addText('%FIRST_NAME%')" type="button" class="btn-default mr-2">First Name</button>
+                                                <button (click)="addText('%ADDRESS%')" type="button" class="btn-default mr-2">Address</button>
+                                                <button (click)="addText('%CITY%')" type="button" class="btn-default mr-2">City</button>
+                                                <button (click)="addText('%STATE%')" type="button" class="btn-default">State</button>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <a class="btn btn-success text-white w-100 btn-lg" [class.disabled]="!smsData.message"
+                                                (click)="handleSection('chooseProspect')">Choose Recipient</a>
+                                            <!-- <a class="btn btn-success text-white w-100 btn-lg"
+                                                (click)="sendSMSClick(smsData)">Send Now</a> -->
+                                        </div>
+                                        <div class="form-group text-left"> 
+                                            <label for="save">
+                                                <input id="save" (change)="confSave(save)" [(ngModel)]="save" type="checkbox" >
+                                                Save Template?
+                                            </label>
+                                            <input type="text" [disabled]='!save' [(ngModel)]="title"  placeholder="Template Title"  class="form-control">
+                                        </div>
+                                    </div>
+                                  
+                                    <div class="col-md-4 col-lg-4 mt-4 mobile_view">
+                                        <div class="preview_part">
+                                            <img src="assets/images/apple.png">
+                                            <div class="inside_data">
+                                                <div class="title">
+                                                    <a href="#"><i class="fa fa-angle-left"></i> SMS</a>
+                                                    <span class="message_title">Message</span>
+                                                </div>
+                                                <div class="message_data mas">
+                                                    {{smsData.message!=null?smsData.message:'Your Message Here'}}</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <!--table end-->
+
+
+                </div>
+            </div>
+            <!-- main row end-->
+
+        </div>
+        <!-- inside_content_area end-->
+
+    </section>
+    <!--Create new SMS section end here-->
+
+    <!--Edit SMS Section start here-->
+    <section class="right_section" *ngIf="isEditSMS">
+
+        <!-- inside_content_area start-->
+        <div class="content_area">
+
+            <!-- main row start-->
+            <div class="col-sm-12">
+                <div class="row">
+
+
+                    <!--table start -->
+                    <div class="col-sm-12 top_selling">
+                        <div class="inside">
+                            <div class="title">
+                                <a href="#" class="btn btn-default mr-2"><i class="fas fa-step-backward"></i> Back</a>
+                                Send SMS
+                            </div>
+                            <hr>
+                            <div class="lists mt-4">
+                                <div class="row">
+                                    <div class="col-md-8 col-lg-8 mt-4 center_zone">
+                                        <div class="form-group">
+                                            <label class="mb-2">From</label>
+                                            <div class="d-flex">
+                                                <select class="form-control mr-2">
+                                                    <option>Your Mobile Number</option>
+                                                    <option>Your Business Name</option>
+                                                </select>
+                                                <input type="text" class="form-control" id="message_title">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="mb-2">Message</label>
+                                            <textarea class="form-control" rows="18" id="message_data"
+                                                name="mas"></textarea>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="schedule_checkbox w-100">
+                                                <input type="checkbox">
+                                                <span>Would you like to schedule your message?</span>
+                                                <input type="text" class="form-control datepicker"
+                                                    placeholder="Select Date">
+                                            </label>
+                                        </div>
+                                        <div class="form-group">
+                                            <a href="choose-prospects.php?active=prospect"
+                                                class="btn btn-success text-white w-100 btn-lg">Send Now</a>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4 col-lg-4 mt-4 mobile_view">
+                                        <div class="preview_part">
+                                            <img src="assets/images/apple.png">
+                                            <div class="inside_data">
+                                                <div class="title">
+                                                    <a href="#"><i class="fa fa-angle-left"></i> SMS</a>
+                                                    <span class="message_title">Title here</span>
+                                                </div>
+                                                <div class="message_data mas">Your Message Here</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <!--table end-->
+
+
+                </div>
+            </div>
+            <!-- main row end-->
+
+        </div>
+        <!-- inside_content_area end-->
+
+    </section>
+    <!--Edit SMS Section end here-->
+
+    <!--SMS Detail Section start here-->
+    <section class="right_section" *ngIf="isSMSDetail">
+
+        <!-- inside_content_area start-->
+        <div class="content_area">
+
+            <!-- main row start-->
+            <div class="col-sm-12">
+                <div class="row">
+
+
+                    <!--table start -->
+                    <div class="col-sm-12 top_selling">
+                        <div class="inside">
+                            <div class="title mb-5"><a href="#" class="btn btn-default mr-2"><i
+                                        class="fas fa-step-backward"></i> Back</a> SMS Detail</div>
+
+                            <div class="form-group sms_detail">
+                                <label class="mb-2">From (Your Business Name)</label>
+                                <div class="name">Equity Finder Pro</div>
+                            </div>
+                            <hr>
+                            <div class="form-group sms_detail">
+                                <label class="mb-2">Message</label>
+                                <div class="name">
+                                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
+                                        Ipsum has been the industry's standard dummy text ever since the 1500s, when an
+                                        unknown printer took a galley of type and scrambled it to make a type specimen
+                                        book. </p>
+                                </div>
+                            </div>
+                            <hr>
+
+
+                            <div class="title mt-5">All Prospects</div>
+                            <table class="display responsive nowrap" width="100%">
+                                <thead>
+                                    <tr>
+                                        <th>First Name</th>
+                                        <th>Last Name</th>
+                                        <th>Address</th>
+                                        <th>City</th>
+                                        <th>State</th>
+                                        <th>Zip Code</th>
+                                        <th>Market Value</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Anthony</td>
+                                        <td>Johnson</td>
+                                        <td>714 N VINE ST ANAHEIM, CA 92805</td>
+                                        <td>Los Angeles</td>
+                                        <td>California</td>
+                                        <td>99553</td>
+                                        <td>$2,300,000</td>
+                                    </tr>
+                                    <tr>
+                                        <td>John</td>
+                                        <td>Williams</td>
+                                        <td>714 N VINE ST ANAHEIM, CA 92805</td>
+                                        <td>Miami</td>
+                                        <td>Florida</td>
+                                        <td>99553</td>
+                                        <td>$2,300,000</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Anthony</td>
+                                        <td>Johnson</td>
+                                        <td>714 N VINE ST ANAHEIM, CA 92805</td>
+                                        <td>Los Angeles</td>
+                                        <td>California</td>
+                                        <td>99553</td>
+                                        <td>$2,300,000</td>
+                                    </tr>
+                                    <tr>
+                                        <td>John</td>
+                                        <td>Williams</td>
+                                        <td>714 N VINE ST ANAHEIM, CA 92805</td>
+                                        <td>Miami</td>
+                                        <td>Florida</td>
+                                        <td>99553</td>
+                                        <td>$2,300,000</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <!--table end-->
+
+
+                </div>
+            </div>
+            <!-- main row end-->
+
+        </div>
+        <!-- inside_content_area end-->
+
+    </section>
+    <!--SMS Detail Section end here-->
+
+    <!--SMS Schedule section start here-->
+    <section class="right_section" *ngIf="isSMSSchedule">
+        <!-- inside_content_area start-->
+        <div class="content_area">
+
+            <!-- main row start-->
+            <div class="col-sm-12">
+                <div class="row">
+
+
+                    <!--table start -->
+                    <div class="col-sm-12 top_selling">
+                        <div class="inside">
+                            <div class="title">
+                                <a (click)="backBtnClick()" class="btn btn-default mr-2"><i
+                                        class="fas fa-step-backward"></i> Back</a>
+                                Send SMS
+                            </div>
+                            <hr>
+                            <div class="lists mt-4">
+                                <div class="row">
+                                    <div class="col-md-8 col-lg-8 mt-4 center_zone">
+                                        <div class="form-group">
+                                            <label class="mb-2">From</label>
+                                            <div class="d-flex">
+                                                <select class="form-control mr-2">
+                                                    <option>Your Mobile Number</option>
+                                                    <option>Your Business Name</option>
+                                                </select>
+                                                <input type="text" class="form-control" id="message_title">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="mb-2">Message</label>
+                                            <textarea class="form-control" rows="14" id="message_data"
+                                                name="mas"></textarea>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="mb-2">Schedule SMS</label>
+                                            <input type="text" class="form-control datepicker"
+                                                placeholder="Select Date">
+                                        </div>
+                                        <div class="form-group">
+                                            <a href="choose-prospects.php?active=prospect"
+                                                class="btn btn-success w-100 mt-2 btn-lg">Click To Proceed</a>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4 col-lg-4 mt-4 mobile_view">
+                                        <div class="preview_part">
+                                            <img src="assets/images/apple.png">
+                                            <div class="inside_data">
+                                                <div class="title">
+                                                    <a href="#"><i class="fa fa-angle-left"></i> SMS</a>
+                                                    <span class="message_title">Title here</span>
+                                                </div>
+                                                <div class="message_data mas">Your Message Here</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <!--table end-->
+
+
+                </div>
+            </div>
+            <!-- main row end-->
+
+        </div>
+        <!-- inside_content_area end-->
+
+    </section>
+    <!--SMS Schedule section end here-->
+
+    <!--SMS-Template-User section start here-->
+    <section class="right_section" *ngIf="isSMSUser">
+        <!-- inside_content_area start-->
+        <div class="content_area">
+
+            <!-- main row start-->
+            <div class="col-sm-12">
+                <div class="row">
+
+
+                    <div class="col-sm-12 top_selling">
+                        <div class="inside">
+                            <div class="row align-items-center">
+                                <div class="col-sm-6 back"><a (click)="backBtnClick()" class="btn btn-default"><i
+                                            class="fas fa-step-backward"></i> Back</a></div>
+                                <div class="col-sm-6 title user_selected mb-0 text-right">Send Like Mike <img
+                                        src="assets/images/person.svg"></div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                    <!--table start -->
+                    <div class="col-sm-12 top_selling">
+                        <div class="inside">
+                            <div class="title">Mike Favourite Template</div>
+                            <div class="lists mt-4">
+                                <div class="row">
+                                    <div class="col-md-4 col-lg-3 mb-3">
+                                        <div class="inset">
+                                            <div class="overlap">
+                                                <a href="sms-edit.php?active=sms" class="btn btn-success"
+                                                    data-toggle="modal" data-target="#myModal2"><i
+                                                        class="fa fa-edit"></i> Edit</a>
+                                                <button class="btn btn-primary ml-2" data-toggle="modal"
+                                                    data-target="#myModal"><i class="fa fa-eye"></i> Preview</button>
+                                            </div>
+                                            <div class="sms_view">
+                                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting
+                                                    industry. Lorem Ipsum has been the industry's standard dummy text
+                                                    ever since the 1500s, when an unknown printer took a galley of type
+                                                    and scrambled it to make a type specimen book. It has survived not
+                                                    only five centuries, but also the leap into electronic typesetting,
+                                                    remaining essentially unchanged. </p>
+                                            </div>
+                                            <h3>Travel</h3>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 col-lg-3 mb-3">
+                                        <div class="inset">
+                                            <div class="overlap">
+                                                <a href="sms-edit.php?active=sms" class="btn btn-success"
+                                                    data-toggle="modal" data-target="#myModal2"><i
+                                                        class="fa fa-edit"></i> Edit</a>
+                                                <button class="btn btn-primary ml-2" data-toggle="modal"
+                                                    data-target="#myModal"><i class="fa fa-eye"></i> Preview</button>
+                                            </div>
+                                            <div class="sms_view">
+                                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting
+                                                    industry. Lorem Ipsum has been the industry's standard dummy text
+                                                    ever since the 1500s, when an unknown printer took a galley of type
+                                                    and scrambled it to make a type specimen book. It has survived not
+                                                    only five centuries, but also the leap into electronic typesetting,
+                                                    remaining essentially unchanged. </p>
+                                            </div>
+                                            <h3>Happy Birthday</h3>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 col-lg-3 mb-3">
+                                        <div class="inset">
+                                            <div class="overlap">
+                                                <a href="sms-edit.php?active=sms" class="btn btn-success"
+                                                    data-toggle="modal" data-target="#myModal2"><i
+                                                        class="fa fa-edit"></i> Edit</a>
+                                                <button class="btn btn-primary ml-2" data-toggle="modal"
+                                                    data-target="#myModal"><i class="fa fa-eye"></i> Preview</button>
+                                            </div>
+                                            <div class="sms_view">
+                                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting
+                                                    industry. Lorem Ipsum has been the industry's standard dummy text
+                                                    ever since the 1500s, when an unknown printer took a galley of type
+                                                    and scrambled it to make a type specimen book. It has survived not
+                                                    only five centuries, but also the leap into electronic typesetting,
+                                                    remaining essentially unchanged. </p>
+                                            </div>
+                                            <h3>Travel</h3>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 col-lg-3 mb-3">
+                                        <div class="inset">
+                                            <div class="overlap">
+                                                <a href="sms-edit.php?active=sms" class="btn btn-success"
+                                                    data-toggle="modal" data-target="#myModal2"><i
+                                                        class="fa fa-edit"></i> Edit</a>
+                                                <button class="btn btn-primary ml-2" data-toggle="modal"
+                                                    data-target="#myModal"><i class="fa fa-eye"></i> Preview</button>
+                                            </div>
+                                            <div class="sms_view">
+                                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting
+                                                    industry. Lorem Ipsum has been the industry's standard dummy text
+                                                    ever since the 1500s, when an unknown printer took a galley of type
+                                                    and scrambled it to make a type specimen book. It has survived not
+                                                    only five centuries, but also the leap into electronic typesetting,
+                                                    remaining essentially unchanged. </p>
+                                            </div>
+                                            <h3>Greeting</h3>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="title mt-4">Mike All Template</div>
+                            <div class="lists mt-4">
+                                <div class="row">
+                                    <div class="col-md-4 col-lg-3 mb-3">
+                                        <div class="inset">
+                                            <div class="overlap">
+                                                <a href="sms-edit.php?active=sms" class="btn btn-success"
+                                                    data-toggle="modal" data-target="#myModal2"><i
+                                                        class="fa fa-edit"></i> Edit</a>
+                                                <button class="btn btn-primary ml-2" data-toggle="modal"
+                                                    data-target="#myModal"><i class="fa fa-eye"></i> Preview</button>
+                                            </div>
+                                            <div class="sms_view">
+                                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting
+                                                    industry. Lorem Ipsum has been the industry's standard dummy text
+                                                    ever since the 1500s, when an unknown printer took a galley of type
+                                                    and scrambled it to make a type specimen book. It has survived not
+                                                    only five centuries, but also the leap into electronic typesetting,
+                                                    remaining essentially unchanged. </p>
+                                            </div>
+                                            <h3>Travel</h3>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 col-lg-3 mb-3">
+                                        <div class="inset">
+                                            <div class="overlap">
+                                                <a href="sms-edit.php?active=sms" class="btn btn-success"
+                                                    data-toggle="modal" data-target="#myModal2"><i
+                                                        class="fa fa-edit"></i> Edit</a>
+                                                <button class="btn btn-primary ml-2" data-toggle="modal"
+                                                    data-target="#myModal"><i class="fa fa-eye"></i> Preview</button>
+                                            </div>
+                                            <div class="sms_view">
+                                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting
+                                                    industry. Lorem Ipsum has been the industry's standard dummy text
+                                                    ever since the 1500s, when an unknown printer took a galley of type
+                                                    and scrambled it to make a type specimen book. It has survived not
+                                                    only five centuries, but also the leap into electronic typesetting,
+                                                    remaining essentially unchanged. </p>
+                                            </div>
+                                            <h3>Happy Birthday</h3>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 col-lg-3 mb-3">
+                                        <div class="inset">
+                                            <div class="overlap">
+                                                <a href="sms-edit.php?active=sms" class="btn btn-success"
+                                                    data-toggle="modal" data-target="#myModal2"><i
+                                                        class="fa fa-edit"></i> Edit</a>
+                                                <button class="btn btn-primary ml-2" data-toggle="modal"
+                                                    data-target="#myModal"><i class="fa fa-eye"></i> Preview</button>
+                                            </div>
+                                            <div class="sms_view">
+                                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting
+                                                    industry. Lorem Ipsum has been the industry's standard dummy text
+                                                    ever since the 1500s, when an unknown printer took a galley of type
+                                                    and scrambled it to make a type specimen book. It has survived not
+                                                    only five centuries, but also the leap into electronic typesetting,
+                                                    remaining essentially unchanged. </p>
+                                            </div>
+                                            <h3>Travel</h3>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 col-lg-3 mb-3">
+                                        <div class="inset">
+                                            <div class="overlap">
+                                                <a href="sms-edit.php?active=sms" class="btn btn-success"
+                                                    data-toggle="modal" data-target="#myModal2"><i
+                                                        class="fa fa-edit"></i> Edit</a>
+                                                <button class="btn btn-primary ml-2" data-toggle="modal"
+                                                    data-target="#myModal"><i class="fa fa-eye"></i> Preview</button>
+                                            </div>
+                                            <div class="sms_view">
+                                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting
+                                                    industry. Lorem Ipsum has been the industry's standard dummy text
+                                                    ever since the 1500s, when an unknown printer took a galley of type
+                                                    and scrambled it to make a type specimen book. It has survived not
+                                                    only five centuries, but also the leap into electronic typesetting,
+                                                    remaining essentially unchanged. </p>
+                                            </div>
+                                            <h3>Greeting</h3>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--table end-->
+
+
+                </div>
+            </div>
+            <!-- main row end-->
+
+        </div>
+        <!-- inside_content_area end-->
+
+    </section>
+    <!--SMS-Template-User section end here-->
+
+    <!--SMS Choose Prospect Section start here-->
+ 
+    <!--SMS Choose Prospect Section end here-->
+
+
+</div>
+<!-- right area end -->
+
+<!-- Preview -->
+<div class="modal" id="smsPreviewModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title">SMS Preview</h4>
+                <!-- <button type="button" class="close" data-dismiss="modal">&times;</button> -->
+            </div>
+
+            <!-- Modal body -->
+            <div class="modal-body">
+                <div class="sms_preview">
+                    <p>{{previewSms}}</p>
+                </div>
+            </div>
+
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+            </div>
+
+        </div>
+    </div>
+</div>

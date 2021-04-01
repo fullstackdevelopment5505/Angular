@@ -1,0 +1,22 @@
+<div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Manage Grid</h4>
+    <button type="button" class="close" aria-label="Close" (click)="close(2)">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+      <div class="col-md-12 text-center"> 
+        <ul [sortablejs]="main" id="sortable" [sortablejsOptions]="{ animation: 150 }">
+            <li *ngFor="let item of main;let i =index">   
+                <span class="ui-icon-arrowthick-2-n-s">
+                    <img src="assets/images/dragicon.png">
+                </span> 
+                <input type="checkbox"  [(ngModel)]="item.status" class="dragcheck" name=""> {{type==0? gridColName[item.item-1] : gridColName[item.item]}}
+            </li>
+        </ul>
+      </div>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-success" (click)="close(0)">Save</button>
+    <button type="button" class="btn btn-danger" (click)="close(1)">Reset Default</button>
+  </div>

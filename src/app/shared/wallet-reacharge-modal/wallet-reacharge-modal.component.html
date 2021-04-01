@@ -1,0 +1,54 @@
+<div class="modal-header">
+  <h4 class="modal-title">Wallet Recharge</h4>
+  <button type="button" class="close" aria-label="Close" (click)="close('Cross click')">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+
+<form [formGroup]="depositeForm" (ngSubmit)="deposite()">
+
+<div class="modal-body">
+  
+  <div class="row">
+    <div class="col-sm-4">
+      <div class="form-group">
+        <label>Total Records</label>
+        <p><b>{{ data.total_properties_post }}</b></p>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <div class="form-group">
+        <label>Total Amount</label>
+        <p><b>{{data.total_amount | currency}}</b></p>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <div class="form-group">
+        <label class="w-100"><div class="d-flex justify-content-between">Wallet Amount</div></label>
+        <p><b>{{ data.current_wallet_amount | currency}}</b></p>
+      </div>
+    </div>
+    <div class="text-center mt-3 chknew">
+      <img class="walletimage-popup" src="assets/images/wallet.svg" width="100">
+      <p class="h5 mt-3">Ooops! You’ve to recharge your wallet with {{ minAmount() | currency }} Amount to Purchase the records.</p>
+    </div>
+    <div class="col-sm-12">
+      <div class="form-group">
+        <label for="amount">Amount</label>
+        <input type="text" class="wallet-recharge-amount form-control" data-inputmask="'alias': 'currency'"  [ngClass]="{ 'is-invalid': submitWallet && f.amount.errors }" formControlName="amount" />
+        <div *ngIf="submitWallet && f.amount.errors" class="invalid-feedback">
+          <small *ngIf="f.amount.errors.required" class="error-text">Amount is required.</small>  
+          <small *ngIf="f.amount.errors.min" class="error-text">Minimum amount should be {{minAmount() | currency }}.</small>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="modal-footer">
+  <button type="submit" class="btn btn btn-danger submit-button">Recharge Now</button>
+</div>
+
+</form>
+

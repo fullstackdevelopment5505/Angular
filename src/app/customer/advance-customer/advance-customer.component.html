@@ -1,0 +1,2195 @@
+<app-header-customer [sideBar]="sideBar"></app-header-customer>
+<app-sidebar-customer #sideBar></app-sidebar-customer>
+
+<section class="right_section container-fluid  advance_search_form" [class.load]="load!=1">
+	<div class="container content_area"  [class.blurnew]="load!=1">
+		<div class="row">
+
+			<!-- left_side start-->
+			<div class="col-sm-8 left_area advance_search_page">
+
+				<!-- <div class="col-sm-12 main_title mb-4"><h4>Advance Search</h4></div> -->
+					<form  [formGroup]="searchForm" (ngSubmit)="submitForm()">
+						<div class="row">
+
+							<!-- single box start -->
+							<div class="col-sm-12 single_box">
+								<div class="bg-white box_section">
+									<div class="inner_title">State & County Bundle</div>
+									<div class="inner_data">
+
+										<!-- <ng-select [multiple]="true" [(ngModel)]="selectedCars">
+											<ng-option *ngFor="let car of cars" [value]="car.id" [disabled]="car.disabled">{{car.name}}</ng-option>
+											<ng-option [value]="'custom'">Custom</ng-option>
+										</ng-select> -->
+
+										<div class="row mb-3">
+											<div class="col-sm-3">
+												<label>State</label></div>
+											<div class="col-sm-9">
+												<select formControlName="state" (change)="changeState($event)" class="form-control">
+													<option value="null" disabled="disabled">--Select State--</option>
+													<option *ngFor="let st of state"  value="{{st.state_id}}">{{st.state_name}}</option>
+												</select>
+											</div>
+										</div>
+
+										<div class="row mb-3">
+											<div class="col-sm-3">
+												<label>County</label></div>
+											<div class="col-sm-4">
+												<select formControlName="countySelect" (change)="changeCountySelect($event.target.value)" class="form-control">
+													<option value="is">Is</option>
+													<option value="is not">Is Not</option>
+												</select>
+											</div>
+											<div class="col-sm-5"><i *ngIf="countyLoading" class="fa fa-spinner fa-spin"></i>
+												<ng-select formControlName="county" [multiple]="true" [(ngModel)]="selectedCounty" (change)="changeCounty($event)" data-placeholder="Add More">
+													<ng-option *ngFor="let co of county" value="{{co.county_id}}_{{co.county_name}}">{{co.county_name}}</ng-option>
+												</ng-select>
+												<!-- <select class="form-control select2field" formControlName="county" (change)="changeCounty($event.target.value)"  data-placeholder="Add More" id="multipleSelectExample" multiple="multiple">
+													<option *ngFor="let co of county" [attr.selected]="co.selected" selected="{{co.selected}}" value="{{co.county_id}}">{{co.county_name}}</option>
+												</select> -->
+											</div>
+										</div>
+										<!-- <div class="row mb-3">
+											<div class="col-sm-3">
+												<label>Subdivision</label></div>
+											<div class="col-sm-9">
+												<select formControlName="state" (change)="changeSubdivision($event)" class="form-control">
+													<option *ngFor="let st of Subdivision"  value="{{st.subdivision_id}}">{{st.subdivision_name}}</option>
+												</select>
+											</div>
+										</div> -->
+									</div>
+								</div>
+							</div>
+							<!-- single box end -->
+
+							<!-- accordian start -->
+							<div class="panel-group col-sm-12 custom-accordion" id="accordion">
+								<!-- Location Panel Start-->
+						    <div class="panel panel-default">
+						        <div class="panel-heading bg-white" data-toggle="collapse" data-target="#loctionFilters">
+						             <h6 class="panel-title inner_title">
+						                 Address Bundle
+						             </h6>
+						        </div>
+						        <div id="loctionFilters" class="panel-collapse collapse show">
+											<!-- single box start -->
+											<div class="single_box">
+												<div class="bg-white box_section">
+													<div class="mb-3">
+															<div class="inner_data">
+																<div class="row mb-3">
+																	<div class="col-sm-3">
+																		<label>Street #</label></div>
+																		<div class="col-sm-3">
+																			<select formControlName="streetNumberSelect" (change)="changeStreetNumberSelect($event.target.value)" class="form-control">
+																				<option value="is">Is</option>
+																				<option value="is between">Is Between </option>
+																				<option value="even range">Even Range</option>
+																				<option value="odd range">Odd Range</option>
+																			</select>
+																		</div>
+																		<div [class]="selection.streetNumberSelect == 'is between' ? 'col-sm-3': 'col-sm-6'">
+																				<input id="streetNumberFrom" type="text" (change)="changeStreetNumberFrom($event.target.value)" class="form-control" formControlName="streetNumberFrom">
+																		</div>
+																		<div *ngIf="selection.streetNumberSelect == 'is between'" class="col-sm-3">
+																				<input id="streetNumberTo" type="text" (change)="changeStreetNumberTo($event.target.value)" class="form-control" formControlName="streetNumberTo">
+																				<small class="error-text" *ngIf="openStreetNumberError">Invalid Street Number</small>
+																		</div>
+																</div>
+															</div>
+															<div class="inner_data">
+																<div class="row mb-3">
+																	<div class="col-sm-3">
+																		<label>Pre Direction</label></div>
+																		<div class="col-sm-9">
+																			<ng-select formControlName="streetDir" [multiple]="true" [(ngModel)]="selectedStreetDir" (change)="changeStreetDir($event)" data-placeholder="Add More">
+																					<ng-option *ngFor="let streetDir of availableStreetDir" value="{{streetDir}}_{{streetDir}}">{{ streetDir }}</ng-option>
+																			</ng-select>
+																		</div>
+																</div>
+															</div>
+															<div class="inner_data">
+																<div class="row mb-3">
+																	<div class="col-sm-3">
+																		<label>Street Name</label></div>
+																		<div class="col-sm-4">
+																			<select formControlName="streetNamesSelect" (change)="changeStreetNamesSelect($event.target.value)" class="form-control">
+																				<option value="is">Is</option>
+																				<option value="is not">Is Not</option>
+																				<option value="starts with">Starts With</option>
+																				<option value="contains">Contains</option>
+																			</select>
+																		</div>
+
+																		<div class="col-sm-5">
+																				<input id="streetNames" type="text" (change)="changeStreetNames($event.target.value)" class="form-control" formControlName="streetNames" placeholder="Street Name">
+																		</div>
+																</div>
+															</div>
+															<div class="inner_data">
+																<div class="row mb-3">
+																	<div class="col-sm-3">
+																		<label>Street Type</label></div>
+																		<div class="col-sm-9">
+																			<ng-select formControlName="streetTypes" [multiple]="true" [(ngModel)]="selectedStreetTypes" (change)="changeStreetTypes($event)" data-placeholder="Add More">
+																					<ng-option *ngFor="let streetType of availableStreetTypes" value="{{streetType.val}}_{{streetType.text}}">{{ streetType.text }}</ng-option>
+																			</ng-select>
+																		</div>
+																</div>
+															</div>
+															<div class="inner_data">
+																<div class="row mb-3">
+																	<div class="col-sm-3">
+																		<label>Post Direction</label></div>
+																		<div class="col-sm-9">
+																			<ng-select formControlName="streetPostDir" [multiple]="true" [(ngModel)]="selectedStreetPostDir" (change)="changeStreetPostDir($event)" data-placeholder="Add More">
+																					<ng-option *ngFor="let streetDir of availableStreetDir" value="{{streetDir}}_{{streetDir}}">{{ streetDir }}</ng-option>
+																			</ng-select>
+																		</div>
+																</div>
+															</div>
+															<div class="inner_data">
+																<div class="row mb-3">
+																	<div class="col-sm-3">
+																		<label>Unit #</label></div>
+																		<div class="col-sm-3">
+																			<select formControlName="unitSelect" (change)="changeUnitSelect($event.target.value)" class="form-control">
+																				<option value="is">Is</option>
+																				<option value="is between">Is Between</option>
+																			</select>
+																		</div>
+
+																		<div [class]="selection.unitSelect == 'is between' ? 'col-sm-3': 'col-sm-6'">
+																				<input id="unitFrom" type="text" (change)="changeUnitFrom($event.target.value)" class="form-control" formControlName="unitFrom">
+																		</div>
+																		<div *ngIf="selection.unitSelect == 'is between'" class="col-sm-3">
+																				<input id="unitTo" type="text" (change)="changeUnitTo($event.target.value)" class="form-control" formControlName="unitTo">
+																				<small class="error-text" *ngIf="openUnitError">Invalid Unit</small>
+																		</div>
+																</div>
+															</div>
+													</div>
+													<hr />
+													<div class="inner_data">
+														<div class="row mb-3">
+															<div class="col-sm-3">
+																<label>City</label></div>
+															<div class="col-sm-4">
+																<select formControlName="citySelect" (change)="changeCitySelect($event.target.value)" class="form-control">
+																	<option value="is">Is</option>
+																	<option value="is not">Is Not</option>
+																	<option value="starts with">Starts With</option>
+																	<option value="contains">Contains</option>
+																</select>
+															</div>
+															<div class="col-sm-5"><i *ngIf="cityLoading" class="fa fa-spinner fa-spin"></i>
+																<ng-select formControlName="city" [multiple]="true" [(ngModel)]="selectedCity" (change)="changeCity($event)" data-placeholder="Add More">
+																	<ng-option *ngFor="let cty of city" value="{{cty.ID}}_{{cty.CITY}}">{{cty.CITY}}</ng-option>
+																</ng-select>
+															</div>
+														</div>
+													</div>
+													<div class="inner_data">
+														<div class="row mb-3">
+															<div class="col-sm-3">
+																<label>ZIP Code</label></div>
+															<div class="col-sm-3">
+																<select formControlName="zipSelect" (change)="changeZipSelect($event.target.value)" class="form-control">
+																	<option value="is">Is</option>
+																	<option value="is not">Is Not</option>
+																	<option value="is between">Is Between</option>
+																</select>
+															</div>
+															<div [class]="selection.zipSelect == 'is between' ? 'col-sm-3': 'col-sm-6'">
+																<input id="zipcode" type="text" data-inputmask="'mask': '99999[-9999]', 'greedy': 'false', 'placeholder': ''" (change)="changeZip($event.target.value)" class="form-control" formControlName="zipcode" placeholder="Zip">
+																<ng-container *ngIf="zipError && searchForm.get('zipcode').errors">
+																	<small *ngIf="searchForm.get('zipcode').errors.pattern" class="error-text">Zip Code is not valid.</small>
+																</ng-container>
+															</div>
+															<div *ngIf="selection.zipSelect == 'is between'" class="col-sm-3">
+																<input id="zipcodeTo" type="text" data-inputmask="'mask': '99999[-9999]', 'greedy': 'false', 'placeholder': ''" (change)="changeZipTo($event.target.value)" class="form-control" formControlName="zipcodeTo" placeholder="Zip">
+																<ng-container *ngIf="zipToError && searchForm.get('zipcodeTo').errors">
+																	<small *ngIf="searchForm.get('zipcodeTo').errors.pattern" class="error-text">Zip Code is not valid.</small>
+																</ng-container>
+																<ng-container *ngIf="openZipToError">
+																	<small *ngIf="openZipToError" class="error-text">Zip Code is not valid.</small>
+																</ng-container>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+											<!-- single box end -->
+						        </div>
+						    </div>
+								<!-- Location Panel End-->
+
+								<!-- Characteristics Panel Start -->
+								<div class="panel panel-default">
+						        <div class="panel-heading mt-2 bg-white" data-toggle="collapse" data-target="#characteristicsFilters">
+						             <h6 class="panel-title inner_title">
+						                 Characteristics
+						             </h6>
+						        </div>
+						        <div id="characteristicsFilters" class="panel-collapse collapse show">
+											<!-- single box start -->
+											<div class="single_box">
+												<div class="bg-white box_section">
+													<div class="inner_data">
+														<div class="row mb-3">
+															<div class="col-sm-3">
+																<label>Land Use</label></div>
+															<div class="col-sm-9">
+																	<ng-select formControlName="landUse" [multiple]="true" [(ngModel)]="selectedLandUse" (change)="changeLandUse($event)" data-placeholder="Residential">
+																		<ng-option *ngFor="let landUse of availableLandUse" value="{{landUse.val}}_{{landUse.text}}">{{ landUse.text }}</ng-option>
+																	</ng-select>
+															</div>
+														</div>
+													</div>
+													<div class="inner_data">
+														<div class="row mb-3">
+															<div class="col-sm-3">
+																<label>County Land Use</label></div>
+																<div class="col-sm-9">
+																		<input *ngIf="(selectedCounty.length == 0) || (selectedCounty.length > 1)" id="countyUseCode" type="text" (change)="changeCountyUseCode($event.target.value)" class="form-control" formControlName="countyUseCode" placeholder="Please select a single county" disabled>
+																		<input *ngIf="selectedCounty.length == 1" id="countyUseCode" type="text" (change)="changeCountyUseCode($event.target.value)" class="form-control" formControlName="countyUseCode" placeholder="County Use Code">
+																</div>
+														</div>
+													</div>
+													<div class="inner_data">
+														<div class="row mb-3">
+															<div class="col-sm-3">
+																<label>Zoning Code</label></div>
+															<div class="col-sm-3">
+																<select formControlName="zoningCodeSelect" (change)="changeZoningCodeSelect($event.target.value)" class="form-control">
+																	<option value="is">Is</option>
+																	<option value="is between">Is Between</option>
+																</select>
+															</div>
+															<div [class]="selection.zoningCodeSelect == 'is between' ? 'col-sm-3': 'col-sm-6'">
+																<input id="zoningCodeFrom" type="text" (change)="changeZoningCodeFrom($event.target.value)" class="form-control" formControlName="zoningCodeFrom" placeholder="Zoning Code">
+															</div>
+															<div *ngIf="selection.zoningCodeSelect == 'is between'" class="col-sm-3">
+																<input id="zoningCodeTo" type="text" (change)="changeZoningCodeTo($event.target.value)" class="form-control" formControlName="zoningCodeTo" placeholder="Zoning Code">
+																<small *ngIf="openZoningCodeToError" class="error-text">Invalid Zoning Code</small>
+															</div>
+														</div>
+													</div>
+													<div class="inner_data">
+														<div class="row mb-3">
+															<div class="col-sm-3">
+																<label>Site Influence</label></div>
+															<div class="col-sm-9">
+																	<ng-select formControlName="siteInfluence" [multiple]="true" [(ngModel)]="selectedSiteInfluence" (change)="changeSiteInfluence($event)" data-placeholder="Site Influence">
+																		<ng-option *ngFor="let siteInfluence of availableSiteInfluence" value="{{siteInfluence.val}}_{{siteInfluence.text}}">{{ siteInfluence.text }}</ng-option>
+																	</ng-select>
+															</div>
+														</div>
+													</div>
+													<div class="inner_data">
+														<div class="row mb-3">
+															<div class="col-sm-3">
+																<label>Year Built</label></div>
+															<div class="col-sm-3">
+																<select formControlName="yearBuiltSelect" (change)="changeYearBuiltSelect($event.target.value)" class="form-control">
+																	<option value="is">Is</option>
+																	<option value="is between">Is Between</option>
+																</select>
+															</div>
+															<div [class]="selection.yearBuiltSelect == 'is between' ? 'col-sm-3': 'col-sm-6'">
+																<input id="yearBuiltFrom" type="number" (change)="changeYearBuiltFrom($event.target.value)" class="form-control" formControlName="yearBuiltFrom" placeholder="Year Built">
+															</div>
+															<div *ngIf="selection.yearBuiltSelect == 'is between'" class="col-sm-3">
+																<input id="yearBuiltTo" type="number" (change)="changeYearBuiltTo($event.target.value)" class="form-control" formControlName="yearBuiltTo" placeholder="Year Built">
+																<small *ngIf="openYearBuiltToError" class="error-text">Invalid Year Built</small>
+															</div>
+														</div>
+													</div>
+													<div class="inner_data">
+														<div class="row mb-3">
+															<div class="col-sm-3">
+																<label>Living Area (Sq. Ft.)</label></div>
+															<div class="col-sm-3">
+																<select formControlName="buildingAreaSquareFeetSelect" (change)="changeBuildingAreaSquareFeetSelect($event.target.value)" class="form-control">
+																	<option value="is">Is</option>
+																	<option value="is between">Is Between</option>
+																</select>
+															</div>
+															<div [class]="selection.buildingAreaSquareFeetSelect == 'is between' ? 'col-sm-3': 'col-sm-6'">
+																<input id="buildingAreaSquareFeetFrom" type="number" (change)="changeBuildingAreaSquareFeetFrom($event.target.value)" class="form-control" formControlName="buildingAreaSquareFeetFrom" placeholder="Living Area">
+															</div>
+															<div *ngIf="selection.buildingAreaSquareFeetSelect == 'is between'" class="col-sm-3">
+																<input id="buildingAreaSquareFeetTo" type="number" (change)="changeBuildingAreaSquareFeetTo($event.target.value)" class="form-control" formControlName="buildingAreaSquareFeetTo" placeholder="Living Area">
+																<small *ngIf="openBuildingAreaSquareFeetToError" class="error-text">Invalid Living Area</small>
+															</div>
+														</div>
+													</div>
+													<div class="inner_data">
+														<div class="row mb-3">
+															<div class="col-sm-3">
+																<label>Bedrooms</label></div>
+															<div class="col-sm-3">
+																<select formControlName="totalNumberOfBedroomsSelect" (change)="changeTotalNumberOfBedroomsSelect($event.target.value)" class="form-control">
+																	<option value="is">Is</option>
+																	<option value="is between">Is Between</option>
+																</select>
+															</div>
+															<div [class]="selection.totalNumberOfBedroomsSelect == 'is between' ? 'col-sm-3': 'col-sm-6'">
+																<input id="totalNumberOfBedroomsFrom" type="number" (change)="changeTotalNumberOfBedroomsFrom($event.target.value)" class="form-control" formControlName="totalNumberOfBedroomsFrom" placeholder="Bedrooms">
+															</div>
+															<div *ngIf="selection.totalNumberOfBedroomsSelect == 'is between'" class="col-sm-3">
+																<input id="totalNumberOfBedroomsTo" type="number" (change)="changeTotalNumberOfBedroomsTo($event.target.value)" class="form-control" formControlName="totalNumberOfBedroomsTo" placeholder="Bedrooms">
+																<small *ngIf="openTotalNumberOfBedroomsToError" class="error-text">Invalid Bedrooms</small>
+															</div>
+														</div>
+													</div>
+													<div class="inner_data">
+														<div class="row mb-3">
+															<div class="col-sm-3">
+																<label>Bathrooms</label></div>
+															<div class="col-sm-3">
+																<select formControlName="totalNumberOfBathroomsSelect" (change)="changeTotalNumberOfBathroomsSelect($event.target.value)" class="form-control">
+																	<option value="is">Is</option>
+																	<option value="is between">Is Between</option>
+																</select>
+															</div>
+															<div [class]="selection.totalNumberOfBathroomsSelect == 'is between' ? 'col-sm-3': 'col-sm-6'">
+																<input id="totalNumberOfBathroomsFrom" type="number" (change)="changeTotalNumberOfBathroomsFrom($event.target.value)" class="form-control" formControlName="totalNumberOfBathroomsFrom" placeholder="Bathrooms">
+															</div>
+															<div *ngIf="selection.totalNumberOfBathroomsSelect == 'is between'" class="col-sm-3">
+																<input id="totalNumberOfBathroomsTo" type="number" (change)="changeTotalNumberOfBathroomsTo($event.target.value)" class="form-control" formControlName="totalNumberOfBathroomsTo" placeholder="Bathrooms">
+																<small *ngIf="openTotalNumberOfBathroomsToError" class="error-text">Invalid Bathrooms</small>
+															</div>
+														</div>
+													</div>
+													<div class="inner_data">
+														<div class="row mb-3">
+															<div class="col-sm-3">
+																<label>Total Rooms</label></div>
+															<div class="col-sm-3">
+																<select formControlName="totalNumberOfRoomsSelect" (change)="changeTotalNumberOfRoomsSelect($event.target.value)" class="form-control">
+																	<option value="is">Is</option>
+																	<option value="is between">Is Between</option>
+																</select>
+															</div>
+															<div [class]="selection.totalNumberOfRoomsSelect == 'is between' ? 'col-sm-3': 'col-sm-6'">
+																<input id="totalNumberOfRoomsFrom" type="number" (change)="changeTotalNumberOfRoomsFrom($event.target.value)" class="form-control" formControlName="totalNumberOfRoomsFrom" placeholder="Total Rooms">
+															</div>
+															<div *ngIf="selection.totalNumberOfRoomsSelect == 'is between'" class="col-sm-3">
+																<input id="totalNumberOfRoomsTo" type="number" (change)="changeTotalNumberOfRoomsTo($event.target.value)" class="form-control" formControlName="totalNumberOfRoomsTo" placeholder="Total Rooms">
+																<small *ngIf="openTotalNumberOfRoomsToError" class="error-text">Invalid Rooms</small>
+															</div>
+														</div>
+													</div>
+													<div class="inner_data">
+														<div class="row mb-3">
+															<div class="col-sm-3">
+																<label>Lot Area</label></div>
+															<div class="col-sm-3">
+																<select formControlName="lotAreaSelect" (change)="changeLotAreaSelect($event.target.value)" class="form-control">
+																	<option value="is">Is</option>
+																	<option value="is between">Is Between</option>
+																</select>
+															</div>
+															<div [class]="selection.lotAreaSelect == 'is between' ? 'col-sm-3': 'col-sm-6'">
+																<input id="lotAreaFrom" type="number" (change)="changeLotAreaFrom($event.target.value)" class="form-control" formControlName="lotAreaFrom" placeholder="Lot Area">
+															</div>
+															<div *ngIf="selection.lotAreaSelect == 'is between'" class="col-sm-3">
+																<input id="lotAreaTo" type="number" (change)="changeLotAreaTo($event.target.value)" class="form-control" formControlName="lotAreaTo" placeholder="Lot Area">
+																<small *ngIf="openLotAreaToError" class="error-text">Invalid Lot Area</small>
+															</div>
+														</div>
+													</div>
+													<div class="inner_data">
+														<div class="row mb-3">
+															<div class="col-sm-3">
+																<label>Lot Acreage</label></div>
+															<div class="col-sm-3">
+																<select formControlName="lotAcreageSelect" (change)="changeLotAcreageSelect($event.target.value)" class="form-control">
+																	<option value="is">Is</option>
+																	<option value="is between">Is Between</option>
+																</select>
+															</div>
+															<div [class]="selection.lotAcreageSelect == 'is between' ? 'col-sm-3': 'col-sm-6'">
+																<input id="lotAcreageFrom" type="number" (change)="changeLotAcreageFrom($event.target.value)" class="form-control" formControlName="lotAcreageFrom" placeholder="Lot Acreage">
+															</div>
+															<div *ngIf="selection.lotAcreageSelect == 'is between'" class="col-sm-3">
+																<input id="lotAcreageTo" type="number" (change)="changeLotAcreageTo($event.target.value)" class="form-control" formControlName="lotAcreageTo" placeholder="Lot Acreage">
+																<small *ngIf="openLotAcreageToError" class="error-text">Invalid Lot Acreage</small>
+															</div>
+														</div>
+													</div>
+													<div class="inner_data">
+														<div class="row mb-3">
+															<div class="col-sm-3">
+																<label>Stories</label></div>
+															<div class="col-sm-3">
+																<select formControlName="numberOfStoriesSelect" (change)="changeNumberOfStoriesSelect($event.target.value)" class="form-control">
+																	<option value="is">Is</option>
+																	<option value="is between">Is Between</option>
+																</select>
+															</div>
+															<div [class]="selection.numberOfStoriesSelect == 'is between' ? 'col-sm-3': 'col-sm-6'">
+																<input id="numberOfStoriesFrom" type="number" (change)="changeNumberOfStoriesFrom($event.target.value)" class="form-control" formControlName="numberOfStoriesFrom" placeholder="Stories">
+															</div>
+															<div *ngIf="selection.numberOfStoriesSelect == 'is between'" class="col-sm-3">
+																<input id="numberOfStoriesTo" type="number" (change)="changeNumberOfStoriesTo($event.target.value)" class="form-control" formControlName="numberOfStoriesTo" placeholder="Stories">
+																<small *ngIf="openNumberOfStoriesToError" class="error-text">Invalid Stories</small>
+															</div>
+														</div>
+													</div>
+													<div class="inner_data">
+														<div class="row mb-3">
+															<div class="col-sm-3">
+																<label>Pool</label></div>
+															<div class="col-sm-9">
+																	<ng-select formControlName="poolOption" [(ngModel)]="selectedPoolOption" (change)="changePoolOption($event)" data-placeholder="Pool">
+																		<ng-option value="0_Yes">Yes</ng-option>
+																		<ng-option value="1_No">No</ng-option>
+																	</ng-select>
+															</div>
+														</div>
+													</div>
+													<div class="inner_data">
+														<div class="row mb-3">
+															<div class="col-sm-3">
+																<label>Garage Spaces</label></div>
+															<div class="col-sm-3">
+																<select formControlName="numberOfGarageSpacesSelect" (change)="changeNumberOfGarageSpacesSelect($event.target.value)" class="form-control">
+																	<option value="is">Is</option>
+																	<option value="is between">Is Between</option>
+																</select>
+															</div>
+															<div [class]="selection.numberOfGarageSpacesSelect == 'is between' ? 'col-sm-3': 'col-sm-6'">
+																<input id="numberOfGarageSpacesFrom" type="number" (change)="changeNumberOfGarageSpacesFrom($event.target.value)" class="form-control" formControlName="numberOfGarageSpacesFrom" placeholder="Garage Spaces">
+															</div>
+															<div *ngIf="selection.numberOfGarageSpacesSelect == 'is between'" class="col-sm-3">
+																<input id="numberOfGarageSpacesTo" type="number" (change)="changeNumberOfGarageSpacesTo($event.target.value)" class="form-control" formControlName="numberOfGarageSpacesTo" placeholder="Garage Spaces">
+																<small *ngIf="openNumberOfGarageSpacesToError" class="error-text">Invalid Garage Spaces</small>
+															</div>
+														</div>
+													</div>
+													<div class="inner_data">
+														<div class="row mb-3">
+															<div class="col-sm-3">
+																<label># Of Units</label></div>
+															<div class="col-sm-3">
+																<select formControlName="numberOfUnitsSelect" (change)="changeNumberOfUnitsSelect($event.target.value)" class="form-control">
+																	<option value="is">Is</option>
+																	<option value="is between">Is Between</option>
+																</select>
+															</div>
+															<div [class]="selection.numberOfUnitsSelect == 'is between' ? 'col-sm-3': 'col-sm-6'">
+																<input id="numberOfUnitsFrom" type="number" (change)="changeNumberOfUnitsFrom($event.target.value)" class="form-control" formControlName="numberOfUnitsFrom" placeholder="Unit">
+															</div>
+															<div *ngIf="selection.numberOfUnitsSelect == 'is between'" class="col-sm-3">
+																<input id="numberOfUnitsTo" type="number" (change)="changeNumberOfUnitsTo($event.target.value)" class="form-control" formControlName="numberOfUnitsTo" placeholder="Unit">
+																<small *ngIf="openNumberOfUnitsToError" class="error-text">Invalid Unit</small>
+															</div>
+														</div>
+													</div>
+
+												</div>
+											</div>
+											<!-- single box end -->
+										</div>
+								</div>
+								<!-- Characteristics Panel End -->
+
+								<!-- Owner Panel Start -->
+								<div class="panel panel-default">
+										<div class="panel-heading bg-white mt-2" data-toggle="collapse" data-target="#ownerFilters">
+												 <h6 class="panel-title inner_title">
+														 Owner
+												 </h6>
+										</div>
+										<div id="ownerFilters" class="panel-collapse collapse show">
+											<!-- single box start -->
+											<div class="single_box">
+												<div class="bg-white box_section">
+													<div class="inner_data">
+														<div class="row mb-3">
+															<div class="col-sm-3">
+																<label>Owner Last Name</label>
+															</div>
+															<div class="col-sm-4">
+																<select formControlName="ownerLastNamesSelect" (change)="changeOwnerLastNamesSelect($event.target.value)" class="form-control">
+																	<option value="is">Is</option>
+																	<option value="is not">Is Not</option>
+																	<option value="starts with">Starts With</option>
+																	<option value="contains">Contains</option>
+																</select>
+															</div>
+
+															<div class="col-sm-5">
+																	<input id="ownerLastNames" type="text" (change)="changeOwnerLastNames($event.target.value)" class="form-control" formControlName="ownerLastNames" placeholder="Last Name">
+															</div>
+														</div>
+													</div>
+													<div class="inner_data">
+														<div class="row mb-3">
+															<div class="col-sm-3">
+																<label>Owner First Name</label>
+															</div>
+															<div class="col-sm-4">
+																<select formControlName="ownerFirstNamesSelect" (change)="changeOwnerFirstNamesSelect($event.target.value)" class="form-control">
+																	<option value="is">Is</option>
+																	<option value="is not">Is Not</option>
+																	<option value="starts with">Starts With</option>
+																	<option value="contains">Contains</option>
+																</select>
+															</div>
+
+															<div class="col-sm-5">
+																	<input id="ownerFirstNames" type="text" (change)="changeOwnerFirstNames($event.target.value)" class="form-control" formControlName="ownerFirstNames" placeholder="First Name">
+															</div>
+														</div>
+													</div>
+													<div class="inner_data">
+														<div class="row mb-3">
+															<div class="col-sm-3">
+																<label>Owner Full Name</label>
+															</div>
+															<div class="col-sm-4">
+																<select formControlName="ownerNamesSelect" (change)="changeOwnerNamesSelect($event.target.value)" class="form-control">
+																	<option value="is">Is</option>
+																	<option value="is not">Is Not</option>
+																	<option value="starts with">Starts With</option>
+																	<option value="contains">Contains</option>
+																</select>
+															</div>
+
+															<div class="col-sm-5">
+																	<input id="ownerNames" type="text" (change)="changeOwnerNames($event.target.value)" class="form-control" formControlName="ownerNames" placeholder="Full Name">
+															</div>
+														</div>
+													</div>
+													<div class="inner_data">
+														<div class="row mb-3">
+															<div class="col-sm-3">
+																<label>Owner Ethnicity</label>
+															</div>
+															<div class="col-sm-9">
+																<ng-select formControlName="ethnicity" [multiple]="true" [(ngModel)]="selectedEthnicity" (change)="changeEthnicity($event)" data-placeholder="Ethnicity">
+																		<ng-option *ngFor="let ethnicityName of availableEthnicity" value="{{ethnicityName}}_{{ethnicityName}}" >{{ ethnicityName }}</ng-option>
+																</ng-select>
+															</div>
+														</div>
+													</div>
+													<div class="inner_data">
+														<div class="row mb-3">
+															<div class="col-sm-3">
+																<label>Exemption</label>
+															</div>
+															<div class="col-sm-9">
+																<ng-select formControlName="exemption" [multiple]="true" [(ngModel)]="selectedExemption" (change)="changeExemption($event)" data-placeholder="Exemption">
+																	<ng-option *ngFor="let exemption of availableExemption" value="{{exemption.val}}_{{exemption.text}}">{{ exemption.text }}</ng-option>
+																</ng-select>
+															</div>
+														</div>
+													</div>
+													<div class="inner_data">
+														<div class="row mb-3">
+															<div class="col-sm-3">
+																<label>Owner Occupied</label>
+															</div>
+															<div class="col-sm-9">
+																<ng-select formControlName="occupancy" [multiple]="true" [(ngModel)]="selectedOccupancy" (change)="changeOccupancy($event)" data-placeholder="Occupancy">
+																	<ng-option *ngFor="let ownerOccupied of availableOwnerOccupied" value="{{ownerOccupied.val}}_{{ownerOccupied.text}}">{{ ownerOccupied.text }}</ng-option>
+																</ng-select>
+															</div>
+														</div>
+													</div>
+													<div class="inner_data">
+														<div class="row mb-3">
+															<div class="col-sm-3">
+																<label>Corporate Owned</label>
+															</div>
+															<div class="col-sm-9">
+																<ng-select formControlName="corporateOwned" [(ngModel)]="selectedCorporateOwned" (change)="changeCorporateOwned($event)" data-placeholder="Corporate Owned">
+																		<ng-option *ngFor="let corporate of availableCorporateOwned" value="{{corporate.val}}_{{corporate.text}}" >{{ corporate.text }}</ng-option>
+																</ng-select>
+															</div>
+														</div>
+													</div>
+													<div class="inner_data">
+														<div class="row mb-3">
+															<div class="col-sm-3">
+																<label>Do Not Mail</label>
+															</div>
+															<div class="col-sm-9">
+																	<ng-select formControlName="doNotMail" [(ngModel)]="selectedDoNotMail" (change)="changeDoNotMail($event)" data-placeholder="Do Not Mail">
+																			<ng-option *ngFor="let mail of availableDoNotMail" value="{{mail.val}}_{{mail.text}}" >{{ mail.text }}</ng-option>
+																	</ng-select>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+											<!-- single box end -->
+										</div>
+								</div>
+								<!-- Owner Panel End -->
+
+								<!-- Sale Information Panel Start -->
+								<div class="panel panel-default">
+										<div class="panel-heading bg-white mt-2" data-toggle="collapse" data-target="#saleInformationFilters">
+												 <h6 class="panel-title inner_title">
+														 Sale Information
+												 </h6>
+										</div>
+										<div id="saleInformationFilters" class="panel-collapse collapse show">
+											<!-- single box start -->
+											<div class="single_box">
+												<div class="bg-white box_section">
+													<div class="inner_data">
+														<div class="row mb-3">
+															<div class="col-sm-3">
+																<label>Transaction Type</label></div>
+															<div class="col-sm-9">
+																	<ng-select formControlName="transactionType" [(ngModel)]="selectedTransactionType" (change)="changeTransactionType($event)" data-placeholder="Transaction Type">
+																		<ng-option value="1_Last Market Sale (Arms-Length)">Last Market Sale (Arms-Length)</ng-option>
+																		<ng-option value="2_Ownership Transfer (Non-Arms-Length)">Ownership Transfer (Non-Arms-Length)</ng-option>
+																		<ng-option value="3_Latest Transaction">Latest Transaction</ng-option>
+																	</ng-select>
+															</div>
+														</div>
+													</div>
+													<div class="inner_data">
+														<div class="row mb-3">
+															<div class="col-sm-3">
+																<label>Sale Price</label></div>
+															<div class="col-sm-3">
+																<select formControlName="salePriceSelect" (change)="changeSalePriceSelect($event.target.value)" class="form-control">
+																	<option value="is">Is</option>
+																	<option value="is between">Is Between</option>
+																</select>
+															</div>
+															<div [class]="selection.salePriceSelect == 'is between' ? 'col-sm-3': 'col-sm-6'">
+																<input id="salePriceFrom" type="number" (change)="changeSalePriceFrom($event.target.value)" class="form-control" formControlName="salePriceFrom" placeholder="Sale Price">
+															</div>
+															<div *ngIf="selection.salePriceSelect == 'is between'" class="col-sm-3">
+																<input id="salePriceTo" type="number" (change)="changeSalePriceTo($event.target.value)" class="form-control" formControlName="salePriceTo" placeholder="Sale Price">
+																<small *ngIf="openSalePriceToError" class="error-text">Invalid Sale Price</small>
+															</div>
+														</div>
+													</div>
+													<div class="inner_data">
+														<div class="row mb-3">
+															<div class="col-sm-3">
+																<label>Sale Price Type</label></div>
+															<div class="col-sm-9">
+																	<ng-select formControlName="salePriceType" [multiple]="true" [(ngModel)]="selectedSalePriceType" (change)="changeSalePriceType($event)" data-placeholder="Sale Price Type">
+																		<ng-option *ngFor="let salePriceType of availableSalePriceType" value="{{salePriceType.val}}_{{salePriceType.text}}">{{ salePriceType.text }}</ng-option>
+																	</ng-select>
+															</div>
+														</div>
+													</div>
+													<div class="inner_data">
+														<div class="row mb-3">
+															<div class="col-sm-3">
+																<label>Last Sale Date</label>
+															</div>
+															<div class="col-sm-3">
+																<select formControlName="saleDateSelect" (change)="changeSaleDate($event.target.value)" class="form-control">
+																	<option value="is">Is</option>
+																	<option value="is between">Is Between</option>
+																	<option value="is before">Is Before</option>
+																	<option value="is after">Is After</option>
+																</select>
+															</div>
+
+															<div [class]="selection.saleDateSelect=='is between'? 'col-sm-3': 'col-sm-6'">
+																<div class="input-group">
+																	<input  class="form-control" (ngModelChange)="changeSaleDateFrom($event)" (click)="saleDateFrom.open()" [minDate]="minDate" [maxDate]="maxDate" placeholder="MM-DD-YYYY" formControlName="saleDateFrom" name="saleDateFrom"  ngbDatepicker #saleDateFrom="ngbDatepicker">
+																	<div class="input-group-append">
+																	<button class="btn btn-default calendar" (click)="saleDateFrom.toggle()" type="button"><i class="fa fa-calendar"></i></button>
+																	</div>
+																</div>
+															</div>
+															<div *ngIf="selection.saleDateSelect == 'is between'" class="col-sm-3">
+																<div class="input-group">
+																	<input  class="form-control" (ngModelChange)="changeSaleDateTo($event)" (click)="saleDateTo.open()" [minDate]="minDate" [maxDate]="maxDate" placeholder="MM-DD-YYYY" formControlName="saleDateTo" name="saleDateTo"  ngbDatepicker #saleDateTo="ngbDatepicker">
+																	<div class="input-group-append">
+																	<button class="btn btn-default calendar" (click)="saleDateTo.toggle()" type="button"><i class="fa fa-calendar"></i></button>
+																	</div>
+																</div>
+																<small *ngIf="openSaleDateToError" class="error-text">Invalid Date</small>
+															</div>
+														</div>
+													</div>
+													<div class="inner_data">
+														<div class="row mb-3">
+															<div class="col-sm-3">
+																<label>Last Sale Recording Date</label>
+															</div>
+															<div class="col-sm-3">
+																<select formControlName="marketSaleRecordingDateSelect" (change)="changeMarketSaleRecordingDate($event.target.value)" class="form-control">
+																	<option value="is">Is</option>
+																	<option value="is between">Is Between</option>
+																	<option value="is before">Is Before</option>
+																	<option value="is after">Is After</option>
+																</select>
+															</div>
+															<div [class]="selection.marketSaleRecordingDateSelect == 'is between' ? 'col-sm-3': 'col-sm-6'">
+																<div class="input-group">
+																	<input  class="form-control" (ngModelChange)="changeMarketSaleRecordingDateFrom($event)" (click)="marketSaleRecordingDateFrom.open()" [minDate]="minDate" [maxDate]="maxDate" placeholder="MM-DD-YYYY" formControlName="marketSaleRecordingDateFrom" name="marketSaleRecordingDateFrom"  ngbDatepicker #marketSaleRecordingDateFrom="ngbDatepicker">
+																	<div class="input-group-append">
+																	<button class="btn btn-default calendar" (click)="marketSaleRecordingDateFrom.toggle()" type="button"><i class="fa fa-calendar"></i></button>
+																	</div>
+																</div>
+															</div>
+															<div *ngIf="selection.marketSaleRecordingDateSelect == 'is between'" class="col-sm-3">
+																<div class="input-group">
+																	<input  class="form-control" (ngModelChange)="changeMarketSaleRecordingDateTo($event)" (click)="marketSaleRecordingDateTo.open()" [minDate]="minDate" [maxDate]="maxDate" placeholder="MM-DD-YYYY" formControlName="marketSaleRecordingDateTo" name="marketSaleRecordingDateTo"  ngbDatepicker #marketSaleRecordingDateTo="ngbDatepicker">
+																	<div class="input-group-append">
+																	<button class="btn btn-default calendar" (click)="marketSaleRecordingDateTo.toggle()" type="button"><i class="fa fa-calendar"></i></button>
+																	</div>
+																</div>
+																<small *ngIf="openMarketSaleRecordingDateToError" class="error-text">Invalid Date</small>
+															</div>
+														</div>
+													</div>
+													<div class="inner_data">
+														<div class="row mb-3">
+															<div class="col-sm-3">
+																<label>Recording Month</label></div>
+															<div class="col-sm-9">
+																	<ng-select formControlName="recordingMonth" [(ngModel)]="selectedRecordingMonth" (change)="changeRecordingMonth($event)" data-placeholder="Recording Month">
+																		<ng-option *ngFor="let recordingMonth of availableRecordingMonth" value="{{recordingMonth.val}}_{{recordingMonth.text}}">{{ recordingMonth.text }}</ng-option>
+																	</ng-select>
+															</div>
+														</div>
+													</div>
+													<div class="inner_data">
+														<div class="row mb-3">
+															<div class="col-sm-3">
+																<label>Seller Name</label>
+															</div>
+															<div class="col-sm-3">
+																<select formControlName="sellerNameSelect" (change)="changeSellerNameSelect($event.target.value)" class="form-control">
+																	<option value="is">Is</option>
+																	<option value="is not">Is Not</option>
+																	<option value="starts with">Starts With</option>
+																	<option value="contains">Contains</option>
+																</select>
+															</div>
+															<div class="col-sm-6">
+																<div class="input-group">
+																	<input  class="form-control" (ngModelChange)="changeSellerName($event)" placeholder="Seller Name" formControlName="sellerName">
+																</div>
+															</div>
+														</div>
+													</div>
+													<div class="inner_data">
+														<div class="row mb-3">
+															<div class="col-sm-3">
+																<label>Transaction Deed Type</label></div>
+															<div class="col-sm-9">
+																	<ng-select formControlName="deedType" [multiple]="true" [(ngModel)]="selectedDeedType" (change)="changeDeedType($event)" data-placeholder="Deed Type">
+																		<ng-option *ngFor="let deedType of availableDeedType" value="{{deedType.val}}_{{deedType.text}}">{{ deedType.text }}</ng-option>
+																	</ng-select>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+											<!-- single box end -->
+										</div>
+								</div>
+								<!-- Sale Information Panel End -->
+
+								<!-- Open Lien Information Panel Start -->
+								<div class="panel panel-default">
+										<div class="panel-heading bg-white mt-2" data-toggle="collapse" data-target="#financingInformationFilters">
+												 <h6 class="panel-title inner_title">
+														 Open Lien Information
+												 </h6>
+										</div>
+										<div id="financingInformationFilters" class="panel-collapse collapse show">
+											<!-- single box start -->
+											<div class="single_box">
+											    <div class="bg-white box_section">
+											        <div class="inner_data">
+											            <div class="row mb-3">
+											                <div class="col-sm-3">
+											                    <label>Mortgage Amount</label>
+											                </div>
+											                <div class="col-sm-3">
+											                    <select formControlName="mortgageAmountSelect" (change)="changeMortageStatus($event.target.value)" class="form-control">
+											                        <option value="is between">Is Between</option>
+											                        <option value="is">Is</option>
+											                    </select>
+											                </div>
+											                <div [class]="selection.mortgageAmountSelect == 'is between'? 'col-sm-3': 'col-sm-6'">
+											                    <input (keypress)="numberOnly($event)"  type="number" (change)="changeMortgageFrom($event.target.value)" class="form-control money" formControlName="mortgageAmountFrom" placeholder="Amount">
+											                </div>
+											                <div *ngIf="selection.mortgageAmountSelect == 'is between'" class="col-sm-3">
+											                    <input (keypress)="numberOnly($event)" type="number" (change)="changeMortgageTo($event.target.value)" class="form-control money" formControlName="mortgageAmountTo" placeholder="Amount">
+											                    <small *ngIf="openAmountError" class="error-text">Invalid Amount</small>
+											                </div>
+											            </div>
+											        </div>
+											        <div class="inner_data">
+											            <div class="row mb-3">
+											                <div class="col-sm-3">
+											                    <label>Mortgage Recording Date</label>
+											                </div>
+											                <div class="col-sm-3">
+											                    <select formControlName="mortgageRecordingDate" (change)="changeMortageDate($event.target.value)" class="form-control">
+											                        <option value="is">Is</option>
+											                        <option value="is between">Is Between</option>
+											                        <option value="is before">Is Before</option>
+											                        <option value="is after">Is After</option>
+											                    </select>
+											                </div>
+											                <div [class]="selection.mortgageRecordingDate == 'is between' ? 'col-sm-3' : 'col-sm-6'">
+											                    <div class="input-group">
+											                        <input  class="form-control" placeholder="MM-DD-YYYY" [minDate]="minDate" [maxDate]="maxDate" (click)="MortgageFrom.open()" (ngModelChange)="mortgageDateFrom($event)"  formControlName="mortgageRecordingFrom" name="mortgageRecordingFrom"  ngbDatepicker #MortgageFrom="ngbDatepicker">
+											                        <div class="input-group-append">
+											                            <button class="btn btn-default calendar" (click)="MortgageFrom.toggle()" type="button"><i class="fa fa-calendar"></i></button>
+											                        </div>
+											                    </div>
+											                </div>
+											                <div *ngIf="selection.mortgageRecordingDate == 'is between'" class="col-sm-3">
+											                    <div class="input-group">
+											                        <input  class="form-control" placeholder="MM-DD-YYYY" [minDate]="minDate" [maxDate]="maxDate" (click)="MortgageTo.open()" (ngModelChange)="mortgageDateTo($event)" formControlName="mortgageRecordingTo" name="mortgageRecordingTo" ngbDatepicker #MortgageTo="ngbDatepicker">
+											                        <div class="input-group-append">
+											                            <button class="btn btn-default calendar" (click)="MortgageTo.toggle()" type="button"><i class="fa fa-calendar"></i></button>
+											                        </div>
+											                    </div>
+											                    <small class="error-text" *ngIf="openDateError">Invalid Date</small>
+											                </div>
+											            </div>
+											        </div>
+											        <div class="inner_data">
+											            <div class="row mb-3">
+											                <div class="col-sm-3">
+											                    <label>Mortgage Type</label>
+											                </div>
+											                <div class="col-sm-9">
+											                    <ng-select formControlName="mortgageType" [multiple]="true" [(ngModel)]="selectedMortgageType" (change)="changeMortgageType($event)" data-placeholder="Add More">
+																							<ng-option *ngFor="let mortgageType of availableMortgageType" value="{{mortgageType.val}}_{{mortgageType.text}}">{{ mortgageType.text }}</ng-option>
+											                    </ng-select>
+											                </div>
+											            </div>
+											        </div>
+											        <div class="inner_data">
+											            <div class="row mb-3">
+											                <div class="col-sm-3">
+											                    <label>Seller Carryback</label>
+											                </div>
+											                <div class="col-sm-9">
+											                    <ng-select formControlName="sellerCarryBack" [(ngModel)]="selectedSellerCarryBack" (change)="changeSellerCarryBack($event)" data-placeholder="Seller Carryback">
+																							<ng-option *ngFor="let sellerCarryBack of availableSellerCarryBack" value="{{sellerCarryBack.val}}_{{sellerCarryBack.text}}">{{ sellerCarryBack.text }}</ng-option>
+											                    </ng-select>
+											                </div>
+											            </div>
+											        </div>
+											        <div class="inner_data">
+											            <div class="row mb-3">
+											                <div class="col-sm-3">
+											                    <label>Interest Rate Between</label>
+											                </div>
+											                <div class="col-sm-3">
+											                    <select formControlName="mortgageInterestStatus" (change)="mortgageInterest($event.target.value)" class="form-control">
+											                        <option value="is between">Is Between</option>
+											                        <option value="is">Is</option>
+											                    </select>
+											                </div>
+											                <div [class]="selection.mortgageInterestStatus == 'is between'? 'col-sm-3': 'col-sm-6'">
+																					<input type="number" (change)="changeMortgageInterestFrom($event.target.value)" formControlName="mortgageInterestFrom" class="form-control" placeholder="Percent">
+																			</div>
+											                <div *ngIf="selection.mortgageInterestStatus == 'is between'" class="col-sm-3">
+																					<input type="number" (change)="changeMortgageInterestTo($event.target.value)" formControlName="mortgageInterestTo" class="form-control" placeholder="Percent">
+																					<small class="error-text" *ngIf="openInterestError">Invalid Format</small>
+																			</div>
+											            </div>
+											        </div>
+															<div class="inner_data">
+																	<div class="row mb-3">
+																			<div class="col-sm-3">
+																					<label>Financing Deed Type</label>
+																			</div>
+																			<div class="col-sm-9">
+																					<ng-select formControlName="financingDeedType" [multiple]="true" [(ngModel)]="selectedFinancingDeedType" (change)="changeFinancingDeedType($event)" data-placeholder="Add More">
+																							<ng-option *ngFor="let financingDeedType of availableFinancingDeedType" value="{{financingDeedType.val}}_{{financingDeedType.text}}">{{ financingDeedType.text }}</ng-option>
+																					</ng-select>
+																			</div>
+																	</div>
+															</div>
+															<div class="inner_data">
+																	<div class="row mb-3">
+																			<div class="col-sm-3">
+																					<label>Interest Rate Type</label>
+																			</div>
+																			<div class="col-sm-9">
+																					<ng-select formControlName="interstRateType" [multiple]="true" [(ngModel)]="selectedInterstRateType" (change)="changeInterstRateType($event)" data-placeholder="Add More">
+																							<ng-option *ngFor="let interstRateType of availableInterstRateType" value="{{interstRateType.val}}_{{interstRateType.text}}">{{ interstRateType.text }}</ng-option>
+																					</ng-select>
+																			</div>
+																	</div>
+															</div>
+											        <div class="inner_data">
+											            <div class="row mb-3">
+											                <div class="col-sm-3">
+											                    <label>Max Open Lien</label>
+											                </div>
+											                <div class="col-sm-9">
+											                    <ng-select formControlName="maxOpenLien" [multiple]="true" [(ngModel)]="selectedMaxOpenLien" (change)="changeMortgageMax($event)" data-placeholder="Add More">
+											                    <ng-option value="Free and Clear_Free and Clear">Free and Clear</ng-option>
+											                    <ng-option value="1_1">1</ng-option>
+											                    <ng-option value="2_2">2</ng-option>
+											                    <ng-option value="3_3">3</ng-option>
+											                    <ng-option value="4_4">4</ng-option>
+											                    </ng-select>
+											                </div>
+											            </div>
+											        </div>
+											    </div>
+											</div>
+											<!-- single box end -->
+										</div>
+										<!-- Open Lien Information Panel Start -->
+
+										<!-- Equity Panel Start -->
+										<div class="panel panel-default">
+												<div class="panel-heading bg-white mt-2" data-toggle="collapse" data-target="#equityFilters">
+														 <h6 class="panel-title inner_title">
+																 Equity
+														 </h6>
+												</div>
+												<div id="equityFilters" class="panel-collapse collapse show">
+														<!-- single box start -->
+														<div class="single_box">
+														    <div class="bg-white box_section">
+														        <div class="inner_data">
+														            <div class="row mb-3">
+														                <div class="col-sm-3">
+														                    <label>Equity Value</label>
+														                </div>
+														                <div class="col-sm-3">
+														                    <select formControlName="homeEquityValue" (change)="changeHomeEquityValueSelect($event.target.value)" class="form-control">
+														                        <option value="is">Is</option>
+														                        <option value="is between">Is Between</option>
+														                    </select>
+														                </div>
+														                <div [class]="selection.homeEquityValue == 'is between'? 'col-sm-3': 'col-sm-6'">
+														                    <input type="number" (change)="changeHomeEquityValueFrom($event.target.value)" formControlName="homeEquityValueFrom" class="form-control" placeholder="Equity Value">
+														                </div>
+														                <div *ngIf="selection.homeEquityValue == 'is between'" class="col-sm-3">
+														                    <input type="number" (change)="changeHomeEquityValueTo($event.target.value)" formControlName="homeEquityValueTo" class="form-control" placeholder="Equity Value">
+														                    <small class="error-text" *ngIf="openHomeEquityValueError">Invalid Equity Value</small>
+														                </div>
+														            </div>
+														        </div>
+														        <div class="inner_data">
+														            <div class="row mb-3">
+														                <div class="col-sm-3">
+														                    <label>Equity %</label>
+														                </div>
+														                <div class="col-sm-3">
+														                    <select formControlName="homeEquityPercentage" (change)="changeHomeEquityPercentageSelect($event.target.value)" class="form-control">
+														                        <option value="is">Is</option>
+														                        <option value="is between">Is Between</option>
+														                    </select>
+														                </div>
+														                <div [class]="selection.homeEquityPercentage == 'is between'? 'col-sm-3': 'col-sm-6'">
+														                    <input type="number" (change)="changeHomeEquityPercentageFrom($event.target.value)" formControlName="homeEquityPercentageFrom" class="form-control" placeholder="%">
+														                </div>
+														                <div *ngIf="selection.homeEquityPercentage == 'is between'" class="col-sm-3">
+														                    <input type="number" (change)="changeHomeEquityPercentageTo($event.target.value)" formControlName="homeEquityPercentageTo" class="form-control" placeholder="%">
+														                    <small class="error-text" *ngIf="openHomeEquityPercentageError">Invalid Equity Percentage</small>
+														                </div>
+														            </div>
+														        </div>
+														    </div>
+														</div>
+														<!-- single box end -->
+												</div>
+										</div>
+										<!-- Equity Panel End -->
+
+										<!-- Assessor Tax Filters Panel Start -->
+										<div class="panel panel-default">
+												<div class="panel-heading bg-white mt-2" data-toggle="collapse" data-target="#AssessorTaxFilters">
+														 <h6 class="panel-title inner_title">
+																 Assessor Information
+														 </h6>
+												</div>
+												<div id="AssessorTaxFilters" class="panel-collapse collapse show">
+														<!-- single box start -->
+														<div class="single_box">
+														    <div class="bg-white box_section">
+														        <div class="inner_data">
+														            <div class="row mb-3">
+														                <div class="col-sm-3">
+														                    <label>Assessed Total Value</label>
+														                </div>
+														                <div class="col-sm-3">
+														                    <select formControlName="assdTotalValue" (change)="changeAssdTotalValueSelect($event.target.value)" class="form-control">
+														                        <option value="is">Is</option>
+														                        <option value="is between">Is Between</option>
+														                    </select>
+														                </div>
+														                <div [class]="selection.assdTotalValue == 'is between'? 'col-sm-3': 'col-sm-6'">
+														                    <input type="number" (change)="changeAssdTotalValueFrom($event.target.value)" formControlName="assdTotalValueFrom" class="form-control" placeholder="Assessed Value">
+														                </div>
+														                <div *ngIf="selection.assdTotalValue == 'is between'" class="col-sm-3">
+														                    <input type="number" (change)="changeAssdTotalValueTo($event.target.value)" formControlName="assdTotalValueTo" class="form-control" placeholder="Assessed Value">
+														                    <small class="error-text" *ngIf="openAssdTotalValueError">Invalid Assessed Total Value</small>
+														                </div>
+														            </div>
+														        </div>
+														        <div class="inner_data">
+														            <div class="row mb-3">
+														                <div class="col-sm-3">
+														                    <label>Assessed Land Value</label>
+														                </div>
+														                <div class="col-sm-3">
+														                    <select formControlName="assdLandValue" (change)="changeAssdLandValueSelect($event.target.value)" class="form-control">
+														                        <option value="is">Is</option>
+														                        <option value="is between">Is Between</option>
+														                    </select>
+														                </div>
+														                <div [class]="selection.assdLandValue == 'is between'? 'col-sm-3': 'col-sm-6'">
+														                    <input type="number" (change)="changeAssdLandValueFrom($event.target.value)" formControlName="assdLandValueFrom" class="form-control" placeholder="Assessed Land Value">
+														                </div>
+														                <div *ngIf="selection.assdLandValue == 'is between'" class="col-sm-3">
+														                    <input type="number" (change)="changeAssdLandValueTo($event.target.value)" formControlName="assdLandValueTo" class="form-control" placeholder="Assessed Land Value">
+														                    <small class="error-text" *ngIf="openAssdLandValueError">Invalid Assessed Land Value</small>
+														                </div>
+														            </div>
+														        </div>
+														        <div class="inner_data">
+														            <div class="row mb-3">
+														                <div class="col-sm-3">
+														                    <label>Market Total Value</label>
+														                </div>
+														                <div class="col-sm-3">
+														                    <select formControlName="mktTotalValue" (change)="changeMktTotalValueSelect($event.target.value)" class="form-control">
+														                        <option value="is">Is</option>
+														                        <option value="is between">Is Between</option>
+														                    </select>
+														                </div>
+														                <div [class]="selection.mktTotalValue == 'is between'? 'col-sm-3': 'col-sm-6'">
+														                    <input type="number" (change)="changeMktTotalValueFrom($event.target.value)" formControlName="mktTotalValueFrom" class="form-control" placeholder="Market Total Value">
+														                </div>
+														                <div *ngIf="selection.mktTotalValue == 'is between'" class="col-sm-3">
+														                    <input type="number" (change)="changeMktTotalValueTo($event.target.value)" formControlName="mktTotalValueTo" class="form-control" placeholder="Market Total Value">
+														                    <small class="error-text" *ngIf="openMktTotalValueError">Invalid Market Total Value</small>
+														                </div>
+														            </div>
+														        </div>
+														        <div class="inner_data">
+														            <div class="row mb-3">
+														                <div class="col-sm-3">
+														                    <label>Market Land Value</label>
+														                </div>
+														                <div class="col-sm-3">
+														                    <select formControlName="mktLandValue" (change)="changeMktLandValueSelect($event.target.value)" class="form-control">
+														                        <option value="is">Is</option>
+														                        <option value="is between">Is Between</option>
+														                    </select>
+														                </div>
+														                <div [class]="selection.mktLandValue == 'is between'? 'col-sm-3': 'col-sm-6'">
+														                    <input type="number" (change)="changeMktLandValueFrom($event.target.value)" formControlName="mktLandValueFrom" class="form-control" placeholder="Market Land Value">
+														                </div>
+														                <div *ngIf="selection.mktLandValue == 'is between'" class="col-sm-3">
+														                    <input type="number" (change)="changeMktLandValueTo($event.target.value)" formControlName="mktLandValueTo" class="form-control" placeholder="Market Land Value">
+														                    <small class="error-text" *ngIf="openMktLandValueError">Invalid Market Land Value</small>
+														                </div>
+														            </div>
+														        </div>
+														        <div class="inner_data">
+														            <div class="row mb-3">
+														                <div class="col-sm-3">
+														                    <label>Appraised Total Value</label>
+														                </div>
+														                <div class="col-sm-3">
+														                    <select formControlName="apprTotalValue" (change)="changeApprTotalValueSelect($event.target.value)" class="form-control">
+														                        <option value="is">Is</option>
+														                        <option value="is between">Is Between</option>
+														                    </select>
+														                </div>
+														                <div [class]="selection.apprTotalValue == 'is between'? 'col-sm-3': 'col-sm-6'">
+														                    <input type="number" (change)="changeApprTotalValueFrom($event.target.value)" formControlName="apprTotalValueFrom" class="form-control" placeholder="Appraised Total Value">
+														                </div>
+														                <div *ngIf="selection.apprTotalValue == 'is between'" class="col-sm-3">
+														                    <input type="number" (change)="changeApprTotalValueTo($event.target.value)" formControlName="apprTotalValueTo" class="form-control" placeholder="Appraised Total Value">
+														                    <small class="error-text" *ngIf="openApprTotalValueError">Invalid Appraised Total Value</small>
+														                </div>
+														            </div>
+														        </div>
+														        <div class="inner_data">
+														            <div class="row mb-3">
+														                <div class="col-sm-3">
+														                    <label>Appraised Land Value</label>
+														                </div>
+														                <div class="col-sm-3">
+														                    <select formControlName="apprLandValue" (change)="changeApprLandValueSelect($event.target.value)" class="form-control">
+														                        <option value="is">Is</option>
+														                        <option value="is between">Is Between</option>
+														                    </select>
+														                </div>
+														                <div [class]="selection.apprLandValue == 'is between'? 'col-sm-3': 'col-sm-6'">
+														                    <input type="number" (change)="changeApprLandValueFrom($event.target.value)" formControlName="apprLandValueFrom" class="form-control" placeholder="Appraised Land Value">
+														                </div>
+														                <div *ngIf="selection.apprLandValue == 'is between'" class="col-sm-3">
+														                    <input type="number" (change)="changeApprLandValueTo($event.target.value)" formControlName="apprLandValueTo" class="form-control" placeholder="Appraised Land Value">
+														                    <small class="error-text" *ngIf="openApprLandValueError">Invalid Appraised Land Value</small>
+														                </div>
+														            </div>
+														        </div>
+														        <div class="inner_data">
+														            <div class="row mb-3">
+														                <div class="col-sm-3">
+														                    <label>Appraised Improvement Value</label>
+														                </div>
+														                <div class="col-sm-3">
+														                    <select formControlName="apprImprovementValue" (change)="changeApprImprovementValueSelect($event.target.value)" class="form-control">
+														                        <option value="is">Is</option>
+														                        <option value="is between">Is Between</option>
+														                    </select>
+														                </div>
+														                <div [class]="selection.apprImprovementValue == 'is between'? 'col-sm-3': 'col-sm-6'">
+														                    <input type="number" (change)="changeApprImprovementValueFrom($event.target.value)" formControlName="apprImprovementValueFrom" class="form-control" placeholder="Appraised Improvement Value">
+														                </div>
+														                <div *ngIf="selection.apprImprovementValue == 'is between'" class="col-sm-3">
+														                    <input type="number" (change)="changeApprImprovementValueTo($event.target.value)" formControlName="apprImprovementValueTo" class="form-control" placeholder="Appraised Improvement Value">
+														                    <small class="error-text" *ngIf="openApprImprovementValueError">Invalid Appraised Improvement Value</small>
+														                </div>
+														            </div>
+														        </div>
+														        <div class="inner_data">
+														            <div class="row mb-3">
+														                <div class="col-sm-3">
+														                    <label>Appraised Improvement %</label>
+														                </div>
+														                <div class="col-sm-3">
+														                    <select formControlName="apprImprovementPercentage" (change)="changeApprImprovementPercentageSelect($event.target.value)" class="form-control">
+														                        <option value="is">Is</option>
+														                        <option value="is between">Is Between</option>
+														                    </select>
+														                </div>
+														                <div [class]="selection.apprImprovementPercentage == 'is between'? 'col-sm-3': 'col-sm-6'">
+														                    <input type="number" (change)="changeApprImprovementPercentageFrom($event.target.value)" formControlName="apprImprovementPercentageFrom" class="form-control" placeholder="Appraised Improvement %">
+														                </div>
+														                <div *ngIf="selection.apprImprovementPercentage == 'is between'" class="col-sm-3">
+														                    <input type="number" (change)="changeApprImprovementPercentageTo($event.target.value)" formControlName="apprImprovementPercentageTo" class="form-control" placeholder="Appraised Improvement %">
+														                    <small class="error-text" *ngIf="openApprImprovementPercentageError">Invalid Appraised Improvement %</small>
+														                </div>
+														            </div>
+														        </div>
+														    </div>
+														</div>
+														<!-- single box end -->
+												</div>
+										</div>
+										<!-- Assessor Tax Filters Panel End -->
+
+										<!-- Market Panel Start -->
+										<div class="panel panel-default">
+												<div class="panel-heading bg-white mt-2" data-toggle="collapse" data-target="#marketFilters">
+														 <h6 class="panel-title inner_title">
+																 Market Value
+														 </h6>
+												</div>
+												<div id="marketFilters" class="panel-collapse collapse show">
+														<!-- single box start -->
+														<div class="single_box">
+														    <div class="bg-white box_section">
+														        <div class="inner_data">
+														            <div class="row mb-3">
+														                <div class="col-sm-3">
+														                    <label>Estimated Value</label>
+														                </div>
+														                <div class="col-sm-3">
+														                    <select formControlName="estimatedValue" (change)="changeEstimatedValueSelect($event.target.value)" class="form-control">
+														                        <option value="is">Is</option>
+														                        <option value="is between">Is Between</option>
+														                    </select>
+														                </div>
+														                <div [class]="selection.estimatedValue == 'is between'? 'col-sm-3': 'col-sm-6'">
+														                    <input type="number" (change)="changeEstimatedValueFrom($event.target.value)" formControlName="estimatedValueFrom" class="form-control" placeholder="Estimated Value">
+														                </div>
+														                <div *ngIf="selection.estimatedValue == 'is between'" class="col-sm-3">
+														                    <input type="number" (change)="changeEstimatedValueTo($event.target.value)" formControlName="estimatedValueTo" class="form-control" placeholder="Estimated Value">
+														                    <small class="error-text" *ngIf="openEstimatedValueError">Invalid Estimated Value</small>
+														                </div>
+														            </div>
+														        </div>
+														    </div>
+														</div>
+														<!-- single box end -->
+												</div>
+										</div>
+										<!-- Market Panel End -->
+
+										<!-- Listing Information Panel Start -->
+										<div class="panel panel-default">
+										    <div class="panel-heading bg-white mt-2" data-toggle="collapse" data-target="#listingInformation">
+										        <h6 class="panel-title inner_title">
+										            Listing Information
+										        </h6>
+										    </div>
+										    <div id="listingInformation" class="panel-collapse collapse show">
+										        <!-- single box start -->
+										        <div class="single_box">
+										            <div class="bg-white box_section">
+										                <div class="inner_data">
+										                    <div class="row mb-3">
+										                        <div class="col-sm-3">
+										                            <label>Listing Status</label>
+										                        </div>
+										                        <div class="col-sm-9">
+										                            <ng-select formControlName="listingStatus" [multiple]="true" [(ngModel)]="selectedListingStatus" (change)="changeListingStatus($event)" data-placeholder="Add More">
+										                            <ng-option value="1_Active">Active</ng-option>
+										                            <ng-option value="2_Pending">Pending</ng-option>
+										                            </ng-select>
+										                        </div>
+										                    </div>
+										                    <div class="row mb-3">
+										                        <div class="col-sm-3">
+										                            <label>Listing Date</label>
+										                        </div>
+										                        <div class="col-sm-3">
+										                            <select formControlName="listingDateStatus" (change)="listingDateChange($event.target.value)" class="form-control">
+																										<option value="is">Is</option>
+										                                <option value="is between">Is Between</option>
+																										<option value="is before">Is Before</option>
+																										<option value="is after">Is After</option>
+										                            </select>
+										                        </div>
+										                        <div [class]="selection.listingDateStatus == 'is'? 'col-sm-6': 'col-sm-3'">
+										                            <div class="input-group">
+										                                <input  class="form-control" formControlName="listingDateFrom" [minDate]="minDate" [maxDate]="maxDate" (ngModelChange)="listingDateChangeFrom($event)" (click)="listingDateFrom.open()" placeholder="MM-DD-YYYY" name="listingDateFrom"  ngbDatepicker #listingDateFrom="ngbDatepicker">
+										                                <div class="input-group-append">
+										                                    <button class="btn btn-default calendar" (click)="listingDateFrom.toggle()" type="button"><i class="fa fa-calendar"></i></button>
+										                                </div>
+										                            </div>
+										                        </div>
+										                        <div *ngIf="selection.listingDateStatus!='is'" class="col-sm-3">
+										                            <div class="input-group">
+										                                <input  class="form-control"  formControlName="listingDateTo" [minDate]="minDate" [maxDate]="maxDate" (ngModelChange)="listingDateChangeTo($event)" (click)="listingDateTo.open()" placeholder="MM-DD-YYYY" name="listingDateTo"   ngbDatepicker #listingDateTo="ngbDatepicker">
+										                                <div class="input-group-append">
+										                                    <button class="btn btn-default calendar" (click)="listingDateTo.toggle()" type="button"><i class="fa fa-calendar"></i></button>
+										                                </div>
+										                            </div>
+										                            <small class="error-text" *ngIf="listingDateError">Invalid Date</small>
+										                        </div>
+										                    </div>
+										                    <div class="row mb-12">
+										                        <div class="col-sm-3">
+										                            <label>Listing Price</label>
+										                        </div>
+										                        <div class="col-sm-3">
+										                            <select formControlName="listingPriceStatus" (change)="listingPriceChange($event.target.value)" class="form-control">
+										                                <option value="is between">Is Between</option>
+										                                <option value="is">Is</option>
+										                            </select>
+										                        </div>
+										                        <div [class]="selection.listingPriceStatus=='is'? 'col-sm-6': 'col-sm-3'"><input type="number" (change)="listingPriceChangeFrom($event.target.value)" formControlName="listingPriceFrom" class="form-control money" placeholder="Amount"></div>
+										                        <div *ngIf="selection.listingPriceStatus!='is'"  class="col-sm-3"><input type="number" (change)="listingPriceChangeTo($event.target.value)" formControlName="listingPriceTo" class="form-control money" placeholder="Amount"><small class="error-text" *ngIf="listingError">Invalid Format</small></div>
+										                    </div>
+										                </div>
+										            </div>
+										        </div>
+										        <!-- single box end -->
+										    </div>
+										</div>
+										<!-- Listing Information Panel End -->
+
+										<!-- Foreclosure Information Panel Start -->
+										<div class="panel panel-default">
+										    <div class="panel-heading bg-white mt-2" data-toggle="collapse" data-target="#foreclosureInformation">
+										        <h6 class="panel-title inner_title">
+										            Foreclosure Information
+										        </h6>
+										    </div>
+										    <div id="foreclosureInformation" class="panel-collapse collapse show">
+										        <!-- single box start -->
+										        <div class="single_box">
+										            <div class="bg-white box_section">
+										                <div class="inner_data">
+										                    <div class="row mb-3">
+										                        <div class="col-sm-3">
+										                            <label>Foreclosure Status</label>
+										                        </div>
+										                        <div class="col-sm-9">
+										                            <select (change)="foreclosureStatusChange($event)" formControlName="foreclosureStatus" class="form-control">
+										                                <option value="null">Select Status</option>
+										                                <option value="1">Default</option>
+										                                <option value="2">Auction</option>
+										                                <option value="3">REO</option>
+										                                <option value="4">REO Sale</option>
+										                                <option value="5">Short Sale</option>
+										                            </select>
+										                        </div>
+										                    </div>
+																		</div>
+																		<div class="inner_data">
+										                    <div class="row mb-3">
+										                        <div class="col-sm-3">
+										                            <label>Foreclosure Recorded Date</label>
+										                        </div>
+										                        <div class="col-sm-3">
+										                            <select formControlName="foreclosureRecordedDateStatus" (change)="foreclosureRecordedDateChange($event.target.value)" class="form-control">
+																										<option value="is">Is</option>
+										                                <option value="is between">Is Between</option>
+																										<option value="is before">Is Before</option>
+																										<option value="is after">Is After</option>
+										                            </select>
+										                        </div>
+										                        <div [class]="selection.foreclosureRecordedDateStatus == 'is between'? 'col-sm-3': 'col-sm-6'">
+										                            <div class="input-group">
+										                                <input  class="form-control" formControlName="foreclosureRecordedDateFrom" [minDate]="minDate" [maxDate]="maxDate" (click)="foreclosureRecordedDateFrom.open()" (ngModelChange)="foreclosureRecordedDateChangeFrom($event)" placeholder="MM-DD-YYYY" name="foreclosureRecordedDateFrom"  ngbDatepicker #foreclosureRecordedDateFrom="ngbDatepicker">
+										                                <div class="input-group-append">
+										                                    <button class="btn btn-default calendar" (click)="foreclosureRecordedDateFrom.toggle()" type="button"><i class="fa fa-calendar"></i></button>
+										                                </div>
+										                            </div>
+										                        </div>
+										                        <div *ngIf="selection.foreclosureRecordedDateStatus =='is between'" class="col-sm-3">
+										                            <div class="input-group">
+										                                <input  class="form-control"  formControlName="foreclosureRecordedDateTo" [minDate]="minDate" [maxDate]="maxDate" (click)="foreclosureRecordedDateTo.open()" (ngModelChange)="foreclosureRecordedDateChangeTo($event)" placeholder="MM-DD-YYYY" name="foreclosureRecordedDateTo"   ngbDatepicker #foreclosureRecordedDateTo="ngbDatepicker">
+										                                <div class="input-group-append">
+										                                    <button class="btn btn-default calendar" (click)="foreclosureRecordedDateTo.toggle()" type="button"><i class="fa fa-calendar"></i></button>
+										                                </div>
+										                            </div>
+										                            <small class="error-text" *ngIf="foreclosureRecordedDateError">Invalid Date</small>
+										                        </div>
+										                    </div>
+																		</div>
+																		<div class="inner_data">
+										                    <div class="row mb-3">
+										                        <div class="col-sm-3">
+										                            <label>Foreclosure Event Date</label>
+										                        </div>
+										                        <div class="col-sm-3">
+										                            <select formControlName="foreclosureDateStatus" (change)="foreclosureDateChange($event.target.value)" class="form-control">
+																										<option value="is">Is</option>
+										                                <option value="is between">Is Between</option>
+																										<option value="is before">Is Before</option>
+																										<option value="is after">Is After</option>
+										                            </select>
+										                        </div>
+										                        <div [class]="selection.foreclosureDateStatus == 'is between' ? 'col-sm-3': 'col-sm-6'">
+										                            <div class="input-group">
+										                                <input  class="form-control" formControlName="foreclosureDateFrom" [minDate]="minDate" [maxDate]="maxDate" (click)="foreclosureDateFrom.open()" (ngModelChange)="foreclosureDateChangeFrom($event)" placeholder="MM-DD-YYYY" name="foreclosureDateFrom"  ngbDatepicker #foreclosureDateFrom="ngbDatepicker">
+										                                <div class="input-group-append">
+										                                    <button class="btn btn-default calendar" (click)="foreclosureDateFrom.toggle()" type="button"><i class="fa fa-calendar"></i></button>
+										                                </div>
+										                            </div>
+										                        </div>
+										                        <div *ngIf="selection.foreclosureDateStatus == 'is between'" class="col-sm-3">
+										                            <div class="input-group">
+										                                <input  class="form-control"  formControlName="foreclosureDateTo" [minDate]="minDate" [maxDate]="maxDate" (click)="foreclosureDateTo.open()" (ngModelChange)="foreclosureDateChangeTo($event)" placeholder="MM-DD-YYYY" name="foreclosureDateTo"   ngbDatepicker #foreclosureDateTo="ngbDatepicker">
+										                                <div class="input-group-append">
+										                                    <button class="btn btn-default calendar" (click)="foreclosureDateTo.toggle()" type="button"><i class="fa fa-calendar"></i></button>
+										                                </div>
+										                            </div>
+										                            <small class="error-text" *ngIf="forDateError">Invalid Date</small>
+										                        </div>
+										                    </div>
+																		</div>
+																		<div class="inner_data">
+										                    <div class="row mb-3">
+										                        <div class="col-sm-3">
+										                            <label>Foreclosure Amount</label>
+										                        </div>
+										                        <div class="col-sm-3">
+										                            <select formControlName="foreclosureAmountStatus" (change)="foreclosureAmountChange($event.target.value)" class="form-control">
+										                                <option value="is between">Is Between</option>
+										                                <option value="is">Is</option>
+										                            </select>
+										                        </div>
+										                        <div  [class]="selection.foreclosureAmountStatus=='is'? 'col-sm-6': 'col-sm-3'"><input type="number"  (change)="foreclosureAmountChangeFrom($event.target.value)" formControlName="foreclosureAmountFrom" class="form-control money" placeholder="Amount"></div>
+										                        <div *ngIf="selection.foreclosureAmountStatus!='is'" class="col-sm-3"><input type="number" (change)="foreclosureAmountChangeTo($event.target.value)" formControlName="foreclosureAmountTo" class="form-control money" placeholder="Amount"><small class="error-text" *ngIf="forAmountError">Invalid Format</small></div>
+										                    </div>
+										                </div>
+										            </div>
+										        </div>
+										        <!-- single box end -->
+										    </div>
+										</div>
+										<!-- Foreclosure Information Panel End -->
+							</div>
+							</div>
+							<!-- accordian end -->
+						</div>
+					</form>
+
+			</div>
+			<!-- left_side end-->
+
+
+
+
+			<!-- right_side start-->
+			<div class="col-sm-4 right_area">
+				<!-- <div class="col-sm-12 main_title  mb-4 right_title"><h4>Selected Search</h4></div> -->
+
+				<div class="col-sm-12 similar_box">
+					<div class="col-md-12 text-center count">
+						<div *ngIf="submit" class="lds-facebook"><div></div><div></div><div></div></div>
+
+							<h2 *ngIf="!submit" >{{SearchCount.count | number}}</h2><p  *ngIf="!submit"> RESULTS</p>
+
+					</div>
+					<div class="col-md-12  actions">
+						<div>
+							<button (click)="submitForm()" class="btn btn-primary">Get Count</button>
+						</div>
+						<div><form [formGroup]="checkForm" action="">
+							<!-- <div class="checkbox-form">
+								<input type="checkbox" formControlName="saved" id="checkBox" name="checkBox">
+								<label for="checkBox"> Save Search</label>
+							</div> -->
+							<!-- <button type="button" class="btn btn-primary" [disabled]="SearchCount.count==0 || savedsearchFlag || !existingMember" (click)="open(saveSearchModal)">Save Search</button> -->
+						</form><button (click)="getResult($event)" data-toggle="modal" data-target="#myConfirmModal" [disabled]="SearchCount.count==0 || SearchCount.count>1000" class="btn btn-primary">View File</button></div>
+
+					</div>
+					<div class="col-md-12 text-center" style="padding:5px;">
+						<small >You can only see 1000 or fewer results. </small>
+						<!-- <div>
+							<button (click)="getResult()" data-toggle="modal" data-target="#myConfirmModal" [disabled]="SearchCount.count==0" class="btn btn-primary">View File</button>
+						</div> -->	<br>
+					</div>
+				</div>
+
+				<!-- similar box start -->
+				<div *ngIf="(selection.state && selection.state != '') || (selection.county && selection.county.length > 0)" class="col-sm-12 similar_box">
+					<div class="title">State & County Bundle</div>
+					<div *ngIf="selection.state && selection.state != ''" class="data_fields">
+						<div class="listings_title">State</div>
+						<div class="listings">
+							<span>{{selection.state.text}}<i (click)="remove('state', selection.state, 'singleSelect', '')" class="fa fa-close"></i></span>
+						</div>
+					</div>
+					<div *ngIf="selection.county && selection.county.length > 0" class="data_fields">
+						<div class="listings_title">County</div>
+						<div class="listings">
+								<span *ngFor="let county of selection.county" [class]="selection.countySelect=='is not'? 'faded' : ''"> <var *ngIf="selection.countySelect=='is not'">Not</var> {{county.text}}<i (click)="remove('county', selection.county, 'multySelect', '')" class="fa fa-close"></i></span>
+						</div>
+					</div>
+				</div>
+				<!-- similar box end -->
+
+				<!-- similar box start -->
+				<div *ngIf="(selection.streetNumberFrom && selection.streetNumberFrom.length > 0) || (selection.streetDir && selection.streetDir.length > 0) ||
+				    (selection.streetNames && selection.streetNames.length > 0) || (selection.streetTypes && selection.streetTypes.length > 0) ||
+				    (selection.streetPostDir && selection.streetPostDir.length > 0) || (selection.unitFrom && selection.unitFrom.length > 0) ||
+						(selection.city && selection.city.length > 0) || (selection.zipcode && selection.zipcode.length > 0)" class="col-sm-12 similar_box">
+				    <div class="title">Address Bundle</div>
+				    <div class="data_fields" *ngIf="selection.streetNumberFrom && selection.streetNumberFrom.length > 0">
+				        <div class="listings_title">Street #</div>
+				        <div class="listings">
+				            <span> {{selection.streetNumberFrom}} <var *ngIf="selection.streetNumberSelect == 'is between'"> - {{selection.streetNumberTo}}</var>  <i (click)="remove('streetNumberTo', selection.streetNumberTo, 'txtInput2', 'streetNumberFrom')" class="fa fa-close"></i></span>
+				        </div>
+				    </div>
+				    <div class="data_fields" *ngIf="selection.streetDir && selection.streetDir.length > 0">
+				        <div class="listings_title">Pre Direction</div>
+				        <div class="listings">
+				            <span *ngFor="let streetDir of selection.streetDir"> {{streetDir.text}} <i (click)="remove('streetDir', selection.streetDir, 'multySelect', '')" class="fa fa-close"></i></span>
+				        </div>
+				    </div>
+				    <div class="data_fields" *ngIf="selection.streetNames && selection.streetNames.length > 0">
+				        <div class="listings_title">Street Name</div>
+				        <div class="listings">
+				            <span> {{selection.streetNames}} <i (click)="remove('streetNames', selection.streetNames, 'txtInput', '')" class="fa fa-close"></i></span>
+				        </div>
+				    </div>
+				    <div class="data_fields" *ngIf="selection.streetTypes && selection.streetTypes.length > 0">
+				        <div class="listings_title">Street Type</div>
+				        <div class="listings">
+				            <span *ngFor="let streetTypes of selection.streetTypes"> {{streetTypes.text}} <i (click)="remove('streetTypes', selection.streetTypes, 'multySelect', '')" class="fa fa-close"></i></span>
+				        </div>
+				    </div>
+				    <div class="data_fields" *ngIf="selection.streetPostDir && selection.streetPostDir.length > 0">
+				        <div class="listings_title">Post Direction</div>
+				        <div class="listings">
+				            <span *ngFor="let streetPostDir of selection.streetPostDir"> {{streetPostDir.text}} <i (click)="remove('streetPostDir', selection.streetPostDir, 'multySelect', '')" class="fa fa-close"></i></span>
+				        </div>
+				    </div>
+				    <div class="data_fields" *ngIf="selection.unitFrom && selection.unitFrom.length > 0">
+				        <div class="listings_title">Unit #</div>
+				        <div class="listings">
+				            <span> {{selection.unitFrom}} <var *ngIf="selection.unitSelect == 'is between'"> - {{selection.unitTo}}</var>  <i (click)="remove('unitTo', selection.unitTo, 'txtInput2', 'unitFrom')" class="fa fa-close"></i></span>
+				        </div>
+				    </div>
+						<div *ngIf="selection.city && selection.city.length > 0" class="data_fields">
+							<div class="listings_title">City</div>
+							<div class="listings">
+									<span *ngFor="let city of selection.city" [class]="selection.citySelect=='is not'? 'faded' : ''"> <var *ngIf="selection.citySelect=='is not'">Not</var> {{city.text}}<i (click)="remove('city', selection.city, 'multySelect', '')" class="fa fa-close"></i></span>
+							</div>
+						</div>
+						<div *ngIf="selection.zipcode && selection.zipcode.length > 0" class="data_fields">
+							<div class="listings_title">Zip</div>
+							<div class="listings">
+									<span [class]="selection.zipSelect=='is not'? 'faded' : ''"> <var *ngIf="selection.zipSelect=='is not'">Not</var> {{selection.zipcode}}<i (click)="remove('zipcode', selection.zipcode, 'txtInput', '')" class="fa fa-close"></i></span>
+							</div>
+						</div>
+				</div>
+				<!-- similar box end -->
+
+				<!-- similar box start -->
+				<div *ngIf="(selection.landUse && selection.landUse.length > 0) || (selection.countyUseCode && selection.countyUseCode.length > 0) ||
+					(selection.zoningCodeFrom && selection.zoningCodeFrom.length > 0) || (selection.siteInfluence && selection.siteInfluence.length > 0) ||
+					(selection.yearBuiltFrom && selection.yearBuiltFrom.length > 0) || (selection.buildingAreaSquareFeetFrom && selection.buildingAreaSquareFeetFrom.length > 0) ||
+					(selection.totalNumberOfBedroomsFrom && selection.totalNumberOfBedroomsFrom.length > 0) || (selection.totalNumberOfBathroomsFrom && selection.totalNumberOfBathroomsFrom.length > 0) ||
+					(selection.totalNumberOfRoomsFrom && selection.totalNumberOfRoomsFrom.length > 0) || (selection.lotAreaFrom && selection.lotAreaFrom.length > 0) ||
+					(selection.lotAcreageFrom && selection.lotAcreageFrom.length > 0) || (selection.numberOfStoriesFrom && selection.numberOfStoriesFrom.length > 0) ||
+					(selection.poolOption && selection.poolOption.length > 0) || (selection.numberOfGarageSpacesFrom && selection.numberOfGarageSpacesFrom.length > 0) ||
+					(selection.numberOfUnitsFrom && selection.numberOfUnitsFrom.length > 0)" class="col-sm-12 similar_box">
+					<div class="title">Characteristics</div>
+					<div class="data_fields" *ngIf="selection.landUse && selection.landUse.length > 0">
+						<div class="listings_title">Land Use</div>
+						<div class="listings">
+							<span *ngFor="let landUse of selection.landUse" >{{landUse.text}}<i (click)="remove('landUse', landUse, 'multySelect', '')" class="fa fa-close"></i></span>
+						</div>
+					</div>
+					<div class="data_fields" *ngIf="selection.countyUseCode && selection.countyUseCode.length > 0">
+						<div class="listings_title">County Land Use</div>
+						<div class="listings">
+							<span> {{selection.countyUseCode}} <i (click)="remove('countyUseCode', selection.countyUseCode, 'txtInput', '')" class="fa fa-close"></i></span>
+						</div>
+					</div>
+					<div class="data_fields" *ngIf="selection.zoningCodeFrom && selection.zoningCodeFrom.length > 0">
+							<div class="listings_title">Zoning Code </div>
+							<div class="listings">
+									<span> {{selection.zoningCodeFrom}} <var *ngIf="selection.zoningCodeSelect == 'is between'"> - {{selection.zoningCodeTo}}</var>  <i (click)="remove('zoningCodeTo', selection.zoningCodeTo, 'txtInput2', 'zoningCodeFrom')" class="fa fa-close"></i></span>
+							</div>
+					</div>
+					<div class="data_fields" *ngIf="selection.siteInfluence && selection.siteInfluence.length > 0">
+						<div class="listings_title">Site Influence</div>
+						<div class="listings">
+							<span *ngFor="let siteInfluence of selection.siteInfluence" >{{siteInfluence.text}}<i (click)="remove('siteInfluence', selection.siteInfluence, 'multySelect', '')" class="fa fa-close"></i></span>
+						</div>
+					</div>
+					<div class="data_fields" *ngIf="selection.yearBuiltFrom && selection.yearBuiltFrom.length > 0">
+							<div class="listings_title">Year Built</div>
+							<div class="listings">
+									<span> {{selection.yearBuiltFrom}} <var *ngIf="selection.yearBuiltSelect == 'is between'"> - {{selection.yearBuiltTo}}</var>  <i (click)="remove('yearBuiltTo', selection.yearBuiltTo, 'txtInput2', 'yearBuiltFrom')" class="fa fa-close"></i></span>
+							</div>
+					</div>
+					<div class="data_fields" *ngIf="selection.buildingAreaSquareFeetFrom && selection.buildingAreaSquareFeetFrom.length > 0">
+							<div class="listings_title">Living Area (Sq. Ft.)</div>
+							<div class="listings">
+									<span> {{selection.buildingAreaSquareFeetFrom}} <var *ngIf="selection.buildingAreaSquareFeetSelect == 'is between'"> - {{selection.buildingAreaSquareFeetTo}}</var>  <i (click)="remove('buildingAreaSquareFeetTo', selection.buildingAreaSquareFeetTo, 'txtInput2', 'buildingAreaSquareFeetFrom')" class="fa fa-close"></i></span>
+							</div>
+					</div>
+					<div class="data_fields" *ngIf="selection.totalNumberOfBedroomsFrom && selection.totalNumberOfBedroomsFrom.length > 0">
+							<div class="listings_title">Bedrooms</div>
+							<div class="listings">
+									<span> {{selection.totalNumberOfBedroomsFrom}} <var *ngIf="selection.totalNumberOfBedroomsSelect == 'is between'"> - {{selection.totalNumberOfBedroomsTo}}</var>  <i (click)="remove('totalNumberOfBedroomsTo', selection.totalNumberOfBedroomsTo, 'txtInput2', 'totalNumberOfBedroomsFrom')" class="fa fa-close"></i></span>
+							</div>
+					</div>
+					<div class="data_fields" *ngIf="selection.totalNumberOfBathroomsFrom && selection.totalNumberOfBathroomsFrom.length > 0">
+							<div class="listings_title">Bathrooms</div>
+							<div class="listings">
+									<span> {{selection.totalNumberOfBathroomsFrom}} <var *ngIf="selection.totalNumberOfBathroomsSelect == 'is between'"> - {{selection.totalNumberOfBathroomsTo}}</var>  <i (click)="remove('totalNumberOfBathroomsTo', selection.totalNumberOfBathroomsTo, 'txtInput2', 'totalNumberOfBathroomsFrom')" class="fa fa-close"></i></span>
+							</div>
+					</div>
+					<div class="data_fields" *ngIf="selection.totalNumberOfRoomsFrom && selection.totalNumberOfRoomsFrom.length > 0">
+							<div class="listings_title">Total Rooms</div>
+							<div class="listings">
+									<span> {{selection.totalNumberOfRoomsFrom}} <var *ngIf="selection.totalNumberOfRoomsSelect == 'is between'"> - {{selection.totalNumberOfRoomsTo}}</var>  <i (click)="remove('totalNumberOfRoomsTo', selection.totalNumberOfRoomsTo, 'txtInput2', 'totalNumberOfRoomsFrom')" class="fa fa-close"></i></span>
+							</div>
+					</div>
+					<div class="data_fields" *ngIf="selection.lotAreaFrom && selection.lotAreaFrom.length > 0">
+							<div class="listings_title">Lot Area</div>
+							<div class="listings">
+									<span> {{selection.lotAreaFrom}} <var *ngIf="selection.lotAreaSelect == 'is between'"> - {{selection.lotAreaTo}}</var>  <i (click)="remove('lotAreaTo', selection.lotAreaTo, 'txtInput2', 'lotAreaFrom')" class="fa fa-close"></i></span>
+							</div>
+					</div>
+					<div class="data_fields" *ngIf="selection.lotAcreageFrom && selection.lotAcreageFrom.length > 0">
+							<div class="listings_title">Lot Acreage</div>
+							<div class="listings">
+									<span> {{selection.lotAcreageFrom}} <var *ngIf="selection.lotAcreageSelect == 'is between'"> - {{selection.lotAcreageTo}}</var>  <i (click)="remove('lotAcreageTo', selection.lotAcreageTo, 'txtInput2', 'lotAcreageFrom')" class="fa fa-close"></i></span>
+							</div>
+					</div>
+					<div class="data_fields" *ngIf="selection.numberOfStoriesFrom && selection.numberOfStoriesFrom.length > 0">
+							<div class="listings_title">Stories</div>
+							<div class="listings">
+									<span> {{selection.numberOfStoriesFrom}} <var *ngIf="selection.numberOfStoriesSelect == 'is between'"> - {{selection.numberOfStoriesTo}}</var>  <i (click)="remove('numberOfStoriesTo', selection.numberOfStoriesTo, 'txtInput2', 'numberOfStoriesFrom')" class="fa fa-close"></i></span>
+							</div>
+					</div>
+					<div *ngIf="selection.poolOption && selection.poolOption.length > 0" class="data_fields">
+						<div class="listings_title">Pool</div>
+						<div class="listings">
+								<span *ngFor="let poolOption of selection.poolOption" > {{poolOption.text}}<i (click)="remove('poolOption', selection.poolOption, 'singleSelect', '')" class="fa fa-close"></i></span>
+						</div>
+					</div>
+					<div class="data_fields" *ngIf="selection.numberOfGarageSpacesFrom && selection.numberOfGarageSpacesFrom.length > 0">
+							<div class="listings_title">Garage Spaces</div>
+							<div class="listings">
+									<span> {{selection.numberOfGarageSpacesFrom}} <var *ngIf="selection.numberOfGarageSpacesSelect == 'is between'"> - {{selection.numberOfGarageSpacesTo}}</var>  <i (click)="remove('numberOfGarageSpacesTo', selection.numberOfGarageSpacesTo, 'txtInput2', 'numberOfGarageSpacesFrom')" class="fa fa-close"></i></span>
+							</div>
+					</div>
+					<div class="data_fields" *ngIf="selection.numberOfUnitsFrom && selection.numberOfUnitsFrom.length > 0">
+							<div class="listings_title"># Of Units</div>
+							<div class="listings">
+									<span> {{selection.numberOfUnitsFrom}} <var *ngIf="selection.numberOfUnitsSelect == 'is between'"> - {{selection.numberOfUnitsTo}}</var>  <i (click)="remove('numberOfUnitsTo', selection.numberOfUnitsTo, 'txtInput2', 'numberOfUnitsFrom')" class="fa fa-close"></i></span>
+							</div>
+					</div>
+				</div>
+				<!-- similar box end -->
+
+				<!-- similar box start -->
+				<div *ngIf="(selection.exemption && selection.exemption.length>0) || (selection.occupancy && selection.occupancy.length>0 ||
+					(selection.ownerLastNames && selection.ownerLastNames.length > 0) || (selection.ownerFirstNames && selection.ownerFirstNames.length > 0) ||
+					selection.ownerNames && selection.ownerNames.length > 0) || (selection.ethnicity && selection.ethnicity.length > 0) ||
+					(selection.corporateOwned && selection.corporateOwned.length > 0) || (selection.doNotMail && selection.doNotMail.length > 0)" class="col-sm-12 similar_box"
+				>
+					<div class="title">Owner</div>
+					<div *ngIf="selection.ownerLastNames && selection.ownerLastNames.length > 0" class="data_fields">
+					  <div class="listings_title">Owner Last Name</div>
+					  <div class="listings">
+					      <span> {{selection.ownerLastNames}}<i (click)="remove('ownerLastNames', selection.ownerLastNames, 'txtInput', '')" class="fa fa-close"></i></span>
+					  </div>
+					</div>
+					<div *ngIf="selection.ownerFirstNames && selection.ownerFirstNames.length > 0" class="data_fields">
+					  <div class="listings_title">Owner First Name</div>
+					  <div class="listings">
+					      <span> {{selection.ownerFirstNames}}<i (click)="remove('ownerFirstNames', selection.ownerFirstNames, 'txtInput', '')" class="fa fa-close"></i></span>
+					  </div>
+					</div>
+					<div *ngIf="selection.ownerNames && selection.ownerNames.length > 0" class="data_fields">
+					  <div class="listings_title">Owner Full Name</div>
+					  <div class="listings">
+					      <span> {{selection.ownerNames}}<i (click)="remove('ownerNames', selection.ownerNames, 'txtInput', '')" class="fa fa-close"></i></span>
+					  </div>
+					</div>
+					<div *ngIf="selection.ethnicity && selection.ethnicity.length > 0" class="data_fields">
+						<div class="listings_title">Ethnicity</div>
+						<div class="listings">
+								<span *ngFor="let ethnicity of selection.ethnicity" > {{ethnicity.text}}<i (click)="remove('ethnicity', selection.ethnicity, 'multySelect', '')" class="fa fa-close"></i></span>
+						</div>
+					</div>
+					<div *ngIf="selection.exemption && selection.exemption.length>0" class="data_fields">
+						<div class="listings_title">Exemption</div>
+						<div class="listings">
+								<span *ngFor="let exemption of selection.exemption" > {{exemption.text}}<i (click)="remove('exemption', exemption, 'multySelect', '')" class="fa fa-close"></i></span>
+						</div>
+					</div>
+					<div *ngIf="selection.occupancy && selection.occupancy.length>0" class="data_fields">
+						<div class="listings_title">Owner Occupied</div>
+						<div class="listings">
+								<span *ngFor="let occupancy of selection.occupancy" > {{occupancy.text}}<i (click)="remove('occupancy', selection.occupancy, 'multySelect', '')" class="fa fa-close"></i></span>
+						</div>
+					</div>
+					<div *ngIf="selection.corporateOwned && selection.corporateOwned.length > 0" class="data_fields">
+						<div class="listings_title">Corporate Owned</div>
+						<div class="listings">
+								<span *ngFor="let corporateOwned of selection.corporateOwned" > {{corporateOwned.text}}<i (click)="remove('corporateOwned', corporateOwned, 'singleSelect', '')" class="fa fa-close"></i></span>
+						</div>
+					</div>
+					<div *ngIf="selection.doNotMail && selection.doNotMail.length > 0" class="data_fields">
+						<div class="listings_title">Do Not Mail</div>
+						<div class="listings">
+								<span *ngFor="let doNotMail of selection.doNotMail" > {{doNotMail.text}}<i (click)="remove('doNotMail', selection.doNotMail, 'singleSelect', '')" class="fa fa-close"></i></span>
+						</div>
+					</div>
+				</div>
+				<!-- similar box end -->
+
+				<!-- similar box start -->
+				<div *ngIf="(selection.transactionType && selection.transactionType.length > 0) || (selection.salePriceFrom && selection.salePriceFrom.length > 0) ||
+					(selection.salePriceType && selection.salePriceType.length > 0) || (selection.saleDateFrom && selection.saleDateFrom.length != '') ||
+					(selection.marketSaleRecordingDateFrom && selection.marketSaleRecordingDateFrom != '') || selection.recordingMonth ||
+					(selection.sellerName && selection.sellerName.length > 0) || (selection.deedType && selection.deedType.length > 0)" class="col-sm-12 similar_box">
+					<div class="title">Sale Information</div>
+					<div class="data_fields" *ngIf="selection.transactionType && selection.transactionType.length > 0">
+						<div class="listings_title">Transaction Type</div>
+						<div class="listings">
+								<span *ngFor="let transactionType of selection.transactionType" > {{transactionType.text}}<i (click)="remove('transactionType', selection.transactionType, 'singleSelect', '')" class="fa fa-close"></i></span>
+						</div>
+					</div>
+					<div class="data_fields" *ngIf="selection.salePriceFrom && selection.salePriceFrom.length > 0">
+						<div class="listings_title">Sale Price </div>
+						<div class="listings">
+								<span> {{selection.salePriceFrom}}<var *ngIf="selection.salePriceSelect == 'is between'"> - {{selection.salePriceTo}}</var>  <i (click)="remove('salePriceTo', selection.salePriceTo, 'txtInput2', 'salePriceFrom')" class="fa fa-close"></i></span>
+						</div>
+					</div>
+					<div *ngIf="selection.salePriceType && selection.salePriceType.length > 0" class="data_fields">
+						<div class="listings_title">Sale Price Type</div>
+						<div class="listings">
+								<span *ngFor="let salePriceType of selection.salePriceType" > {{salePriceType.text}}<i (click)="remove('salePriceType', selection.salePriceType, 'multySelect', '')" class="fa fa-close"></i></span>
+						</div>
+					</div>
+					<div class="data_fields" *ngIf="selection.saleDateFrom && selection.saleDateFrom != ''">
+						<div class="listings_title">Last Sale Date</div>
+						<div class="listings">
+								<span>
+									{{('0' + selection.saleDateFrom.month).slice(-2)}}-{{('0' + selection.saleDateFrom.day).slice(-2)}}-{{selection.saleDateFrom.year}}
+									<var *ngIf="selection.saleDateSelect == 'is between'"> to
+										{{('0' + selection.saleDateTo.month).slice(-2)}}-{{('0' + selection.saleDateTo.day).slice(-2)}}-{{selection.saleDateTo.year}}
+									</var>
+									<i (click)="remove('saleDateTo', selection.saleDateTo, 'txtInput2', 'saleDateFrom')" class="fa fa-close"></i></span>
+						</div>
+					</div>
+					<div class="data_fields" *ngIf="selection.marketSaleRecordingDateFrom && selection.marketSaleRecordingDateFrom != ''">
+						<div class="listings_title">Last Sale Recording Date</div>
+						<div class="listings">
+								<span>
+									{{('0' + selection.marketSaleRecordingDateFrom.month).slice(-2)}}-{{('0' + selection.marketSaleRecordingDateFrom.day).slice(-2)}}-{{selection.marketSaleRecordingDateFrom.year}}
+									<var *ngIf="selection.marketSaleRecordingDateSelect == 'is between'"> to
+										{{('0' + selection.marketSaleRecordingDateTo.month).slice(-2)}}-{{('0' + selection.marketSaleRecordingDateTo.day).slice(-2)}}-{{selection.marketSaleRecordingDateTo.year}}
+									</var>
+									<i (click)="remove('marketSaleRecordingDateTo', selection.marketSaleRecordingDateTo, 'txtInput2', 'marketSaleRecordingDateFrom')" class="fa fa-close"></i>
+								</span>
+						</div>
+					</div>
+					<div class="data_fields" *ngIf="selection.recordingMonth && selection.recordingMonth.length > 0">
+						<div class="listings_title">Recording Month</div>
+						<div class="listings">
+								<span *ngFor="let recordingMonth of selection.recordingMonth" > {{recordingMonth.text}}<i (click)="remove('recordingMonth', selection.recordingMonth, 'singleSelect', '')" class="fa fa-close"></i></span>
+						</div>
+					</div>
+					<div class="data_fields" *ngIf="selection.sellerName && selection.sellerName.length > 0">
+						<div class="listings_title">Seller Name</div>
+						<div class="listings">
+								<span> {{selection.sellerName}} <i (click)="remove('sellerName', selection.sellerName, 'txtInput', '')" class="fa fa-close"></i></span>
+						</div>
+					</div>
+					<div *ngIf="selection.deedType && selection.deedType.length > 0" class="data_fields">
+						<div class="listings_title">Transaction Deed Type</div>
+						<div class="listings">
+								<span *ngFor="let deedType of selection.deedType" > {{deedType.text}}<i (click)="remove('deedType', selection.deedType, 'multySelect', '')" class="fa fa-close"></i></span>
+						</div>
+					</div>
+				</div>
+				<!-- similar box end -->
+
+				<!-- similar box start -->
+				<div *ngIf="(selection.mortgageAmountFrom && selection.mortgageAmountFrom.length > 0) || (selection.mortgageRecordingFrom && selection.mortgageRecordingFrom != '') ||
+					(selection.mortgageType && selection.mortgageType.length > 0) || (selection.mortgageInterestFrom && selection.mortgageInterestFrom.length > 0) ||
+					(selection.maxOpenLien && selection.maxOpenLien.length > 0) || (selection.sellerCarryBack && selection.sellerCarryBack.length > 0) ||
+					(selection.financingDeedType && selection.financingDeedType.length > 0) || (selection.interstRateType && selection.interstRateType.length > 0)" class="col-sm-12 similar_box">
+					<div class="title">Open Lien Information</div>
+					<div class="data_fields"  *ngIf="selection.mortgageAmountFrom && selection.mortgageAmountFrom.length > 0">
+						<div class="listings_title">Mortgage Amount</div>
+						<div class="listings">
+							<span *ngIf="selection.mortgageAmountFrom &&  selection.mortgageAmountSelect!='is between'; else sec2">{{selection.mortgageAmountFrom}}<i (click)="remove('mortgageAmountFrom', selection.mortgageAmountFrom, 'txtInput', '')" class="fa fa-close"></i></span>
+							<ng-template #sec2>
+								<span *ngIf="selection.mortgageAmountSelect!='is' && selection.mortgageAmountTo && selection.mortgageAmountFrom; else thrd2">{{selection.mortgageAmountFrom}}-{{selection.mortgageAmountTo}}<i (click)="remove('mortgageAmountTo', selection.mortgageAmountTo, 'txtInput2', 'mortgageAmountFrom')" class="fa fa-close"></i></span>
+							</ng-template>
+							<ng-template #thrd2></ng-template>
+						</div>
+					</div>
+					<div class="data_fields" *ngIf="selection.mortgageRecordingFrom && selection.mortgageRecordingFrom.length != ''">
+						<div class="listings_title">Mortgage Recording Date</div>
+						<div class="listings">
+								<span>
+									{{('0' + selection.mortgageRecordingFrom.month).slice(-2)}}-{{('0' + selection.mortgageRecordingFrom.day).slice(-2)}}-{{selection.mortgageRecordingFrom.year}}
+									<var *ngIf="selection.marketSaleRecordingDateSelect == 'is between'"> to
+										{{('0' + selection.mortgageRecordingTo.month).slice(-2)}}-{{('0' + selection.mortgageRecordingTo.day).slice(-2)}}-{{selection.mortgageRecordingTo.year}}
+									</var>
+									<i (click)="remove('mortgageRecordingTo', selection.mortgageRecordingTo, 'txtInput2', 'mortgageRecordingFrom')" class="fa fa-close"></i>
+								</span>
+						</div>
+					</div>
+					<div *ngIf="selection.mortgageType && selection.mortgageType.length > 0" class="data_fields">
+						<div class="listings_title">Mortgage Type</div>
+						<div class="listings">
+								<span *ngFor="let type of selection.mortgageType" > {{type.text}}<i (click)="remove('mortgageType', type, 'multySelect', '')" class="fa fa-close"></i></span>
+						</div>
+					</div>
+					<div *ngIf="selection.sellerCarryBack && selection.sellerCarryBack.length > 0" class="data_fields">
+						<div class="listings_title">Seller Carryback</div>
+						<div class="listings">
+								<span *ngFor="let carryback of selection.sellerCarryBack" > {{carryback.text}}<i (click)="remove('sellerCarryBack', selection.sellerCarryBack, 'singleSelect', '')" class="fa fa-close"></i></span>
+						</div>
+					</div>
+					<div class="data_fields"  *ngIf="selection.mortgageInterestFrom && selection.mortgageInterestFrom.length > 0">
+						<div class="listings_title">Interest Rate Between</div>
+						<div class="listings">
+							<span *ngIf="selection.mortgageInterestFrom &&  selection.mortgageInterestStatus!='is between'; else sec2">{{selection.mortgageInterestFrom}}<i (click)="remove('mortgageInterestFrom', selection.mortgageInterestFrom, 'txtInput', '')" class="fa fa-close"></i></span>
+							<ng-template #sec2>
+								<span *ngIf="selection.mortgageInterestStatus!='is' && selection.mortgageInterestTo && selection.mortgageInterestFrom; else thrd2">{{selection.mortgageInterestFrom}}-{{selection.mortgageInterestTo}}<i (click)="remove('mortgageInterestTo', selection.mortgageInterestTo, 'txtInput2', 'mortgageInterestFrom')" class="fa fa-close"></i></span>
+							</ng-template>
+							<ng-template #thrd2></ng-template>
+						</div>
+					</div>
+					<div *ngIf="selection.financingDeedType && selection.financingDeedType.length > 0" class="data_fields">
+						<div class="listings_title">Financing Deed Type</div>
+						<div class="listings">
+								<span *ngFor="let type of selection.financingDeedType" > {{type.text}}<i (click)="remove('financingDeedType', type, 'multySelect', '')" class="fa fa-close"></i></span>
+						</div>
+					</div>
+					<div *ngIf="selection.interstRateType && selection.interstRateType.length > 0" class="data_fields">
+						<div class="listings_title">Interest Rate Type</div>
+						<div class="listings">
+								<span *ngFor="let type of selection.interstRateType" > {{type.text}}<i (click)="remove('interstRateType', type, 'multySelect', '')" class="fa fa-close"></i></span>
+						</div>
+					</div>
+					<div *ngIf="selection.maxOpenLien && selection.maxOpenLien.length>0" class="data_fields">
+						<div class="listings_title">Max Open Lien</div>
+						<div class="listings">
+								<span *ngFor="let lien of selection.maxOpenLien" > {{lien.text}}<i (click)="remove('maxOpenLien', lien, 'multySelect', '')" class="fa fa-close"></i></span>
+						</div>
+					</div>
+				</div>
+
+				<div *ngIf="(selection.homeEquityValueFrom && selection.homeEquityValueFrom. length > 0) || (selection.homeEquityPercentageFrom && selection.homeEquityPercentageFrom. length > 0)" class="col-sm-12 similar_box">
+				    <div class="title">Equity</div>
+				    <div class="data_fields" *ngIf="selection.homeEquityValueFrom && selection.homeEquityValueFrom. length > 0">
+				        <div class="listings_title">Equity Value</div>
+				        <div class="listings">
+										<span> {{selection.homeEquityValueFrom}}<var *ngIf="selection.homeEquityValue == 'is between'"> - {{selection.homeEquityValueTo}}</var>  <i (click)="remove('homeEquityValueTo', selection.homeEquityValueTo, 'txtInput2', 'homeEquityValueFrom')" class="fa fa-close"></i></span>
+				        </div>
+				    </div>
+				    <div class="data_fields" *ngIf="selection.homeEquityPercentageFrom && selection.homeEquityPercentageFrom. length > 0">
+				        <div class="listings_title">Equity %</div>
+				        <div class="listings">
+										<span> {{selection.homeEquityPercentageFrom}}<var *ngIf="selection.homeEquityPercentage == 'is between'"> - {{selection.homeEquityPercentageTo}}</var>  <i (click)="remove('homeEquityPercentageTo', selection.homeEquityPercentageTo, 'txtInput2', 'homeEquityPercentageFrom')" class="fa fa-close"></i></span>
+				        </div>
+				    </div>
+				</div>
+
+				<div *ngIf="(selection.assdTotalValueFrom && selection.assdTotalValueFrom. length > 0) || (selection.assdLandValueFrom && selection.assdLandValueFrom. length > 0) || (selection.mktTotalValueFrom && selection.mktTotalValueFrom. length > 0) || (selection.mktLandValueFrom && selection.mktLandValueFrom. length > 0) || (selection.apprTotalValueFrom && selection.apprTotalValueFrom. length > 0) ||
+					(selection.apprLandValueFrom && selection.apprLandValueFrom. length > 0) || (selection.apprImprovementValueFrom && selection.apprImprovementValueFrom. length > 0) || (selection.apprImprovementPercentageFrom && selection.apprImprovementPercentageFrom. length > 0)" class="col-sm-12 similar_box">
+				    <div class="title">Assessor Information</div>
+				    <div class="data_fields" *ngIf="selection.assdTotalValueFrom && selection.assdTotalValueFrom. length > 0">
+				        <div class="listings_title">Assessed Total Value</div>
+				        <div class="listings">
+										<span> {{selection.assdTotalValueFrom}}<var *ngIf="selection.assdTotalValue == 'is between'"> - {{selection.assdTotalValueTo}}</var>  <i (click)="remove('assdTotalValueTo', selection.assdTotalValueTo, 'txtInput2', 'assdTotalValueFrom')" class="fa fa-close"></i></span>
+				        </div>
+				    </div>
+				    <div class="data_fields" *ngIf="selection.assdLandValueFrom && selection.assdLandValueFrom. length > 0">
+				        <div class="listings_title">Assessed Land Value</div>
+				        <div class="listings">
+										<span> {{selection.assdLandValueFrom}}<var *ngIf="selection.assdLandValue == 'is between'"> - {{selection.assdLandValueTo}}</var>  <i (click)="remove('assdLandValueTo', selection.assdLandValueTo, 'txtInput2', 'assdLandValueFrom')" class="fa fa-close"></i></span>
+				        </div>
+				    </div>
+				    <div class="data_fields" *ngIf="selection.mktTotalValueFrom && selection.mktTotalValueFrom. length > 0">
+				        <div class="listings_title">Market Total Value</div>
+				        <div class="listings">
+										<span> {{selection.mktTotalValueFrom}}<var *ngIf="selection.mktTotalValue == 'is between'"> - {{selection.mktTotalValueTo}}</var>  <i (click)="remove('mktTotalValueTo', selection.mktTotalValueTo, 'txtInput2', 'mktTotalValueFrom')" class="fa fa-close"></i></span>
+				        </div>
+				    </div>
+				    <div class="data_fields" *ngIf="selection.mktLandValueFrom && selection.mktLandValueFrom. length > 0">
+				        <div class="listings_title">Market Land Value</div>
+				        <div class="listings">
+										<span> {{selection.mktLandValueFrom}}<var *ngIf="selection.mktLandValue == 'is between'"> - {{selection.mktLandValueTo}}</var>  <i (click)="remove('mktLandValueTo', selection.mktLandValueTo, 'txtInput2', 'mktLandValueFrom')" class="fa fa-close"></i></span>
+				        </div>
+				    </div>
+				    <div class="data_fields" *ngIf="selection.apprTotalValueFrom && selection.apprTotalValueFrom. length > 0">
+				        <div class="listings_title">Appraised Total Value</div>
+				        <div class="listings">
+										<span> {{selection.apprTotalValueFrom}}<var *ngIf="selection.apprTotalValue == 'is between'"> - {{selection.apprTotalValueTo}}</var>  <i (click)="remove('apprTotalValueTo', selection.apprTotalValueTo, 'txtInput2', 'apprTotalValueFrom')" class="fa fa-close"></i></span>
+				        </div>
+				    </div>
+				    <div class="data_fields" *ngIf="selection.apprLandValueFrom && selection.apprLandValueFrom. length > 0">
+				        <div class="listings_title">Appraised Land Value</div>
+				        <div class="listings">
+										<span> {{selection.apprLandValueFrom}}<var *ngIf="selection.apprLandValue == 'is between'"> - {{selection.apprLandValueTo}}</var>  <i (click)="remove('apprLandValueTo', selection.apprLandValueTo, 'txtInput2', 'apprLandValueFrom')" class="fa fa-close"></i></span>
+				        </div>
+				    </div>
+				    <div class="data_fields" *ngIf="selection.apprImprovementValueFrom && selection.apprImprovementValueFrom. length > 0">
+				        <div class="listings_title">Appraised Improvement Value</div>
+				        <div class="listings">
+										<span> {{selection.apprImprovementValueFrom}}<var *ngIf="selection.apprImprovementValue == 'is between'"> - {{selection.apprImprovementValueTo}}</var>  <i (click)="remove('apprImprovementValueTo', selection.apprImprovementValueTo, 'txtInput2', 'apprImprovementValueFrom')" class="fa fa-close"></i></span>
+				        </div>
+				    </div>
+				    <div class="data_fields" *ngIf="selection.apprImprovementPercentageFrom && selection.apprImprovementPercentageFrom. length > 0">
+				        <div class="listings_title">Appraised Improvement %</div>
+				        <div class="listings">
+										<span> {{selection.apprImprovementPercentageFrom}}<var *ngIf="selection.apprImprovementPercentage == 'is between'"> - {{selection.apprImprovementPercentageTo}}</var>  <i (click)="remove('apprImprovementPercentageTo', selection.apprImprovementPercentageTo, 'txtInput2', 'apprImprovementPercentageFrom')" class="fa fa-close"></i></span>
+				        </div>
+				    </div>
+				</div>
+
+				<div *ngIf="(selection.estimatedValueFrom && selection.estimatedValueFrom. length > 0)" class="col-sm-12 similar_box">
+				    <div class="title">Market Value</div>
+				    <div class="data_fields" *ngIf="selection.estimatedValueFrom && selection.estimatedValueFrom. length > 0">
+				        <div class="listings_title">Estimated Value</div>
+				        <div class="listings">
+										<span> {{selection.estimatedValueFrom}}<var *ngIf="selection.estimatedValue == 'is between'"> - {{selection.estimatedValueTo}}</var>  <i (click)="remove('estimatedValueTo', selection.estimatedValueTo, 'txtInput2', 'estimatedValueFrom')" class="fa fa-close"></i></span>
+				        </div>
+				    </div>
+				</div>
+
+				<div *ngIf="(selection.listingStatus && selection.listingStatus.length > 0) || (selection.listingPriceFrom && selection.listingPriceFrom.length > 0) ||
+					selection.listingDateFrom && selection.listingDateFrom != ''" class="col-sm-12 similar_box">
+					<div class="title">Listing Information</div>
+					<div class="data_fields" *ngIf="selection.listingStatus && selection.listingStatus.length > 0">
+						<div class="listings_title">Listing Status</div>
+						<div class="listings">
+							<span *ngFor="let status of selection.listingStatus" > {{status.text}}<i (click)="remove('listingStatus', status, 'multySelect', '')" class="fa fa-close"></i></span>
+						</div>
+					</div>
+					<div class="data_fields" *ngIf="selection.listingDateFrom && selection.listingDateFrom != ''">
+							<div class="listings_title">Listing Date</div>
+							<div class="listings">
+								<span>
+									{{('0' + selection.listingDateFrom.month).slice(-2)}}-{{('0' + selection.listingDateFrom.day).slice(-2)}}-{{selection.listingDateFrom.year}}
+									<var *ngIf="selection.marketSaleRecordingDateSelect == 'is between'"> to
+										{{('0' + selection.listingDateTo.month).slice(-2)}}-{{('0' + selection.listingDateTo.day).slice(-2)}}-{{selection.listingDateTo.year}}
+									</var>
+									<i (click)="remove('listingDateTo', selection.listingDateTo, 'txtInput2', 'listingDateFrom')" class="fa fa-close"></i>
+								</span>
+							</div>
+					</div>
+					<div class="data_fields" *ngIf="selection.listingPriceFrom && selection.listingPriceFrom.length > 0">
+						<div class="listings_title">Listing Price</div>
+						<div class="listings">
+							<span *ngIf="selection.listingPriceFrom &&  selection.listingPriceStatus!='is between'; else sec2">{{selection.listingPriceFrom}}<i (click)="remove('listingPriceFrom', selection.listingPriceFrom, 'txtInput', '')" class="fa fa-close"></i></span>
+							<ng-template #sec2>
+								<span *ngIf="selection.listingPriceStatus!='is' && selection.listingPriceTo && selection.listingPriceFrom; else thrd2">{{selection.listingPriceFrom}}-{{selection.listingPriceTo}}<i (click)="remove('listingPriceTo', selection.listingPriceTo, 'txtInput2', 'listingPriceFrom')" class="fa fa-close"></i></span>
+							</ng-template>
+							<ng-template #thrd2></ng-template>
+						</div>
+					</div>
+				</div>
+
+				<div *ngIf="(selection.foreclosureStatus && selection.foreclosureStatus != '') || (selection.foreclosureDateFrom && selection.foreclosureDateFrom != '') ||
+					(selection.foreclosureRecordedDateFrom && selection.foreclosureRecordedDateFrom != '') || (selection.foreclosureAmountFrom && selection.foreclosureAmountFrom != '')" class="col-sm-12 similar_box">
+					<div class="title">Foreclosure Information</div>
+					<div *ngIf="selection.foreclosureStatus" class="data_fields">
+						<div class="listings_title">Status</div>
+						<div class="listings">
+							<span>{{selection.foreclosureStatus.text}}<i (click)="remove('foreclosureStatus', selection.foreclosureStatus, 'singleSelect', '')" class="fa fa-close"></i></span>
+						</div>
+					</div>
+					<div class="data_fields" *ngIf="selection.foreclosureRecordedDateFrom && selection.foreclosureRecordedDateFrom != ''">
+						<div class="listings_title">Foreclosure Recorded Date</div>
+						<div class="listings">
+							<span>
+								{{('0' + selection.foreclosureRecordedDateFrom.month).slice(-2)}}-{{('0' + selection.foreclosureRecordedDateFrom.day).slice(-2)}}-{{selection.foreclosureRecordedDateFrom.year}}
+								<var *ngIf="selection.foreclosureRecordedDateStatus == 'is between'"> to
+									{{('0' + selection.foreclosureRecordedDateTo.month).slice(-2)}}-{{('0' + selection.foreclosureRecordedDateTo.day).slice(-2)}}-{{selection.foreclosureRecordedDateTo.year}}
+								</var>
+								<i (click)="remove('foreclosureRecordedDateTo', selection.foreclosureRecordedDateTo, 'txtInput2', 'foreclosureRecordedDateFrom')" class="fa fa-close"></i>
+							</span>
+						</div>
+					</div>
+					<div class="data_fields" *ngIf="selection.foreclosureDateFrom && selection.foreclosureDateFrom != ''">
+						<div class="listings_title">Foreclosure Event Date</div>
+						<div class="listings">
+							<span>
+								{{('0' + selection.foreclosureDateFrom.month).slice(-2)}}-{{('0' + selection.foreclosureDateFrom.day).slice(-2)}}-{{selection.foreclosureDateFrom.year}}
+								<var *ngIf="selection.foreclosureDateStatus == 'is between'"> to
+									{{('0' + selection.foreclosureDateTo.month).slice(-2)}}-{{('0' + selection.foreclosureDateTo.day).slice(-2)}}-{{selection.foreclosureDateTo.year}}
+								</var>
+								<i (click)="remove('foreclosureDateTo', selection.foreclosureDateTo, 'txtInput2', 'foreclosureDateFrom')" class="fa fa-close"></i>
+							</span>
+						</div>
+					</div>
+					<div class="data_fields" *ngIf="selection.foreclosureAmountFrom">
+						<div class="listings_title">Foreclosure Amount</div>
+						<div class="listings">
+							<span *ngIf="selection.foreclosureAmountFrom &&  selection.foreclosureAmountStatus!='is between'; else sec2">{{selection.foreclosureAmountFrom}}<i (click)="remove('foreclosureAmountFrom', selection.foreclosureAmountFrom, 'txtInput', '')" class="fa fa-close"></i></span>
+							<ng-template #sec2>
+								<span *ngIf="selection.foreclosureAmountStatus!='is' && selection.foreclosureAmountTo && selection.foreclosureAmountFrom; else thrd2">{{selection.foreclosureAmountFrom}}-{{selection.foreclosureAmountTo}}<i (click)="remove('foreclosureAmountTo', selection.foreclosureAmountTo, 'txtInput2', 'foreclosureAmountFrom')" class="fa fa-close"></i></span>
+							</ng-template>
+							<ng-template #thrd2></ng-template>
+						</div>
+					</div>
+				</div>
+				<!-- similar box end -->
+			</div>
+			<!-- right_side end-->
+
+		</div>
+	</div>
+
+	<app-common-overlay *ngIf="load!=1"></app-common-overlay>
+</section>
+<!-- Main Area End-->
+<!-- Creates the bootstrap modal to save search form -->
+<!-- <ng-template #saveSearchModal let-modal>
+	<div class="modal-header">
+	  <h4 class="modal-title" id="saveModalLabel">Save Search</h4>
+	  <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross')">
+		<span aria-hidden="true">&times;</span>
+	  </button>
+	</div>
+	<form [formGroup]="saveSearchForm">
+	<div class="modal-body">
+		<div class="row">
+			<div class="col-sm-12">
+			   <div class="form-group">
+				   <label>Search Name: </label>
+				   <input type="text" formControlName="savedTitle" class="form-control" />
+				</div>
+		   </div>
+		   <div class="col-sm-12">
+			   <div class="form-group">
+				   <label>Purchase Group Name: </label>
+				   <input type="text" formControlName="purchaseGroupName" class="form-control" />
+
+				</div>
+		   </div>
+	   </div>
+	</div>
+	<div class="modal-footer">
+		<button type="submit" class="btn btn-primary "[disabled]="!saveSearchForm.valid" (click)="modal.close('Submit')">Submit</button> <button type="button" class="btn btn-dark" (click)="modal.close('Cancel')">Cancel</button>
+	</div>
+	</form>
+  </ng-template> -->
+
+  <div class="modal" id="myConfirmModal">
+    <div class="modal-dialog modal-md">
+      <div class="modal-content ">
+
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title" [innerHTML]="modalTitle">Confirmation</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+
+		<!-- Modal body -->
+		<div *ngIf="!existingMember" class="modal-body"><p [innerHTML]="confirmBoxContent">{{confirmBoxContent}}</p> </div>
+        <div *ngIf="existingMember" class="modal-body">
+			<div>
+			<form [formGroup]="saveSearchForm" (ngSubmit)="submitSearchForm()">
+				<div class="row">
+					<div class="col-sm-6">
+					   <div class="form-group">
+						   <label>Search Name: </label>
+						   <input type="text" formControlName="savedTitle" class="form-control" />
+						   <ng-container *ngIf="saveSearchForm.get('savedTitle').errors && (saveSearchForm.get('savedTitle').dirty || saveSearchForm.get('savedTitle').touched)">
+							<small *ngIf="saveSearchForm.get('savedTitle').errors.maxlength" class="error-text">Search Name should be maximum 25 characters.</small>
+						   </ng-container>
+						</div>
+				   </div>
+				   <div class="col-sm-6">
+					   <div class="form-group">
+						   <label>Purchase Group Name: </label>
+						   <input type="text" formControlName="purchaseGroupName" class="form-control" />
+						   <ng-container *ngIf="saveSearchForm.get('purchaseGroupName').errors && (saveSearchForm.get('purchaseGroupName').dirty || saveSearchForm.get('purchaseGroupName').touched)">
+							<small *ngIf="saveSearchForm.get('purchaseGroupName').errors.pattern" class="error-text">Purchase Group Name is not valid.</small>
+							<small *ngIf="saveSearchForm.get('purchaseGroupName').errors.maxlength" class="error-text">Purchase Group Name should be maximum 25 characters.</small>
+						   </ng-container>
+						</div>
+				   </div>
+			   </div>
+			   <!-- <div class="row">
+				<div class="col-sm-12">
+					<button type="submit" class="btn btn-success" [disabled]="!saveSearchForm.valid">Save Search</button>
+				</div>
+				</div> -->
+			</form>
+			</div>
+		   <!-- <div class="modalBox">
+		   <p>{{confirmBoxContent}}</p>
+		    <div *ngIf="existingMember && reqAmountInWalletToPur"> <table class="display responsive nowrap table-striped" width="100%">
+			<thead>
+				<tr>
+					<th>Amount</th>
+					<th>Points</th>
+					<th>Action</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr *ngFor="let amt of confirmBoxTblAmt" [ngClass]="{'active' : confirmBoxReqAmt==amt}">
+					<td>${{amt}}</td>
+					<td>{{pointsPerDollar*amt}}</td>
+					<td><button (click)="onModal(amt)" data-toggle="modal" data-target="#myModal" class="btn btn-success">Add Credit</button></td>
+				</tr>
+				<tr>
+					<td><i class="fa fa-dollar prefix"></i><input type="number" name="confirmBoxReqAmt" [(ngModel)]="confirmBoxReqAmt" class="form-control"></td>
+					<td>{{pointsPerDollar*confirmBoxReqAmt}}</td>
+					<td><button (click)="onModal(confirmBoxReqAmt)" data-toggle="modal" data-target="#myModal" class="btn btn-success">Add Credit</button></td>
+				</tr>
+			</tbody>
+		</table></div>
+		<div class="text-center">
+			<button *ngIf="existingMember && !reqAmountInWalletToPur" class="btn btn-primary" (click)="getDeductionToPur()" data-dismiss="modal">Ok</button>
+			<button *ngIf="existingMember && reqAmountInWalletToPur" (click)="onModal(confirmBoxReqAmt)" data-toggle="modal" data-target="#myModal" class="btn btn-success">Add Credit</button>
+			<button type="button" class="btn btn-primary" data-dismiss="modal">Cancel</button>
+        </div>
+		</div> -->
+        </div>
+
+		<!-- Modal footer -->
+		<div *ngIf="existingMember" class="modal-footer text-center">
+			<button *ngIf="!reqAmountInWalletToPur" class="btn btn-primary" (click)="getDeductionToPur()">Ok</button>
+			<button *ngIf="reqAmountInWalletToPur" (click)="onModal(confirmBoxReqAmt)" class="btn btn-success">Purchase Records</button>
+			<!-- <button *ngIf="reqAmountInWalletToPur" (click)="onModal(confirmBoxReqAmt)" data-toggle="modal" data-target="#myModal" class="btn btn-success">Purchase Records</button> -->
+			<!-- <button type="button" class="btn btn-primary" data-dismiss="modal">Cancel</button> -->
+        </div>
+        <div *ngIf="!existingMember" class="modal-footer text-center">
+			<a routerLink="/membership/payment" data-dismiss="modal"><button class="btn btn-primary">Ok</button></a>
+			<!-- <button type="button" class="btn btn-primary" data-dismiss="modal">Cancel</button> -->
+        </div>
+
+      </div>
+    </div>
+</div>
+<div class="modal" id="myModal">
+    <div class="modal-dialog modal-md">
+      <div class="modal-content ">
+
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Purchase Records</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+		<form [formGroup]="depositeForm" (ngSubmit)="deposite()">
+        <!-- Modal body -->
+        <div class="modal-body">
+			<div class="row">
+				<div class="col-sm-4">
+					<div class="form-group">
+						<label>Total Records</label>
+						<p><b>{{SearchCount.count | number}}</b></p>
+					</div>
+				</div>
+				<div class="col-sm-4">
+					<div class="form-group">
+						<label>Total Amount</label>
+						<p><b>{{SearchCount.amountReq() | currency}}</b></p>
+					</div>
+				</div>
+				<div class="col-sm-4">
+					<div class="form-group">
+						<label class="w-100"><div class="d-flex justify-content-between">Wallet Amount</div></label>
+						<p><b>{{currentBalance | currency}}</b></p>
+					</div>
+				</div>
+				<div class="text-center mt-3">
+					<img class="walletimage" src="assets/images/wallet.svg" width="100">
+					<p class="h5 mt-3">Ooops! Please recharge your Wallet with  {{minAmount() | currency}} to purchase the records.</p>
+				</div>
+				<div class="col-sm-12">
+					<div class="form-group">
+						<label for="amount">Amount</label>
+						<input type="text" class="form-control" data-inputmask="'alias': 'currency'" formControlName="amount"  name="amount" id="amount">
+						<ng-container *ngIf="submitWallet && depositeForm.get('amount').errors">
+							<small *ngIf="depositeForm.get('amount').errors.required" class="error-text">Amount is required.</small>
+							<small *ngIf="depositeForm.get('amount').errors.min" class="error-text"> Minimum amount should be {{minAmount() | currency}}.</small>
+						</ng-container>
+					</div>
+				</div>
+			</div>
+        </div>
+        <!-- Modal footer -->
+        <div class="modal-footer">
+			<button type="submit" class="btn btn btn-danger submit-button">Recharge Now</button>
+        </div>
+		</form>
+      </div>
+    </div>
+</div>
+
+
+<ng-template #content2 let-modal>
+	<div class="modal-header">
+	  <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+		<span aria-hidden="true">&times;</span>
+	  </button>
+	</div>
+	<div class="modal-body">
+		<div class="row successful_payment">
+            <div class="text-center"><img class="walletimage" src="assets/images/wallet.svg"></div>
+            <h3>We are deducting {{ SearchCount.amountReq() | currency }} from your wallet to purchase these records.</h3>
+			<button class="btn btn-success yesi" (click)="modal.close('Close click')" type="button">OK</button>
+		</div>
+	</div>
+  </ng-template>

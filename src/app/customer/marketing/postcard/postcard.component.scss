@@ -1,0 +1,30 @@
+.btn-light {
+    color           : #212529;
+    background-color: #f8f9fa;
+    border-color    : #f8f9fa;
+}
+
+.btn-light:hover {
+    color           : #212529;
+    background-color: #e2e6ea;
+    border-color    : #dae0e5;
+}
+
+.inside li {
+    list-style-type: none;
+    list-style-position: none;
+    padding: none;
+}
+.recent_info {
+    text-align: center;
+    border: 3px dashed red;
+    background: #ffeeee;
+    font-size: 24px;
+    font-weight: 600;
+    padding: 70px 15px;
+    text-transform: capitalize;
+}
+.recent_info span {
+    display: block;
+    margin-top: 15px;
+}

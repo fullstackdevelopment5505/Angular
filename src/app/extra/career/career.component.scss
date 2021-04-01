@@ -1,0 +1,249 @@
+
+
+/*career-css*/
+.carerbg{
+    margin: 0px;
+    padding: 0px;
+    /*background:rgba(255,255,255,0.2) url('../images/webb.png') repeat right center;*/
+    background:#e6e5e5;
+    background-blend-mode: overlay;
+    min-height:600px;
+}
+.review-text-box {
+    height: 100%;
+}
+.review-text-box .review-part {
+    margin: 30px 0 0;
+    background: transparent;
+    padding: 18px;
+    border-radius: 5px;
+    border: transparent solid 2px;
+}
+.review-text-box .review-part p {
+    font-size: 20px;
+    line-height: 28px;
+    font-weight: 400;
+}
+.review-text-box .review-part p i {
+    font-size: 30px;
+    padding: 10px;
+    border-radius: 50%;
+    color: #1b86e3;
+    display: inline;
+    margin-right: 10px;
+}
+.review-text-box .review-part .authortext {
+    text-align: left;
+}
+.review-text-box .review-part .authortext h3 {
+    font-size: 32px;
+    font-weight:700;
+    color: #1b86e3;
+}
+.review-text-box .review-part .authortext h5 {
+    font-size: 18px;
+    font-weight: 500;
+}
+.review-text-box .joinequity {
+    text-align: left;
+    margin: 25px 0;
+    padding: 0 15px;
+}
+.review-text-box .joinequity h1 {
+    font-size: 50px;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+.author{text-align: center; width: 100%;}
+.carerbg .owl-stage-outer{padding: 0px;}
+/*career-css-end*/
+
+
+/*about*/
+.whobg {
+    padding: 50px 0px;
+    margin: 0px;
+    background:#1b86e3;
+}
+.whobg .aboutcontent{text-align: left; color: #fff;}
+.whobg .aboutcontent h2 {
+    margin: 0px;
+    padding: 0px;
+    font-size: 44px;
+    margin-bottom: 12px;
+    font-weight: 900;
+}
+.whobg .aboutcontent p {
+    font-size: 30px;
+    line-height: 46px;
+    color: #fff;
+    margin: 0;
+    text-align: left;
+    font-family: Net-Proxima-Nova-Light;
+}
+.review-text-box .joinequity button {
+    width: 100%;
+    max-width: 430px;
+    height: 60px;
+    font-size: 26px;
+}
+.whobg .aboutcontent img {
+    width: 100%;
+    max-width: 300px;
+    margin-bottom: 30px;
+}
+.abtimg img {
+    border: #fff solid 4px;
+    margin: 0px;
+    padding: 0px;
+    box-shadow: 0 0 17px 5px rgba(0,0,0,0.1);
+}
+/*aboout*/
+
+
+
+
+
+
+
+
+
+/*acordianbg*/
+
+.acordianbg {
+    margin: 0px !important;
+    padding: 50px 0px !important;
+    /*background: rgba(27,134,227) url('../images/pattern.png');*/
+    min-height: auto !important;
+    background-blend-mode: multiply !important;
+}
+.carer_tabs div#nav-tab {
+    border-bottom: none !important;
+}
+.carer_tabs .nav-tabs .nav-link, .carer_tabs .nav-tabs .nav-link:hover {
+    color: #000 !important;
+    padding: 14px 20px !important;
+    background: #fff !important;
+    display: block !important;
+    width: 100% !important;
+    border-radius: 0px !important;
+    margin: 0px !important;
+    text-align: left !important;
+    font-size: 30px !important;
+    text-transform: uppercase !important;
+    font-weight: 900 !important;
+    border:none !important;
+}
+.carer_tabs .nav-tabs .nav-link.active {
+    background: #1b86e3 !important;
+    border: none !important;
+    color: #fff !important;
+    border-radius: 60px !important;
+}
+.joblists ul {
+    margin: 0px;
+    padding: 0px;
+}
+
+.joblists ul li {
+    margin: 0px;
+    padding: 0px;
+    display: block;
+}
+
+.joblists ul li a {
+    margin: 0px 0px 9px;
+    padding: 12px;
+    font-size: 18px;
+    background: #ececec;
+    border-radius: 5px;
+    color: #000;
+    width: 100%;
+    border: #ccc solid thin;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    display: -webkit-sflex;
+    -webkit-justify-content: space-between;
+    -webkit-align-items: center;
+}
+.joblists ul li a i{font-size:26px;}
+.titlejob {
+    margin: 0px;
+    padding: 0px;
+    font-size: 34px;
+    margin-bottom: 12px;
+    font-weight: 900;
+}
+/*acordianbg*/
+
+
+
+
+
+
+
+
+/*talent*/
+.talentbg {
+    padding: 50px 0px;
+    margin: 0px;
+    background: #1b86e3;
+}
+.talentbg .content {
+    text-align: center;
+    margin: 0px;
+    padding: 0px;
+}
+.talentbg .content p{
+
+    font-size: 38px;
+    color: #fff;
+}
+.talentbg .content .cstm {
+    background: transparent;
+    color: #fff;
+    border: #fff solid 2px;
+    width: 100%;
+    max-width: 180px;
+    height: 55px;
+}
+.talentbg .content .cstm:hover{background: #fff; color: #000;}
+/*talent-end*/
+
+
+
+
+/*lifebg-css*/
+.lifebg {
+    padding: 30px 0px 0;
+    margin: 0px;
+    background: #fff;
+}
+.lifebg .content {
+    text-align: left;
+    margin: 0px;
+    padding: 0px;
+}
+.lifebg .content h2 {
+    margin-bottom: 30px;
+    font-weight: 900;
+    text-transform: uppercase;
+    font-size: 36px;
+}
+/*slider slick*/
+.lifebg .slider {
+    
+    margin:0;
+    overflow: hidden;
+    width: 100%;
+}
+.lifebg .slick-slide img {
+    display: block;
+    padding: 10px 5px;
+    width: 100%;
+}
+
+
+
+

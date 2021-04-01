@@ -1,0 +1,241 @@
+#listing_prop {
+    margin: 0px;
+    padding:30px 0px;
+    background: #f7f7f7;
+}
+#listing_prop .listing_heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+#listing_prop .listing_heading h2 {
+    font-size: 30px;
+    line-height: 30px;
+}
+#listing_prop .listing_heading .grid_view a {
+    display: inline-block;
+    margin: 0px;
+    padding: 0px 6px;
+    background: transparent;
+    color: #000;
+    font-size: 30px;
+}
+#listing_prop .listing_heading .grid_view a.active{color:#1b86e3;}
+#listing_prop .list_top_bg{
+
+	background: #fff;
+	height: auto;
+	margin-top: 30px;
+	display: flex;
+	flex-wrap: wrap;
+}
+#listing_prop .list_top_bg .listimage {
+    position: relative;
+    margin: 0px;
+    padding: 0px;
+    width:100%
+}
+#listing_prop .list_top_bg .listimage img {
+    width: 100%;
+}
+#listing_prop .list_top_bg .listimage ul {
+    margin: 0px;
+    padding: 0px;
+    position: absolute;
+    top: 6px;
+    left: 6px;
+}
+#listing_prop .list_top_bg .listimage ul li {
+    list-style: none;
+    display: inline-block;
+}
+
+#listing_prop .list_top_bg .listimage ul li a {
+    margin: 0px 5px 0 0;
+    padding: 6px 10px;
+    display: inline-block;
+    background: #1b86e3;
+    color: #fff;
+}
+#listing_prop .list_top_bg .listimage ul li a.faV {
+    background: #f00;
+}
+#listing_prop .listing_content {
+    padding: 9px 15px;
+    margin: 0px;
+}
+#listing_prop .listing_content h2 {
+    margin: 0px;
+    padding: 0px;
+    font-size: 18px;
+    font-weight: 500;
+    color: #000;
+}
+#listing_prop .listing_content  span {
+    color: #ffb400;
+    font-size: 18px;
+    font-weight: 500;
+    padding: 6px 0px;
+    display: block;
+}
+#listing_prop .listing_content p {
+    margin: 0px;
+    padding: 0px;
+    font-size: 14px;
+    color: #000;
+}
+#listing_prop .listing_content .quantity_area {
+    margin: 15px 0 0;
+    padding: 0px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+#listing_prop .listing_content .quantity_area .links2 {
+    margin: 0px;
+    padding: 0px;
+}
+#listing_prop .listing_content .quantity_area .links2 ul {
+    margin:0px 0 0;
+    padding: 0px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+#listing_prop .listing_content .quantity_area .links2 ul li {
+    list-style: none;
+    margin: 0px 8px 0 0;
+    padding: 3px 3px;
+    display: inline-block;
+}
+#listing_prop .listing_content .quantity_area .links2 ul li a {
+    display: flex;
+    margin: 0px;
+    padding: 0px;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+#listing_prop .listing_content .quantity_area .links2 ul li a span{color: #1b86e3;}
+#listing_prop .listing_content .quantity_area .links2 ul li a img {
+    max-width: 100%;
+    width: auto;
+    margin-right: 15px;
+}
+
+
+#listing_prop .listing_content .chat_detail_link .links {
+    margin: 0px;
+    padding: 0px;
+}
+#listing_prop .listing_content .chat_detail_link .links ul {
+    margin: 0px;
+    padding: 0px;
+    display: flex;
+    justify-content: flex-end;
+    display: -webkit-flex;
+    -webkit-justify-content: flex-end;
+    flex-wrap: wrap;
+    -webkit-flex-wrap: wrap;
+}
+#listing_prop .listing_content .chat_detail_link .links ul li {
+    list-style: none;
+    margin: 0px 0px 0 0;
+    padding: 8px 5px;
+    display: flex;
+}
+#listing_prop .listing_content .chat_detail_link .links ul li a {
+     margin: 0px 0px 0 0;
+    padding: 6px 10px;
+    color: #fff;
+    background: #1b86e3;
+    display: inline-block;
+    border: #1b86e3 solid 1px;
+}
+#listing_prop .listing_content .chat_detail_link .links ul li a.chat {
+    color: #fff;
+    background: #07a32f;
+    border: #07a32f solid 1px;
+}
+#listing_prop .listing_content .chat_detail_link .links ul li a.infofull {
+    color: #fff;
+    background: #ffb400;
+    border: #ffb400 solid 1px;
+}
+#listing_prop .listing_content .chat_detail_link .links ul li a img.bulb, #listing_prop .listing_content .chat_detail_link .links ul li a img.bulb2 {
+    max-width: 27px;
+    margin: 0px;
+}
+
+#listing_prop .listing_content .chat_detail_link .links ul li a img.men{
+
+    max-width: 27px;
+    margin: 0px;
+}
+
+#listing_prop .listing_content .chat_detail_link .links ul li a img.bulb2 {
+    display: none;
+}
+#listing_prop .listing_content .chat_detail_link .links ul li a.trash{background: #f00; border:#f00 solid thin;}
+#listing_prop .listing_content .chat_detail_link .links ul li a i {
+    font-size: 25px;
+}
+
+.center {
+    text-align: center;
+    margin: 0px;
+    padding: 30px 0;
+    width: 100%;
+}
+.pagination {
+    display: inline-block;
+}
+.pagination a {
+    color: black;
+    float: left;
+    padding:4px 16px;
+    text-decoration: none;
+    border: 1px solid #f1f1f1;
+    background: #fff;
+    display: inline-block;
+    font-size: 30px;
+    height: 54px;
+    display: flex;
+    align-items: center;
+}
+.pagination a.active {
+    background-color: #1b86e3;
+    color: white;
+    border: 1px solid #1b86e3;
+}
+
+
+
+/*grid-view-css*/
+
+#listing_prop .row.columns.grids_layout {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    grid-column-gap: 30px;
+}
+#listing_prop .row.columns.grids_layout .col-md-3.nopadding {max-width: 100%;flex: initial;}
+#listing_prop .row.columns.grids_layout .col-md-9.nopadding {
+    max-width: 100%;
+    flex: initial;
+}
+#listing_prop .row.columns.grids_layout  .quantity_area {
+    display: block;
+}
+#listing_prop .row.columns.grids_layout .quantity_area .chat_detail_link {
+    margin: 15px 0px;
+}
+/*grid-view-css-end*/
+
+
+
+/*four_view*/
+#listing_prop .row.columns.empty_view {
+    display: none;
+}
+/*four_view*/

@@ -1,0 +1,45 @@
+.loginbg {
+    padding: 50px;
+    margin: 0px;
+    background: #ECEFF3;
+}
+.loginbg .loginarea {
+    background: #fff;
+    width: 100%;
+    max-width: 450px;
+    margin: 0 auto;
+    padding:20px;
+    box-shadow: 0 7px 11px -5px rgba(103,123,160,0.28);
+    border-radius: 5px;
+}
+.loginbg .loginarea .gent {
+    text-align: center;
+    font-size: 26px;
+    font-weight: 500;
+    margin-bottom: 18px;
+}
+.loginbg .loginarea .login_logo{text-align: center; margin-bottom: 25px;}
+.loginbg .loginarea .login_logo img{width: 232px;}
+.loginbg .loginarea .form-control {
+    height: 50px;
+}
+.loginbg .loginarea .custmbtn {
+    margin-top: 20px;
+    a:first-child .cstmbtn{
+        margin-right:1px;
+    }
+    a:last-child .cstmbtn{
+        margin-left:1px;
+    }
+}
+.loginbg .loginarea .custmbtn .cstmbtn {
+    width: calc(50% - 2px);
+}
+.loginbg .loginarea .form-group label {
+    font-size: 18px;
+    font-weight: 500;
+}
+.loginbg .loginarea .form-check label {
+    font-size: 18px;
+    font-weight: 500;
+}

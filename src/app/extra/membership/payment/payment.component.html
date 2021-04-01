@@ -1,0 +1,129 @@
+<app-header></app-header>
+<!--banner-section-->
+<section id="paymentbg">
+	<div class="container">
+			
+		<div class="col-sm-12">
+			<div class="row">
+				<!--content start -->
+                    <div class="col-sm-8 top_selling">
+						<div class="inside">
+                            <form  [formGroup]="paymentForm" (ngSubmit)="submitForm()">
+                                <div class="title">Your Payment Method</div>
+                                <div class="methods">
+                                    <ul>
+                                        <li>
+
+                                            <div class="titles">
+                                                <label>
+                                                    <div class="headline">
+                                                        <span>Credit Card</span>
+                                                    </div>
+                                                    <div class="images">
+                                                        <p><img src="assets/images/stripe.png"></p>
+                                                    </div> 
+                                                </label>
+                                            </div>
+                                            <div class="details">
+                                            
+                                                    <div class="row">
+                                                        <div class="col-sm-12">
+                                                            <label>Card Number</label>
+                                                            <input type="text" formControlName="card_no" data-inputmask="'mask': '9999-9999-9999-9999', 'placeholder': ''" class="form-control" placeholder="XXXX-XXXX-XXXX-XXXX">
+                                                            <ng-container *ngIf="submit && paymentForm.get('card_no').errors">
+                                                                <small *ngIf="paymentForm.get('card_no').errors.required" class="error-text">Card number is required.</small>
+                                                                <small *ngIf="paymentForm.get('card_no').errors.minlength || paymentForm.get('card_no').errors.maxlength" class="error-text">Invalid card number format.</small>
+                                                            </ng-container>
+                                                        </div>
+                                                        <div class="col-sm-8">
+                                                            <div class="row">
+                                                                <div class="col-sm-12"><label>Expiration Date</label></div>
+                                                                <div class="col-sm-8">
+                                                                    <select  class="form-control" formControlName="ccExpiryMonth"  [value]="" name="expiry_month"  id="expiry_month">
+                                                                        <option disabled="disabled" value="" selected="selected">Select Month</option>
+                                                                        <option *ngFor="let month of months" [value]="month">{{month}}</option>
+                                                                    </select>
+                                                                    <ng-container *ngIf="submit && paymentForm.get('ccExpiryMonth').errors">
+                                                                        <small *ngIf="paymentForm.get('ccExpiryMonth').errors.required" class="error-text">Expiry month is required.</small>
+                                                                    </ng-container>
+                                                                </div>
+                                                                <div class="col-sm-4">
+                                                                    <select  class="form-control" formControlName="ccExpiryYear"  [value]="" name="expiry_year"   id="expiry_year">
+                                                                        <option disabled="disabled" value="" selected="selected">Select Year</option>
+                                                                        <option *ngFor="let year of years" [value]="year">{{year}}</option>
+                                                                    </select>
+                                                                    <ng-container *ngIf="submit && paymentForm.get('ccExpiryYear').errors">
+                                                                        <small *ngIf="paymentForm.get('ccExpiryYear').errors.required" class="error-text">Expiry year is required.</small>
+                                                                    </ng-container>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-4">
+                                                            <label>Security Code (CVV)</label>
+                                                            <input type="text" data-inputmask="'mask': '999', 'placeholder': ''" formControlName="cvvNumber" class="form-control" placeholder="123">
+                                                            <ng-container *ngIf="submit && paymentForm.get('cvvNumber').errors">
+                                                                <small *ngIf="paymentForm.get('cvvNumber').errors.required" class="error-text">Card Security Number is required.</small>      
+                                                                <small *ngIf="paymentForm.get('cvvNumber').errors.minlength || paymentForm.get('cvvNumber').errors.maxlength" class="error-text">Invalid Card Security Number format.</small>
+                                                            </ng-container>
+                                                            <input type="hidden" [(ngModel)]="membership" formControlName="amount" >
+                                                        </div>
+                                                        <!-- <div class="col-sm-12 terms mt-0"><input formControlName="card" type="checkbox"> Save this card for future payment</div> -->
+                                                </div>
+                                            </div>
+                                        </li>
+                                        
+                                    </ul>
+                                </div>
+
+                                
+                                <div class="terms">
+                                    <ng-container *ngIf="submit && paymentForm.get('terms').errors">
+                                        <small *ngIf="paymentForm.get('terms').errors.required" class="error-text error-big">*</small>
+                                    </ng-container>
+                                    <input type="checkbox" formControlName="terms"> By clicking the button, you agree to the <a [routerLink]="'/terms'">Terms and Conditions</a>
+                                </div>
+
+                                <div class="place_order"><button type="submit" class="btn btn-success" >Continue Payment</button></div>
+                            </form>
+                        </div>
+					</div>
+                <!--content end-->
+
+
+                <!--content start -->
+                    <div class="col-sm-4 top_selling">
+						<div class="inside" *ngIf="cards.length>0">
+                            <div class="title">Saved Cards</div>
+                            <div class="save_card" *ngFor="let card of cards; let num = index">
+                                <label>
+                                    <input type="radio" name="save"><span></span>
+                                    <div class="holder_name">{{card.brand}}</div> 
+                                    <div class="account_number">XXXX-XXXX-XXXX-{{card.card_no_last}}</div>
+                                    <div class="expire">{{card.month}}/{{card.year}} <button (click)=selectCard(num) class="btn btn-primary">Select</button></div>
+                                    
+                                    <div class="trash" (click)="deleteCard(card.id)"><i class="fa fa-trash"></i></div>
+                                </label>
+                            </div>
+						</div>
+
+                        <div class="inside" *ngIf="membership">
+                            <div class="title">Payment Summary</div>
+                            <div class="total_amount">
+                                <ul>
+                                    <li><strong>Plan Name:</strong> <span>Equity Pro Plan</span></li>
+                                    <li><strong>Amount:</strong> <span>${{membership}}.00</span></li>
+                                </ul>
+                            </div>
+                            <div class="subtotal"><strong>Subtotal:</strong> <span>${{membership}}.00</span></div>
+						</div>
+					</div>
+                <!--content end-->
+				
+			</div>
+		</div>
+
+	</div>
+</section>
+<!--banner-section-end-->
+
+<app-footer></app-footer>

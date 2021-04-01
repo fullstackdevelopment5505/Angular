@@ -1,0 +1,25 @@
+<div class="modal-header">
+    <button type="button" class="close" aria-label="Close" (click)="close(4)"><span aria-hidden="true">&times;</span></button>
+  </div>
+
+<div class="modal-body record_name_popup_change">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="form-group">
+                <input type="text"  *ngIf="type==='email'" class="form-control" value="{{data[0][type]}}" disabled>
+                <input type="text"  *ngIf="type==='phone'" data-inputmask="'mask': '+1 (999) 999-9999', 'placeholder': ''"   class="form-control" value="{{data[0][type]}}" disabled>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6"><button class="btn btn-success w-100 mb-2" (click)="close(2)"><i class="fa fa-bullhorn mr-2"></i> Start Marketing</button></div>
+        <div class="col-md-6"><button class="btn btn-primary w-100 mb-2" (click)="close(1)"><i class="fa fa-edit mr-2"></i> Edit {{type | titlecase }} </button></div>
+    </div>
+</div>
+
+<!-- 
+<div class="modal-footer">
+    <button type="button" class="btn btn-success" (click)="close(0)">Save</button>
+    <button type="button" class="btn btn-danger" (click)="close(1)">Reset Default</button>
+</div> -->

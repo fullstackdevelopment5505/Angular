@@ -1,0 +1,116 @@
+<app-header-customer [sideBar]="sideBar"></app-header-customer>
+<app-sidebar-customer #sideBar></app-sidebar-customer>
+
+<section class="right_section">
+    <!-- inside_content_area start-->
+    <div class="content_area">
+
+        <div class="col-md-12 mb-3">
+            <a [routerLink]="'/customer/postcard/progress'"><button class="btn btn-primary"><i class="fa fa-arrow-left"></i> Back</button></a>
+        </div>
+
+        <!-- main row start-->
+        <div class="col-sm-12">
+
+            <div class="row">
+                <div class="col-sm-12 top_selling profile_whole_detail">
+                    
+                    <div class="inside">
+                        <div class="row" *ngIf="progressDetail && progressDetail.data && progressDetail.data.status==='0'">
+                            <div class="col-md-6"><p class="m-0">Status: <label class="badge badge-info">Sent</label></p></div>
+                        </div>
+                        <div class="headingarea" *ngIf="progressDetail && progressDetail.data && progressDetail.data.status==='1'">
+                            <div class="headingarea">
+                                <h2>Design Request Has Been Accepted!</h2>
+                                <h4>Mr/Mrs. {{progressDetail && progressDetail.data && progressDetail.data.agent_name}} has been appointed as design lead on this job and his contact details are this: {{progressDetail && progressDetail.data && progressDetail.data.phone}}</h4>
+                                <p class="m-0">Status: <label class="badge badge-warning">In Progress</label></p>
+                            </div>
+                        </div>
+                        <div class="row" *ngIf="progressDetail && progressDetail.data && progressDetail.data.status==='2'">
+                            <div class="col-md-12 text-center"><p class="m-0">Status: <label class="badge badge-success">Completed</label></p></div>
+                        </div>
+                        <div class="row" *ngIf="progressDetail && progressDetail.data && progressDetail.data.status==='3'">
+                            <div class="col-md-12 text-center"><p class="m-0">Status: <label class="badge badge-danger">Rejected</label></p></div>
+                        </div>
+                    </div>
+
+                    <div class="inside">
+                        <p class="h5 mb-4">Postcard Design Information</p>
+                        <div class="row">
+                            <table class="tableadmin">
+                                <tr>
+                                    <td><strong>What is the goal of your campaign?</strong></td>
+                                    <td>{{progressDetail && progressDetail.data && progressDetail.data.company_goal}}</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Who are you targeting?</strong></td>
+                                    <td>{{progressDetail && progressDetail.data && progressDetail.data.targets}}</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Primary Color</strong></td>
+                                    <td>{{progressDetail && progressDetail.data && progressDetail.data.primary_color}} <span class="updateclr" [style.background]="progressDetail && progressDetail.data && progressDetail.data.primary_color"></span></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Secondary Color</strong></td>
+                                    <td>{{progressDetail && progressDetail.data && progressDetail.data.secondary_color}} <span class="updateclr" [style.background]="progressDetail && progressDetail.data && progressDetail.data.secondary_color"></span></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Handwriting Style</strong></td>
+                                    <td>{{progressDetail && progressDetail.data && progressDetail.data.font_family}}</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Postcard Content</strong></td>
+                                    <td><p style="line-height: 26px;">{{progressDetail && progressDetail.data && progressDetail.data.postcard_content}}</p></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Any additional note to designer.</strong></td>
+                                    <td>
+                                        <img [src]="progressDetail && progressDetail.data && progressDetail.data.sample_image" width="300">
+                                        <p style="line-height: 26px;">{{progressDetail && progressDetail.data && progressDetail.data.additional_notes}}</p>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="inside" *ngIf="progressDetail && progressDetail.data && progressDetail.data.status==='2'">
+                        <div class="title">Designs</div>
+                        <div class="lists mt-4">
+                            <div class="row">
+
+                                <div class="col-md-4 col-lg-3 mb-3" >
+                                    <div class="inset">
+                                        <p>Date: {{progressDetail && progressDetail.data && progressDetail.data.created_at |  date:'d-MMM-yyyy'}}</p>
+                                        <div class="overlap">
+                                            <a target="_blank" [href]="progressDetail && progressDetail.data && progressDetail.data.final_postcard_design_template" [download]="'image'" class="btn btn-success"><i class="fa fa-download"></i> Download</a>
+                                            <button (click)="openModel()" class="btn btn-primary ml-2" data-toggle="modal" data-target="#myModal"><i class="fa fa-eye"></i> Preview</button>
+                                        </div>
+                                        <span><img [src]="progressDetail && progressDetail.data && progressDetail.data.final_postcard_design_template" width="100%"></span>
+                                    </div>
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<ng-template #content let-modal>
+    <div class="modal-header">
+		<h4 class="modal-title">Design Preview</h4>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <img [src]="progressDetail && progressDetail.data && progressDetail.data.final_postcard_design_template" width="100%">
+    </div>
+    <div class="modal-footer">
+        <button type="button" (click)="modal.close('Close click')" class="btn btn-danger" data-dismiss="modal">Close</button>
+    </div>
+</ng-template>

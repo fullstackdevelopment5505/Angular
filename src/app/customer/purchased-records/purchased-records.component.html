@@ -1,0 +1,46 @@
+<app-header-customer [sideBar]="sideBar"></app-header-customer>
+<app-sidebar-customer #sideBar></app-sidebar-customer>
+	<!-- right area start -->
+	<section class="right_section">
+        <!-- inside_content_area start-->
+        <div class="content_area">
+                <!-- main row start-->
+                <div class="col-sm-12">
+                    <div class="row">
+                        <!--table start -->
+                        <div class="col-sm-12 top_selling">
+                            <div class="inside">
+                                <div class="title">Purchased Records</div>
+                                <table datatable [dtOptions]="dtOptions" id="crm" class="row-border hover">
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+
+        <div class="modal" id="confirmModal">
+            <div class="modal-dialog modal-md">
+              <div class="modal-content ">
+          
+                <!-- Modal Header -->
+                <div class="modal-header">
+                  <h4 class="modal-title">Confirm</h4>
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+          
+                <!-- Modal body -->
+                <div class="modal-body">
+                   <p>Are you sure to remove this property from Purchased Records? If yes, you can recover this from Trash anytime :)</p>                   
+                </div>
+          
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <button class="btn btn-primary" data-dismiss="modal">No</button>
+                    <button type="button" class="btn btn-danger" (click)="callTrash()" data-dismiss="modal">Yes</button>
+                </div>
+          
+              </div>
+            </div>
+        </div>
+    </section>

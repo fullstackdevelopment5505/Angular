@@ -1,0 +1,159 @@
+#wallet{
+    padding: 20px 0 20px 0;
+    .title{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        p{
+            margin: 0;
+            font-size: 30px;
+            color: #222222;
+            font-weight: bold;
+        }
+        button{
+            border:2px solid #1b86e3;
+            background: #fff;
+            color: #1b86e3;
+        }
+    }
+    .wallet{
+        margin-top: 10px;
+        .section{
+            height: 120px;
+            border-radius: 5px;
+            padding: 10px;
+            color: #fff;
+            position: relative;
+            // box-shadow: ;
+            .points{
+                display: flex;
+                justify-content: flex-start;
+                align-items: baseline;
+                position: absolute;
+                bottom: 0;
+                right: 10px;
+                p{
+                    margin-left: 5px;
+                }
+            }
+        }
+        .sec_1{
+            background-image: linear-gradient(to right, #5e82ff , #3439c1);
+            span{
+                background: #8fa2ff;
+                padding: 5px 10px;
+                border-radius: 220px;
+            }
+        }
+        .sec_2{
+            background-image: linear-gradient(to right, #f95b84 , #ca284c);
+            span{
+                background: #fea1c7;
+                padding: 5px 10px;
+                border-radius: 220px;
+            }
+        }
+        .sec_3{
+            background-image: linear-gradient(to right, #0ace62 , #039a47);
+            span{
+                background: #6cc086;
+                padding: 5px 10px;
+                border-radius: 220px;
+            }
+        }
+    }
+    .transactions{
+        margin-top: 20px;
+        .headerTitle{
+            font-size: 25px;
+            color: #222222;
+            position: relative;
+            &::after {
+                content: " ";
+                position: absolute;
+                width: 70px;
+                height: 5px;
+                background: #222222;
+                bottom: -5px;
+                left: 0;
+                display: block;
+                border-radius: 15px;
+            }
+        }
+        .mainSec{
+            margin-top: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            padding:30px 20px;
+            box-shadow: 0 0 10px 1px #ccc;
+            
+            div + div{// #wallet{
+                .first img{
+                    width:100px;
+                    height:88px;
+                }
+                .info p{
+                    font-size: 24px;
+                    font-weight: 500;
+                    color: #1b86e3;
+                }
+                span{
+                    display: -webkit-flex;
+                    margin-left:40px;
+                }
+                .info img{
+                    height: 36px;
+                    width: 43px;
+            }
+            .info h2{
+                color:#000;
+                margin-left:10px;
+            }
+            
+            
+            
+            .bg_white{background:#fff; border-radius:5px; box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.06); width: 100%; padding:20px; display:-webkit-flex;}
+            section#wallet {
+                padding: 30px 0px;
+            }
+            .flex_div {
+                display: flex;
+                justify-content: space-between;
+                flex-wrap: wrap;
+                align-items: center;
+                padding: 15px 0px;
+            }
+            .anc{
+                border-radius: 50px;
+                background-color: #1b86e3;
+                color:#fff;
+            }
+            
+            .modal-header{
+                background-color: #1b86e3;
+            }
+            .tl{
+                box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.06);
+            }
+            // }
+                border-top: 1px solid #ccc;
+            }
+            .payment{
+                padding: 10px 0px;
+                h5{
+                    color: #039a47;
+                    margin: 0px;
+                }
+                p{
+                    font-size: 10px;
+                    color: #aaa;
+                    margin: 0;
+                }
+            }
+
+        }
+    }
+}
+.submit-button{
+    width: 100%;
+}

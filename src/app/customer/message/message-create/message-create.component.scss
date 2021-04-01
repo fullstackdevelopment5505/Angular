@@ -1,0 +1,105 @@
+.top_bar_area {
+    margin-top: 10px;
+}
+.from_to_filter {
+    margin-bottom: 30px;
+}
+
+.from_to_filter form, .from_to_filter {
+    display: flex;
+    display: -webkit-flex;
+    align-items: flex-end;
+    -webkit-align-items: flex-end;
+    flex-wrap: wrap;
+    -webkit-flex-wrap: wrap;
+    width: 100%;
+}
+.from_to_filter .title {
+    font-size: 22px;
+    font-weight: 600;
+    height: 33px;
+    padding: 0 15px;
+}
+.top_bar_area .view_back {
+    height: 46px;
+    margin-right: 15px;
+    font-size: 23px;
+    display: flex;
+    align-items: center;
+    -webkit-display: flex;
+    -webkit-align-items: center;
+}
+.from_to_filter .form-group {
+    margin: 0 10px 0 0;
+    max-width: 190px;
+    width: 100%;
+}
+.from_to_filter .form-group .form-control {
+    border-radius: 100px;
+    height: 46px;
+    padding: 0px 12px;
+    box-shadow: 0 0 10px #ccc;
+    margin-top: 9px;
+}
+.from_to_filter .btn {
+    height: 46px;
+    border-radius: 100px;
+    padding: 10px 30px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+.delete_all_mail {
+    margin-left: 15px;
+    height: 46px;
+    width: 46px;
+    border-radius: 100px;
+    background: #ff5858;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    font-size: 24px;
+    text-align: center;
+    line-height: 46px;
+    color: #fff;
+    cursor: pointer;
+}
+.top_selling .inside {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    margin-bottom: 30px;
+}
+.full_message_detail {
+    background: #e7f1ff;
+    padding: 15px;
+}
+.full_message_detail .sender_details {
+    display: flex;
+    display: -webkit-flex;
+    padding-bottom: 15px;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #ccc;
+    align-items: center;
+    -webkit-align-items: center;
+}
+.full_message_detail .sender_details .pic {
+    width: 100%;
+    max-width: 70px;
+    margin-right: 20px;
+}
+.full_message_detail .sender_details .full_detail {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    display: -webkit-flex;
+    -webkit-justify-content: space-between;
+}
+.full_message_detail .sender_details .full_detail .email span {
+    font-weight: 600;
+    font-size: 18px;
+    margin-bottom: 10px;
+    display: block;
+    word-wrap: break-word;
+}
+.full_message_detail .form-group label {
+    font-size: 20px;
+    margin-bottom: 10px;
+}

@@ -1,0 +1,424 @@
+#membershipbg{
+	margin: 0px;
+	padding:50px 0px;
+	background: #fff;
+}
+
+#membershipbg .whitebg{
+	margin: 0px;
+	padding:20px;
+	background: #fff;
+	border:#eee solid thin;
+}
+#membershipbg{
+	margin: 0px;
+	padding:50px 0px;
+	background: #fff;
+}
+#membershipbg .whitebg{
+	margin: 0px;
+	padding:0;
+	background: #fff;
+	border:#eee solid thin;
+	box-shadow: 0 0 12px 3px rgba(0,0,0,0.1);
+	border-radius: 10px;
+}
+#membershipbg .whitebg .bluebg {
+    background: #1b86e3;
+    text-align: center;
+    padding: 30px 0 0;
+}
+#membershipbg .whitebg .bluebg .prices {
+    margin: 0px auto;
+    padding: 60px;
+    color: #1b86e3;
+    font-size: 35px;
+    background: #fff;
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 0;
+    border: #0d6abb solid 2px;
+}
+#membershipbg .whitebg .memrbox h2 {
+    font-size: 24px;
+}
+#membershipbg .whitebg .bluebg .regular{
+	margin:0;
+	padding:15px;
+}
+#membershipbg .whitebg .bluebg .regular p {
+    color: #fff;
+    font-size: 18px;
+    line-height: normal;
+    margin-bottom:12px;
+}
+#membershipbg .whitebg .memrbox{
+	padding: 18px;
+	margin: 0px;
+	text-align: center;
+}
+#membershipbg .whitebg ul.listis {
+    margin: 15px 0px;
+    padding: 0px;
+}
+#membershipbg .whitebg .badgess img {width: 140px; margin-bottom: 30px;}
+
+
+
+.inside {
+    box-shadow: 0 0 12px 3px rgba(0,0,0,0.1);
+    background: #fff;
+    padding: 20px;
+    border-radius: 5px;
+}
+.inside .title {
+    font-size: 24px;
+    color: #000;
+    margin-bottom: 13px;
+    text-transform: capitalize;
+    font-weight: 500;
+}
+.inside .content {
+    font-size: 17px;
+    line-height: 26px;
+}
+.inside .content p {
+    margin-top: 0;
+}
+.inside .content ul li {
+    list-style-type: disc;
+    list-style-position: inside;
+    padding: 2px;
+}
+
+
+
+
+
+
+
+
+
+#memberwork{
+	margin: 0px;
+	padding:50px 0px;
+	background: #0d8ee0;
+}
+#memberwork .headings {
+    text-align: center;
+}
+#memberwork .headings h2 {
+    font-size: 30px;
+    color: #fff;
+}
+#memberwork .headings p {
+    color: #fff;
+    font-size: 18px;
+}
+#memberwork .headings {
+    text-align: center;
+    margin-bottom: 30px;
+}
+#memberwork .headings h2 {
+    font-size: 30px;
+    color: #fff;
+}
+#memberwork .headings p {
+    color: #fff;
+    font-size: 18px;
+}
+#memberwork .boxmebr {
+    text-align: center;
+    margin: 0px;
+    padding: 0px;
+}
+#memberwork .boxmebr .imgcrcl {
+    background: #fff;
+    border-radius: 50%;
+    width: 180px;
+    height: 180px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    display: -webkit-flex;
+    -webkit-align-items: center;
+    -webkit-justify-content: center;
+    border: #0b75b9 solid 2px;
+}
+#memberwork .boxmebr .imgcrcl img {
+    width:100px;
+}
+#memberwork .boxmebr h3 {
+    color: #fff;
+    font-size: 22px;
+    margin: 10px 0;
+}
+#memberwork .boxmebr p {
+    margin: 0px;
+    padding: 0px;
+    font-size: 16px;
+    color: #fff;
+}
+
+
+
+
+
+
+
+
+
+/* payment start */
+.top_selling .inside {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    margin-bottom: 30px;
+}
+.right_area .inside .title {
+    font-size: 20px;
+    color: #6b6b6b;
+    margin-bottom: 13px;
+    text-transform: capitalize;
+}
+.methods li{list-style: none;}
+.methods li .titles label {
+    display: flex;
+    display: -webkit-flex;
+    justify-content: space-between;
+    -webkit-justify-content: space-between;
+    align-items: center;
+    -webkit-align-items: center;
+    padding: 8px 10px;
+    cursor: pointer;
+    height: 50px;
+}
+.methods li .titles label .images {
+    display: flex;
+    display: -webkit-flex;
+}
+.methods li .titles label .images p {
+    max-width: 50px;
+    margin-left: 3px;
+    margin-bottom: 0px;
+}
+.methods li .titles {
+    background: #f1f1f1;
+    border: 1px solid #d6d6d6;
+    margin-bottom: 20px;
+}
+.methods li .details {
+    margin-bottom: 20px;
+}
+.methods li .details label {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+.methods li .details .form-control {
+    height: 46px;
+}
+.methods li .details > .row > div {
+    margin-bottom: 20px;
+}
+.methods li .titles label input[type="radio"] {
+    width: 19px;
+    height: 20px;
+    vertical-align: sub;
+    margin-right: 8px;
+}
+.terms {
+    margin: 30px 0;
+}
+.terms input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    vertical-align: middle;
+    margin-right: 8px;
+}
+.place_order button {
+    width: 100%;
+    font-size: 20px;
+    padding: 14px;
+}
+.total_amount li {
+    padding: 15px 0;
+    border-bottom: 1px solid #CCB;
+    list-style: none;
+}
+.total_amount li strong {
+    font-weight: 600;
+    margin-right: 5px;
+}
+.subtotal {
+    display: flex;
+    justify-content: space-between;
+    display: -webkit-flex;
+    -webkit-justify-content: space-between;
+    align-items: center;
+    -webkit-align-items: center;
+    padding: 18px 10px;
+    background: #e4e4e4;
+}
+.subtotal strong {
+    font-weight: 500;
+    font-size: 17px;
+}
+.subtotal span {
+    font-weight: 600;
+    font-size: 30px;
+}
+.save_card label {
+    width: 100%;
+    display: block;
+    background: -webkit-linear-gradient(#ffffff, #e0e0e0);
+    background: linear-gradient(#ffffff, #e0e0e0);
+    background: -ms-linear-gradient(#ffffff, #e0e0e0);
+    padding: 15px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    cursor: pointer;
+    position: relative;
+}
+.save_card .holder_name {
+    font-size: 20px;
+    font-weight: 500;
+    text-transform: uppercase;
+}
+.save_card .account_number {
+    font-size: 18px;
+    margin: 9px 0 10px;
+    font-weight: 500;
+}
+.save_card .expire{
+    font-size: 18px;
+    font-weight: 500;
+}
+.save_card .trash {
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    font-size: 20px;
+    color: #2b2b2b;
+}
+.save_card {
+    margin-top: 15px;
+}
+.save_card label input{
+    display: none;
+}
+.save_card label span {
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+    width: 20px;
+    height: 20px;
+    border-radius: 100px;
+}
+.save_card label input:checked + span{
+    background-color: #28a745;
+}
+.save_card label input:checked + span::after {
+    content: "";
+    width: 12px;
+    height: 8px;
+    position: absolute;
+    left: 4px;
+    top: 5px;
+    border-left: 3px solid #fff;
+    border-bottom: 3px solid #fff;
+    transform: rotate(-60deg);
+    -webkit-transform: rotate(-60deg);
+}
+
+/* payment end */
+
+
+
+
+
+@media all and (max-width: 767px){
+
+.methods li .titles label span {
+    font-size: 12px;
+}
+
+}
+
+#kickbg {
+    margin: 0px;
+    padding: 50px 0;
+    background: #f7f7f7;
+    .listing_heading {
+        margin: 0px;
+        margin-bottom: 30px;
+    }
+    .cleintbox4 {
+        padding: 20px 20px;
+        background: #fff;
+        box-shadow: 0 2px 25px rgba(0,0,0,0.2);
+        text-align: center;
+        border-radius: 10px;
+        -webkit-transition: 0.5s;
+        -moz-transition: 0.5s;
+        -o-transition: 0.5s;
+        transition: 0.5s;
+        margin-bottom: 30px;
+        .heart-icon {
+            position: relative;
+            width: 0;
+            height: 0;
+            i {
+                font-size: 20px;
+                position: absolute;
+                top: 0px;
+                left: 0px;
+                color: #000;
+                &.fillheart {
+                    display: none;
+                    color: #f20;
+                }
+            }
+        }
+        .clientlogo4 {
+            height: 180px;
+            width: 180px;
+            border-radius: 50%;
+            margin: 0 auto;
+            overflow: hidden;
+            img {
+                height: 100%;
+                object-fit: cover;
+                width: 100%;
+            }
+        }
+        h3 {
+            color: #0D8EE0;
+            cursor: pointer;
+            margin-top: 12px;
+        }
+        p {
+            margin: 0px 0 0;
+            padding: 0px;
+            font-size: 16px;
+            font-weight: 400;
+            color: #000;
+        }
+        a.btn.btn-primary.explore {
+            height: 46px;
+            font-size: 20px;
+            font-weight: 500;
+            border-radius: 50px;
+            padding: 5px 25px 10px 25px;
+            text-align: center;
+            align-items: center;
+            margin-top: 21px;
+        }
+    }
+}

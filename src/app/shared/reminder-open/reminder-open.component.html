@@ -1,0 +1,17 @@
+<div class="modal-header">
+    <h4 class="modal-title">Reminder Detail</h4>
+    <button type="button" class="close" aria-label="Close" (click)="close()"><span aria-hidden="true">&times;</span></button>
+</div>
+
+<div class="modal-body reminder_open">
+    <div class="row">
+        <div class="col-sm-6 left"><i class="fa fa-calendar"></i> {{data.start | date }}</div>
+        <div class="col-sm-6 right"><i class="fa fa-clock-o"></i> {{data.start | date:'shortTime' }}</div>
+        <div class="col-sm-12 data">{{data.title}}</div>
+    </div>
+</div>
+
+<div class="modal-footer">
+    <button type="button" class="btn btn-success" (click)="open()">Property Detail</button>
+    <button type="button" class="btn btn-danger" (click)="close()">Close</button>
+</div>

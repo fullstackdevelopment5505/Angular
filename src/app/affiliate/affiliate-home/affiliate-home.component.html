@@ -1,0 +1,348 @@
+<!--start-header-->
+<header class="container-fluid" id="tophead">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-3 logo">
+                <a [routerLink]="'/'">
+                    <img src="assets/images/logo.png">
+                </a>
+            </div>
+			
+			<div class="col-md-6 headnav">
+				<nav  class="navbar navbar-expand-lg navbar-dark ">
+				  <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navb">
+				    <span></span>
+				  </button>
+				  <div class="collapse navbar-collapse" id="navb">
+				    <ul class="navbar-nav mr-auto">				     
+				      <li class="nav-item"><a class="nav-link" [routerLink]="'/aboutus'">About</a></li>
+					  <li class="nav-item"><a class="nav-link" [routerLink]="'/kickstarter'">Kickstarter</a></li>
+					  <li class="nav-item"><a class="nav-link" [routerLink]="'/affiliate'">Affiliate</a></li>				   
+				      <li class="nav-item" *ngIf="!userLoggedIn || !paidMember"><a class="nav-link" [routerLink]="'/membership'">Membership</a></li>
+				      <li class="nav-item"><a class="nav-link" [routerLink]="'/news'">News and Insight</a></li>
+				    </ul>
+				  </div>
+				</nav>
+			</div>
+
+			<div class="col-md-3 signup">
+				<div class="btns">
+					<a href="http://affiliate.equityfinderspro-dev.com" class="login" >Login</a>
+   					<a [routerLink]="'/affiliate/signup'" class="sign">Sign Up</a>
+					<a  class="users"><i class="fa fa-user-circle-o"></i></a>
+				</div>
+			</div>
+		</div>
+	</div>
+</header>
+<!--end-header-->
+
+<!-- <app-header></app-header> -->
+
+
+<!-- job-start -->
+
+<section class="affiliatebg">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12 col-lg-6">
+				<div class="content">
+					<h1 [innerHTML]="banner_title">We've Built A Better Affiliate Program</h1>
+					<p [innerHTML]="banner_content">You've worked hard to make your content matter. You know your audience and how to convert browsers into buyers. We know how to connect you with the brands your audience cares most about.</p>
+					<a [routerLink]="'/affiliate/signup'"><button class="btn btn-success btn-lg" [innerHTML]="become_affiliate_button"></button></a>&nbsp;
+					<a href="http://affiliate.equityfinderspro-dev.com"><button class="btn btn-success btn-lg">Login</button></a>
+				</div>
+			</div>
+			<div class="col-md-12 col-lg-6 shape">
+				<img src="assets/images/aff-img.svg">
+			</div>
+		</div>
+	</div>
+</section>
+
+
+
+
+<section class="started">
+	<div class="container">
+
+		<div class="col-md-12">
+			<div class="comptext">
+				<h2 [innerHTML]="title">How To Get Started</h2>
+				<p [innerHTML]="description">Lorem ipsum dolor sit amet, consectetur adipisicing Molestias dicta ratione blanditiis. Loremipsum dolor sit amet, consectetur adipisicing elit.</p>
+			</div>
+		</div>
+
+		<article class="flowdesign">
+		<div class="row">
+			<div class="col-md-2">
+				<div class="icons"><img src="assets/images/signup.svg" class="img-reponsive"></div>
+			</div>
+			<div class="col-md-10">
+				<div class="content">
+					<h3 [innerHTML]="title_1">Sign Up</h3>
+					<p [innerHTML]="content_1">To apply for the Partner Affiliate Program, simply provide information about your organization and your online resources in the application.</p>
+				</div>
+			</div>
+		</div>
+		</article>
+
+		<article class="centerside">
+		<div class="row mobflex">
+			<div class="col-md-10">
+				<div class="content2">
+					<h3 [innerHTML]="title_2">Get Approved</h3>
+					<p [innerHTML]="content_2">Once approved, Real Estate Express will send you a link where you can access banners and logos to place on your website, as well as view your organization's stats and tools.</p>
+				</div>
+			</div>
+			<div class="col-md-2">
+				<div class="icons"><img src="assets/images/globe.svg" class="img-reponsive"></div>
+			</div>
+		</div>
+		</article>
+
+		<article class="rightside">
+		<div class="row">
+			<div class="col-md-2">
+				<div class="icons"><img src="assets/images/earn.svg" class="img-reponsive"></div>
+			</div>
+			<div class="col-md-10">
+				<div class="content">
+					<h3 [innerHTML]="title_3">Earn Money</h3>
+					<p [innerHTML]="content_3">At the end of each month, you'll receive a commission check if your website generated sales. You can also see real-time sales and earnings 24/7 in our secure partner portal.</p>
+				</div>
+			</div>
+		</div>
+		</article>
+
+		<div class="text-center mt-5">
+			<a [routerLink]="'/affiliate/signup'"><button class="btn btn-success btn-lg" [innerHTML]="become_affiliate_button"></button></a>&nbsp;
+			<a href="http://affiliate.equityfinderspro-dev.com"><button class="btn btn-success btn-lg">Login</button></a>
+		</div>
+
+	</div>
+</section>
+
+
+
+
+
+
+<section class="compets">
+	<div class="container">
+
+		<div class="col-md-12">
+			<div class="comptext">
+				<h2 [innerHTML]="titleNxt">Puts you ahead of the competition</h2>
+				<p [innerHTML]="descriptionNxt">Lorem ipsum dolor sit amet, consectetur adipisicing Molestias dicta ratione blanditiis. Loremipsum dolor sit amet, consectetur adipisicing elit.</p>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-md-4">
+				<div class="compet_part">
+					<div class="icon"><img src="assets/images/c1.svg" class="img-reponsive"></div>
+					<h3 [innerHTML]="titleNxt_1"></h3>
+					<p [innerHTML]="contentNxt_1"></p>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="compet_part">
+					<div class="icon"><img src="assets/images/c2.svg" class="img-reponsive"></div>
+					<h3 [innerHTML]="titleNxt_2"></h3>
+					<p [innerHTML]="contentNxt_2"></p>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="compet_part">
+					<div class="icon"><img src="assets/images/c3.svg" class="img-reponsive"></div>
+					<h3 [innerHTML]="titleNxt_3"></h3>
+					<p [innerHTML]="contentNxt_3"></p>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="compet_part">
+					<div class="icon"><img src="assets/images/c4.svg" class="img-reponsive"></div>
+					<h3 [innerHTML]="titleNxt_4"></h3>
+					<p [innerHTML]="contentNxt_4"></p>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="compet_part">
+					<div class="icon"><img src="assets/images/c6.svg" class="img-reponsive"></div>
+					<h3 [innerHTML]="titleNxt_5"></h3>
+					<p [innerHTML]="contentNxt_5"></p>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="compet_part">
+					<div class="icon"><img src="assets/images/c5.svg" class="img-reponsive"></div>
+					<h3 [innerHTML]="titleNxt_6"></h3>
+					<p [innerHTML]="contentNxt_6"></p>
+				</div>
+			</div>
+		</div>
+
+		<div class="text-center mt-5">
+			<a [routerLink]="'/affiliate/signup'"><button class="btn btn-success btn-lg" [innerHTML]="become_affiliate_button"></button></a>&nbsp;
+			<a href="http://affiliate.equityfinderspro-dev.com"><button class="btn btn-success btn-lg">Login</button></a>
+		</div>
+
+	</div>
+</section>
+
+
+
+
+
+
+<section class="passivebg">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-6">
+				<img src="assets/images/passive.svg">
+			</div>
+			<div class="col-md-6">
+				<h2 [innerHTML]="progBenTitle">Program Benefits</h2>
+				<div [innerHTML]="progBenDescription">A churn rate under 4% tells a lot. Once customers come to Equity, they rarely leave. And remember that you earn commissions over the lifetime of their stay!</div>
+				<!-- <p>A churn rate under 4% tells a lot. Once customers come to Equity, they rarely leave. And remember that you earn commissions over the lifetime of their stay!</p>
+				 <ul>
+					<li><i class="fa fa-check-circle"></i> Earn 15% of each new subscription and renewals</li>
+					<li><i class="fa fa-check-circle"></i> Personalized and expert affiliate marketing service</li>
+					<li><i class="fa fa-check-circle"></i> Powerful tools and technology to your affiliate partnerships</li>
+					<li><i class="fa fa-check-circle"></i> Intuitive, easy-to-use platform</li>
+					<li><i class="fa fa-check-circle"></i> Cookie length for 30 days</li>
+				</ul> -->
+			</div>
+		</div>
+
+		<div class="text-center mt-5">
+			<a [routerLink]="'/affiliate/signup'"><button class="btn btn-success btn-lg" [innerHTML]="become_affiliate_button"></button></a>&nbsp;
+			<a href="http://affiliate.equityfinderspro-dev.com"><button class="btn btn-success btn-lg">Login</button></a>
+		</div>
+
+	</div>
+</section>
+
+
+
+
+
+
+<!-- <section class="peopelsome">
+	<div class="container">
+
+		<div class="col-md-12">
+			<div class="comptext">
+				<h2>Meet Some of Our Affiliates</h2>
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing Molestias dicta ratione blanditiis. Loremipsum dolor sit amet, consectetur adipisicing elit.</p>
+			</div>
+		</div>
+
+
+		<div class="row">
+			<div class="col-md-4">
+				<div class="affipeople">
+					<div class="clientlogo4"><img src="assets/images/kick1.png"></div>
+					<h3>Martin</h3>
+					<h6>Sale Manager</h6>
+					<p>Now that I’ve been in the real estate business for a while, my network has expanded. I’m constantly recommending BoldLeads to agents and making some passive income off those referrals. It’s a nice boost.</p>
+					<p class="text-primary">Receive 18 Leads Within a Week</p>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="affipeople">
+					<div class="clientlogo4"><img src="assets/images/kick2.png"></div>
+					<h3>Robert</h3>
+					<h6>Sale Manager</h6>
+					<p>Now that I’ve been in the real estate business for a while, my network has expanded. I’m constantly recommending BoldLeads to agents and making some passive income off those referrals. It’s a nice boost.</p>
+					<p class="text-primary">Receive 18 Leads Within a Week</p>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="affipeople">
+					<div class="clientlogo4"><img src="assets/images/kick3.png"></div>
+					<h3>Luis</h3>
+					<h6>Sale Manager</h6>
+					<p>Now that I’ve been in the real estate business for a while, my network has expanded. I’m constantly recommending BoldLeads to agents and making some passive income off those referrals. It’s a nice boost.</p>
+					<p class="text-primary">Receive 18 Leads Within a Week</p>
+				</div>
+			</div>
+		</div>
+
+		<div class="text-center mt-5">
+			<a [routerLink]="'/affiliate/signup'"><button class="btn btn-success btn-lg" [innerHTML]="become_affiliate_button"></button></a>
+		</div>
+
+	</div>
+</section> -->
+
+
+
+
+
+
+
+<section class="faqaffbg">
+	<div class="container">
+
+		<div class="col-md-12">
+			<div class="comptext">
+				<h2><strong>Frequently Asked Questions</strong></h2>
+			</div>
+		</div>
+
+
+		<div class="col-md-12">
+			<div class="faqlists">
+				<ul>
+					<li *ngFor="let faq of faqs">
+						<h6 [innerHTML]="faq.title">What is your Affiliate Program?</h6>
+						<p [innerHTML]="faq.content">Our affiliate program financially rewards you for directing customers to our shop. When a product is purchased by a customer you refer, we pay you a commission for each sale.</p>
+					</li>
+					<!-- <li>
+						<h6>Does it cost me anything to become an affiliate?</h6>
+						<p>It’s absolutely free to join the Equityfinder Affiliate Program. There’s no charge to apply and there’s no minimum sales requirement.</p>
+					</li>
+					<li>
+						<h6>How does Equityfinder track orders coming from my website?</h6>
+						<p>An ID is assigned when you sign up through our online form. Links from associate websites to Amazon use a special format that includes this code. Every time a customer follows one of those links, the unique URL tells us which page to display as well as which associate sent the customer to us. We keep track of associate IDs as the customer browses our website, even if they close their browser and come back later that day.</p>
+					</li>
+					<li>
+						<h6>How can I make more money through your program?</h6>
+						<p>Target specific promotions through banners, blog posts, tweets, videos or emails to create awareness about your product review or recommendation list. This personalized method works best in boosting conversion rates. But, we don't accept websites with Equityfinder coupons.</p>
+					</li>
+					<li>
+						<h6>Do you have instructions for how to use Affiliate Program?</h6>
+						<p>Check this page for full instructions on how to register for and participate in the Affiliate Program.</p>
+					</li>
+					<li>
+						<h6>I don’t have a website. Can I participate in your program?</h6>
+						<p>Yes, you can. Please see the Affiliate Guidelines for more information about this. You can't clone or copy webpage presentations or use iframes.</p>
+					</li>
+					<li>
+						<h6>I earned a commission selling items. When I will be paid?</h6>
+						<p>You can cash out your earning as soon as you reach the minimum amount, which is $100 or more.</p>
+					</li>
+					<li>
+						<h6>Can I promote Equityfinder items on more than one website?</h6>
+						<p>Yes, absolutely. You can promote Equityfinder products across one or all of your websites. The more links and content you share, the more qualified visitors you’re likely to send us — and this should translate into higher conversion rates.</p>
+					</li>
+					<li>
+						<h6>Can I buy one of your items using my own affiliate link?</h6>
+						<p>Equityfinder does not allow you to purchase items through your own affiliate links.</p>
+					</li>
+					<li>
+						<h6>Can I participate if I live outside the United States?</h6>
+						<p>Yes, you may participate in the Affiliate Program if you live outside the United States. We have associates from all over the world and are working hard to add even more.</p>
+					</li> -->
+				</ul>
+			</div>
+		</div>
+
+		<!-- <div class="question-text mt-5">Have questions? Ask them <a href="contact-us.html" class="here">here</a>.</div> -->
+
+	</div>
+</section>
+
+<app-footer></app-footer>

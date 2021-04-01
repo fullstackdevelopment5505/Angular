@@ -1,0 +1,100 @@
+<app-header></app-header>
+<main role="main">
+        
+
+<!-- about-slider -->
+<section id="about-us-new">
+
+    <owl-carousel [options]="{items: 1, padding:0, dots: false, nav: false}" [items]="filterByStatus" [carouselClasses]="['owl-theme', 'sliding']" >
+        <div class="item" *ngFor="let image of filterByStatus;let i = index">
+         <div class="screen">
+            <img  class="d-block w-100" src="{{image.image}}">
+            <div *ngIf="image.slide_title" class="d-md-block team-text">
+              <h4 [innerHTML]="image.slide_title"></h4>
+            </div>
+        </div>
+        </div>
+       </owl-carousel>
+    
+      <!-- <owl-carousel
+      [options]="{items: 1,padding:0,  navigation: false,dots: false}"
+
+      [carouselClasses]="['owl-theme', 'sliding']">
+          <div class="screen">
+              <img  class="d-block w-100" src="assets/images/about-new-1.jpg">
+              <div class="d-md-block team-text">
+                <h4>About Us</h4>
+              </div>
+          </div>
+          <div class="screen">
+              <img  class="d-block w-100" src="assets/images/about-new-2.jpg">
+              <div class="d-md-block team-text">
+                <h4>About Us</h4>
+              </div>
+          </div>
+      </owl-carousel> -->
+  </section>
+  <!-- about-slider-end -->
+    
+    
+
+  <section class="aboutbg2">
+        <div class="container">
+            <div class="col-md-12">
+                <div class="content_about2">
+                    <h2 [innerHTML]="page_title">About Us</h2>
+                </div>
+                <div [innerHTML]="page_content" class="content_about2">
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- <section class="meetteam">
+        <div class="container">
+            <div class="col-md-12">
+                <div class="text-center meet"><h2>Meet The Team</h2></div>
+            </div>
+        </div>
+        
+        <div class="col-md-12 switcharea">
+            <button class="btn btn-default active_cta filter-button " data-filter="all">All <span></span></button>
+            <button class="btn btn-default filter-button" data-filter="ceo">CEO <span></span></button>
+            <button class="btn btn-default filter-button" data-filter="cao">CAO <span></span></button>
+            <button class="btn btn-default filter-button" data-filter="manager">Manager <span></span></button>
+            <button class="btn btn-default filter-button" data-filter="partner">Partner <span></span></button>
+            <button class="btn btn-default filter-button" data-filter="advisor">Advisor <span></span></button>
+        </div>
+    </section> -->
+
+
+    
+<!-- <section class="teamarea">
+
+        
+    <div class="container">
+        <div class="row">
+            <div *ngFor="let tD of teamsData" class="col-lg-4 filter {{tD.designation | lowercase}}">
+                <div class="teamcard">
+                    <div class="temcrcle"><img src="{{tD.profile_image}}"></div>
+                    <h3>{{tD.name}}</h3>
+                    <h6>{{tD.designation}}</h6>
+
+                    <ul class="contact">
+                        <li><span><i class="fa fa-phone"></i></span>{{tD.phone_number}}</li>
+                        <li><span><i class="fa fa-envelope"></i></span>{{tD.email}}</li>
+                    </ul>
+                    <a [routerLink]="'/about/team/'+tD.id"><button class="btn btn-success w-100 btn-lg">View Details</button></a>
+                    
+                </div>
+            </div>
+         </div>
+
+    </div>
+
+</section> -->
+
+        </main>
+<app-footer></app-footer>

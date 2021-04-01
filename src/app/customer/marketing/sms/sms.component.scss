@@ -1,0 +1,118 @@
+
+.top_selling .inside{
+    padding: 20px;
+}
+.dataTables_wrapper {
+    display: flex;
+    display: -webkit-flex;
+    flex-wrap: wrap;
+    -webkit-flex-wrap: wrap;
+    justify-content: space-between;
+    -webkit-justify-content: space-between;
+}
+table{
+    width: 100% !important;
+}
+th{
+    background: #232e42;
+    color: #fff;
+}
+.dt-buttons button.dt-button.buttons-copy {
+    background-image: url(../../../../assets/images/copy.png) !important;
+}
+.dt-buttons button.dt-button.buttons-excel {
+    background-image: url(../../../../assets/images/excel.png) !important;
+}
+.dt-buttons button.dt-button.buttons-csv {
+    background-image: url(../../../../assets/images/csv.png) !important;
+}
+.dt-buttons button.dt-button,  .dt-buttons button.dt-button:active {
+    all: initial;
+    width: 40px;
+    height: 40px;
+    background-color: transparent;
+    cursor: pointer;
+    // margin: 0px 0px;
+    border: 1px solid #ccc !important;
+    background: #f2f2f2 !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+    box-shadow: none !important;
+    background-size: 32px !important;
+}
+.dt-buttons button span{
+    color: transparent;
+}
+.dataTables_wrapper .dataTables_filter input {
+    border: 1px solid #ccc;
+    height: 36px;
+    border-radius: 5px;
+    padding: 8px;
+    width: 100%;
+    max-width: 230px;
+}
+.dataTables_wrapper .dataTables_filter label {
+    display: flex;
+    display: -webkit-flex;
+    align-items: center;
+    -webkit-align-items: center;
+    justify-content: flex-end;
+    -webkit-justify-content: flex-end;
+}
+.dataTables_wrapper .dataTables_length select {
+    height: 35px;
+    margin: 0 5px;
+    width: 70px;
+}
+.dataTables_wrapper .dataTables_paginate {
+    padding: 0;
+    margin-top: 10px;
+    border: 1px solid #dedede;
+    background: #f6f6f6;
+}
+.dataTables_wrapper:after{
+    display: none;
+}
+
+.right_area .inside .title, .top_selling .inside .title {
+    font-weight: 600;
+}
+.right_area .inside .title, .top_selling .inside .title, .single_box .inside .title {
+    font-size: 20px;
+    color: #6b6b6b;
+    margin-bottom: 13px;
+    text-transform: capitalize;
+}
+
+.recent_info {
+    text-align: center;
+    border: 3px dashed red;
+    background: #ffeeee;
+    font-size: 24px;
+    font-weight: 600;
+    padding: 70px 15px;
+    text-transform: capitalize;
+}
+.recent_info span {
+    display: block;
+    margin-top: 15px;
+}
+
+.dynamic-button{
+    margin-top: 10px;
+    justify-content: center;
+    display: flex;
+    .btn-default{
+        font-size: 12px;
+        padding: 3px 8px;
+        background: transparent;
+        color: #000 !important;
+        border: 1px solid !important;
+        border-radius: 3px
+    }
+}
+.bg-default{
+    background: #fff;
+    margin-top: -40px;
+    padding: 10px;
+}

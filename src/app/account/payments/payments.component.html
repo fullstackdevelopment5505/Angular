@@ -1,0 +1,33 @@
+<app-header></app-header>
+
+<section id="browse_catg">
+    <div class="container">
+
+        <table datatable [dtOptions]="dtOptions" id="crm" class="row-border hover">
+            <thead>
+              <tr>
+                <th>Amount</th>
+                <th>Current Balance</th>
+                <th>Status</th>
+                <th>Transaction Date</th>
+              </tr>
+            </thead>
+            <tbody *ngIf="data?.length != 0">
+                <tr *ngFor="let person of data">
+                    <td>{{ person.amount }}</td>
+                    <td>{{ person.amount }}</td>
+                    <td>{{ person.name }}</td>
+                    <td>{{ person.date }}</td>
+                </tr>
+            </tbody>
+            <tbody *ngIf="data?.length == 0">
+              <tr>
+                <td colspan="3" class="no-data-available">No data!</td>
+              </tr>
+            <tbody>
+          </table>
+
+    </div>
+</section>
+
+<app-footer></app-footer>

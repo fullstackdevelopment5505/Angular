@@ -1,0 +1,396 @@
+<app-header-customer [sideBar]="sideBar"></app-header-customer>
+<app-sidebar-customer #sideBar></app-sidebar-customer>
+<!-- right area start -->
+<section class="right_section" [class.load]="load!=1" >
+  <!-- inside_content_area start-->
+  <div class="content_area">
+    <!-- main row start-->
+    <div class="col-sm-12">
+      <div class="row">
+        <div class="col-sm-12 pro_tabs mb-0">
+          <ul class="nav nav-pills">
+              <li class="nav-item w-50"><a class="nav-link active" data-toggle="pill" href="#currentpurhcase">Purchased Records</a></li>
+              <li class="nav-item w-50"><a class="nav-link" data-toggle="pill" href="#yourdata">Imported Data</a></li>
+              </ul>
+
+        </div>
+           <!-- tab content start -->
+           <div class="tab-content">
+            <!--table start -->
+            <div class="col-sm-12 tab-pane active top_selling" id="currentpurhcase">
+            
+              <div class="inside">
+                <div class="row">
+                  <div class="title col-md-8">Purchased Records</div>
+                  <!-- <div class="col-md-4 cta_right text-right"><button class="btn btn-success" data-toggle="modal" data-target="#manageGridHot">Manage Grid</button></div> -->
+                  
+                  <div class="col-md-4 mb-3 d-lg-flex d-md-flex justify-content-md-center justify-content-lg-end  m-btn">
+                    <a [routerLink]="'/customer/all-purchased-records'">
+                      <button class="btn btn-primary"><span>View All Records</span></button>
+                    </a>
+                  </div>
+                </div>
+                <table  *ngIf="load==1"  datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" id="crm" class="row-border hover">
+                </table>
+                
+                <table *ngIf="load!=1" datatable  [dtOptions]="dtOptions"  class="row-border hover blurnew">
+                  <thead>
+                    <tr>
+                      <th>Select</th>
+                        <th>Order ID</th>
+                        <th>Purchased Group Name</th>
+                  <th>Total</th>
+                  <th>Date & Time</th>
+                  <th>Status</th>
+                  <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                      <td><input type="checkbox" class="allchks"></td>
+                        <td>157421</td>
+                        <td>28 July	<small class="last_contact">Last Contact: 18-Sep-2020</small></td>
+                        <td>565</td>
+                        <td>10-Sep-2020 00:32:20</td>
+                        <td>
+                          <span class="bg bg-success stats">Done <i class="ml-2 fa fa-thumbs-up fa-lg"></i></span>
+                        </td>
+                        <td>
+                          <a href="your-data-records.php?active=pur-rec" class="btn btn-success">View</a>
+                          <a href="#" class="btn btn-success" data-toggle="modal" data-target="#myModal">Rename</a>
+                        </td>
+                </tr>
+                <tr>
+                  <td><input type="checkbox" class="allchks"></td>
+                        <td>157421</td>
+                        <td>28 July	<small class="last_contact">Last Contact: 18-Sep-2020</small></td>
+                        <td>565</td>
+                        <td>10-Sep-2020 00:32:20</td>
+                        <td>
+                          <span class="bg bg-info stats">Half Done <i class="ml-2 fa fa-hand-rock-o fa-lg"></i></span>
+                        </td>
+                        <td>
+                          <a href="your-data-records.php?active=pur-rec" class="btn btn-success">View</a>
+                          <a href="#" class="btn btn-success" data-toggle="modal" data-target="#myModal">Rename</a>
+                        </td>
+                </tr>
+                <tr>
+                  <td><input type="checkbox" class="allchks" disabled="disabled"></td>
+                        <td>157421</td>
+                        <td>28 July	<small class="last_contact">Last Contact: 18-Sep-2020</small></td>
+                        <td>565</td>
+                        <td>10-Sep-2020 00:32:20</td>
+                        <td>
+                          <span class="bg bg-secondary stats">Not Done <i class="ml-2 fa fa-thumbs-down fa-lg"></i></span>
+                        </td>
+                        <td>
+                          <a href="your-data-records.php?active=pur-rec" class="btn btn-success">View</a>
+                          <a href="#" class="btn btn-success" data-toggle="modal" data-target="#myModal">Rename</a>
+                        </td>
+                </tr>
+                <tr>
+                  <td><input type="checkbox" class="allchks"></td>
+                        <td>157421</td>
+                        <td>28 July	<small class="last_contact">Last Contact: 18-Sep-2020</small></td>
+                        <td>565</td>
+                        <td>10-Sep-2020 00:32:20</td>
+                        <td>
+                          <span class="bg bg-success stats">Done <i class="ml-2 fa fa-thumbs-up fa-lg"></i></span>
+                        </td>
+                        <td>
+                          <a href="your-data-records.php?active=pur-rec" class="btn btn-success">View</a>
+                          <a href="#" class="btn btn-success" data-toggle="modal" data-target="#myModal">Rename</a>
+                        </td>
+                </tr>
+                </tbody>
+                </table>
+
+              </div>
+            </div>
+
+            <div class="col-sm-12  tab-pane top_selling fade" id="yourdata">
+              <div class="inside">
+                <div class="row">
+                  <div class="title col-md-3">Records</div>
+                  <!-- <div class="col-md-4 cta_right text-right"><button class="btn btn-success" data-toggle="modal" data-target="#manageGridHot">Manage Grid</button></div> -->
+                  
+                  <div class="col-md-9 mb-3 d-lg-flex d-md-flex justify-content-md-center justify-content-lg-end  m-btn">
+                    <a [routerLink]="'/customer/all-uploaded-records'">
+                      <button class="btn btn-primary mr-2"><span>View All Records</span></button>
+                    </a>
+                    <a [routerLink]="'/customer/purchased-history'">
+                      <button class="btn btn-success mr-2" (click)="importAsXLSX()"><span> Download Template</span></button>
+                    </a>
+                    <a [routerLink]="'/customer/purchased-history'">
+                      <button class="btn btn-default bg bg-secondary" (click)="ExportFile()"><i class="fa fa-upload mr-1" aria-hidden="true"></i><span>Upload Your Data</span></button>
+                    </a>
+                  </div>
+                  
+                </div>
+                <table datatable [dtOptions]="dtOptions1" [dtTrigger]="dtTrigger1" id="crm1" class="row-border hover">
+                </table>  
+              </div>
+            </div>
+
+
+            </div>
+            <!-- tab content end -->
+      </div>
+    </div>
+  </div>
+  
+	<app-common-overlay *ngIf="load!=1"></app-common-overlay>
+</section>
+<!-- export file modal -->
+
+<div class="modal" id="renamePurchasedGroupModal1">
+  <div class="modal-dialog modal-md">
+    <div class="modal-content ">
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Rename Group Name</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+      <form [formGroup]="renameForm2" (ngSubmit)="renameFormSubmit2()">
+        <!-- Modal body -->
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-sm-12">
+              <div class="form-group">
+                <label>Old Purchased Group Name: </label>
+                <input type="text" formControlName="oldGroupName" class="form-control" />
+              </div>
+            </div>
+            <div class="col-sm-12">
+              <div class="form-group">
+                <label>New Purchased Group Name: </label>
+                <input type="text" formControlName="new_group_name" class="form-control" />
+                <ng-container *ngIf="submit && renameForm.get('new_group_name').errors">
+                  <small *ngIf="renameForm.get('new_group_name').errors.required" class="error-text">New Purchased Group
+                    Name is required.</small>
+                  <small *ngIf="renameForm.get('new_group_name').errors.pattern" class="error-text">Purchase Group Name
+                    is not valid.</small>
+                  <small *ngIf="renameForm.get('new_group_name').errors.maxlength" class="error-text">Purchase Group
+                    Name should be maximum 25 characters.</small>
+                </ng-container>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-primary submit-button">Submit</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div class="modal" id="renamePurchasedGroupModal">
+  <div class="modal-dialog modal-md">
+    <div class="modal-content ">
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Rename Purchased Group Name</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+      <form [formGroup]="renameForm" (ngSubmit)="renameFormSubmit()">
+        <!-- Modal body -->
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-sm-12">
+              <div class="form-group">
+                <label>Old Purchased Group Name: </label>
+                <input type="text" formControlName="oldGroupName" class="form-control" />
+              </div>
+            </div>
+            <div class="col-sm-12">
+              <div class="form-group">
+                <label>New Purchased Group Name: </label>
+                <input type="text" formControlName="new_group_name" class="form-control" />
+                <ng-container *ngIf="submit && renameForm.get('new_group_name').errors">
+                  <small *ngIf="renameForm.get('new_group_name').errors.required" class="error-text">New Purchased Group
+                    Name is required.</small>
+                  <small *ngIf="renameForm.get('new_group_name').errors.pattern" class="error-text">Purchase Group Name
+                    is not valid.</small>
+                  <small *ngIf="renameForm.get('new_group_name').errors.maxlength" class="error-text">Purchase Group
+                    Name should be maximum 25 characters.</small>
+                </ng-container>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-primary submit-button">Submit</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<!-- Manage grid  -->
+<div class="modal" id="manageGridHot">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+
+        <!-- Modal Header -->
+        <div class="modal-header">
+            <h4 class="modal-title">Manage Grid</h4>
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        <form>
+          <!-- Modal body -->
+          <div class="modal-body">
+            <div class="row">
+                  <div class="col-sm-12">
+                      <div class="form-group">   
+                          <label>No. of columns</label>
+                          <select class="form-control" name="gridSelect" id="gridSelect">
+                              <option value="0">1</option>
+                              <option value="1">2</option>
+                              <option value="2">3</option>
+                              <option value="3">4</option>
+                              <option value="4">5</option>
+                              <option value="5">6</option>
+                              <option value="6">7</option>
+                              <option value="7">8</option>
+                              <option value="8">9</option>
+                          </select>
+                      </div>
+                  </div>
+                  <div class="col-sm-4">
+                      <div class="form-group">
+                          <label>Field 1</label>
+                          <select  class="form-control" name="col0" >
+                              <!-- <option *ngFor="let col of manageGrid.gridColName;let i = index"  value="{{i}}">{{col}}</option>                                -->
+                          </select>
+                      </div>
+                  </div>
+                  <div class="col-sm-4">
+                      <div class="form-group">
+                          <label>Field 2</label>
+                          <select  class="form-control" name="col1">
+                              <!-- <option *ngFor="let col of manageGrid.gridColName;let i = index"  value="{{i}}">{{col}}</option>  -->
+                          </select>
+                      </div>
+                  </div>
+                  <div class="col-sm-4">
+                      <div class="form-group">
+                          <label>Field 3</label>
+                          <select  class="form-control" name="col2">
+                              <!-- <option *ngFor="let col of manageGrid.gridColName;let i = index"  value="{{i}}">{{col}}</option>  -->
+                          </select>
+                      </div>
+                  </div>
+                  <div class="col-sm-4">
+                      <div class="form-group">
+                          <label>Field 4</label>
+                          <select  class="form-control" name="col3">
+                              <!-- <option *ngFor="let col of manageGrid.gridColName;let i = index"  value="{{i}}">{{col}}</option>  -->
+                          </select>
+                      </div>
+                  </div>
+                  <div class="col-sm-4">
+                      <div class="form-group">
+                          <label>Field 5</label>
+                          <select  class="form-control" name="col4">
+                              <!-- <option *ngFor="let col of manageGrid.gridColName;let i = index"  value="{{i}}">{{col}}</option>  -->
+                          </select>
+                      </div>
+                  </div>
+                  <div class="col-sm-4">
+                      <div class="form-group">
+                          <label>Field 6</label>
+                          <select  class="form-control" name="col5">
+                              <!-- <option *ngFor="let col of manageGrid.gridColName;let i = index"  value="{{i}}">{{col}}</option>  -->
+                          </select>
+                      </div>
+                  </div>
+                  <div class="col-sm-4">
+                      <div class="form-group">
+                          <label>Field 7</label>
+                          <select  class="form-control" name="col6">
+                              <!-- <option *ngFor="let col of manageGrid.gridColName;let i = index"  value="{{i}}">{{col}}</option>  -->
+                          </select>
+                      </div>
+                  </div>
+                  <div class="col-sm-4">
+                      <div class="form-group">
+                          <label>Field 8</label>
+                          <select  class="form-control" name="col7">
+                              <!-- <option *ngFor="let col of manageGrid.gridColName;let i = index"  value="{{i}}">{{col}}</option>  -->
+                          </select>
+                      </div>
+                  </div>
+                  <div class="col-sm-4">
+                      <div class="form-group">
+                          <label>Field 9</label>
+                          <select  class="form-control" name="col8">
+                              <!-- <option *ngFor="let col of manageGrid.gridColName;let i = index"  value="{{i}}">{{col}}</option>  -->
+                          </select>
+                      </div>
+                  </div>
+      
+              </div>
+          </div>  
+          <!-- Modal footer -->
+          <div class="modal-footer">
+              <button type="submit" class="btn btn-success">Save</button>
+              <button (click)="manageGridReset()" type="button" class="btn btn-info">Reset</button>
+              <button id="initGrid" (click)="manageGridInit()" type="button"></button>
+          </div>
+      </form>
+    </div>
+  </div>
+</div>
+ <!-- <<<<<<<<<<<<<<<<<<<<< Modals >>>>>>>>>>>>>>>>>> -->
+ <div class="modal" id="UploadDataModal">
+  <div class="modal-dialog modal-md">
+    <div class="modal-content ">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Upload 
+          Your Data
+        </h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+
+  <!-- Modal body -->
+    <div class="modal-body">
+    <form [formGroup]="saveSearchForm" (ngSubmit)="submitSearchForm()"> 
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="form-group">
+            <!-- <label>Search Name: </label> -->
+            <!-- <input type="text" formControlName="savedTitle" class="form-control" />	 -->
+                              
+            <input type="file" formControlName="fileSource" class="custom-file-input form-control" id="customFile"
+                    (change)="onFileSelect($event)" #UploadFileInput>
+            <label class="custom-file-label ml-3 mr-3" for="customFile">{{fileInputLabel || 'Choose File'}}</label>
+
+            <!-- <ng-container *ngIf="saveSearchForm.get('savedTitle').errors && (saveSearchForm.get('savedTitle').dirty || saveSearchForm.get('savedTitle').touched)">
+              <small *ngIf="saveSearchForm.get('savedTitle').errors.maxlength" class="error-text"></small>
+              </ng-container>	 -->
+          </div>
+        </div>
+        <div class="col-sm-12">
+          <div class="form-group">
+            <label>Your Data Group: </label>
+            <input type="text" formControlName="purchaseGroupName" class="form-control" />
+            <ng-container *ngIf="saveSearchForm.get('purchaseGroupName').errors && (saveSearchForm.get('purchaseGroupName').dirty || saveSearchForm.get('purchaseGroupName').touched)">
+            <small *ngIf="saveSearchForm.get('purchaseGroupName').errors.pattern" class="error-text">Purchase Group Name is not valid.</small>
+            <small *ngIf="saveSearchForm.get('purchaseGroupName').errors.maxlength" class="error-text">Purchase Group Name should be maximum 25 characters.</small>
+            </ng-container>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer text-center">
+        <button class="btn btn-primary" type="submit" >Ok</button>
+          </div>
+    </form>
+    </div>
+  </div>
+</div> 
+<!-- <<<<<<<<<<<<<<<<<<<<< Modals >>>>>>>>>>>>>>>>>> -->
+

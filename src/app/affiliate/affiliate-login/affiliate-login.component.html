@@ -1,0 +1,48 @@
+<app-header></app-header>
+<!-- login-start -->
+<section class="loginbg">
+	<div class="container">
+
+		<div class="col-md-12">
+			<div class="loginarea">
+				<div class="login_logo"><img src="assets/images/logo2.png" class="img-reponsive"></div>
+				<form  [formGroup]="loginForm" (ngSubmit)="submitForm()">
+					  <div class="form-group">
+					    <label for="affiliateEmail">Email Address</label>
+						<input type="email" class="form-control" id="affiliateEmail" formControlName="email"  placeholder="Enter Email">
+						<ng-container *ngIf="submit && loginForm.get('email').errors">
+							<small *ngIf="loginForm.get('email').errors.required" class="error-text">Email is required.</small>
+							<small *ngIf="loginForm.get('email').errors.email" class="error-text">Invalid email format.</small>
+						</ng-container>
+					  </div>
+					  <div class="form-group">
+					    <label for="affiliatePassword">Password</label>
+						<input type="password" class="form-control" id="affiliatePassword"  formControlName="password" placeholder="Password">
+						<ng-container *ngIf="submit && loginForm.get('password').errors">
+							<small *ngIf="loginForm.get('password').errors.required" class="error-text">Password is required.</small>
+							<small *ngIf="loginForm.get('password').errors.minlength" class="error-text">Password should be minimum 6 characters.</small>
+							<small *ngIf="loginForm.get('password').errors.maxlength" class="error-text">Password should be maximum 30 characters.</small>
+						</ng-container>
+					  </div>
+					  <div class="form-check">
+					    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+					    <label class="form-check-label" for="exampleCheck1">Remember Me</label>
+					  </div>
+
+					  <div class="custmbtn">
+						 <a href="affiliate-login.html"><button type="submit" class="btn btn-primary btn-lg cstmbtn">Login</button></a>
+						 <a [routerLink]="'/affiliate/signup'"><button type="button" class="btn btn-success btn-lg cstmbtn">Sign Up</button></a>
+					  </div>
+
+					  <!-- <div class="text-center mt-4">
+					  	<a href="#" class="text-primary">Forgot your password or cannot log in?</a>
+					  </div> -->
+
+				</form>
+			</div>
+		</div>
+
+	</div>
+</section>
+<!-- login-end -->
+<app-footer></app-footer>

@@ -1,0 +1,186 @@
+.top_bar_area {
+    margin-top: 10px;
+}
+.from_to_filter form, .from_to_filter {
+    display: flex;
+    display: -webkit-flex;
+    align-items: flex-end;
+    -webkit-align-items: flex-end;
+    flex-wrap: wrap;
+    -webkit-flex-wrap: wrap;
+    width: 100%;
+}
+.from_to_filter {
+    margin-bottom: 30px;
+}
+.select_all_mail {
+    height: 46px;
+    margin-right: 18px;
+    display: flex;
+    align-items: center;
+    display: -webkit-flex;
+    -webkit-align-items: center;
+}
+.select_all_mail label {
+    font-size: 20px;
+    position: relative;
+}
+.select_all_mail label input {
+    display: none;
+}
+.select_all_mail label span {
+    position: relative;
+    width: 24px;
+    height: 24px;
+    background: #fff;
+    display: inline-block;
+    border: 1px solid #a5a5a5;
+    margin-right: 10px;
+    vertical-align: middle;
+    top: -1px;
+}
+.from_to_filter .form-group {
+    margin: 0 10px 0 0;
+    max-width: 190px;
+    width: 100%;
+}
+.from_to_filter .form-group .form-control {
+    border-radius: 100px;
+    height: 46px;
+    padding: 0px 12px;
+    box-shadow: 0 0 10px #ccc;
+    margin-top: 9px;
+}
+.from_to_filter .btn {
+    height: 46px;
+    border-radius: 100px;
+    padding: 10px 30px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+.delete_all_mail {
+    margin-left: 15px;
+    height: 46px;
+    width: 46px;
+    border-radius: 100px;
+    background: #ff5858;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    font-size: 24px;
+    text-align: center;
+    line-height: 46px;
+    color: #fff;
+    cursor: pointer;
+}
+
+/*voucher page css start*/
+.top_btns {
+    margin-bottom: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    display: -webkit-flex;
+    -webkit-align-items: center;
+    -webkit-justify-content: flex-end;
+}
+.top_btns .btn {
+    margin: 10px 0 0 10px;
+    height: 46px;
+    border-radius: 100px;
+    padding: 10px 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+.top_btns .btn i {
+    margin-left: 8px;
+}
+/*voucher page css end*/
+
+.top_selling .inside {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    margin-bottom: 30px;
+}
+
+/* communication log start */
+.communications ul li {
+    display: flex;
+    display: -webkit-flex;
+    background:#e7f1ff;
+    padding: 11px;
+    align-items: center;
+    -webkit-align-items: center;
+    position: relative;
+    border-bottom:1px solid #ccc;
+}
+.communications ul li a{
+    display: flex;
+    display: -webkit-flex;
+    width: 100%;
+    align-items: center;
+    -webkit-align-items: center;
+    color: inherit;
+}
+.communications ul li:last-child{
+    border-bottom: none;
+}
+.communications ul li img {
+    max-width: 70px;
+    border-radius: 100px;
+}
+.communications ul li .data {
+    padding-left: 20px;
+}
+.communications ul li .data h2 {
+    font-weight: 600;
+    margin-bottom: 10px;
+    text-transform: capitalize;
+}
+.communications ul li p {
+    line-height: 19px;
+}
+.communications ul li .time {
+    white-space: nowrap;
+    margin-left: 20px;
+    font-weight: 600;
+    float: right;
+    right: 15px;
+    top: 15px;
+    position: absolute;
+}
+.communications ul li label {
+    margin-right: 20px;
+    width: 24px;
+    height: 24px;
+    position: relative;
+}
+.communications ul li label input {
+   display: none;
+}
+.communications ul li label span {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #fff;
+    border: 1px solid #a5a5a5;
+}
+.communications ul li label input:checked + span::after {
+    content: "\2713";
+    font-weight: 800;
+    text-align: center;
+    margin: 0 auto;
+    display: block;
+    height: 100%;
+    font-size: 17px;
+    padding: 3px;
+    text-shadow: 0px 1px 0 #000;
+}
+h2{
+ 
+     margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+/* communication log end */

@@ -1,0 +1,176 @@
+<app-header-customer [sideBar]="sideBar"></app-header-customer>
+<app-sidebar-customer #sideBar></app-sidebar-customer>
+<!-- main div start -->
+<div class="main_area">
+	
+	<!-- right area start -->
+	<section class="right_section" *ngIf="isPostcard">
+			<!-- inside_content_area start-->
+			<div class="content_area">
+
+					<!-- main row start-->
+					<div class="col-sm-12">
+						<div class="row">
+
+							<div class="col-md-5 offset-md-7 mt-2 mb-4 d-flex">
+								<div class="custom_search">
+									<input type="text" class="form-control" [(ngModel)]="searchModel.searchText" (keyup)="$event.keyCode==13|| searchModel.searchText=='' ?searchPostcard():null" placeholder="Search Template">
+									<button  (click)="searchPostcard()"><i class="fa fa-search"></i></button>
+								</div>
+								<button class="btn btn-primary text-nowrap ml-2" (click)="createPostCard()">Create New PostCard</button>
+							</div>
+
+
+<!-- 
+							<div class="col-sm-12 top_selling">
+								<div class="inside">
+									<div class="title">Need help?</div>
+									<div class="lists users_lists mt-4">
+										<div class="row">
+											<div class="col-md-3 col-lg-3 mb-3">
+												<div class="inset">
+													<a style="cursor: pointer;">
+														<span><img src="assets/images/person.svg" width="100%"></span>
+														<h3>Send Like Mike</h3>
+													</a>
+												</div>
+											</div>
+											<div class="col-md-3 col-lg-3 mb-3">
+												<div class="inset">
+													<a style="cursor: pointer;">
+														<span><img src="assets/images/person.svg" width="100%"></span>
+														<h3>Send Like Sam</h3>
+													</a>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div> -->
+
+
+
+							<!--table start -->
+							<div class="col-sm-12 top_selling">
+									<div class="inside">
+										<div class="title">Recently Used</div>
+										<div class="lists mt-4" *ngIf="!this.postcardTemplateList.length">
+											<!-- <div class="recent_info">You did not use any template yet.  <span><a style="color: #007bff; cursor: pointer;" (click)="handleSection('NewPostCard')">let's create one</a></span></div> -->
+											<div class="recent_info">You did not use any template yet.  <span><a style="color: #007bff; cursor: pointer;" (click)="createPostCard()">let's create one</a></span></div>
+										</div>
+							
+										<!-- <div class="title mt-4">All Template</div> -->
+										<div class="lists mt-4" *ngIf="this.postcardTemplateList.length">
+											<div class="row">
+												<ng-container *ngIf="( postcardTemplateList |myfilter:searchModel.searchText) as result"> 
+												<div class="col-md-4 col-lg-3 mb-3" *ngFor="let item of result ;index as i">
+													<h3>{{item.template_title}}</h3>
+													<div class="inset">
+														<div class="overlap">
+															<a class="btn btn-success" (click)="editPostCard(item)"><i class="fa fa-edit"></i> Edit</a>
+															<button class="btn btn-primary ml-2" (click)="showPreview('#myModalRecentEmail',item)"><i class="fa fa-eye"></i> Preview</button>
+														</div>
+														<span><img src="{{item.front_image}}"></span>
+														
+													</div>
+												</div>
+												<p *ngIf="result.length === 0">No data is available</p>
+											</ng-container>
+											</div>
+										</div>
+
+
+									</div>
+								</div>
+							<!--table end-->
+							
+
+						</div>
+					</div>
+					<!-- main row end-->
+
+			</div>
+			<!-- inside_content_area end-->
+
+	</section>
+	<!-- right area end -->
+
+	<!--postcard new section start here-->
+	<section class="right_section" *ngIf="isNewPostcard">
+
+			<!-- inside_content_area start-->
+			<div class="content_area">
+
+					<!-- main row start-->
+					<div class="col-sm-12">
+						<div class="row">
+
+							<!--table start -->
+							<div class="col-sm-12 top_selling">
+								<div class="inside p-0 mb-0">
+									<div class="col-sm-12 title_canvas">
+										<div class="row align-items-center">
+											<div class="col-sm-6 left d-flex align-items-center"><a (click)="backBtnClick()" class="btn btn-light mr-3"><i class="fas fa-step-backward"></i> Back</a> <h6>Create New Postcard Template</h6></div>
+											<div class="col-sm-6 right d-flex justify-content-end">
+												<button class="btn btn-primary mr-2" [disabled]="!postCardData.title" (click)="SavePostCard()">Save PostCard</button>
+												<a [class.disabled]="!postCardPostHtml" class="btn btn-success" (click)="SendPostCard()">Send</a>
+											</div>
+										</div>
+									</div>
+									<div class="form-group p-3">
+										<label>Title</label>
+										<input type="text" class="form-control" placeholder="Title" [(ngModel)]="postCardData.title">
+									</div>
+									<!-- canvas area -->
+								<div class="tab-pane container" id="menu1">
+											<div class="container">
+											<email-editor  (loaded)="editorLoaded($event)" [options]="options" #editor></email-editor>
+											 </div>
+										</div>
+									<!-- canvas area end -->
+								</div>
+							</div>
+							<!--table end-->
+							
+
+						</div>
+					</div>
+					<!-- main row end-->
+
+			</div>
+			<!-- inside_content_area end-->
+
+	</section>
+	<!--postcard new section end here-->
+</div>
+<!-- main div end -->
+
+
+
+
+<!-- Preview -->
+<div class="modal" id="myModalRecentEmail">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+	<!-- Modal Header -->
+	<div class="modal-header">
+		<h4 class="modal-title">Postcard Preview</h4>
+	    <!-- <button type="button" class="close" data-dismiss="modal">&times;</button> -->
+	</div>
+ 
+	<!-- Modal body -->
+	<div class="modal-body">
+	    <img src="{{preview}}" width="100%">
+	</div>
+
+	<!-- Modal footer -->
+	<div class="modal-footer">
+		<button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+	</div>
+
+    </div>
+  </div>
+</div>
+
+

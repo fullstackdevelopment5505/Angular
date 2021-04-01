@@ -1,0 +1,120 @@
+<!-- <form>
+    <div class="modal-header">
+      <h4 class="modal-title">Modal title</h4>
+      <button type="button" class="close" aria-label="Close" (click)="onClose()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body p-2">
+      <div class="form-group">
+        <label for="exampleInputEmail1">Email address</label>
+        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+      </div>
+      <div class="form-group">
+        <label for="exampleInputPassword1">Password</label>
+        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+      </div>
+      <div class="form-check">
+        <input type="checkbox" class="form-check-input" id="exampleCheck1">
+        <label class="form-check-label" for="exampleCheck1">Check me out</label>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-outline-dark" (click)="onClose()">Close</button>
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+  </form> -->
+<!-- flyout -->
+<div class="flyout_view" id="log">
+	<div class="title">
+		<h2>Contact Log</h2>
+		<button (click)="onClose()"><i class="fa fa-remove"></i></button>
+	</div>
+
+	<div class="col-sm-12 mt-3 mb-3 addlog-cls text-right"><button class="btn btn-success add_log">Add Log</button></div>
+	<div class="col-sm-12 log mb-3">
+		<form [formGroup]="logForm" (ngSubmit)="logFormSubmit()">
+		<div class="row">			
+			<div class="col-sm-12">
+				<div class="form-group">
+					<label class="mb-2">Way Of Contact</label>
+					<input type="text" formControlName="way_of_contact" data-inputmask="'regex': '[a-zA-Z-_ ]*'" class="form-control" />	
+					<ng-container *ngIf="submit && logForm.get('way_of_contact').errors">
+						<small *ngIf="logForm.get('way_of_contact').errors.required" class="error-text">Way Of Contact is required.</small>
+						<small *ngIf="logForm.get('way_of_contact').errors.maxlength" class="error-text">Way Of Contact should be maximum 40 characters.</small>
+					</ng-container>
+				</div>
+			</div>
+			<div class="col-sm-12">
+				<div class="form-group">
+					<label class="mb-2">Description</label>
+					<textarea formControlName="description" class="form-control" rows="5"></textarea>
+					<ng-container *ngIf="submit && logForm.get('description').errors">
+						<small *ngIf="logForm.get('description').errors.required" class="error-text">Description is required.</small>
+						<small *ngIf="logForm.get('description').errors.maxlength" class="error-text">Description should be maximum 200 characters.</small>
+					</ng-container>     
+				</div>
+			</div>
+			<div class="col-sm-12 d-flex">
+				<button type="submit" class="btn btn-success mr-2">Save</button>
+				<button type="button" (click)="logFormReset()" class="btn btn-danger cancel_log">Reset</button>
+			</div>			
+		</div>
+		</form>
+	</div>
+
+	<div class="col-sm-12 mt-3">
+		<table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" id="logTbl" class="row-border hover w-100">
+		</table>
+		<!-- <table class="display responsive nowrap" width="100%">
+			<thead>
+				<tr>
+					<th>Date</th>
+					<th>Time</th>
+					<th>WOC</th>
+					<th>Description</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>20-06-2020</td>
+					<td>11:30 AM</td>
+					<td>Email</td>
+					<td>Follow Up</td>
+				</tr>
+				<tr>
+					<td>18-06-2020</td>
+					<td>11:30 AM</td>
+					<td>MMS</td>
+					<td>Sent Final Quote</td>
+				</tr>
+				<tr>
+					<td>16-06-2020</td>
+					<td>11:30 AM</td>
+					<td>Postcard</td>
+					<td>Travel Postcard</td>
+				</tr>
+				<tr>
+					<td>20-06-2020</td>
+					<td>11:30 AM</td>
+					<td>Email</td>
+					<td>Follow Up</td>
+				</tr>
+				<tr>
+					<td>18-06-2020</td>
+					<td>11:30 AM</td>
+					<td>MMS</td>
+					<td>Sent Final Quote</td>
+				</tr>
+				<tr>
+					<td>16-06-2020</td>
+					<td>11:30 AM</td>
+					<td>Postcard</td>
+					<td>Travel Postcard</td>
+				</tr>
+			</tbody>
+		</table> -->
+	</div>
+	<div class="col-sm-12 mb-3"><br></div>
+</div>

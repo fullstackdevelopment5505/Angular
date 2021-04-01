@@ -1,0 +1,172 @@
+.top_bar_area {
+    margin-top: 10px;
+}
+.top_btns {
+    margin-bottom: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    display: -webkit-flex;
+    -webkit-align-items: center;
+    -webkit-justify-content: flex-end;
+    .btn {
+        margin: 10px 0 0 10px;
+        height: 46px;
+        border-radius: 100px;
+        padding: 10px 20px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        i {
+            margin-left: 8px;
+        }
+    }
+}
+.single_box .inside {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background: #525252;
+    padding: 15px;
+    border-radius: 5px;
+    margin-bottom: 30px;
+    position: relative;
+}
+.single_box:nth-child(1) .inside {
+    background: -webkit-linear-gradient(#128edf, #156fa8);
+    background: linear-gradient(#128edf, #156fa8);
+    background: -ms-linear-gradient(#128edf, #156fa8);
+}
+.single_box:nth-child(2) .inside {
+    background: -webkit-linear-gradient(#e7a600, #d77000);
+    background: linear-gradient(#e7a600, #d77000);
+    background: -ms-linear-gradient(#e7a600, #d77000);
+    cursor: pointer;
+}
+.single_box:nth-child(3) .inside {
+    background: -webkit-linear-gradient(#e52a55, #b71f45);
+    background: linear-gradient(#e52a55, #b71f45);
+    background: -ms-linear-gradient(#e52a55, #b71f45);
+}
+.single_box .inside .icon {
+    width: 100%;
+    max-width: 60px;
+    height: 60px;
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+    background: #fff;
+    padding: 12px;
+    border-radius: 100px;
+}
+.right_area .inside .title, .top_selling .inside .title, .single_box .inside .title {
+    font-size: 20px;
+    color: #6b6b6b;
+    margin-bottom: 13px;
+    text-transform: capitalize;
+}
+.single_box .inside .title {
+    color: #fff !important;
+}
+.single_box .inside .cus_num {
+    font-weight: 600;
+    font-size: 33px;
+    width: 100%;
+    color: #fff;
+    margin-bottom: 0;
+}
+.top_selling .inside {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    margin-bottom: 30px;
+}
+table td{
+    padding: 15px 5px;
+}
+
+
+
+.dataTables_wrapper {
+    display: flex;
+    display: -webkit-flex;
+    flex-wrap: wrap;
+    -webkit-flex-wrap: wrap;
+    justify-content: space-between;
+    -webkit-justify-content: space-between;
+}
+table{
+    width: 100% !important;
+}
+th{
+    background: #232e42 !important;
+    color: #fff;
+}
+.dt-buttons button.dt-button.buttons-copy {
+    background-image: url(../../../assets/images/copy.png) !important;
+}
+.dt-buttons button.dt-button.buttons-excel {
+    background-image: url(../../../assets/images/excel.png) !important;
+}
+.dt-buttons button.dt-button.buttons-csv {
+    background-image: url(../../../assets/images/csv.png) !important;
+}
+.dt-buttons button.dt-button.buttons-pdf {
+    background-image: url(../../../assets/images/pdf.png) !important;
+}
+.dt-buttons button.dt-button,  .dt-buttons button.dt-button:active {
+    all: initial;
+    width: 40px;
+    height: 40px;
+    background-color: transparent;
+    cursor: pointer;
+    // margin: 0px 0px;
+    border: 1px solid #ccc !important;
+    background: #f2f2f2 !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+    box-shadow: none !important;
+    background-size: 32px !important;
+}
+.dt-buttons button span{
+    color: transparent;
+}
+.dataTables_wrapper .dataTables_filter input {
+    border: 1px solid #ccc;
+    height: 36px;
+    border-radius: 5px;
+    padding: 8px;
+    width: 100%;
+    max-width: 230px;
+}
+.dataTables_wrapper .dataTables_filter label {
+    display: flex;
+    display: -webkit-flex;
+    align-items: center;
+    -webkit-align-items: center;
+    justify-content: flex-end;
+    -webkit-justify-content: flex-end;
+}
+.dataTables_wrapper .dataTables_length select {
+    height: 35px;
+    margin: 0 5px;
+    width: 70px;
+}
+.dataTables_wrapper .dataTables_paginate {
+    padding: 0;
+    margin-top: 10px;
+    border: 1px solid #dedede;
+    background: #f6f6f6;
+}
+.dataTables_wrapper:after{
+    display: none;
+}
+
+
+@media (min-width: 1500px){   
+    .single_box .inside {
+        padding: 26px;
+    }
+}
+input#amount {
+    text-align: left !important;
+}

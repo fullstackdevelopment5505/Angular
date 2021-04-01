@@ -1,0 +1,28 @@
+#sortable{ 
+    li {
+    padding: 12px;
+    margin-bottom: 12px;
+    cursor: move;
+    display: flex;
+    align-items: center;
+    border: 1px solid #c5c5c5;
+    background: #f6f6f6;
+    font-weight: normal;
+    color: #454545;
+        span {
+            width: 40px;
+            text-align: left;
+            display: inline-block;
+            line-height: 0;
+            img {
+                height: 20px;
+                width:initial;
+            }
+        }
+        input.dragcheck {
+            margin-right: 15px;
+            width: 16px;
+            height: 16px;
+        }
+    }
+}

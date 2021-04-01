@@ -1,0 +1,243 @@
+<!-- ===============Ask Question Modal=================== -->
+<div class="modal" [style.display]="currentModel == 'faq' ? 'block':'none'" id="myModal2">
+    <div class="modal-dialog modal-md">
+        <div class="modal-content">
+
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <button type="button" class="close" (click)="close('faq')">&times;</button>
+            </div>
+
+            <!-- Modal body -->
+            <div class="modal-body market_popup">
+                <h2>To unlock/use this template the charges will be $50 to proceed please click unlock</h2>
+                <button class="btn btn-success add_email_cta" (click)="currentModel='payment'">Unlock</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- ===============Ask Question Modal end=================== -->
+
+
+
+
+<!-- =============Payment field=============== -->
+<div class="modal" [style.display]="currentModel == 'payment' ? 'block':'none'" id="myModal3">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title"></h4>
+                <button type="button" class="close" (click)="close('payment')">&times;</button>
+            </div>
+
+            <!-- Modal body -->
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <label>Total Selected Records</label>
+                            <input type="text" class="form-control" placeholder="Total Selected Records" value="150">
+                        </div>
+                    </div>
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <label>Total Amount</label>
+                            <input type="text" class="form-control" placeholder="Total Amount" value="$150.00">
+                        </div>
+                    </div>
+
+                    <hr class="w-100 mt-4 mb-4">
+                    <div class="col-sm-12 title_payment mb-4">Saved Cards</div>
+                    <div class="col-sm-12 saved_payments">
+                        <div class="table-responsive">
+                            <table datatable [dtOptions]="dtOptions" class="display responsive nowrap w-100">
+                                <thead>
+                                    <tr>
+                                        <th>Card Holder Name</th>
+                                        <th>Card Number</th>
+                                        <th>Expires On</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>John Doe</td>
+                                        <td>XXXX-XXXX-XXXX-4548</td>
+                                        <td>05/2023</td>
+                                        <td><button class="btn btn-success">Use</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Mike Miller</td>
+                                        <td>XXXX-XXXX-XXXX-5465</td>
+                                        <td>05/2025</td>
+                                        <td><button class="btn btn-success">Use</button></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <hr class="w-100 mt-4 mb-4">
+                    <div class="col-sm-12 title_payment mb-4">Select Your Payment Method</div>
+                    <div class="payment_options w-100">
+                        <ul>
+                            <li>
+                                <label class="title">
+                                    <div class="title_inside">
+                                        <input type="radio" name="x">
+                                        <h3>Credit/Debit Card</h3>
+                                    </div>
+                                    <div class="images">
+                                        <p><img src="assets/images/visa.png"></p>
+                                        <p><img src="assets/images/master.png"></p>
+                                        <p><img src="assets/images/american-express.png"></p>
+                                        <p><img src="assets/images/discover.png"></p>
+                                    </div>
+                                </label>
+                                <div class="col-sm-12 details">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Card Hold Name</label>
+                                                <input type="text" class="form-control" placeholder="John Doe">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Card Number</label>
+                                                <input type="text" class="form-control"
+                                                    placeholder="XXXX-XXXX-XXXX-XXXX">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-5">
+                                            <div class="form-group">
+                                                <label>Expiry Month</label>
+                                                <select class="form-control">
+                                                    <option>--Select Expiry Month--</option>
+                                                    <option>January</option>
+                                                    <option>February</option>
+                                                    <option>March</option>
+                                                    <option>April</option>
+                                                    <option>May</option>
+                                                    <option>June</option>
+                                                    <option>July</option>
+                                                    <option>August</option>
+                                                    <option>September</option>
+                                                    <option>October</option>
+                                                    <option>November</option>
+                                                    <option>December</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-5">
+                                            <div class="form-group">
+                                                <label>Expiry Year</label>
+                                                <select class="form-control">
+                                                    <option>--Select Expiry Year--</option>
+                                                    <option>2020</option>
+                                                    <option>2021</option>
+                                                    <option>2022</option>
+                                                    <option>2023</option>
+                                                    <option>2024</option>
+                                                    <option>2025</option>
+                                                    <option>2026</option>
+                                                    <option>2027</option>
+                                                    <option>2028</option>
+                                                    <option>2029</option>
+                                                    <option>2030</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <div class="form-group">
+                                                <label>CVV</label>
+                                                <input type="text" class="form-control" placeholder="123">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-12 terms d-flex mt-2 mb-5"><input type="checkbox"> Securely
+                                            Save To Account</div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <label class="title">
+                                    <div class="title_inside">
+                                        <input type="radio" name="x">
+                                        <h3>Net Banking</h3>
+                                    </div>
+                                    <div class="images">
+                                        <p><img src="assets/images/net-banking.png"></p>
+                                    </div>
+                                </label>
+                            </li>
+                            <li>
+                                <label class="title">
+                                    <div class="title_inside">
+                                        <input type="radio" name="x">
+                                        <h3>Paypal</h3>
+                                    </div>
+                                    <div class="images">
+                                        <p><img src="assets/images/paypal.png"></p>
+                                    </div>
+                                </label>
+                            </li>
+                            <li>
+                                <label class="title">
+                                    <div class="title_inside">
+                                        <input type="radio" name="x">
+                                        <h3>Stripe</h3>
+                                    </div>
+                                    <div class="images">
+                                        <p><img src="assets/images/stripe.png"></p>
+                                    </div>
+                                </label>
+                            </li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success" (click)="currentModel='paymentSucess'">Continue To Payment</button>
+                <button type="button" class="btn btn-danger" (click)="close('payment')">Close</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- ==============Payment Field End================== -->
+
+
+
+
+<!-- ==========Successful Payment============ -->
+<div class="modal" [style.display]="currentModel == 'paymentSucess' ? 'block':'none'" id="payment_success">
+    <div class="modal-dialog modal-md">
+        <div class="modal-content">
+
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <button type="button" class="close" (click)="close('paymentSucess')">&times;</button>
+            </div>
+
+            <!-- Modal body -->
+            <div class="modal-body">
+                <div class="row successful_payment">
+                    <div class="text-center"><img src="assets/images/check.png" class="chksnew"></div>
+                    <h3>Your payment is successfully done.</h3>
+                    <a (click)="handleSection()" class="btn btn-success mt-2 mb-2">Proceed To Continue</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- ==========Successful Payment End============ -->

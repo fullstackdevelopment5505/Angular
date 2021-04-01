@@ -1,0 +1,40 @@
+<div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Address list</h4>
+    <button type="button" class="close" aria-label="Close" (click)="close()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+      <div class="col-md-12 text-center"> 
+        <small class="text-danger"> You have selected {{data.length}} properties, in which {{getAddressCount()}} properties have address.</small>
+
+
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Name</th>
+              <th scope="col">Address</th>
+              <th scope="col">Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let da of data">
+              <td>{{da.OwnerMailingName? da.OwnerMailingName : 'N/A'}}</td>
+              <td>{{da.address? da.address : 'N/A'}}</td>
+              <td>
+                <span *ngIf="da.address_flag==='1';else times">
+                  <i class="fa fa-check" aria-hidden="true"></i>
+                </span>
+                <ng-template #times>
+                  <i class="fa fa-times" aria-hidden="true"></i>
+                </ng-template>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+      </div>
+      <div *ngIf="getAddressCount()>0">
+        <button (click)="emailModal()" class="btn btn-success">Continue</button>
+      </div>
+  </div>
